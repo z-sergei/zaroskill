@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements TDD"
+  short_description: "Turn requirements into tests, then working code"
+  default_prompt: "Use $requirements-tdd to turn these requirements into observable examples, then implement them one passing test at a time."

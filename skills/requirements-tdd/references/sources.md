@@ -1,0 +1,17 @@
+# Provenance and deliberate choices
+
+Original operational synthesis, checked 2026-10-23. These are useful primary-source implementations, not a claim of an objective popularity ranking. The skill is self-contained; none of these repositories or plugins is a runtime dependency.
+
+| Source | Adopted idea | Deliberate adaptation |
+| --- | --- | --- |
+| [Matt Pocock: TDD](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md), inspected installed mattpocock-skills 1.3.1 | Observable behavior, independent expectations, vertical slices and a small first path | Choose ordinary seams from task context without mandatory approval; retain refactoring after green inside this workflow. |
+| [Poteto / Noodle: testing](https://github.com/poteto/noodle/blob/82d2921c52370f23f29086de81ccfb600939c037/.agents/skills/testing/SKILL.md) | Reproduce the actual symptom, turn it into a regression test, then fix it | Omit project commands, fixture conventions and automatic commits. |
+| [Obra / Superpowers: TDD](https://github.com/obra/superpowers/blob/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/skills/test-driven-development/SKILL.md) | Observe the right red, make the same test green, then refactor | Preserve existing work; treat already-green behavior honestly; allow multiple assertions for one outcome and contractual effect verification. |
+| [Everything Claude Code: TDD workflow](https://github.com/affaan-m/everything-claude-code/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/tdd-workflow/SKILL.md) | Connect plan requirements to testable guarantees and actual execution evidence | Replace universal coverage quotas, checkpoint commits and command approval gates with task-specific evidence. |
+| [Poteto: verification example](https://github.com/poteto/verification-skill-example/blob/d5abe70d0d8c671672b6cef4069363f26c488feb/.cursor/skills/verify-atlas/SKILL.md) | Verify the real user path, durable consequences and observable readiness | This fictional example is not a portable driver; no example scripts or environment assumptions are copied. |
+| Our khorikov-unit-testing skill, original version | Four test-value properties, behavior boundaries, independent oracles, managed persistence and unmanaged effects | Include the necessary principles here so transfer does not require installing a second skill. |
+| [Khorikov: When to Mock](https://enterprisecraftsmanship.com/posts/when-to-mock/), [How to Assert Database State](https://enterprisecraftsmanship.com/posts/how-to-assert-database-state/) | Classify doubles by their role and observe meaningful persisted state | Neither all mocks nor all direct database observations are inherently wrong; the chosen boundary determines the evidence. |
+
+The source repositories for Noodle, Superpowers and Everything Claude Code declare MIT licenses at the linked revisions. The verification example has no declared license; only its ideas are restated in original prose. This package does not reproduce their skill bodies or source code. The Khorikov foundation uses the previously checked official chapter excerpt and author articles, not full-book access.
+
+The requirement map, explicit distinction between setup failure and behavioral red, branch handling for already implemented behavior, and bounded completion report combine these ideas for autonomous agents. They are adaptations, not claims that one upstream source prescribes this exact process.
