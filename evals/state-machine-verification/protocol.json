@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "design": "Two fresh-context skill-assisted runs over the same ten development cases, followed by an independent judge blinded to version identity",
+  "variant_identity_revealed_after_judgment": {
+    "A": "original",
+    "B": "updated"
+  },
+  "runs_per_variant": 1,
+  "input_skill_sha256": {
+    "A": {
+      "SKILL.md": "358be4b91c0efcf2a99965c67e78399cf853bf706131ce4c83a8138d56953c94",
+      "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c",
+      "references/sources.md": "c5f685f4bfcdf5132a5d428c6585d102e3e5b1ba275c21cbb554bfc5db534640",
+      "references/temporal-checks.md": "2b6620a8f963a358c7d538571961496b59af781ea33b2e4b3f7a6f8e7e9663a0",
+      "references/vance-android.md": "618d5909079f8628a15363755e4b7222ebb7f6fb5b8a65a861c19f1c0e7fb5b6"
+    },
+    "B": {
+      "SKILL.md": "a13f4ddfa2ac4afca5ef5a00c9e2d6e6037d457002d299188ee2c000ba25a29a",
+      "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c",
+      "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+      "references/sources.md": "a992b51e970da275db09caa9346609ed5deb8a69ede5628e91cf4a4eed3531ee",
+      "references/temporal-checks.md": "2b6620a8f963a358c7d538571961496b59af781ea33b2e4b3f7a6f8e7e9663a0"
+    }
+  },
+  "artifact_sha256": {
+    "cases.md": "3ec34d7a2bd80a750fd477ebeabd6e14db402e3ef2aca822adab9b158e707107",
+    "rubric.json": "5fca1c02e37e551b4b9fd84dee07891b2cb7235aabb975ca31a65a88f191fe1a",
+    "answer-A.json": "5eb830070704c1c53453fa157e159f36744393cba359198b17978ffa0b287c1c",
+    "answer-B.json": "0c31b5c7ff542523c8f534fd474d96412917fac16f5d0f7053b77a47658b0c7a",
+    "judgment.json": "4590264a62caf871fe9ce942ba884d80decc1abf47f42f2aaad589e9f3a2be58",
+    "judgment.md": "df51f67eb4f4541cc018628beac41378914bf47306ee5b8ce42b08e8ed76be39"
+  },
+  "original_source": "Installed original captured before the update; hashes also recorded in provenance.json",
+  "git_import_note": "The first Git commit already removes the original project-specific map dependency. The evaluated original snapshot preceded that packaging-only adjustment; its source hashes identify the exact input. The original project map is not distributed.",
+  "updated_source": "skills/state-machine-verification; byte-identical to the evaluated updated snapshot",
+  "generation_scope": "Analysis only; use supplied facts and relevant skill references; no external browsing, implementation or access to the scoring rubric",
+  "judge_scope": "cases.md, rubric.json and the two answer files only; no skill source or version key",
+  "promotion_basis": "User-requested explicit optional design checks; no material regression observed in these ten cases. Comparative superiority was not established."
+}

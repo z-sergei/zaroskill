@@ -1,0 +1,87 @@
+{
+  "version": 9,
+  "cases": [
+    {
+      "id": "transactional_outbox",
+      "split": "development",
+      "files": [
+        "task.md",
+        "fulfillment.py"
+      ]
+    },
+    {
+      "id": "async_latest_search",
+      "split": "development",
+      "files": [
+        "task.md",
+        "search_controller.py",
+        "controlled_gateway.py"
+      ]
+    },
+    {
+      "id": "quote_boundary",
+      "split": "development",
+      "files": [
+        "task.md",
+        "pricing.py"
+      ]
+    },
+    {
+      "id": "help_centre_reader",
+      "split": "development",
+      "files": [
+        "task.md",
+        "app.py",
+        "reading_room.py"
+      ]
+    },
+    {
+      "id": "streaming_manifest",
+      "split": "development",
+      "files": [
+        "task.md",
+        "manifest.py"
+      ]
+    },
+    {
+      "id": "access_policy",
+      "split": "development",
+      "files": [
+        "task.md",
+        "access_policy.py"
+      ]
+    },
+    {
+      "id": "print_spooler",
+      "split": "development",
+      "files": [
+        "task.md",
+        "spooler.py"
+      ]
+    },
+    {
+      "id": "revision_store",
+      "split": "development",
+      "files": [
+        "task.md",
+        "revision_store.py"
+      ]
+    },
+    {
+      "id": "ttl_cache",
+      "split": "development",
+      "files": [
+        "task.md",
+        "app.py"
+      ]
+    },
+    {
+      "id": "text_edits",
+      "split": "holdout",
+      "files": [
+        "task.md",
+        "app.py"
+      ]
+    }
+  ]
+}

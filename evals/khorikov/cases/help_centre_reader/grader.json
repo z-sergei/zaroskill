@@ -1,0 +1,106 @@
+{
+  "mutants": [
+    {
+      "id": "unlisted_article_exposed",
+      "source": "reading_room.py",
+      "before": "return article.listed and article.published_at <= now",
+      "after": "return article.published_at <= now",
+      "invariant": "Unlisted articles remain unavailable regardless of publication time, including aliases and related navigation."
+    },
+    {
+      "id": "requested_translation_ignored",
+      "source": "reading_room.py",
+      "before": "    if requested in article.translations:\n        return requested, article.translations[requested]\n    return article.default_language, article.translations[article.default_language]",
+      "after": "    return article.default_language, article.translations[article.default_language]",
+      "invariant": "A supported translation requested by the URL is displayed and declared as the document language."
+    },
+    {
+      "id": "redirect_language_lost",
+      "source": "app.py",
+      "before": "return Response(308, {\"Location\": canonical_path}, \"\")",
+      "after": "return Response(308, {\"Location\": f\"/{article.default_language}/{article.slug}\"}, \"\")",
+      "invariant": "Canonical redirects retain the language chosen in the URL even when content falls back to another language."
+    },
+    {
+      "id": "body_interpreted_as_markup",
+      "source": "app.py",
+      "before": "f'<p class=\"article-body\">{escape(page.body)}</p>'",
+      "after": "f'<p class=\"article-body\">{page.body}</p>'",
+      "invariant": "Article body content is displayed as literal text, including markup-like text and entity-like text."
+    },
+    {
+      "id": "editorial_order_replaced_by_slug_order",
+      "source": "reading_room.py",
+      "before": "for related_slug in article.related:",
+      "after": "for related_slug in sorted(article.related):",
+      "invariant": "Related navigation retains the editor's ordering after unavailable references are omitted."
+    },
+    {
+      "id": "publication_timezone_stripped",
+      "source": "reading_room.py",
+      "before": "return article.listed and article.published_at <= now",
+      "after": "return article.listed and article.published_at.replace(tzinfo=None) <= now.replace(tzinfo=None)",
+      "invariant": "Publication eligibility compares aware instants, including equivalent timestamps with different UTC offsets."
+    },
+    {
+      "id": "all_related_unavailable_hides_page",
+      "source": "app.py",
+      "before": "    page = build_page(catalog, article, requested, now)\n    return Response(200,",
+      "after": "    page = build_page(catalog, article, requested, now)\n    if article.related and not page.links:\n        return _not_found()\n    return Response(200,",
+      "invariant": "A public article still succeeds with no related links when every configured related reference is unavailable."
+    },
+    {
+      "id": "fallback_first_available",
+      "source": "reading_room.py",
+      "before": "    return article.default_language, article.translations[article.default_language]",
+      "after": "    return next(iter(article.translations.items()))",
+      "invariant": "A missing requested translation selects the article's configured default, even when a different translation is first in the mapping; related titles follow the same rule."
+    },
+    {
+      "id": "title_raw_script",
+      "source": "app.py",
+      "before": "        f'<body><h1>{escape(page.title)}</h1>'",
+      "after": "        f'<body><script type=\"text/plain\">{page.title}</script>'",
+      "invariant": "The article title is displayed in the page's visible content; raw text stored in a non-rendered script data block does not satisfy that requirement."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "translation_selection_single_return",
+      "source": "reading_room.py",
+      "before": "    if requested in article.translations:\n        return requested, article.translations[requested]\n    return article.default_language, article.translations[article.default_language]",
+      "after": "    language = requested if requested in article.translations else article.default_language\n    return language, article.translations[language]",
+      "invariant": "Both branches select the same language key and corresponding Translation for every valid article."
+    },
+    {
+      "id": "materialize_rendered_link_fragments",
+      "source": "app.py",
+      "before": "return \"\".join(_render_link(link) for link in links)",
+      "after": "return \"\".join([_render_link(link) for link in links])",
+      "invariant": "Rendering a finite tuple of immutable links produces the same ordered HTML string whether fragments are joined from a generator or a list."
+    },
+    {
+      "id": "omit_optional_body_tags",
+      "source": "app.py",
+      "before": "def _render(page: Page) -> str:\n    return (\n        '<!doctype html>'\n        f'<html lang=\"{escape(page.language, quote=True)}\">'\n        f'<head><title>{escape(page.title)}</title></head>'\n        f'<body><h1>{escape(page.title)}</h1>'\n        f'<p class=\"article-body\">{escape(page.body)}</p>'\n        '<nav aria-label=\"Related articles\"><ul>'\n        f'{_render_links(page.links)}'\n        '</ul></nav></body></html>'\n    )\n",
+      "after": "def _render(page: Page) -> str:\n    return (\n        '<!doctype html>'\n        f'<html lang=\"{escape(page.language, quote=True)}\">'\n        f'<head><title>{escape(page.title)}</title></head>'\n        f'<h1>{escape(page.title)}</h1>'\n        f'<p class=\"article-body\">{escape(page.body)}</p>'\n        '<nav aria-label=\"Related articles\"><ul>'\n        f'{_render_links(page.links)}'\n        '</ul></nav></html>'\n    )\n",
+      "invariant": "Omitting optional body tags preserves the parsed document and all reader content: its first body child is h1 and no adjacent comments prevent tag omission. HTML, head, language, heading, article text, and links remain unchanged.",
+      "reference": "https://html.spec.whatwg.org/multipage/syntax.html#optional-tags"
+    },
+    {
+      "id": "heading_to_div",
+      "source": "app.py",
+      "before": "        f'<body><h1>{escape(page.title)}</h1>'",
+      "after": "        f'<body><div>{escape(page.title)}</div>'",
+      "invariant": "The supplied reader contract requires the title to display as literal text, without prescribing a heading element. A visible div preserves that text, document language, body, links, and response. Heading accessibility semantics are outside this contract."
+    },
+    {
+      "id": "omit_optional_head_end_tag",
+      "source": "app.py",
+      "before": "        f'<head><title>{escape(page.title)}</title></head>'",
+      "after": "        f'<head><title>{escape(page.title)}</title>'",
+      "invariant": "Omitting the optional head end tag immediately before the body start tag preserves the parsed document, visible title and body text, language, related links, status and headers; the serialization contains no intervening whitespace or comment.",
+      "reference": "https://html.spec.whatwg.org/multipage/syntax.html#optional-tags"
+    }
+  ]
+}

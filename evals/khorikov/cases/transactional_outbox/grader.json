@@ -1,0 +1,90 @@
+{
+  "mutants": [
+    {
+      "id": "commit_on_failure",
+      "source": "fulfillment.py",
+      "before": "    except Exception:\n        connection.rollback()\n        raise",
+      "after": "    except Exception:\n        connection.commit()\n        raise",
+      "invariant": "A later stock failure rolls back reservations already made during the order attempt."
+    },
+    {
+      "id": "rollback_on_success",
+      "source": "fulfillment.py",
+      "before": "        connection.commit()\n        return order",
+      "after": "        connection.rollback()\n        return order",
+      "invariant": "Successful orders, stock reductions, and queued confirmations are durable and visible through new connections."
+    },
+    {
+      "id": "retry_reserves_twice",
+      "source": "fulfillment.py",
+      "before": "            return Order(existing[0], existing[1])",
+      "after": "            for sku, quantity in normalized:\n                connection.execute(\"UPDATE stock SET quantity = quantity - ? WHERE sku = ?\", (quantity, sku))\n            connection.commit()\n            return Order(existing[0], existing[1])",
+      "invariant": "Equivalent retries return the existing order without reserving inventory again."
+    },
+    {
+      "id": "accepts_conflicting_key",
+      "source": "fulfillment.py",
+      "before": "            if existing[2] != request_body:",
+      "after": "            if existing[2] is None:",
+      "invariant": "Reusing a request key with a different recipient or normalized item quantities raises IdempotencyConflict."
+    },
+    {
+      "id": "misrouted_confirmation",
+      "source": "fulfillment.py",
+      "before": "            recipient=recipient,",
+      "after": "            recipient=\"warehouse@example.invalid\",",
+      "invariant": "The external notification is addressed to the recipient of its order."
+    },
+    {
+      "id": "marks_delivered_before_send",
+      "source": "fulfillment.py",
+      "before": "        notifications.send(\n            recipient=recipient,\n            payload=json.loads(raw_payload),\n            idempotency_key=f\"order-confirmation:{order_id}\",\n        )\n        with sqlite3.connect(database) as connection:\n            connection.execute(\"UPDATE outbox SET delivered = 1 WHERE event_id = ?\", (event_id,))",
+      "after": "        with sqlite3.connect(database) as connection:\n            connection.execute(\"UPDATE outbox SET delivered = 1 WHERE event_id = ?\", (event_id,))\n        notifications.send(\n            recipient=recipient,\n            payload=json.loads(raw_payload),\n            idempotency_key=f\"order-confirmation:{order_id}\",\n        )",
+      "invariant": "An unconfirmed external send remains pending and can be retried with the same payload and deduplication key."
+    },
+    {
+      "id": "duplicate_sku_overwritten",
+      "source": "fulfillment.py",
+      "before": "        quantities[sku] = quantities.get(sku, 0) + quantity",
+      "after": "        quantities[sku] = quantity",
+      "invariant": "Repeated SKU entries are added together for reservation, pricing, idempotency comparison, and notification payloads."
+    },
+    {
+      "id": "dispatch_sorted_by_recipient",
+      "source": "fulfillment.py",
+      "before": "WHERE delivered = 0 ORDER BY event_id",
+      "after": "WHERE delivered = 0 ORDER BY recipient, event_id",
+      "invariant": "Pending confirmations are sent in creation order even when recipient names sort differently."
+    },
+    {
+      "id": "dispatch_sorted_by_sku",
+      "source": "fulfillment.py",
+      "before": "    delivered = 0\n    for event_id, recipient, raw_payload, order_id in pending:",
+      "after": "    pending.sort(key=lambda event: json.loads(event[2])[\"items\"][0][\"sku\"])\n    delivered = 0\n    for event_id, recipient, raw_payload, order_id in pending:",
+      "invariant": "Pending confirmations are sent in creation order independently of the SKUs in their payloads."
+    },
+    {
+      "id": "stale_completed_outbox_batch",
+      "source": "fulfillment.py",
+      "before": "def dispatch_pending(database, notifications: Notifications) -> int:\n    \"\"\"Send pending events in creation order; stop and propagate a send failure.\"\"\"\n    with sqlite3.connect(database) as connection:\n        pending = connection.execute(\n            \"SELECT event_id, recipient, payload, order_id FROM outbox \"\n            \"WHERE delivered = 0 ORDER BY event_id\"\n        ).fetchall()\n    delivered = 0\n    for event_id, recipient, raw_payload, order_id in pending:\n        notifications.send(\n            recipient=recipient,\n            payload=json.loads(raw_payload),\n            idempotency_key=f\"order-confirmation:{order_id}\",\n        )\n        with sqlite3.connect(database) as connection:\n            connection.execute(\"UPDATE outbox SET delivered = 1 WHERE event_id = ?\", (event_id,))\n        delivered += 1\n",
+      "after": "_completed_dispatch_batches = set()\n\n\ndef dispatch_pending(database, notifications: Notifications) -> int:\n    \"\"\"Send pending events in creation order; stop and propagate a send failure.\"\"\"\n    database_key = str(database)\n    if database_key in _completed_dispatch_batches:\n        return 0\n    with sqlite3.connect(database) as connection:\n        pending = connection.execute(\n            \"SELECT event_id, recipient, payload, order_id FROM outbox \"\n            \"WHERE delivered = 0 ORDER BY event_id\"\n        ).fetchall()\n    delivered = 0\n    for event_id, recipient, raw_payload, order_id in pending:\n        notifications.send(\n            recipient=recipient,\n            payload=json.loads(raw_payload),\n            idempotency_key=f\"order-confirmation:{order_id}\",\n        )\n        with sqlite3.connect(database) as connection:\n            connection.execute(\"UPDATE outbox SET delivered = 1 WHERE event_id = ?\", (event_id,))\n        delivered += 1\n    if delivered:\n        _completed_dispatch_batches.add(database_key)\n",
+      "invariant": "A fresh order queued after a completed dispatch batch is delivered on a later call with its exact confirmation and a count of one."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "extract_item_normalization",
+      "source": "fulfillment.py",
+      "before": "def place_order(database, request_key: str, recipient: str, items) -> Order:\n    \"\"\"Reserve stock, record the order, and enqueue its confirmation atomically.\"\"\"\n    if not request_key or not recipient:\n        raise ValueError(\"request_key and recipient are required\")\n    quantities = {}\n    for sku, quantity in items:\n        if not sku or type(quantity) is not int or quantity <= 0:\n            raise ValueError(\"items need a SKU and a positive integer quantity\")\n        quantities[sku] = quantities.get(sku, 0) + quantity\n    if not quantities:\n        raise ValueError(\"at least one item is required\")\n    normalized = sorted(quantities.items())",
+      "after": "def _normalize_items(items):\n    quantities = {}\n    for sku, quantity in items:\n        if not sku or type(quantity) is not int or quantity <= 0:\n            raise ValueError(\"items need a SKU and a positive integer quantity\")\n        quantities[sku] = quantities.get(sku, 0) + quantity\n    if not quantities:\n        raise ValueError(\"at least one item is required\")\n    return sorted(quantities.items())\n\n\ndef place_order(database, request_key: str, recipient: str, items) -> Order:\n    \"\"\"Reserve stock, record the order, and enqueue its confirmation atomically.\"\"\"\n    if not request_key or not recipient:\n        raise ValueError(\"request_key and recipient are required\")\n    normalized = _normalize_items(items)",
+      "invariant": "Extracting item normalization into a private helper preserves every public result and external effect."
+    },
+    {
+      "id": "named_stock_query_parameters",
+      "source": "fulfillment.py",
+      "before": "\"SELECT quantity, unit_cents FROM stock WHERE sku = ?\", (sku,)",
+      "after": "\"SELECT quantity, unit_cents FROM stock WHERE sku = :requested_sku\", {\"requested_sku\": sku}",
+      "invariant": "Changing the private SQL binding style preserves actual database behavior."
+    }
+  ]
+}

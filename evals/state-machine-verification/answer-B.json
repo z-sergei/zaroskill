@@ -1,0 +1,82 @@
+[
+  {
+    "id": "C01",
+    "verdict": "finding",
+    "rationale": "The required immediate, truthful binary answer is impossible at the stated observation boundary. Retaining an ID provides neither outcome knowledge nor deduplication when the server supports neither.",
+    "decisive_trace_or_argument": "Submit, discard, timeout and submit, commit, lose reply, timeout are reachable histories with identical client observations. The former requires Not published; the latter requires Published. Neither permitted answer works for both. Showing Not published in the committed history is false; retrying can create a second publication.",
+    "next_check": "Resolve which contract change is available: permit uncertainty, or supply authoritative outcome evidence before requiring a terminal answer. Separately specify server deduplication for safe retries.",
+    "limitations": "Analysis only. Impossibility concerns this immediate decision and supplied actions; it does not exclude protocols with additional observations or changed promises."
+  },
+  {
+    "id": "C02",
+    "verdict": "no_finding",
+    "rationale": "Timeout does not contradict either safety or conditional eventual resolution. Checking is truthful while the outcome is unknown; the durable receipt and retry protocol reconcile it.",
+    "decisive_trace_or_argument": "Commit records and receipt atomically, lose reply, restart, retry the retained ID with the same payload: the server returns the stored result without another import. If the first request never executed, a delivered retry executes it once. Continued retries and the stated eventual delivery/execution guarantee eventually supply the result while active.",
+    "next_check": "A controlled restart scenario after commit but before reply can check retained-ID reuse, one import effect, and transition from Checking to the authoritative result.",
+    "limitations": "Not executed. Resolution is conditional on remaining active and the supplied delivery/execution guarantee; no deadline or progress while inactive is established."
+  },
+  {
+    "id": "C03",
+    "verdict": "finding",
+    "rationale": "A reachable state covered by the recovery promise has no available recovery path. Both normal access and access to support depend on the permanently lost device.",
+    "decisive_trace_or_argument": "Lose the sole trusted device permanently. Replacement login requires that device's approval; support requires completed login; no recovery code or other support channel exists. Every stated route is blocked before replacement enrollment.",
+    "next_check": "Determine which recovery route can begin without login and verify identity without the lost device or its files; validate that route from this exact failure state.",
+    "limitations": "Analysis only, restricted to the supplied capabilities. Finding the device later cannot satisfy recovery from permanent loss."
+  },
+  {
+    "id": "C04",
+    "verdict": "no_finding",
+    "rationale": "The ordinary login dependency does not invalidate the narrower recovery promise because a supported independent path exists.",
+    "decisive_trace_or_argument": "During support hours, use a replacement device to reach public support without login, complete independent identity verification, and have an agent enroll the replacement. This path uses no lost-device resource and has already been exercised.",
+    "next_check": "No additional check is needed to reject the claimed circular dependency on the supplied facts. A regression check could preserve unauthenticated entry and independent verification.",
+    "limitations": "Relies on the stated exercised path and availability conditions; does not establish instantaneous recovery, success without verification, or availability outside support hours. No new execution performed."
+  },
+  {
+    "id": "C05",
+    "verdict": "finding",
+    "rationale": "Version 2 violates the explicit compatibility requirement at the consumer-visible cancellation boundary: success now precedes enforcement of the old guarantee.",
+    "decisive_trace_or_argument": "Queue a pending job; Cancel queues a message and returns success; the executor delivers its notification; cancellation is finally applied. Delivery after successful Cancel was forbidden by version 1 and is permitted by version 2.",
+    "next_check": "Use a controlled executor to pause cancellation application, return success, then attempt delivery. Assert that no notification is delivered after success; preserve that guarantee before acknowledging cancellation.",
+    "limitations": "Analysis only. This finite trace establishes a safety regression under the supplied scheduling facts; it makes no broader progress claim."
+  },
+  {
+    "id": "C06",
+    "verdict": "no_finding",
+    "rationale": "The supplied externally visible history is allowed by the original contract. Internal queuing and cancellation retries alone are not compatibility failures.",
+    "decisive_trace_or_argument": "Delivery launches before Cancel, Cancel returns, and that already executing delivery completes. Both versions permit this sequence. The supplied integration check observes no new launches afterward, and queue retries add no external notifications.",
+    "next_check": "No further check is necessary for this history. Retain the integration check that distinguishes launch after cancellation from completion of an earlier launch.",
+    "limitations": "The conclusion covers the supplied contract and history, not all possible implementation executions. There is no changed progress obligation, and no checks were run here."
+  },
+  {
+    "id": "C07",
+    "verdict": "finding",
+    "rationale": "Pairwise overlap does not provide a single safe immediate choice across all indistinguishable configurations.",
+    "decisive_trace_or_argument": "The common intersection of {A,B}, {B,C}, and {A,C} is empty. Choosing A fails in {B,C}; choosing B fails in {A,C}; choosing C fails in {A,B}. Identical retained state and observations cannot select differently by configuration. Randomization also cannot guarantee safety in every configuration.",
+    "next_check": "Decide which constraint may change: reveal configuration-specific safety, allow asking or deferral, or provide a universally safe action. A three-configuration decision table suffices to validate a proposal.",
+    "limitations": "Analysis only. The impossibility is limited to the immediate selection, these reachable configurations, available information, and permitted actions; every configuration separately has safe choices."
+  },
+  {
+    "id": "C08",
+    "verdict": "no_finding",
+    "rationale": "Different hidden states do not make the feature impossible when the contract permits a shared nonterminal action and a later authoritative observation.",
+    "decisive_trace_or_argument": "Whether the export completed or remains running, return Processing and wait. This is allowed in both indistinguishable states. The retained operation ID and eventual authoritative terminal event then permit the required truthful terminal outcome.",
+    "next_check": "Check two short scenarios with identical current observations, one per hidden state: Processing before the event, then the corresponding truthful outcome after the event.",
+    "limitations": "Not executed. Eventual resolution depends on the documented delivery condition; the contract supplies no deadline. Current uncertainty alone is not a defect."
+  },
+  {
+    "id": "C09",
+    "verdict": "out_of_scope",
+    "rationale": "Temporal or state-machine modeling adds no useful distinction for this pure, history-independent formatting function.",
+    "decisive_trace_or_argument": "Correctness depends only on the validated integer input and exact decimal output. There are no event orderings, retained state, effects, or progress obligations to model.",
+    "next_check": "Specify direct input/output checks for 0 and 12 and a useful decimal-width boundary such as 9 and 10; include a supported large value if representation limits matter. Then implement against that contract.",
+    "limitations": "Verification selection only; no implementation or tests executed. Invalid-input handling is outside the supplied validated-input contract."
+  },
+  {
+    "id": "C10",
+    "verdict": "no_finding",
+    "rationale": "The supplied trace is feasible but handled correctly at the controller boundary. Cleanup of a stale payload is required and does not constitute applying an obsolete business result.",
+    "decisive_trace_or_argument": "Dispatch stamps A; cancel clears A; dispatch stamps B as active; result A arrives with its original ID. Serialized handling detects A differs from B, releases A's owned payload, and returns without reducer delivery or business commands. B remains authoritative.",
+    "next_check": "Run this controlled controller scenario and observe that A's payload is released, B remains active, and neither reducer delivery nor business commands occur for A.",
+    "limitations": "Guards and producer facts are supplied as inspected; no scenario was executed here. The conclusion covers this trace and serialization/identity guarantees, not unprovided duplicate-callback ownership behavior."
+  }
+]

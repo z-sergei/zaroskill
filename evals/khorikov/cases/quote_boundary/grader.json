@@ -1,0 +1,76 @@
+{
+  "mutants": [
+    {
+      "id": "truncate_discount",
+      "source": "pricing.py",
+      "before": "discount = (gross * percent + 50) // 100",
+      "after": "discount = (gross * percent) // 100",
+      "invariant": "Half-minor-unit discounts round upward after aggregate calculation"
+    },
+    {
+      "id": "pre_discount_shipping",
+      "source": "pricing.py",
+      "before": "digital or subtotal >= 5000",
+      "after": "digital or gross >= 5000",
+      "invariant": "Physical free-shipping eligibility uses the discounted subtotal"
+    },
+    {
+      "id": "exclusive_threshold",
+      "source": "pricing.py",
+      "before": "subtotal >= 5000",
+      "after": "subtotal > 5000",
+      "invariant": "Exactly 5000 discounted minor units qualifies for free shipping"
+    },
+    {
+      "id": "charge_digital",
+      "source": "pricing.py",
+      "before": "digital or subtotal >= 5000",
+      "after": "subtotal >= 5000",
+      "invariant": "Digital orders always have zero shipping"
+    },
+    {
+      "id": "ignore_quantity",
+      "source": "pricing.py",
+      "before": "sum(item.unit_minor * item.quantity for item in items)",
+      "after": "sum(item.unit_minor for item in items)",
+      "invariant": "Gross includes every line quantity"
+    },
+    {
+      "id": "mutable_returned_quote",
+      "source": "pricing.py",
+      "before": "@dataclass(frozen=True)\nclass Quote:",
+      "after": "@dataclass\nclass Quote:",
+      "invariant": "Returned quote amounts cannot be changed by their consumer."
+    },
+    {
+      "id": "floating_point_discount_loses_minor_unit",
+      "source": "pricing.py",
+      "before": "discount = (gross * percent + 50) // 100",
+      "after": "discount = int(gross * percent / 100 + 0.5)",
+      "invariant": "Discount rounding preserves exact integer minor units even when gross exceeds binary floating-point integer precision."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "equivalent_discount_divmod",
+      "source": "pricing.py",
+      "before": "discount = (gross * percent + 50) // 100",
+      "after": "whole, fraction = divmod(gross * percent, 100)\n    discount = whole + int(fraction >= 50)",
+      "invariant": "Equivalent integer calculation preserves aggregate half-up rounding"
+    },
+    {
+      "id": "named_quote_arguments",
+      "source": "pricing.py",
+      "before": "return Quote(gross, discount, shipping, subtotal + shipping)",
+      "after": "return Quote(total_minor=subtotal + shipping, shipping_minor=shipping, discount_minor=discount, gross_minor=gross)",
+      "invariant": "Public quote values are independent of constructor argument order"
+    },
+    {
+      "id": "immutable_rejection_mechanism",
+      "source": "pricing.py",
+      "before": "@dataclass(frozen=True)\nclass Quote:\n    gross_minor: int\n    discount_minor: int\n    shipping_minor: int\n    total_minor: int\n",
+      "after": "@dataclass(frozen=True)\nclass _Quote:\n    gross_minor: int\n    discount_minor: int\n    shipping_minor: int\n    total_minor: int\n\n\nclass Quote(_Quote):\n    def __setattr__(self, name, value):\n        raise ValueError(\"Quote values cannot change\")\n\n    def __delattr__(self, name):\n        raise ValueError(\"Quote values cannot change\")\n",
+      "invariant": "Returned quote amounts remain unchanged; the rejection exception for attempted mutation is not specified."
+    }
+  ]
+}

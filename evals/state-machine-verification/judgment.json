@@ -1,0 +1,206 @@
+{
+  "judgment_type": "independent_blinded_comparison",
+  "inputs_read": [
+    "cases.md",
+    "rubric.json",
+    "answer-A.json",
+    "answer-B.json"
+  ],
+  "overall_verdict": "tie_on_fixed_cases",
+  "winner": null,
+  "material_improvement_established": false,
+  "summary": "Оба ответа правильно выявляют все четыре требуемые существенные проблемы и не объявляют дефектами шесть здоровых контрольных случаев. Содержательного преимущества по фиксированной рубрике не установлено.",
+  "counts": {
+    "A": {
+      "true_material_findings": 4,
+      "missed_material_findings": 0,
+      "false_findings_on_healthy_controls": 0,
+      "correctly_handled_healthy_controls": 6
+    },
+    "B": {
+      "true_material_findings": 4,
+      "missed_material_findings": 0,
+      "false_findings_on_healthy_controls": 0,
+      "correctly_handled_healthy_controls": 6
+    }
+  },
+  "criteria": [
+    {
+      "criterion": "Report only sourced material violations",
+      "A": "pass",
+      "B": "pass",
+      "reason": "Находки C01, C03, C05 и C07 следуют из заданных контрактов и достижимых историй; дополнительных нарушений не придумано."
+    },
+    {
+      "criterion": "Use shared actions and existing guards to avoid false findings",
+      "A": "pass",
+      "B": "pass",
+      "reason": "Оба учитывают Checking и Processing, независимый канал поддержки, допустимость завершения уже начатой доставки и проверку идентификатора устаревшего результата."
+    },
+    {
+      "criterion": "C07 requires common action across all three cases, not pairwise overlap",
+      "A": "pass",
+      "B": "pass",
+      "reason": "Оба проверяют пустое пересечение всех трёх множеств и указывают конфигурацию, в которой каждый возможный выбор небезопасен."
+    },
+    {
+      "criterion": "Keep progress conditional; do not infer impossibility from current uncertainty",
+      "A": "pass",
+      "B": "pass",
+      "reason": "Оба сохраняют условия активности и eventual delivery, не вводят срок завершения и не принимают текущую неопределённость C02 или C08 за невозможность."
+    },
+    {
+      "criterion": "Preserve analysis-only scope and choose proportionate evidence",
+      "A": "pass",
+      "B": "pass",
+      "reason": "Оба ограничиваются анализом, короткими трассами и предложениями проверок. Для C09 выбирают прямые проверки входа и выхода, а для C07 достаточно таблицы решений."
+    }
+  ],
+  "cross_cutting": {
+    "evidence_honesty": {
+      "A": "pass",
+      "B": "pass",
+      "reason": "Нет заявлений о выполненных проверках. Предоставленные результаты упражнений, интеграционной проверки и инспекции защит не выдаются за собственные наблюдения."
+    },
+    "analysis_only_scope": {
+      "A": "preserved",
+      "B": "preserved",
+      "reason": "Предложения будущих проверок и изменений контракта не представлены как выполненная реализация. Фраза B в C09 о последующей реализации не означает, что она уже выполнена."
+    },
+    "unnecessary_modeling": {
+      "A": "none_observed",
+      "B": "none_observed",
+      "reason": "Ни один ответ не навязывает формальную модель, инструменты или большой набор состояний там, где достаточно локального аргумента."
+    },
+    "shared_minor_observation": "В C10 оба предлагают дополнительно воспроизвести трассу, хотя заданных проверенных гарантий уже достаточно для вывода. Эта ограниченная дополнительная проверка не создаёт существенного различия или нарушения объёма задания."
+  },
+  "cases": [
+    {
+      "id": "C01",
+      "expected": "finding",
+      "A_verdict": "finding",
+      "B_verdict": "finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба сопоставляют неразличимые истории discarded и committed-with-lost-reply, доказывают невозможность немедленного правдивого бинарного ответа и риск дубликата при повторе.",
+      "difference_note": "B отдельно предлагает определить серверную дедупликацию; A уже правильно учитывает её отсутствие и предлагает проверить повтор при пересмотренном контракте. Это не дополнительная находка."
+    },
+    {
+      "id": "C02",
+      "expected": "no_finding",
+      "A_verdict": "no_finding",
+      "B_verdict": "no_finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба используют атомарную запись результата, сохранение ID и повтор без повторного эффекта; завершение остаётся условным и без срока.",
+      "difference_note": "Предложенные сценарии потери ответа и перезапуска эквивалентны по проверяемому поведению."
+    },
+    {
+      "id": "C03",
+      "expected": "finding",
+      "A_verdict": "finding",
+      "B_verdict": "finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба показывают отсутствие доступного пути восстановления при постоянной потере единственного доверенного устройства и предлагают независимый путь авторизации восстановления.",
+      "difference_note": "B явнее упоминает отсутствие файлов старого устройства; A требует независимый credential или независимую проверку личности. Материального расхождения нет."
+    },
+    {
+      "id": "C04",
+      "expected": "no_finding",
+      "A_verdict": "no_finding",
+      "B_verdict": "no_finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба принимают уже упражнённый публичный путь поддержки и сохраняют ограничения по времени работы и прохождению проверки личности.",
+      "difference_note": "Оба считают дополнительную проверку необязательной для отклонения обвинения."
+    },
+    {
+      "id": "C05",
+      "expected": "finding",
+      "A_verdict": "finding",
+      "B_verdict": "finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба дают конечную запрещённую историю: успешный Cancel, затем уведомление до применения отмены, что нарушает сохранение контракта версии 1.",
+      "difference_note": "Оба предлагают управляемую задержку применения отмены и проверку внешнего уведомления; разница формулировок не меняет доказательство."
+    },
+    {
+      "id": "C06",
+      "expected": "no_finding",
+      "A_verdict": "no_finding",
+      "B_verdict": "no_finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба отличают запрещённый новый запуск от допустимого завершения уже начатой доставки, принимают данные интеграционной проверки и не объявляют внутреннюю очередь регрессией.",
+      "difference_note": "A дополнительно упоминает сохранение проверок количества уведомлений; оба уже учитывают отсутствие лишних уведомлений."
+    },
+    {
+      "id": "C07",
+      "expected": "finding",
+      "A_verdict": "finding",
+      "B_verdict": "finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба доказывают пустое общее пересечение, показывают небезопасность каждого из A, B, C в одной конфигурации и правильно отвергают рандомизацию как гарантию безопасности.",
+      "difference_note": "B перечисляет больше вариантов изменения ограничений; у обоих область невозможности ограничена данным немедленным выбором и наблюдениями."
+    },
+    {
+      "id": "C08",
+      "expected": "no_finding",
+      "A_verdict": "no_finding",
+      "B_verdict": "no_finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба находят общее допустимое действие Processing и последующее авторитетное событие; текущая неопределённость не становится ложной находкой.",
+      "difference_note": "A дополнительно поясняет, что конечные сценарии не доказывают неограниченный прогресс. B также сохраняет условие eventual delivery и не заявляет такого доказательства."
+    },
+    {
+      "id": "C09",
+      "expected": "no_temporal_finding_and_proportionate_local_checks",
+      "A_verdict": "out_of_scope",
+      "B_verdict": "out_of_scope",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "В обоих ответах out_of_scope относится к временному моделированию, а не к отказу выполнить задачу: выбраны прямые проверки чистой функции без лишней модели.",
+      "difference_note": "A предлагает ноль, многозначное число и границу диапазона; B — заданные примеры, 9/10 и при необходимости большое число. Оба набора соразмерны; предпочтение конкретных примеров не доказывает улучшение."
+    },
+    {
+      "id": "C10",
+      "expected": "no_finding",
+      "A_verdict": "no_finding",
+      "B_verdict": "no_finding",
+      "A_assessment": "correct",
+      "B_assessment": "correct",
+      "winner": "tie",
+      "substantive_difference": false,
+      "reason": "Оба проходят сериализованную трассу A → отмена A → B → результат A: несовпадение ID не допускает результат к reducer и бизнес-командам, но обеспечивает освобождение payload.",
+      "difference_note": "B конкретизирует, что дублированные callback не исследованы; A оставляет более общее ограничение по жизненному циклу и владению ресурсами. Оба корректно ограничивают вывод данной трассой."
+    }
+  ],
+  "limitations": [
+    "Оценены только четыре разрешённых входных файла; сведения о происхождении A и B не использовались.",
+    "По одному запуску на каждый вариант, на одном и том же фиксированном наборе случаев разработки.",
+    "Нет независимого от разработки тестового набора или повторных запусков.",
+    "Это оценка конкретных ответов по фиксированной рубрике, а не статистическое утверждение о превосходстве, равенстве качества или будущей надёжности вариантов.",
+    "Описанные системы и предложенные проверки не выполнялись."
+  ]
+}

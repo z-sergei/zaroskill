@@ -1,0 +1,69 @@
+{
+  "mutants": [
+    {
+      "id": "priority_direction",
+      "source": "spooler.py",
+      "before": "        record = min(queued, key=lambda item: (-item.priority, item.order))",
+      "after": "        record = min(queued, key=lambda item: (item.priority, item.order))",
+      "invariant": "The highest numeric priority queued job starts first."
+    },
+    {
+      "id": "fifo_tie_direction",
+      "source": "spooler.py",
+      "before": "        record = min(queued, key=lambda item: (-item.priority, item.order))",
+      "after": "        record = min(queued, key=lambda item: (-item.priority, -item.order))",
+      "invariant": "Equal priorities use original submission order, oldest first."
+    },
+    {
+      "id": "paused_occupies_slot",
+      "source": "spooler.py",
+      "before": "        active = sum(record.status == \"printing\" for record in self._records.values())",
+      "after": "        active = sum(record.status in {\"printing\", \"paused\"} for record in self._records.values())",
+      "invariant": "Paused jobs release their printing slots immediately."
+    },
+    {
+      "id": "progress_replaces_total",
+      "source": "spooler.py",
+      "before": "        record.printed += pages",
+      "after": "        record.printed = pages",
+      "invariant": "Progress arguments are additional pages and accumulate across calls."
+    },
+    {
+      "id": "completion_requires_overshoot",
+      "source": "spooler.py",
+      "before": "        if record.printed == record.pages:",
+      "after": "        if record.printed > record.pages:",
+      "invariant": "Reaching the page total exactly completes the job and frees capacity."
+    },
+    {
+      "id": "resume_requeues_at_tail",
+      "source": "spooler.py",
+      "before": "        record.status = \"queued\"\n        return self._view(record)",
+      "after": "        record.status = \"queued\"\n        record.order = self._next_order\n        self._next_order += 1\n        return self._view(record)",
+      "invariant": "Resume preserves original submission order for equal-priority scheduling."
+    },
+    {
+      "id": "descending_id_tie_break",
+      "source": "spooler.py",
+      "before": "        record = min(queued, key=lambda item: (-item.priority, item.order))\n",
+      "after": "        record = max(queued, key=lambda item: (item.priority, item.job_id))\n",
+      "invariant": "Equal-priority jobs start in original submission order independently of descending identifier spelling."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "single_pass_selection",
+      "source": "spooler.py",
+      "before": "        queued = [record for record in self._records.values() if record.status == \"queued\"]\n        if not queued:\n            return None\n        record = min(queued, key=lambda item: (-item.priority, item.order))\n",
+      "after": "        record = None\n        for candidate in self._records.values():\n            if candidate.status != \"queued\":\n                continue\n            if record is None or candidate.priority > record.priority:\n                record = candidate\n            elif candidate.priority == record.priority and candidate.order < record.order:\n                record = candidate\n        if record is None:\n            return None\n",
+      "invariant": "A one-pass candidate scan implements the same priority and original-order selection without constructing a queue list."
+    },
+    {
+      "id": "immutable_internal_records",
+      "source": "spooler.py",
+      "before": "\"\"\"Deterministic page-oriented print spooler.\"\"\"\nfrom dataclasses import dataclass\n\n\n@dataclass(frozen=True)\nclass Job:\n    job_id: str\n    pages: int\n    priority: int\n    printed: int\n    status: str\n\n\n@dataclass\nclass _Record:\n    job_id: str\n    pages: int\n    priority: int\n    order: int\n    printed: int = 0\n    status: str = \"queued\"\n\n\nclass Spooler:\n    def __init__(self, max_active: int = 1):\n        if max_active <= 0:\n            raise ValueError(\"max_active must be positive\")\n        self._max_active = max_active\n        self._records = {}\n        self._next_order = 0\n\n    @staticmethod\n    def _view(record):\n        return Job(record.job_id, record.pages, record.priority,\n                   record.printed, record.status)\n\n    def submit(self, job_id: str, pages: int, priority: int = 0) -> Job:\n        if not job_id or job_id in self._records or pages <= 0:\n            raise ValueError(\"invalid submission\")\n        record = _Record(job_id, pages, priority, self._next_order)\n        self._next_order += 1\n        self._records[job_id] = record\n        return self._view(record)\n\n    def get(self, job_id: str) -> Job:\n        return self._view(self._records[job_id])\n\n    def jobs(self) -> tuple[Job, ...]:\n        return tuple(self._view(record) for record in self._records.values())\n\n    def start_next(self) -> Job | None:\n        active = sum(record.status == \"printing\" for record in self._records.values())\n        if active >= self._max_active:\n            return None\n        queued = [record for record in self._records.values() if record.status == \"queued\"]\n        if not queued:\n            return None\n        record = min(queued, key=lambda item: (-item.priority, item.order))\n        record.status = \"printing\"\n        return self._view(record)\n\n    def advance(self, job_id: str, pages: int) -> Job:\n        record = self._records[job_id]\n        if record.status != \"printing\" or pages <= 0 or pages > record.pages - record.printed:\n            raise ValueError(\"invalid progress\")\n        record.printed += pages\n        if record.printed == record.pages:\n            record.status = \"completed\"\n        return self._view(record)\n\n    def pause(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status != \"printing\":\n            raise ValueError(\"only a printing job can be paused\")\n        record.status = \"paused\"\n        return self._view(record)\n\n    def resume(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status != \"paused\":\n            raise ValueError(\"only a paused job can be resumed\")\n        record.status = \"queued\"\n        return self._view(record)\n\n    def cancel(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status not in {\"queued\", \"printing\", \"paused\"}:\n            raise ValueError(\"terminal jobs cannot be cancelled\")\n        record.status = \"cancelled\"\n        return self._view(record)\n",
+      "after": "\"\"\"Deterministic page-oriented print spooler.\"\"\"\nfrom dataclasses import dataclass, replace\n\n\n@dataclass(frozen=True)\nclass Job:\n    job_id: str\n    pages: int\n    priority: int\n    printed: int\n    status: str\n\n\n@dataclass(frozen=True)\nclass _Record:\n    job_id: str\n    pages: int\n    priority: int\n    order: int\n    printed: int = 0\n    status: str = \"queued\"\n\n\nclass Spooler:\n    def __init__(self, max_active: int = 1):\n        if max_active <= 0:\n            raise ValueError(\"max_active must be positive\")\n        self._max_active = max_active\n        self._records = {}\n        self._next_order = 0\n\n    @staticmethod\n    def _view(record):\n        return Job(record.job_id, record.pages, record.priority,\n                   record.printed, record.status)\n\n    def submit(self, job_id: str, pages: int, priority: int = 0) -> Job:\n        if not job_id or job_id in self._records or pages <= 0:\n            raise ValueError(\"invalid submission\")\n        record = _Record(job_id, pages, priority, self._next_order)\n        self._next_order += 1\n        self._records[job_id] = record\n        return self._view(record)\n\n    def get(self, job_id: str) -> Job:\n        return self._view(self._records[job_id])\n\n    def jobs(self) -> tuple[Job, ...]:\n        return tuple(self._view(record) for record in self._records.values())\n\n    def start_next(self) -> Job | None:\n        active = sum(record.status == \"printing\" for record in self._records.values())\n        if active >= self._max_active:\n            return None\n        queued = [record for record in self._records.values() if record.status == \"queued\"]\n        if not queued:\n            return None\n        record = min(queued, key=lambda item: (-item.priority, item.order))\n        record = replace(record, status=\"printing\")\n        self._records[record.job_id] = record\n        return self._view(record)\n\n    def advance(self, job_id: str, pages: int) -> Job:\n        record = self._records[job_id]\n        if record.status != \"printing\" or pages <= 0 or pages > record.pages - record.printed:\n            raise ValueError(\"invalid progress\")\n        printed = record.printed + pages\n        status = \"completed\" if printed == record.pages else \"printing\"\n        record = replace(record, printed=printed, status=status)\n        self._records[job_id] = record\n        return self._view(record)\n\n    def pause(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status != \"printing\":\n            raise ValueError(\"only a printing job can be paused\")\n        record = replace(record, status=\"paused\")\n        self._records[job_id] = record\n        return self._view(record)\n\n    def resume(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status != \"paused\":\n            raise ValueError(\"only a paused job can be resumed\")\n        record = replace(record, status=\"queued\")\n        self._records[job_id] = record\n        return self._view(record)\n\n    def cancel(self, job_id: str) -> Job:\n        record = self._records[job_id]\n        if record.status not in {\"queued\", \"printing\", \"paused\"}:\n            raise ValueError(\"terminal jobs cannot be cancelled\")\n        record = replace(record, status=\"cancelled\")\n        self._records[job_id] = record\n        return self._view(record)\n",
+      "invariant": "Replace mutable internal records with frozen records and replacement on transitions; all public snapshots and scheduling outcomes are unchanged."
+    }
+  ]
+}

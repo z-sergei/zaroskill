@@ -1,0 +1,24 @@
+{
+  "required_findings": [
+    "C01",
+    "C03",
+    "C05",
+    "C07"
+  ],
+  "healthy_controls": [
+    "C02",
+    "C04",
+    "C06",
+    "C08",
+    "C09",
+    "C10"
+  ],
+  "criteria": [
+    "Report only sourced material violations",
+    "Use shared actions and existing guards to avoid false findings",
+    "C07 requires common action across all three cases, not pairwise overlap",
+    "Keep progress conditional; do not infer impossibility from current uncertainty",
+    "Preserve analysis-only scope and choose proportionate evidence"
+  ],
+  "limits": "Same fixed cases; one fresh-context run per version; independent judgment; no statistical superiority claim"
+}

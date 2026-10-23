@@ -1,0 +1,75 @@
+{
+  "valid": true,
+  "cases": [
+    {
+      "case": "transactional_outbox",
+      "valid": true,
+      "killed": 10,
+      "mutants": 10,
+      "tests": 11
+    },
+    {
+      "case": "async_latest_search",
+      "valid": true,
+      "killed": 11,
+      "mutants": 11,
+      "tests": 14
+    },
+    {
+      "case": "quote_boundary",
+      "valid": true,
+      "killed": 7,
+      "mutants": 7,
+      "tests": 6
+    },
+    {
+      "case": "help_centre_reader",
+      "valid": true,
+      "killed": 9,
+      "mutants": 9,
+      "tests": 12
+    },
+    {
+      "case": "streaming_manifest",
+      "valid": true,
+      "killed": 7,
+      "mutants": 7,
+      "tests": 18
+    },
+    {
+      "case": "access_policy",
+      "valid": true,
+      "killed": 11,
+      "mutants": 11,
+      "tests": 28
+    },
+    {
+      "case": "print_spooler",
+      "valid": true,
+      "killed": 7,
+      "mutants": 7,
+      "tests": 21
+    },
+    {
+      "case": "revision_store",
+      "valid": true,
+      "killed": 7,
+      "mutants": 7,
+      "tests": 25
+    },
+    {
+      "case": "ttl_cache",
+      "valid": true,
+      "killed": 6,
+      "mutants": 6,
+      "tests": 25
+    },
+    {
+      "case": "text_edits",
+      "valid": true,
+      "killed": 6,
+      "mutants": 6,
+      "tests": 24
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "mutants": [
+    {
+      "id": "deadline_inclusive_at_expiry",
+      "source": "app.py",
+      "before": "            if expires_at <= now\n",
+      "after": "            if expires_at < now\n",
+      "invariant": "Treat an entry as live at its exact deadline instead of expiring it."
+    },
+    {
+      "id": "read_does_not_promote",
+      "source": "app.py",
+      "before": "        value, _ = self._entries[key]\n        self._entries.move_to_end(key)\n        return deepcopy(value)\n",
+      "after": "        value, _ = self._entries[key]\n        return deepcopy(value)\n",
+      "invariant": "Return a live hit without promoting it to most recently used."
+    },
+    {
+      "id": "overwrite_keeps_previous_deadline",
+      "source": "app.py",
+      "before": "            self._entries[key] = (value, now + ttl)\n",
+      "after": "            self._entries[key] = (value, self._entries[key][1] if key in self._entries else now + ttl)\n",
+      "invariant": "Replace the value and promote the entry, but retain an existing key's old deadline."
+    },
+    {
+      "id": "store_input_alias",
+      "source": "app.py",
+      "before": "            prepared.append((key, deepcopy(value), seconds))\n",
+      "after": "            prepared.append((key, value, seconds))\n",
+      "invariant": "Keep the caller's value object instead of preparing a detached stored copy."
+    },
+    {
+      "id": "return_stored_alias",
+      "source": "app.py",
+      "before": "        return deepcopy(value)\n",
+      "after": "        return value\n",
+      "invariant": "Return the stored value from get, allowing nested mutations to alter the cache."
+    },
+    {
+      "id": "validate_batch_during_commit",
+      "source": "app.py",
+      "before": "        prepared = self._prepare(entries)\n        if not prepared:\n            return\n        now = self._clock()\n        self._purge(now)\n        for key, value, ttl in prepared:\n            self._entries[key] = (value, now + ttl)\n            self._purge(now)\n            if key in self._entries:\n                self._entries.move_to_end(key)\n            while len(self._entries) > self._capacity:\n                self._entries.popitem(last=False)\n",
+      "after": "        records = list(entries)\n        if not records:\n            return\n        now = self._clock()\n        self._purge(now)\n        for record in records:\n            prepared = self._prepare([record])\n            for key, value, ttl in prepared:\n                self._entries[key] = (value, now + ttl)\n                self._purge(now)\n                if key in self._entries:\n                    self._entries.move_to_end(key)\n                while len(self._entries) > self._capacity:\n                    self._entries.popitem(last=False)\n",
+      "invariant": "Validate and copy records one by one during commit, allowing a later preparation failure to leave earlier changes in place."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "purge_by_key_snapshot",
+      "source": "app.py",
+      "before": "        expired_keys = [\n            key\n            for key, (_, expires_at) in self._entries.items()\n            if expires_at <= now\n        ]\n        for key in expired_keys:\n            del self._entries[key]\n",
+      "after": "        for key in tuple(self._entries):\n            if self._entries[key][1] <= now:\n                del self._entries[key]\n",
+      "invariant": "Traverse a snapshot of keys and remove expired entries directly instead of collecting expired keys first."
+    },
+    {
+      "id": "promote_by_pop_and_reinsert",
+      "source": "app.py",
+      "before": "        if key not in self._entries:\n            return default\n        value, _ = self._entries[key]\n        self._entries.move_to_end(key)\n        return deepcopy(value)\n",
+      "after": "        try:\n            entry = self._entries.pop(key)\n        except KeyError:\n            return default\n        self._entries[key] = entry\n        return deepcopy(entry[0])\n",
+      "invariant": "Implement live-hit recency promotion by popping and reinserting the entry, preserving the public read behavior."
+    }
+  ]
+}

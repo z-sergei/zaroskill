@@ -1,0 +1,97 @@
+{
+  "mutants": [
+    {
+      "id": "expiration_inclusive",
+      "source": "access_policy.py",
+      "invariant": "A rule is inactive at its expiration tick, allowing inheritance to resume.",
+      "before": "if rule.expires_at is not None and now >= rule.expires_at:",
+      "after": "if rule.expires_at is not None and now > rule.expires_at:"
+    },
+    {
+      "id": "allow_wins_conflict",
+      "source": "access_policy.py",
+      "invariant": "A matching deny defeats matching allows at the same scope.",
+      "before": "denied = any(rule.effect == \"deny\" for rule in applicable)",
+      "after": "denied = all(rule.effect == \"deny\" for rule in applicable)"
+    },
+    {
+      "id": "ancestors_first",
+      "source": "access_policy.py",
+      "invariant": "The nearest scope with an active matching rule decides.",
+      "before": "for current in self._lineage(scope):",
+      "after": "for current in reversed(tuple(self._lineage(scope))):"
+    },
+    {
+      "id": "inheritance_boundary_ignored",
+      "source": "access_policy.py",
+      "invariant": "An inherit=False scope prevents traversal to its parent.",
+      "before": "if not current.inherit:\n                return",
+      "after": "if not current.inherit and current.parent is None:\n                return"
+    },
+    {
+      "id": "everyone_requires_a_role",
+      "source": "access_policy.py",
+      "invariant": "A role wildcard matches callers with no roles.",
+      "before": "(rule.role == \"*\" or rule.role in roles)",
+      "after": "((rule.role == \"*\" and bool(roles)) or rule.role in roles)"
+    },
+    {
+      "id": "irrelevant_rules_mask_ancestors",
+      "source": "access_policy.py",
+      "invariant": "Nonmatching and inactive local rules do not stop inheritance.",
+      "before": "            if applicable:\n                denied = any",
+      "after": "            if current.rules and not applicable:\n                return Decision(False, None)\n            if applicable:\n                denied = any"
+    },
+    {
+      "id": "deferred_iterator_rules",
+      "source": "access_policy.py",
+      "invariant": "Iterator-backed rule collections are snapshotted during construction, before any decision or subsequent input mutation.",
+      "before": "from typing import Iterable\n\n\n@dataclass(frozen=True)\nclass Rule:\n    \"\"\"One allow or deny rule, optionally expiring at a caller-supplied tick.\"\"\"\n\n    role: str\n    action: str\n    effect: str\n    expires_at: int | None = None\n\n    def __post_init__(self):\n        if not self.role or not self.action:\n            raise ValueError(\"Rule role and action must be nonempty\")\n        if self.effect not in {\"allow\", \"deny\"}:\n            raise ValueError(\"Rule effect must be allow or deny\")\n\n\n@dataclass(frozen=True)\nclass Scope:\n    \"\"\"A named resource scope and its directly attached rules.\"\"\"\n\n    name: str\n    parent: str | None = None\n    rules: tuple[Rule, ...] = ()\n    inherit: bool = True\n\n    def __post_init__(self):\n        if not self.name:\n            raise ValueError(\"Scope name must be nonempty\")\n\n\n@dataclass(frozen=True)\nclass Decision:\n    \"\"\"An access result; source is None for the default denial.\"\"\"\n\n    allowed: bool\n    source: str | None\n\n\nclass PolicySet:\n    \"\"\"A reusable snapshot of an acyclic forest of resource policies.\n\n    All graph validation happens at construction, so a later access request\n    never encounters a dangling parent or a cycle. Inheritance barriers affect\n    decisions but do not exempt the underlying graph from validation.\n    \"\"\"\n\n    def __init__(self, scopes: Iterable[Scope]):\n        indexed = {}\n        for scope in scopes:\n            if scope.name in indexed:\n                raise ValueError(\"Duplicate scope: \" + scope.name)\n            indexed[scope.name] = Scope(\n                name=scope.name,\n                parent=scope.parent,\n                rules=tuple(scope.rules),\n                inherit=scope.inherit,\n            )\n        self._scopes = indexed\n        self._validate_hierarchy()\n\n    def _validate_hierarchy(self):\n        for scope in self._scopes.values():\n            if scope.parent is not None and scope.parent not in self._scopes:\n                raise ValueError(\"Unknown parent: \" + scope.parent)\n\n        # Validate every component, including links behind inheritance barriers.\n        complete = set()\n        for name in self._scopes:\n            trail = set()\n            cursor = name\n            while cursor is not None and cursor not in complete:\n                if cursor in trail:\n                    raise ValueError(\"Policy hierarchy contains a cycle\")\n                trail.add(cursor)\n                cursor = self._scopes[cursor].parent\n            complete.update(trail)\n\n    def _lineage(self, name):\n        current = self._scopes[name]\n        while True:\n            yield current\n            if not current.inherit:\n                return\n            if current.parent is None:\n                return\n            current = self._scopes[current.parent]\n\n    @staticmethod\n    def _matches(rule, action, roles, now):\n        if rule.expires_at is not None and now >= rule.expires_at:\n            return False\n        return (\n            (rule.role == \"*\" or rule.role in roles)\n            and (rule.action == \"*\" or rule.action == action)\n        )\n\n    def decide(\n        self,\n        scope: str,\n        action: str,\n        roles: Iterable[str],\n        *,\n        now: int,\n    ) -> Decision:\n        \"\"\"Resolve the first scope with applicable rules, denying ties.\n\n        The caller supplies time explicitly. An expired rule is absent from\n        consideration, including at the expiration tick itself. Rules from\n        different scopes never combine: the closest applicable scope decides.\n\n        Everyone rules apply even when roles is empty. Duplicate input roles\n        have no significance. A search with no applicable rule returns a denial\n        without a source, distinguishing it from a configured deny rule.\n        \"\"\"\n",
+      "after": "from collections.abc import Iterator\nfrom typing import Iterable\n\n\n@dataclass(frozen=True)\nclass Rule:\n    \"\"\"One allow or deny rule, optionally expiring at a caller-supplied tick.\"\"\"\n\n    role: str\n    action: str\n    effect: str\n    expires_at: int | None = None\n\n    def __post_init__(self):\n        if not self.role or not self.action:\n            raise ValueError(\"Rule role and action must be nonempty\")\n        if self.effect not in {\"allow\", \"deny\"}:\n            raise ValueError(\"Rule effect must be allow or deny\")\n\n\n@dataclass(frozen=True)\nclass Scope:\n    \"\"\"A named resource scope and its directly attached rules.\"\"\"\n\n    name: str\n    parent: str | None = None\n    rules: tuple[Rule, ...] = ()\n    inherit: bool = True\n\n    def __post_init__(self):\n        if not self.name:\n            raise ValueError(\"Scope name must be nonempty\")\n\n\n@dataclass(frozen=True)\nclass Decision:\n    \"\"\"An access result; source is None for the default denial.\"\"\"\n\n    allowed: bool\n    source: str | None\n\n\nclass PolicySet:\n    \"\"\"A reusable snapshot of an acyclic forest of resource policies.\n\n    All graph validation happens at construction, so a later access request\n    never encounters a dangling parent or a cycle. Inheritance barriers affect\n    decisions but do not exempt the underlying graph from validation.\n    \"\"\"\n\n    def __init__(self, scopes: Iterable[Scope]):\n        indexed = {}\n        for scope in scopes:\n            if scope.name in indexed:\n                raise ValueError(\"Duplicate scope: \" + scope.name)\n            indexed[scope.name] = Scope(\n                name=scope.name,\n                parent=scope.parent,\n                rules=(scope.rules if isinstance(scope.rules, Iterator)\n                       else tuple(scope.rules)),\n                inherit=scope.inherit,\n            )\n        self._scopes = indexed\n        self._validate_hierarchy()\n\n    def _validate_hierarchy(self):\n        for scope in self._scopes.values():\n            if scope.parent is not None and scope.parent not in self._scopes:\n                raise ValueError(\"Unknown parent: \" + scope.parent)\n\n        # Validate every component, including links behind inheritance barriers.\n        complete = set()\n        for name in self._scopes:\n            trail = set()\n            cursor = name\n            while cursor is not None and cursor not in complete:\n                if cursor in trail:\n                    raise ValueError(\"Policy hierarchy contains a cycle\")\n                trail.add(cursor)\n                cursor = self._scopes[cursor].parent\n            complete.update(trail)\n\n    def _lineage(self, name):\n        current = self._scopes[name]\n        while True:\n            yield current\n            if not current.inherit:\n                return\n            if current.parent is None:\n                return\n            current = self._scopes[current.parent]\n\n    @staticmethod\n    def _matches(rule, action, roles, now):\n        if rule.expires_at is not None and now >= rule.expires_at:\n            return False\n        return (\n            (rule.role == \"*\" or rule.role in roles)\n            and (rule.action == \"*\" or rule.action == action)\n        )\n\n    def decide(\n        self,\n        scope: str,\n        action: str,\n        roles: Iterable[str],\n        *,\n        now: int,\n    ) -> Decision:\n        \"\"\"Resolve the first scope with applicable rules, denying ties.\n\n        The caller supplies time explicitly. An expired rule is absent from\n        consideration, including at the expiration tick itself. Rules from\n        different scopes never combine: the closest applicable scope decides.\n\n        Everyone rules apply even when roles is empty. Duplicate input roles\n        have no significance. A search with no applicable rule returns a denial\n        without a source, distinguishing it from a configured deny rule.\n        \"\"\"\n        for name, current in self._scopes.items():\n            if isinstance(current.rules, Iterator):\n                self._scopes[name] = Scope(\n                    name, current.parent, tuple(current.rules), current.inherit,\n                )\n"
+    },
+    {
+      "id": "concrete_scope_first",
+      "source": "access_policy.py",
+      "invariant": "The nearest scope with an active match decides even when its match uses wildcards and a farther ancestor has an opposing concrete match.",
+      "before": "        for current in self._lineage(scope):\n            applicable = [\n                rule for rule in current.rules\n                if self._matches(rule, action, role_set, now)\n            ]\n            if applicable:\n                denied = any(rule.effect == \"deny\" for rule in applicable)\n                return Decision(not denied, current.name)\n",
+      "after": "        lineage = tuple(self._lineage(scope))\n        for concrete_first in (True, False):\n            for current in lineage:\n                applicable = [\n                    rule for rule in current.rules\n                    if self._matches(rule, action, role_set, now)\n                ]\n                if applicable and (not concrete_first or any(\n                    rule.role != \"*\" and rule.action != \"*\" for rule in applicable\n                )):\n                    denied = any(rule.effect == \"deny\" for rule in applicable)\n                    return Decision(not denied, current.name)\n"
+    },
+    {
+      "id": "parent_reference_lowercased",
+      "source": "access_policy.py",
+      "before": "                parent=scope.parent,\n",
+      "after": "                parent=scope.parent.lower() if scope.parent is not None else None,\n",
+      "invariant": "A parent reference selects the exact case-sensitive scope name, including when a differently cased sibling name exists."
+    },
+    {
+      "id": "unknown_parent_casefold_fallback",
+      "source": "access_policy.py",
+      "before": "            )\n",
+      "after": "            )\n        # Permit a parent with differing case when there is one matching name.\n        for name, scope in tuple(indexed.items()):\n            if scope.parent is not None and scope.parent not in indexed:\n                matches = [key for key in indexed if key.casefold() == scope.parent.casefold()]\n                if len(matches) == 1:\n                    indexed[name] = Scope(scope.name, matches[0], scope.rules, scope.inherit)\n",
+      "invariant": "A parent absent under its exact case-sensitive name raises ValueError at construction even if one case-folded match exists."
+    },
+    {
+      "id": "validate_only_before_allowing",
+      "source": "access_policy.py",
+      "before": "        if not action or action == \"*\":\n            raise ValueError(\"Requested action must be a concrete nonempty name\")\n        role_set = frozenset(roles)\n        if \"\" in role_set:\n            raise ValueError(\"Requested roles must be nonempty names\")\n\n        for current in self._lineage(scope):\n            applicable = [\n                rule for rule in current.rules\n                if self._matches(rule, action, role_set, now)\n            ]\n            if applicable:\n                denied = any(rule.effect == \"deny\" for rule in applicable)\n",
+      "after": "        role_set = frozenset(roles)\n\n        for current in self._lineage(scope):\n            applicable = [\n                rule for rule in current.rules\n                if self._matches(rule, action, role_set, now)\n            ]\n            if applicable:\n                denied = any(rule.effect == \"deny\" for rule in applicable)\n                if not denied:\n                    if not action or action == \"*\":\n                        raise ValueError(\"Requested action must be a concrete nonempty name\")\n                    if \"\" in role_set:\n                        raise ValueError(\"Requested roles must be nonempty names\")\n",
+      "invariant": "Invalid concrete actions and empty role names raise ValueError before evaluation, including default and explicit denial."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "named_matching_predicates",
+      "source": "access_policy.py",
+      "invariant": "Factoring active, role, and action predicates preserves all decisions.",
+      "before": "        if rule.expires_at is not None and now >= rule.expires_at:\n            return False\n        return (\n            (rule.role == \"*\" or rule.role in roles)\n            and (rule.action == \"*\" or rule.action == action)\n        )",
+      "after": "        active = rule.expires_at is None or now < rule.expires_at\n        role_matches = rule.role in roles or rule.role == \"*\"\n        action_matches = rule.action == action or rule.action == \"*\"\n        return active and role_matches and action_matches"
+    },
+    {
+      "id": "stream_rule_resolution",
+      "source": "access_policy.py",
+      "invariant": "Resolving matching rules in one pass preserves denial priority and source.",
+      "before": "            applicable = [\n                rule for rule in current.rules\n                if self._matches(rule, action, role_set, now)\n            ]\n            if applicable:\n                denied = any(rule.effect == \"deny\" for rule in applicable)\n                return Decision(not denied, current.name)",
+      "after": "            effect = None\n            for rule in current.rules:\n                if self._matches(rule, action, role_set, now):\n                    effect = rule.effect\n                    if effect == \"deny\":\n                        break\n            if effect is not None:\n                return Decision(effect == \"allow\", current.name)"
+    }
+  ]
+}

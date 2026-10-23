@@ -1,0 +1,111 @@
+{
+  "mutants": [
+    {
+      "id": "same_query_stale_success",
+      "source": "search_controller.py",
+      "before": "        else:\n            if request == self._generation:\n",
+      "after": "        else:\n            if normalized == self._state.query:\n",
+      "invariant": "A new invocation owns the screen even when its query equals the earlier query."
+    },
+    {
+      "id": "stale_failure_overwrites_view",
+      "source": "search_controller.py",
+      "before": "        except Exception as error:\n            if request == self._generation:\n",
+      "after": "        except Exception as error:\n            if True:\n",
+      "invariant": "Failure of a superseded request leaves current state and view notifications unchanged."
+    },
+    {
+      "id": "stale_cancellation_clears_view",
+      "source": "search_controller.py",
+      "before": "        except asyncio.CancelledError:\n            if request == self._generation:\n",
+      "after": "        except asyncio.CancelledError:\n            if True:\n",
+      "invariant": "Cooperative cancellation of a superseded request cannot clear the current search screen."
+    },
+    {
+      "id": "cancellation_is_swallowed",
+      "source": "search_controller.py",
+      "before": "            raise\n        except Exception as error:\n",
+      "after": "            return\n        except Exception as error:\n",
+      "invariant": "A cooperative gateway cancellation is propagated to the caller of search."
+    },
+    {
+      "id": "blank_clear_preserves_old_owner",
+      "source": "search_controller.py",
+      "before": "        self._generation += 1\n        request = self._generation\n        if not normalized:\n            self._publish(SearchState())\n            return\n",
+      "after": "        if not normalized:\n            self._publish(SearchState())\n            return\n        self._generation += 1\n        request = self._generation\n",
+      "invariant": "Clearing a query invalidates earlier requests, so their completion cannot restore results."
+    },
+    {
+      "id": "retry_retains_previous_error",
+      "source": "search_controller.py",
+      "before": "        self._publish(SearchState(query=normalized, status=\"loading\"))\n",
+      "after": "        self._publish(SearchState(query=normalized, status=\"loading\", error=self._state.error))\n",
+      "invariant": "Starting a retry clears a previous failure from the visible loading state."
+    },
+    {
+      "id": "inherited_error_default",
+      "source": "search_controller.py",
+      "before": "    error: str | None = None\n",
+      "after": "    error: str | None = \"leaked\"\n",
+      "invariant": "Loading and current cancellation expose no error, independently of the state value type's constructor defaults."
+    },
+    {
+      "id": "raw_query_request_ownership",
+      "source": "search_controller.py",
+      "before": "        self._generation += 1\n        request = self._generation\n",
+      "after": "        self._generation = query\n        request = self._generation\n",
+      "invariant": "Each invocation owns a distinct request even when raw input text is exactly identical; query strings cannot substitute for request identity."
+    },
+    {
+      "id": "stale_success_recovers_current_failure",
+      "source": "search_controller.py",
+      "before": "        else:\n            if request == self._generation:\n",
+      "after": "        else:\n            if request == self._generation or self._state.status == \"failed\":\n",
+      "invariant": "An older success cannot replace or notify after the latest-started request has failed; failure does not relinquish screen ownership."
+    },
+    {
+      "id": "query_scoped_request_ownership",
+      "source": "search_controller.py",
+      "before": "class SearchController:\n    def __init__(\n        self,\n        gateway: SearchGateway,\n        on_change: Callable[[SearchState], None] | None = None,\n    ) -> None:\n        self._gateway = gateway\n        self._on_change = on_change\n        self._state = SearchState()\n        self._generation = 0\n\n    @property\n    def state(self) -> SearchState:\n        return self._state\n\n    def _publish(self, state: SearchState) -> None:\n        self._state = state\n        if self._on_change is not None:\n            self._on_change(state)\n\n    async def search(self, query: str) -> None:\n        normalized = query.strip()\n        self._generation += 1\n        request = self._generation\n        if not normalized:\n            self._publish(SearchState())\n            return\n\n        self._publish(SearchState(query=normalized, status=\"loading\"))\n        try:\n            matches = tuple(await self._gateway.search(normalized))\n        except asyncio.CancelledError:\n            if request == self._generation:\n                self._publish(SearchState(query=normalized))\n            raise\n        except Exception as error:\n            if request == self._generation:\n                self._publish(\n                    SearchState(\n                        query=normalized,\n                        status=\"failed\",\n                        error=str(error) or \"Search failed\",\n                    )\n                )\n        else:\n            if request == self._generation:\n                self._publish(\n                    SearchState(query=normalized, status=\"ready\", results=matches)\n                )\n",
+      "after": "class SearchController:\n    def __init__(\n        self,\n        gateway: SearchGateway,\n        on_change: Callable[[SearchState], None] | None = None,\n    ) -> None:\n        self._gateway = gateway\n        self._on_change = on_change\n        self._state = SearchState()\n        self._generation = 0\n        self._latest_by_query: dict[str, int] = {}\n\n    @property\n    def state(self) -> SearchState:\n        return self._state\n\n    def _publish(self, state: SearchState) -> None:\n        self._state = state\n        if self._on_change is not None:\n            self._on_change(state)\n\n    async def search(self, query: str) -> None:\n        normalized = query.strip()\n        self._generation += 1\n        request = self._generation\n        self._latest_by_query[normalized] = request\n        if not normalized:\n            self._latest_by_query.clear()\n            self._publish(SearchState())\n            return\n\n        self._publish(SearchState(query=normalized, status=\"loading\"))\n        try:\n            matches = tuple(await self._gateway.search(normalized))\n        except asyncio.CancelledError:\n            if request == self._latest_by_query.get(normalized):\n                self._publish(SearchState(query=normalized))\n            raise\n        except Exception as error:\n            if request == self._latest_by_query.get(normalized):\n                self._publish(\n                    SearchState(\n                        query=normalized,\n                        status=\"failed\",\n                        error=str(error) or \"Search failed\",\n                    )\n                )\n        else:\n            if request == self._latest_by_query.get(normalized):\n                self._publish(\n                    SearchState(query=normalized, status=\"ready\", results=matches)\n                )\n",
+      "invariant": "The most recently started search owns the whole screen across different normalized queries; a superseded query must not regain ownership when its request succeeds, fails, or is cancelled."
+    },
+    {
+      "id": "blank_query_invokes_unused_gateway_coroutine",
+      "source": "search_controller.py",
+      "before": "        if not normalized:\n            self._publish(SearchState())\n            return\n",
+      "after": "        if not normalized:\n            unused_request = self._gateway.search(normalized)\n            unused_request.close()\n            self._publish(SearchState())\n            return\n",
+      "invariant": "A blank normalized query clears the screen without consulting the gateway. Invoking the public search method violates that explicit absence-of-invocation promise even when its returned coroutine is closed without being awaited or executed."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "opaque_request_ownership",
+      "source": "search_controller.py",
+      "before": "class SearchController:\n    def __init__(\n        self,\n        gateway: SearchGateway,\n        on_change: Callable[[SearchState], None] | None = None,\n    ) -> None:\n        self._gateway = gateway\n        self._on_change = on_change\n        self._state = SearchState()\n        self._generation = 0\n\n    @property\n    def state(self) -> SearchState:\n        return self._state\n\n    def _publish(self, state: SearchState) -> None:\n        self._state = state\n        if self._on_change is not None:\n            self._on_change(state)\n\n    async def search(self, query: str) -> None:\n        normalized = query.strip()\n        self._generation += 1\n        request = self._generation\n        if not normalized:\n            self._publish(SearchState())\n            return\n\n        self._publish(SearchState(query=normalized, status=\"loading\"))\n        try:\n            matches = tuple(await self._gateway.search(normalized))\n        except asyncio.CancelledError:\n            if request == self._generation:\n                self._publish(SearchState(query=normalized))\n            raise\n        except Exception as error:\n            if request == self._generation:\n                self._publish(\n                    SearchState(\n                        query=normalized,\n                        status=\"failed\",\n                        error=str(error) or \"Search failed\",\n                    )\n                )\n        else:\n            if request == self._generation:\n                self._publish(\n                    SearchState(query=normalized, status=\"ready\", results=matches)\n                )\n",
+      "after": "class SearchController:\n    def __init__(\n        self,\n        gateway: SearchGateway,\n        on_change: Callable[[SearchState], None] | None = None,\n    ) -> None:\n        self._gateway = gateway\n        self._on_change = on_change\n        self._state = SearchState()\n        self._current_request: object | None = None\n\n    @property\n    def state(self) -> SearchState:\n        return self._state\n\n    def _publish(self, state: SearchState) -> None:\n        self._state = state\n        if self._on_change is not None:\n            self._on_change(state)\n\n    async def search(self, query: str) -> None:\n        normalized = query.strip()\n        request = object()\n        self._current_request = request\n        if not normalized:\n            self._publish(SearchState())\n            return\n\n        self._publish(SearchState(query=normalized, status=\"loading\"))\n        try:\n            matches = tuple(await self._gateway.search(normalized))\n        except asyncio.CancelledError:\n            if request is self._current_request:\n                self._publish(SearchState(query=normalized))\n            raise\n        except Exception as error:\n            if request is self._current_request:\n                self._publish(\n                    SearchState(\n                        query=normalized,\n                        status=\"failed\",\n                        error=str(error) or \"Search failed\",\n                    )\n                )\n        else:\n            if request is self._current_request:\n                self._publish(\n                    SearchState(query=normalized, status=\"ready\", results=matches)\n                )\n",
+      "invariant": "Opaque request identities preserve latest-started ownership without exposing a generation counter."
+    },
+    {
+      "id": "separate_result_materialization",
+      "source": "search_controller.py",
+      "before": "            matches = tuple(await self._gateway.search(normalized))\n",
+      "after": "            response = await self._gateway.search(normalized)\n            matches = tuple(item for item in response)\n",
+      "invariant": "Materializing response values in a separate statement preserves order, duplicates, and immutability."
+    },
+    {
+      "id": "synchronous_initial_notification",
+      "source": "search_controller.py",
+      "before": "        self._generation = 0\n",
+      "after": "        self._generation = 0\n        if self._on_change is not None:\n            self._on_change(self._state)\n",
+      "invariant": "A synchronous initial notification after state and request ownership are initialized is allowed; the callback contract does not promise silence during construction."
+    },
+    {
+      "id": "equal_public_state_snapshots",
+      "source": "search_controller.py",
+      "before": "    def state(self) -> SearchState:\n        return self._state\n",
+      "after": "    def state(self) -> SearchState:\n        return SearchState(\n            self._state.query, self._state.status, self._state.results, self._state.error\n        )\n",
+      "invariant": "The public state property exposes an equal immutable snapshot. Callback values still match the updated state at delivery time; object identity is not contractual."
+    }
+  ]
+}

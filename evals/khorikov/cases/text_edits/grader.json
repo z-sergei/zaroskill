@@ -1,0 +1,62 @@
+{
+  "mutants": [
+    {
+      "id": "fault-tie-alphabetical",
+      "source": "app.py",
+      "before": "ordered = sorted(normalized, key=lambda edit: (edit[0], edit[1]))",
+      "after": "ordered = sorted(normalized, key=lambda edit: (edit[0], edit[1], edit[2]))",
+      "invariant": "Coincident insertions preserve encounter order, even when their strings sort differently."
+    },
+    {
+      "id": "fault-inclusive-stop",
+      "source": "app.py",
+      "before": "        cursor = stop\n",
+      "after": "        cursor = stop + 1\n",
+      "invariant": "The stop offset is exclusive; the original character at stop remains unless another edit replaces it."
+    },
+    {
+      "id": "fault-interior-insertion-allowed",
+      "source": "app.py",
+      "before": "        if start < cursor:\n",
+      "after": "        if start < cursor and start != stop:\n",
+      "invariant": "Insertions strictly inside replacement or deletion ranges are overlaps, including empty insertions."
+    },
+    {
+      "id": "fault-upper-bound-one-past",
+      "source": "app.py",
+      "before": "        if not (0 <= start <= stop <= len(text)):\n",
+      "after": "        if not (0 <= start <= stop <= len(text) + 1):\n",
+      "invariant": "Both offsets must be no greater than the original Python string length."
+    },
+    {
+      "id": "fault-bool-offsets-accepted",
+      "source": "app.py",
+      "before": "        if (not isinstance(start, int) or isinstance(start, bool)\n                or not isinstance(stop, int) or isinstance(stop, bool)):\n",
+      "after": "        if not isinstance(start, int) or not isinstance(stop, int):\n",
+      "invariant": "Boolean offsets are rejected with TypeError even though bool is a subclass of int."
+    },
+    {
+      "id": "fault-consuming-empty-check",
+      "source": "app.py",
+      "before": "    normalized = []\n    for edit in edits:\n",
+      "after": "    if not list(edits):\n        return text\n    normalized = []\n    for edit in edits:\n",
+      "invariant": "One-shot iterable edits are traversed once and every yielded edit is applied and validated as encountered."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "refactor-sort-insertions-first",
+      "source": "app.py",
+      "before": "ordered = sorted(normalized, key=lambda edit: (edit[0], edit[1]))",
+      "after": "ordered = sorted(normalized, key=lambda edit: (edit[0], edit[0] != edit[1]))",
+      "invariant": "At one start offset, zero-length edits precede nonempty ranges; tied nonempty ranges are invalid in any order."
+    },
+    {
+      "id": "refactor-extend-output-pieces",
+      "source": "app.py",
+      "before": "        pieces.append(text[cursor:start])\n        pieces.append(replacement)\n",
+      "after": "        pieces.extend((text[cursor:start], replacement))\n",
+      "invariant": "Each edit contributes its unchanged prefix followed by its replacement."
+    }
+  ]
+}

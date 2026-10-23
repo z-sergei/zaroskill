@@ -1,0 +1,90 @@
+{
+  "mutants": [
+    {
+      "id": "decode_chunks_independently",
+      "source": "manifest.py",
+      "before": "        pending += decoder.decode(chunk, final=False)\n",
+      "after": "        pending += chunk.decode(\"utf-8-sig\", errors=\"strict\")\n",
+      "invariant": "A valid UTF-8 manifest, including an optional BOM and multibyte characters split across reads, imports successfully with exact text preserved."
+    },
+    {
+      "id": "overwrite_existing_quantity",
+      "source": "manifest.py",
+      "before": "            updated[entry.sku] = updated.get(entry.sku, 0) + entry.quantity\n",
+      "after": "            updated[entry.sku] = entry.quantity\n",
+      "invariant": "Every record increments existing stock; repeated SKUs accumulate within and across successful imports."
+    },
+    {
+      "id": "commit_each_record_before_validation_finishes",
+      "source": "manifest.py",
+      "before": "    pending = list(_read_entries(stream, chunk_size))\n    inventory._commit(pending)\n",
+      "after": "    pending = []\n    for entry in _read_entries(stream, chunk_size):\n        inventory._commit((entry,))\n        pending.append(entry)\n",
+      "invariant": "An invalid record, malformed encoding, CSV error, or read OSError leaves both quantities and received lines unchanged, including when valid records precede it."
+    },
+    {
+      "id": "close_caller_stream_on_success",
+      "source": "manifest.py",
+      "before": "    inventory._commit(pending)\n",
+      "after": "    inventory._commit(pending)\n    stream.close()\n",
+      "invariant": "The caller owns the stream; a successful import consumes it to EOF and leaves it open."
+    },
+    {
+      "id": "accept_zero_quantity",
+      "source": "manifest.py",
+      "before": "            if not 1 <= quantity <= 1_000_000:\n",
+      "after": "            if not 0 <= quantity <= 1_000_000:\n",
+      "invariant": "A quantity of zero is invalid and must raise InvalidManifest without committing any part of the import."
+    },
+    {
+      "id": "mutable_assignment",
+      "source": "manifest.py",
+      "before": "    )\n",
+      "after": "    )\n\n\n# Disposable fault: permit ordinary public field reassignment.\nDeliveryLine.__setattr__ = object.__setattr__\nImportSummary.__setattr__ = object.__setattr__\n",
+      "invariant": "Every public field of DeliveryLine and ImportSummary must retain its original value after an assignment attempt."
+    },
+    {
+      "id": "mutable_deletion",
+      "source": "manifest.py",
+      "before": "    )\n",
+      "after": "    )\n\n\n# Disposable fault: permit ordinary public field deletion.\nDeliveryLine.__delattr__ = object.__delattr__\nImportSummary.__delattr__ = object.__delattr__\n",
+      "invariant": "Every public field of DeliveryLine and ImportSummary must remain present with its original value after a deletion attempt."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "split_buffer_into_complete_physical_lines",
+      "source": "manifest.py",
+      "before": "        while \"\\n\" in pending:\n            boundary = pending.index(\"\\n\") + 1\n            yield pending[:boundary]\n            pending = pending[boundary:]\n",
+      "after": "        complete_lines = pending.split(\"\\n\")\n        pending = complete_lines.pop()\n        for line in complete_lines:\n            yield line + \"\\n\"\n",
+      "invariant": "The same decoded physical lines, including original CRLF or LF content and a final unterminated line, reach the CSV reader regardless of buffer-splitting implementation."
+    },
+    {
+      "id": "derive_first_seen_skus_with_ordered_mapping",
+      "source": "manifest.py",
+      "before": "    first_seen: list[str] = []\n    for entry in pending:\n        if entry.sku not in first_seen:\n            first_seen.append(entry.sku)\n",
+      "after": "    first_seen = dict.fromkeys(entry.sku for entry in pending)\n",
+      "invariant": "Summary SKU order remains first appearance order with duplicates removed, independent of the internal collection used for deduplication."
+    },
+    {
+      "id": "read_remaining_bytes_before_decoding",
+      "source": "manifest.py",
+      "before": "def _decoded_lines(stream: BinaryIO, chunk_size: int) -> Iterator[str]:\n    decoder = codecs.getincrementaldecoder(\"utf-8-sig\")(errors=\"strict\")\n    pending = \"\"\n    while True:\n        chunk = stream.read(chunk_size)\n        if not chunk:\n            pending += decoder.decode(b\"\", final=True)\n            if pending:\n                yield pending\n            return\n        pending += decoder.decode(chunk, final=False)\n        while \"\\n\" in pending:\n            boundary = pending.index(\"\\n\") + 1\n            yield pending[:boundary]\n            pending = pending[boundary:]\n",
+      "after": "def _decoded_lines(stream: BinaryIO, chunk_size: int) -> Iterator[str]:\n    pending = stream.read(-1).decode(\"utf-8-sig\", errors=\"strict\")\n    while \"\\n\" in pending:\n        boundary = pending.index(\"\\n\") + 1\n        yield pending[:boundary]\n        pending = pending[boundary:]\n    if pending:\n        yield pending\n",
+      "invariant": "For the normal binary stream contract, reading all remaining bytes preserves UTF-8-sig and CSV content, validation, summaries, atomic stock/history, caller ownership, positive chunk_size support, pre-I/O rejection for nonpositive chunk_size, and unchanged observed OSError propagation; read sizes/counts are unspecified and memory exhaustion is out of scope."
+    },
+    {
+      "id": "value_error_immutability",
+      "source": "manifest.py",
+      "before": "@dataclass(frozen=True)\nclass DeliveryLine:\n    sku: str\n    quantity: int\n    note: str\n\n\n@dataclass(frozen=True)\nclass ImportSummary:\n    line_count: int\n    total_units: int\n    skus: tuple[str, ...]\n",
+      "after": "class _ImmutableRecord:\n    def __setattr__(self, name, value):\n        raise ValueError(\"Record fields are immutable\")\n\n    def __delattr__(self, name):\n        raise ValueError(\"Record fields are immutable\")\n\n\n@dataclass(unsafe_hash=True)\nclass DeliveryLine(_ImmutableRecord):\n    sku: str\n    quantity: int\n    note: str\n\n    def __init__(self, sku: str, quantity: int, note: str) -> None:\n        object.__setattr__(self, \"sku\", sku)\n        object.__setattr__(self, \"quantity\", quantity)\n        object.__setattr__(self, \"note\", note)\n\n\n@dataclass(unsafe_hash=True)\nclass ImportSummary(_ImmutableRecord):\n    line_count: int\n    total_units: int\n    skus: tuple[str, ...]\n\n    def __init__(self, line_count: int, total_units: int, skus: tuple[str, ...]) -> None:\n        object.__setattr__(self, \"line_count\", line_count)\n        object.__setattr__(self, \"total_units\", total_units)\n        object.__setattr__(self, \"skus\", skus)\n",
+      "invariant": "DeliveryLine and ImportSummary remain immutable dataclasses with value equality and unchanged public fields after assignment or deletion attempts; a specific mutation-rejection exception is not promised."
+    },
+    {
+      "id": "ignored_mutations",
+      "source": "manifest.py",
+      "before": "@dataclass(frozen=True)\nclass DeliveryLine:\n    sku: str\n    quantity: int\n    note: str\n\n\n@dataclass(frozen=True)\nclass ImportSummary:\n    line_count: int\n    total_units: int\n    skus: tuple[str, ...]\n",
+      "after": "class _ImmutableRecord:\n    def __setattr__(self, name, value):\n        return None\n\n    def __delattr__(self, name):\n        return None\n\n\n@dataclass(unsafe_hash=True)\nclass DeliveryLine(_ImmutableRecord):\n    sku: str\n    quantity: int\n    note: str\n\n    def __init__(self, sku: str, quantity: int, note: str) -> None:\n        object.__setattr__(self, \"sku\", sku)\n        object.__setattr__(self, \"quantity\", quantity)\n        object.__setattr__(self, \"note\", note)\n\n\n@dataclass(unsafe_hash=True)\nclass ImportSummary(_ImmutableRecord):\n    line_count: int\n    total_units: int\n    skus: tuple[str, ...]\n\n    def __init__(self, line_count: int, total_units: int, skus: tuple[str, ...]) -> None:\n        object.__setattr__(self, \"line_count\", line_count)\n        object.__setattr__(self, \"total_units\", total_units)\n        object.__setattr__(self, \"skus\", skus)\n",
+      "invariant": "DeliveryLine and ImportSummary remain immutable dataclasses with value equality and unchanged public fields after assignment or deletion attempts, including when those attempts are ignored without raising."
+    }
+  ]
+}

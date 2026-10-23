@@ -1,6 +1,6 @@
 ---
 name: state-machine-verification
-description: "Specify and verify temporal contracts of stateful workflows. Use when designing, changing or reviewing state machines whose correctness depends on event order, retries, cancellation, stale callbacks, session ownership or resource handoffs; choose focused traces, bounded exploration or a formal model."
+description: "Specify and verify temporal contracts of stateful workflows. Use when correctness depends on event order, retries, cancellation, ownership, recovery, incomplete observations or changes to a behavioral contract; choose focused traces, bounded exploration or a formal model."
 ---
 
 # Verify behavior across time
@@ -25,6 +25,8 @@ Write a compact contract card in existing task notes or a relevant test. For a n
 
 Use project-local instructions and code to locate the existing transition owners, explorers and test policy. For choosing a temporal property or deciding whether TLA+ adds value, read [temporal checks](references/temporal-checks.md).
 
+Read the relevant section of [design checks](references/design-checks.md) when a decision depends on incomplete observations, a promised recovery path loses a resource, or a change may alter an existing behavioral contract. These checks can reveal a missing requirement or mechanism before implementation; run only the branch that answers an open question.
+
 **Ready:** the claim has a source, an observable consequence and a boundary. The reducer's current branches are evidence about behavior, not the specification of correctness.
 
 ## 2. Connect the abstract steps to real events
@@ -48,7 +50,7 @@ Inspect all transition observations relevant to the property: new state, feature
 | Correlation, cancellation, scheduling, lifecycle or effect delivery | Controlled producer/controller or adapter scenario through the actual boundary |
 | Several participants, durable state and failures interact beyond a manageable code test | Small TLA+/PlusCal model with stated abstraction and a mapping back to code |
 
-Combine levels only where they establish different obligations. Keep existing test infrastructure and conventions. When implementing, derive expectations from the contract, observe the relevant failure when feasible, make the cohesive change, then run the narrow affected checks within repository permissions. Reuse available requirements-TDD or test-review guidance for those workflows rather than replacing it.
+Combine levels only where they establish different obligations. Keep existing test infrastructure and conventions. When implementing, derive expectations from the contract, observe the relevant failure when feasible, make the cohesive change, then run the narrow affected checks within repository permissions. Hand the sourced promise, reachable trace, independent expected observations and remaining assumptions to the relevant workflow: `requirements-tdd` for test-first implementation, `khorikov-unit-testing` for the test boundary, or `test-quality-review` for an audit, when available. Otherwise use the repository's existing workflow. Preserve the requested scope and use one leading process.
 
 For exploration, record initial states, event/data domain, depth or other bounds, assumptions and completion status. Start with a small domain that distinguishes identities and outcomes; increase it for a concrete risk. Check initial invariants and laws on every explored transition, including commands even when state is unchanged. Retain a replayable failure trace.
 

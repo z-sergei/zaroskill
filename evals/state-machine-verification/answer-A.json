@@ -1,0 +1,82 @@
+[
+  {
+    "id": "C01",
+    "verdict": "finding",
+    "rationale": "The supplied requirement is unrealizable at the stated decision boundary. A timeout supplies no fact distinguishing a discarded publication from a committed publication whose reply was lost. Truthful immediate binary status requires that distinction.",
+    "decisive_trace_or_argument": "History D: submit, discard, timeout; correct answer is Not published. History P: submit, commit, lose reply, timeout; correct answer is Published. Client observations and retained ID match. Showing Not published violates P; retrying can create a second publication because the server does not deduplicate.",
+    "next_check": "Resolve which requirement may change: permit an unresolved status, or provide an authoritative observation before demanding a terminal answer. Then check commit-with-lost-reply and retry against the revised recovery contract.",
+    "limitations": "Analysis only. The impossibility concerns the supplied observations and immediate decision; it does not rule out a redesigned service or UI."
+  },
+  {
+    "id": "C02",
+    "verdict": "no_finding",
+    "rationale": "Timeout does not contradict these promises. Checking truthfully preserves uncertainty, while durable identity and atomic receipt storage make retries recover the same result without repeating the import.",
+    "decisive_trace_or_argument": "Import commits records and receipt; response is lost; client remains Checking and restarts with the same ID; replay returns the stored result and causes no second import. If the initial request never executed, eventual delivery and execution while active allow a retry to commit and return its result.",
+    "next_check": "Exercise commit, lost reply, client restart, and replay through the service boundary; assert one import, the stored result, and Checking until receipt.",
+    "limitations": "The argument uses the supplied atomicity and eventual-delivery/execution guarantees. It promises neither a deadline nor progress while inactive. No checks were executed."
+  },
+  {
+    "id": "C03",
+    "verdict": "finding",
+    "rationale": "A reachable account state has no supported path to the promised recovery. Both ordinary login and access to support depend on authority available only through the permanently lost device.",
+    "decisive_trace_or_argument": "Lose the sole trusted device permanently; attempt replacement login; approval requires that device. Attempt support; support requires login. With no recovery codes or alternate contact, no enabled supported action can obtain replacement authority.",
+    "next_check": "Decide what independent credential or unauthenticated identity-verification channel may authorize replacement enrollment; then trace recovery from a new device with no old-device access.",
+    "limitations": "This is a contract/design finding from supplied facts, not an executed test. It does not assume the device can be found or prescribe an unverified security policy."
+  },
+  {
+    "id": "C04",
+    "verdict": "no_finding",
+    "rationale": "The normal login dependency does not establish a defect because the supported public recovery path lies outside it and satisfies the qualified promise.",
+    "decisive_trace_or_argument": "During support hours, an eligible user on a new device contacts the public endpoint without login, completes independent verification, and has a replacement enrolled. This supplied, exercised path never requires the lost device.",
+    "next_check": "No additional check is necessary to reject this allegation. Retain the exercised new-device recovery scenario as evidence of the promised path.",
+    "limitations": "The conclusion is limited to published support hours and users able to complete verification; it implies no instant or unconditional recovery. The reported exercise was supplied, not rerun."
+  },
+  {
+    "id": "C05",
+    "verdict": "finding",
+    "rationale": "Version 2 violates the required version 1 cancellation guarantee by treating queue acceptance as completed cancellation.",
+    "decisive_trace_or_argument": "A cancellable job is pending; Cancel queues cancellation and returns success; the executor delivers the job's notification; cancellation is then applied. The notification occurs after success, a finite forbidden observation under version 1.",
+    "next_check": "Control the real executor so cancellation application is delayed, and attempt delivery after Cancel success. Observe notification delivery, not merely the queued command. Preserving compatibility requires success only when the promised delivery barrier holds.",
+    "limitations": "Analysis only; the trace is feasible by the supplied executor facts. It establishes a safety regression without making additional progress claims."
+  },
+  {
+    "id": "C06",
+    "verdict": "no_finding",
+    "rationale": "The supplied history is permitted by both versions. Internal queuing and cancellation retries are not themselves observable compatibility violations.",
+    "decisive_trace_or_argument": "Delivery starts before cancellation; Cancel returns; that delivery completes. Both contracts allow this completion. The supplied integration check establishes no new launches and no additional external notifications from the queue or retries.",
+    "next_check": "No further check is needed to classify this history. Preserve checks of post-cancellation launches and external notification counts when investigating additional schedules.",
+    "limitations": "This does not prove equivalence for every execution. The integration result is supplied evidence, not a check run here; no changed progress promise is inferred."
+  },
+  {
+    "id": "C07",
+    "verdict": "finding",
+    "rationale": "Pairwise overlap is insufficient. With identical observations, the component needs a single action safe across all three reachable configurations; their total intersection is empty.",
+    "decisive_trace_or_argument": "{A,B} ∩ {B,C} ∩ {A,C} = ∅. Selecting A fails in {B,C}, selecting B fails in {A,C}, and selecting C fails in {A,B}. Randomization cannot guarantee safety either: any channel chosen with positive probability is unsafe in an allowed configuration.",
+    "next_check": "Use this three-row action table to decide whether the design can expose distinguishing information or relax the compulsory immediate choice. No larger temporal model is needed for the contradiction.",
+    "limitations": "The impossibility is scoped to one immediate guaranteed-safe choice with the supplied information and forbidden deferral. It does not apply if those constraints change. No execution was needed."
+  },
+  {
+    "id": "C08",
+    "verdict": "no_finding",
+    "rationale": "The reviewer ignores a permitted action shared by both indistinguishable states: return Processing and await authoritative evidence. The product does not require a terminal decision now.",
+    "decisive_trace_or_argument": "Whether export is running or completed with its event pending, Processing is allowed. Under eventual delivery, the retained operation's terminal event arrives; the component can then report its truthful terminal outcome.",
+    "next_check": "Drive both current export states with terminal-event delivery delayed, then deliver the authoritative event. Assert Processing before it and the matching terminal outcome afterward.",
+    "limitations": "This establishes consistency of the stated contract, not implementation correctness. Eventual progress relies on the documented delivery condition; finite scenarios cannot prove unbounded liveness. No checks were executed."
+  },
+  {
+    "id": "C09",
+    "verdict": "out_of_scope",
+    "rationale": "Temporal/state-machine modeling adds no useful distinction to this pure, history-independent formatting contract.",
+    "decisive_trace_or_argument": "The output depends only on the validated count. There are no competing histories, effects, owners, or progress obligations to model.",
+    "next_check": "Prepare a small input/output test table before implementation: zero, an ordinary multi-digit value, and the supported numeric boundary; check decimal digits with no grouping.",
+    "limitations": "This scopes verification rather than declaring an implementation correct. Validation and unsupported input handling remain outside the supplied contract; no tests were run."
+  },
+  {
+    "id": "C10",
+    "verdict": "no_finding",
+    "rationale": "The controller rejects the obsolete callback before reducer delivery and performs the required cleanup. A callback arriving after cancellation is feasible but not itself a defect.",
+    "decisive_trace_or_argument": "Dispatch A stamps A; cancel clears active identity; dispatch B sets active identity B; result A arrives carrying A. Serialized handling observes A ≠ B, releases A's payload, and returns without business commands or reducer delivery. B remains authoritative.",
+    "next_check": "Run a controlled controller/SDK scenario with exactly this late callback; assert that B remains active, A reaches neither reducer nor business effects, and A's payload is released.",
+    "limitations": "The guards and producer behavior are supplied as inspected facts. The scenario was not executed, and this argument does not establish every lifecycle or resource-ownership case."
+  }
+]

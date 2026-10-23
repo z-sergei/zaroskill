@@ -1,0 +1,69 @@
+{
+  "mutants": [
+    {
+      "id": "m01_create_keeps_caller_content",
+      "source": "revision_store.py",
+      "before": "        self._revisions[document_id] = [_copy_content(content)]\n",
+      "after": "        self._revisions[document_id] = [content]\n",
+      "invariant": "Creating a document detaches its stored content and nested lists from caller-owned input."
+    },
+    {
+      "id": "m02_read_exposes_stored_content",
+      "source": "revision_store.py",
+      "before": "        return _snapshot(document_id, selected_version, revisions[selected_version - 1])\n",
+      "after": "        return {\"document_id\": document_id, \"version\": selected_version, \"content\": revisions[selected_version - 1]}\n",
+      "invariant": "Mutating a read snapshot cannot alter stored revisions or separately returned snapshots."
+    },
+    {
+      "id": "m03_historical_read_uses_current_content",
+      "source": "revision_store.py",
+      "before": "        return _snapshot(document_id, selected_version, revisions[selected_version - 1])\n",
+      "after": "        return _snapshot(document_id, selected_version, revisions[-1])\n",
+      "invariant": "An explicit historical version returns that version's original content."
+    },
+    {
+      "id": "m04_stale_version_is_accepted",
+      "source": "revision_store.py",
+      "before": "            if len(revisions) != expected_version:\n",
+      "after": "            if len(revisions) < expected_version:\n",
+      "invariant": "A write requires an expected version exactly equal to the current version, including rejection of stale versions."
+    },
+    {
+      "id": "m05_batch_commits_before_all_preconditions_pass",
+      "source": "revision_store.py",
+      "before": "        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            if len(revisions) != expected_version:\n                raise VersionConflictError(document_id)\n\n        committed = []\n        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n        return committed\n",
+      "after": "        committed = []\n        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            if len(revisions) != expected_version:\n                raise VersionConflictError(document_id)\n            revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n        return committed\n",
+      "invariant": "Any failed batch precondition preserves all documents and histories, including earlier valid entries."
+    },
+    {
+      "id": "m06_equal_content_does_not_advance_version",
+      "source": "revision_store.py",
+      "before": "            revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n",
+      "after": "            if revisions[-1] != content:\n                revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n",
+      "invariant": "Every successful replacement appends exactly one revision, even when content is equal."
+    },
+    {
+      "id": "rejected_create_input_cleanup",
+      "source": "revision_store.py",
+      "before": "        _validate_id(document_id)\n        _validate_content(content)\n",
+      "after": "        _validate_id(document_id)\n        try:\n            _validate_content(content)\n        except TypeError:\n            if type(content) is dict:\n                for value in content.values():\n                    if type(value) is list:\n                        while value and type(value[0]) is str:\n                            value.pop(0)\n            raise\n",
+      "invariant": "A create rejected for unsupported content leaves caller-owned dictionaries and lists unchanged while raising TypeError."
+    }
+  ],
+  "refactors": [
+    {
+      "id": "r01_copy_with_explicit_loop",
+      "source": "revision_store.py",
+      "before": "def _copy_content(content):\n    return {key: value[:] if type(value) is list else value for key, value in content.items()}\n",
+      "after": "def _copy_content(content):\n    copied = {}\n    for key, value in content.items():\n        copied[key] = list(value) if type(value) is list else value\n    return copied\n",
+      "invariant": "Replacing a comprehension and list slicing with an explicit loop and list construction preserves all supported content and detachment behavior."
+    },
+    {
+      "id": "r02_reuse_validated_revision_lists",
+      "source": "revision_store.py",
+      "before": "        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            if len(revisions) != expected_version:\n                raise VersionConflictError(document_id)\n\n        committed = []\n        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n        return committed\n",
+      "after": "        pending = []\n        for document_id, expected_version, content in changes:\n            revisions = self._require(document_id)\n            if len(revisions) != expected_version:\n                raise VersionConflictError(document_id)\n            pending.append((document_id, content, revisions))\n\n        committed = []\n        for document_id, content, revisions in pending:\n            revisions.append(_copy_content(content))\n            committed.append(_snapshot(document_id, len(revisions), revisions[-1]))\n        return committed\n",
+      "invariant": "Retaining validated revision lists removes repeated private lookups while preserving validation order, atomicity, and public return values."
+    }
+  ]
+}
