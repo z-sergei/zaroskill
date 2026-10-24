@@ -19,6 +19,8 @@ Make a compact behavior list. For each requirement record:
 
 One sentence is enough for a small change. For larger work, keep this list in the task's existing plan or notes rather than creating another document by default. Cover each requested outcome with a test, existing evidence, or an explicit gap. Include rejection, meaningful boundaries and recovery when required by the behavior; choose distinct risks instead of a Cartesian product.
 
+When a promise covers many inputs or event orders, connect a concrete business scenario to the general rule it illustrates. Read [behavior properties](references/behavior-properties.md) when generating cases, checking a workflow-wide rule, or deciding whether evidence from a component establishes the user's outcome. A local rule may need only its ordinary examples.
+
 Derive expected values from requirements or independently worked examples. Production code tells you where to exercise a behavior; it does not decide what the correct answer should be. Distinguish an explicit requirement from observed legacy behavior. Resolve ordinary technical choices from the repository. Ask only when an unresolved product decision would change the expected outcome, and continue independent work meanwhile.
 
 **Ready:** the examples state observable outcomes, their source and the test entry point. Ambiguous examples remain marked unresolved rather than silently acquiring invented rules.

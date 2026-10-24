@@ -1,0 +1,6 @@
+{
+  "case": "C05",
+  "reason": "Clarify integer input domain; no float/type-validation contract at this boundary",
+  "applied_to": "both bundles before C05 report existed",
+  "task_sha256": "58d1c5e7d1eff7cae4f79f01bf337de4f7f663e20b66fe5971ac7bf940d00da8"
+}

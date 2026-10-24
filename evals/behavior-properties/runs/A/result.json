@@ -1,0 +1,352 @@
+{
+  "status": "complete",
+  "root": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar",
+  "cases": [
+    {
+      "case_id": "C01",
+      "status": "complete",
+      "summary": "Реализация завершена через 4 наблюдённых red→green цикла; итоговые 4 теста прошли.",
+      "created_files": [
+        "work/C01/test_booking.py",
+        "work/C01/evidence.md",
+        "work/C01/report.md"
+      ],
+      "changed_files": [
+        "work/C01/booking.py"
+      ],
+      "commands_results": [
+        {
+          "label": "Исходное состояние: тестов пока нет, это не поведенческий red",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 5,
+          "output": "\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nNO TESTS RAN\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Red 1: первая бронь ещё не реализована",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 1,
+          "output": "test_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ERROR\n\n======================================================================\nERROR: test_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/test_booking.py\", line 11, in test_first_request_accepts_customer_and_sets_owner\n    receipt = desk.reserve(\"Alice\", \"alice-first\")\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/booking.py\", line 13, in reserve\n    raise NotImplementedError('reservation is not implemented')\nNotImplementedError: reservation is not implemented\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Green 1: первая бронь",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 0,
+          "output": "test_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Red 2: занятое место нельзя отдать другому",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 1,
+          "output": "test_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner) ... FAIL\n\n======================================================================\nFAIL: test_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/test_booking.py\", line 20, in test_occupied_seat_refuses_other_customers_and_keeps_owner\n    self.assertEqual(Receipt(\"Bob\", False), desk.reserve(\"Bob\", \"bob-first\"))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Receipt(customer='Bob', accepted=False) != Receipt(customer='Bob', accepted=True)\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n",
+          "duration_seconds": 0.033
+        },
+        {
+          "label": "Green 2: занятое место и регрессии",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 0,
+          "output": "test_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner) ... ok\ntest_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Red 3: повтор принятого запроса должен сохранить результат",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 1,
+          "output": "test_repeated_requests_return_original_receipts (test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts) ... FAIL\n\n======================================================================\nFAIL: test_repeated_requests_return_original_receipts (test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/test_booking.py\", line 32, in test_repeated_requests_return_original_receipts\n    self.assertEqual(accepted, desk.reserve(\"Alice\", \"alice-first\"))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Receipt(customer='Alice', accepted=True) != Receipt(customer='Alice', accepted=False)\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Green 3: повтор квитанций и регрессии",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 0,
+          "output": "test_repeated_requests_return_original_receipts (test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts) ... ok\ntest_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ok\ntest_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.037
+        },
+        {
+          "label": "Red 4: чужой покупатель не может повторно использовать ID",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 1,
+          "output": "test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) ... \n  test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) (request_id='alice-first') ... FAIL\n  test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) (request_id='bob-first') ... FAIL\n\n======================================================================\nFAIL: test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) (request_id='alice-first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/test_booking.py\", line 47, in test_reusing_request_id_for_another_customer_raises_without_changing_booking\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) (request_id='bob-first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/test_booking.py\", line 47, in test_reusing_request_id_for_another_customer_raises_without_changing_booking\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=2)\n",
+          "duration_seconds": 0.042
+        },
+        {
+          "label": "Green 4: конфликт ID для принятой и отклонённой заявки",
+          "command": "python3 -m unittest -v test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 0,
+          "output": "test_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "duration_seconds": 0.036
+        },
+        {
+          "label": "Итог: весь набор C01",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01",
+          "exit_code": 0,
+          "output": "test_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ok\ntest_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner) ... ok\ntest_repeated_requests_return_original_receipts (test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts) ... ok\ntest_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C01/evidence.md",
+      "evidence_boundary": "Синхронная касса в одном процессе; сроки действия, потоки и внешнее хранение исключены заданием.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C02",
+      "status": "complete",
+      "summary": "Добавлены 3 теста SearchApp; итоговый набор прошёл; пробы выявляют старые ответы и допускают объектные token.",
+      "created_files": [
+        "work/C02/test_search.py",
+        "work/C02/evidence.md",
+        "work/C02/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [
+        {
+          "label": "Новые тесты против неизменённого SearchApp",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C02",
+          "exit_code": 0,
+          "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.033
+        },
+        {
+          "label": "Проба: все ответы принимаются",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/cedar-task-probes/C02-stale",
+          "exit_code": 1,
+          "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current')) ... FAIL\n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older')) ... FAIL\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/cedar-task-probes/C02-stale/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != ('fox result',)\n\nSecond tuple contains 1 additional elements.\nFirst extra element 0:\n'fox result'\n\n- ()\n+ ('fox result',)\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/cedar-task-probes/C02-stale/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('whale result',) != ('fox result',)\n\nFirst differing element 0:\n'whale result'\n'fox result'\n\n- ('whale result',)\n?   ^^^^^\n\n+ ('fox result',)\n?   ^^^\n\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Проба: непрозрачные объектные токены",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/cedar-task-probes/C02-opaque",
+          "exit_code": 0,
+          "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        },
+        {
+          "label": "Итог против неизменённого production",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C02",
+          "exit_code": 0,
+          "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C02/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C02/evidence.md",
+      "evidence_boundary": "Порт gateway и публичный visible; сеть, UI-отрисовка и произвольные длинные истории не проверялись.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C03",
+      "status": "complete",
+      "summary": "Подтверждён недостижимый смысловой assert: неисправная копия сохраняет зелёный исходный тест.",
+      "created_files": [
+        "work/C03/evidence.md",
+        "work/C03/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [
+        {
+          "label": "Исходный единственный тест",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C03",
+          "exit_code": 0,
+          "output": "test_previous_upload_cannot_replace_current_document (test_upload.UploadTests.test_previous_upload_cannot_replace_current_document) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "duration_seconds": 0.033
+        },
+        {
+          "label": "Проба: исходный тест с отключённой защитой",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/cedar-task-probes/C03-unguarded",
+          "exit_code": 0,
+          "output": "test_previous_upload_cannot_replace_current_document (test_upload.UploadTests.test_previous_upload_cannot_replace_current_document) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+          "duration_seconds": 0.033
+        },
+        {
+          "label": "Свидетель: текущий результат, затем старый на неисправной копии",
+          "command": "python3 -c 'from upload import Upload; import unittest; app=Upload(); older=app.begin(); current=app.begin(); app.finish(current,\"current-document\"); app.finish(older,\"older-document\"); print(\"expected=current-document, actual=\"+str(app.document), flush=True); unittest.TestCase().assertEqual(\"current-document\",app.document)'",
+          "cwd": "/private/tmp/cedar-task-probes/C03-unguarded",
+          "exit_code": 1,
+          "output": "expected=current-document, actual=older-document\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    from upload import Upload; import unittest; app=Upload(); older=app.begin(); current=app.begin(); app.finish(current,\"current-document\"); app.finish(older,\"older-document\"); print(\"expected=current-document, actual=\"+str(app.document), flush=True); unittest.TestCase().assertEqual(\"current-document\",app.document)\n                                                                                                                                                                                                                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py\", line 925, in assertEqual\n    assertion_func(first, second, msg=msg)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py\", line 1291, in assertMultiLineEqual\n    self.fail(self._formatMessage(msg, standardMsg))\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py\", line 750, in fail\n    raise self.failureException(msg)\nAssertionError: 'current-document' != 'older-document'\n- current-document\n+ older-document\n\n",
+          "duration_seconds": 0.03
+        },
+        {
+          "label": "Тот же свидетель на исходной реализации",
+          "command": "python3 -c 'from upload import Upload; import unittest; app=Upload(); older=app.begin(); current=app.begin(); app.finish(current,\"current-document\"); app.finish(older,\"older-document\"); print(\"expected=current-document, actual=\"+str(app.document), flush=True); unittest.TestCase().assertEqual(\"current-document\",app.document)'",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C03",
+          "exit_code": 0,
+          "output": "expected=current-document, actual=current-document\n",
+          "duration_seconds": 0.029
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C03/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C03/evidence.md",
+      "evidence_boundary": "Обзор единственного теста; коррекция предложена, исходники по условию не исправлялись.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C04",
+      "status": "complete",
+      "summary": "Подтверждено отключение обеих проверок при -O; нарушающая обе гарантии копия проходит CI-команду.",
+      "created_files": [
+        "work/C04/evidence.md",
+        "work/C04/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [
+        {
+          "label": "Исходный точный CI-запуск",
+          "command": "python3 -O check_rules.py",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C04",
+          "exit_code": 0,
+          "output": "invoice checks passed\n",
+          "duration_seconds": 0.046
+        },
+        {
+          "label": "Проба: обе гарантии нарушены, точный CI-запуск",
+          "command": "python3 -O check_rules.py",
+          "cwd": "/private/tmp/cedar-task-probes/C04-disabled-assertions",
+          "exit_code": 0,
+          "output": "invoice checks passed\n",
+          "duration_seconds": 0.046
+        },
+        {
+          "label": "Контроль пробы без оптимизации",
+          "command": "python3 check_rules.py",
+          "cwd": "/private/tmp/cedar-task-probes/C04-disabled-assertions",
+          "exit_code": 1,
+          "output": "Traceback (most recent call last):\n  File \"/private/tmp/cedar-task-probes/C04-disabled-assertions/check_rules.py\", line 5, in <module>\n    assert result == amount + 3\n           ^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+          "duration_seconds": 0.029
+        },
+        {
+          "label": "Наблюдаемые неверные результаты неисправной копии",
+          "command": "python3 -c 'from invoice import total; print(\"total(7):\", total(7), \"expected: 10\"); print(\"total(-1):\", total(-1), \"expected: ValueError\")'",
+          "cwd": "/private/tmp/cedar-task-probes/C04-disabled-assertions",
+          "exit_code": 0,
+          "output": "total(7): 999 expected: 10\ntotal(-1): 999 expected: ValueError\n",
+          "duration_seconds": 0.018
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C04/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C04/evidence.md",
+      "evidence_boundary": "Заданный скрипт и точный режим CI; коррекция предложена, исходники по условию не исправлялись.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C05",
+      "status": "complete",
+      "summary": "Существенных замечаний нет для заранее валидированных целых; 3 теста прошли в обычном режиме и -O.",
+      "created_files": [
+        "work/C05/evidence.md",
+        "work/C05/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [
+        {
+          "label": "Исходный unittest: обычный режим",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C05",
+          "exit_code": 0,
+          "output": "test_larger_supported_parcels_cost_seven (test_shipping.ShippingTests.test_larger_supported_parcels_cost_seven) ... ok\ntest_small_parcels_cost_four (test_shipping.ShippingTests.test_small_parcels_cost_four) ... ok\ntest_unsupported_weights_are_refused (test_shipping.ShippingTests.test_unsupported_weights_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.036
+        },
+        {
+          "label": "Исходный unittest: оптимизированный режим",
+          "command": "python3 -O -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C05",
+          "exit_code": 0,
+          "output": "test_larger_supported_parcels_cost_seven (test_shipping.ShippingTests.test_larger_supported_parcels_cost_seven) ... ok\ntest_small_parcels_cost_four (test_shipping.ShippingTests.test_small_parcels_cost_four) ... ok\ntest_unsupported_weights_are_refused (test_shipping.ShippingTests.test_unsupported_weights_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.134
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C05/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C05/evidence.md",
+      "evidence_boundary": "Все 20 допустимых целых и 4 недопустимых примера; проверка типов вне границы.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C06",
+      "status": "complete",
+      "summary": "Анализ выявил сброс бюджета: четвёртый poll и бесконечное Pending нарушают контракт одной попытки.",
+      "created_files": [
+        "work/C06/evidence.md",
+        "work/C06/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [],
+      "execution_needed": false,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C06/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C06/evidence.md",
+      "evidence_boundary": "Статический анализ описанного дизайна; предложенные проверки реализации не выполнялись.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C07",
+      "status": "complete",
+      "summary": "Поддержанных дефектов нет при заданных гарантиях durable ID, idempotent endpoint, восстановления и прогресса.",
+      "created_files": [
+        "work/C07/evidence.md",
+        "work/C07/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [],
+      "execution_needed": false,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C07/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C07/evidence.md",
+      "evidence_boundary": "Статическая аргументация по всем заданным предпосылкам; реализации нет для эмпирической проверки.",
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C08",
+      "status": "complete",
+      "summary": "Существенных замечаний нет; 2 дополняющих теста прошли на границе mailer.",
+      "created_files": [
+        "work/C08/evidence.md",
+        "work/C08/report.md"
+      ],
+      "changed_files": [],
+      "commands_results": [
+        {
+          "label": "Исходные дополняющие unittest",
+          "command": "python3 -m unittest discover -v",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C08",
+          "exit_code": 0,
+          "output": "test_disabled_subscription_sends_nothing (test_newsletter.NewsletterTests.test_disabled_subscription_sends_nothing) ... ok\ntest_enabled_subscription_requests_welcome_mail (test_newsletter.NewsletterTests.test_enabled_subscription_requests_welcome_mail) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+          "duration_seconds": 0.034
+        }
+      ],
+      "execution_needed": true,
+      "report_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C08/report.md",
+      "evidence_path": "/private/tmp/zaroskill-properties-yy0u92e2/runs/cedar/work/C08/evidence.md",
+      "evidence_boundary": "Локальный сервис до mailer.send; существующий SMTP suite принят как условие и здесь не запускался.",
+      "unresolved_limitations": []
+    }
+  ],
+  "integrity": {
+    "agent_modified_original_files": [
+      "work/C01/booking.py"
+    ],
+    "externally_clarified_input": "work/C05/task.md",
+    "all_other_original_files_unchanged": true
+  },
+  "unresolved_limitations": []
+}

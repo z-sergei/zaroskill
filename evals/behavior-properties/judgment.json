@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "evaluation_design": {
+    "paired_runs": 1,
+    "development_tasks": 8,
+    "anonymous_labels": [
+      "A",
+      "B"
+    ],
+    "rubric_fixed_before_generation": true,
+    "C05_integer_domain_clarified_identically_before_completion": true,
+    "blinding": "Прочитаны только материалы внутри blind-judge; соответствие A/B каким-либо версиям не выяснялось и не выводилось.",
+    "statistical_superiority_claim": false,
+    "limitation": "Один парный прогон по 8 задачам разработки. Результаты не доказывают статистического превосходства, равенства популяций или обобщаемости на другие задачи.",
+    "rubric_followed_uncritically": false
+  },
+  "method": {
+    "inspected": [
+      "rubric.json",
+      "Все задания и исходные артефакты cases/",
+      "Представленные реализации и тесты C01/C02",
+      "Все report.md и evidence.md обеих серий",
+      "Оба mechanical-results.json"
+    ],
+    "mechanical_campaign_rerun": false,
+    "reason_not_rerun": "Сохранённые результаты согласуются с кодом; конкретного противоречия, требующего повторного запуска, нет.",
+    "independent_preservation_check": "Побайтно сравнены все исходные файлы с обеими сериями. Изменён только разрешённый C01/booking.py; остальные 17 исходных файлов в каждой серии сохранены.",
+    "evidence_honesty": "Сохранённые журналы достаточны для проверки заявленных red/green и проб; внешние каталоги из журналов не открывались. Анализ кода, аналитические трассы, выполненные запуски и будущие предложения явно разделены. Выдуманных запусков не выявлено. В C07 у обеих серий есть одинаковый чрезмерный аналитический вывод; он учтён отдельно от честности исполнения.",
+    "not_used_as_quality_proxies": [
+      "Длина ответа",
+      "Терминология свойств",
+      "Количество тестов",
+      "Дополнительные инструменты или пробы сами по себе"
+    ],
+    "rubric_validity_check": "Нормативные ожидания рубрики сопоставлены с текстом контрактов. Intended healthy у C07 не принят как основание игнорировать неполные предпосылки локального прогресса."
+  },
+  "overall": {
+    "winner": "tie",
+    "case_wins": {
+      "A": 0,
+      "B": 0,
+      "ties": 8
+    },
+    "reason": "A/B равны во всех 8 сравнительных решениях: C01/C02 имеют одинаковые успешные механические результаты, все 3 целевых дефекта найдены, ложных обвинений на 3 задуманных здоровых контролях нет. При критической проверке рубрики обнаружен общий пропуск в C07: обе серии переоценивают достаточность предпосылок для eventual локального Answered. Поэтому равенство не означает безупречность обоих ответов.",
+    "shared_limitation_cases": [
+      "C07"
+    ]
+  },
+  "counts": {
+    "A": {
+      "supported_review_design_defects_found": 3,
+      "supported_review_design_defects_total": 3,
+      "supported_review_design_defects_missed": 0,
+      "found_cases": [
+        "C03",
+        "C04",
+        "C06"
+      ],
+      "healthy_controls_with_false_findings": 0,
+      "false_findings_on_healthy_controls": 0,
+      "correct_no_findings_cases": [
+        "C05",
+        "C08"
+      ],
+      "unsupported_scope_expansions": 0,
+      "material_evidence_honesty_issues": 0,
+      "intended_healthy_controls_in_rubric": 3,
+      "fully_supported_healthy_controls_after_validity_review": 2,
+      "qualified_healthy_control_cases": [
+        "C07"
+      ],
+      "no_spurious_findings_on_intended_controls": [
+        "C05",
+        "C07",
+        "C08"
+      ],
+      "additional_shared_progress_assumption_misses": 1,
+      "unsupported_analytical_progress_conclusions": 1
+    },
+    "B": {
+      "supported_review_design_defects_found": 3,
+      "supported_review_design_defects_total": 3,
+      "supported_review_design_defects_missed": 0,
+      "found_cases": [
+        "C03",
+        "C04",
+        "C06"
+      ],
+      "healthy_controls_with_false_findings": 0,
+      "false_findings_on_healthy_controls": 0,
+      "correct_no_findings_cases": [
+        "C05",
+        "C08"
+      ],
+      "unsupported_scope_expansions": 0,
+      "material_evidence_honesty_issues": 0,
+      "intended_healthy_controls_in_rubric": 3,
+      "fully_supported_healthy_controls_after_validity_review": 2,
+      "qualified_healthy_control_cases": [
+        "C07"
+      ],
+      "no_spurious_findings_on_intended_controls": [
+        "C05",
+        "C07",
+        "C08"
+      ],
+      "additional_shared_progress_assumption_misses": 1,
+      "unsupported_analytical_progress_conclusions": 1
+    }
+  },
+  "actual_results": {
+    "A": {
+      "C01": {
+        "submitted_suite": {
+          "args": [
+            "-m",
+            "unittest",
+            "discover",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 4,
+          "assertion_failure": false
+        },
+        "independent_contract_suite": {
+          "args": [
+            "-m",
+            "unittest",
+            "test_public_contract",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 3,
+          "assertion_failure": false
+        },
+        "contract_satisfied_on_provided_evidence": true,
+        "recorded_red_green_cycles": 4
+      },
+      "C02": {
+        "original": {
+          "args": [
+            "-m",
+            "unittest",
+            "discover",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 3,
+          "assertion_failure": false
+        },
+        "fixed_faults": {
+          "fault_accept_obsolete": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_skip_request": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_never_publish": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_clear_while_loading": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          }
+        },
+        "faults_detected": 4,
+        "faults_total": 4,
+        "equivalent_refactors": {
+          "refactor_token_values": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 0,
+            "tests": 3,
+            "assertion_failure": false
+          },
+          "refactor_private_name": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 0,
+            "tests": 3,
+            "assertion_failure": false
+          }
+        },
+        "equivalent_refactors_accepted": 2,
+        "equivalent_refactors_total": 2,
+        "production_unchanged": true
+      }
+    },
+    "B": {
+      "C01": {
+        "submitted_suite": {
+          "args": [
+            "-m",
+            "unittest",
+            "discover",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 4,
+          "assertion_failure": false
+        },
+        "independent_contract_suite": {
+          "args": [
+            "-m",
+            "unittest",
+            "test_public_contract",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 3,
+          "assertion_failure": false
+        },
+        "contract_satisfied_on_provided_evidence": true,
+        "recorded_red_green_cycles": 4
+      },
+      "C02": {
+        "original": {
+          "args": [
+            "-m",
+            "unittest",
+            "discover",
+            "-v"
+          ],
+          "returncode": 0,
+          "tests": 3,
+          "assertion_failure": false
+        },
+        "fixed_faults": {
+          "fault_accept_obsolete": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_skip_request": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_never_publish": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          },
+          "fault_clear_while_loading": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 1,
+            "tests": 3,
+            "assertion_failure": true
+          }
+        },
+        "faults_detected": 4,
+        "faults_total": 4,
+        "equivalent_refactors": {
+          "refactor_token_values": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 0,
+            "tests": 3,
+            "assertion_failure": false
+          },
+          "refactor_private_name": {
+            "args": [
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "returncode": 0,
+            "tests": 3,
+            "assertion_failure": false
+          }
+        },
+        "equivalent_refactors_accepted": 2,
+        "equivalent_refactors_total": 2,
+        "production_unchanged": true
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "C01",
+      "kind": "implementation",
+      "winner": "tie",
+      "assessment": "Обе реализации удовлетворяют заданному контракту однопроцессной кассы; существенного различия в поведении нет.",
+      "contract_checks": {
+        "first_booking_and_public_owner": {
+          "A": true,
+          "B": true
+        },
+        "occupied_seat_refuses_another_customer": {
+          "A": true,
+          "B": true
+        },
+        "accepted_and_refused_receipts_preserved_on_retry": {
+          "A": true,
+          "B": true
+        },
+        "conflicting_customer_rejected_without_state_change": {
+          "A": true,
+          "B": true
+        },
+        "desk_usable_after_rejection_and_exception": {
+          "A": true,
+          "B": true
+        },
+        "public_api_preserved": {
+          "A": true,
+          "B": true
+        }
+      },
+      "test_first_evidence": {
+        "A": {
+          "recorded_red_green_cycles": 4,
+          "red_causes": [
+            "NotImplementedError на первом reserve",
+            "Второй клиент ошибочно принят",
+            "Повтор принятой заявки ошибочно отклонён",
+            "ValueError отсутствует при конфликте ID"
+          ],
+          "judgment": "Журнал содержит команды, коды завершения и содержательные ошибки перед соответствующими green. Пустой исходный набор не засчитан как успешное поведенческое свидетельство."
+        },
+        "B": {
+          "recorded_red_green_cycles": 4,
+          "red_causes": [
+            "NotImplementedError на первом reserve",
+            "Второй клиент ошибочно принят",
+            "Повтор принятой заявки ошибочно отклонён",
+            "ValueError отсутствует при конфликте ID"
+          ],
+          "judgment": "Журнал содержит команды, коды завершения и содержательные ошибки перед соответствующими green. Пустой исходный набор не засчитан как успешное поведенческое свидетельство."
+        }
+      },
+      "material_misses": {
+        "A": [],
+        "B": []
+      },
+      "differences_not_decisive": "Сценарии используют немного разные последовательности клиентов, но оба проверяют положительный результат, отказы, повторы обоих видов квитанций и сохранение состояния после конфликтов. Число тестов не использовалось как оценка качества.",
+      "evidence": [
+        "answers/A/C01/booking.py",
+        "answers/A/C01/test_booking.py",
+        "answers/A/C01/evidence.md",
+        "answers/B/C01/booking.py",
+        "answers/B/C01/test_booking.py",
+        "answers/B/C01/evidence.md",
+        "answers/A/mechanical-results.json",
+        "answers/B/mechanical-results.json"
+      ]
+    },
+    {
+      "case": "C02",
+      "kind": "test-writing",
+      "winner": "tie",
+      "assessment": "Оба набора проверяют настоящий SearchApp, требуемый запуск gateway до подачи ответа, публикацию активного ответа, сохранение прошлой выдачи и оба порядка устаревшего/активного ответа. Числовые значения токенов и частные поля не зафиксированы.",
+      "contract_checks": {
+        "exactly_one_gateway_start_with_returned_token": {
+          "A": true,
+          "B": true
+        },
+        "active_completion_visible": {
+          "A": true,
+          "B": true
+        },
+        "obsolete_completion_ignored_in_both_orders": {
+          "A": true,
+          "B": true
+        },
+        "new_search_preserves_previous_results": {
+          "A": true,
+          "B": true
+        },
+        "opaque_tokens": {
+          "A": true,
+          "B": true
+        },
+        "production_unchanged": {
+          "A": true,
+          "B": true
+        }
+      },
+      "test_first_evidence": "Не требовалось: production уже реализован. Ни одна серия не выдаёт пробы ошибок за историческую разработку test-first.",
+      "material_misses": {
+        "A": [],
+        "B": []
+      },
+      "differences_not_decisive": "A отдельно подаёт пустой активный ответ; B проверяет устаревшие ответы при уже сохранённой непустой выдаче. Это разные полезные примеры. Они не меняют равенства на заданных обязательствах и фиксированной механической кампании; полного равенства на любых возможных ошибках не утверждается.",
+      "evidence_boundary": "Порт запуска запроса, явно поданные receive и публичное visible. Ни фактический сетевой поиск, ни отрисовка UI, ни все возможные истории не заявляются проверенными.",
+      "evidence": [
+        "answers/A/C02/test_search.py",
+        "answers/A/C02/report.md",
+        "answers/A/C02/evidence.md",
+        "answers/B/C02/test_search.py",
+        "answers/B/C02/report.md",
+        "answers/B/C02/evidence.md",
+        "answers/A/mechanical-results.json",
+        "answers/B/mechanical-results.json"
+      ]
+    },
+    {
+      "case": "C03",
+      "kind": "review",
+      "winner": "tie",
+      "supported_target_defect": "После последнего begin active равен current: ветка с finish и смысловой проверкой недостижима, старое завершение не подаётся. Сумма states=210 не свидетельствует о защите документа.",
+      "target_found": {
+        "A": true,
+        "B": true
+      },
+      "material_misses": {
+        "A": [],
+        "B": []
+      },
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "assessment": "Обе серии точно локализуют пробел теста, не объявляют исходный Upload неисправным и предлагают два сохранённых токена с независимыми проверками документа в обоих разрешённых порядках завершений.",
+      "evidence_boundary": "В обоих журналах исходный тест проходит и с отключённой защитой; отдельная допустимая трасса current → old обнаруживает подмену на дефектной копии и проходит на исходной реализации. Заявленные пробы подтверждены сохранёнными выводами.",
+      "evidence": [
+        "cases/C03/test_upload.py",
+        "cases/C03/upload.py",
+        "answers/A/C03/report.md",
+        "answers/A/C03/evidence.md",
+        "answers/B/C03/report.md",
+        "answers/B/C03/evidence.md"
+      ]
+    },
+    {
+      "case": "C04",
+      "kind": "review",
+      "winner": "tie",
+      "supported_target_defect": "Точный режим CI python3 -O удаляет оба bare assert: не проверяются ни верный итог, ни обязательный ValueError.",
+      "target_found": {
+        "A": true,
+        "B": true
+      },
+      "material_misses": {
+        "A": [],
+        "B": []
+      },
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "assessment": "Обе серии выявляют обе утраченные проверки, сохраняют оговорку о возможном падении на неожиданном исключении и предлагают всегда активные проверки. Не выводят неисправность исходного invoice.py из недостатка тестового скрипта.",
+      "differences_not_decisive": "B проверяет два дефекта раздельно, A использует функцию return 999 и отдельно наблюдает оба неверных результата. Чтение обеих строк assert и эти журналы достаточны для одинакового вывода; раздельность проб не даёт существенного преимущества.",
+      "evidence_boundary": "Локально выполнена точная команда CI и контроль без -O. Это не запуск внешней CI-системы и не доказательство всей области входов.",
+      "evidence": [
+        "cases/C04/check_rules.py",
+        "cases/C04/invoice.py",
+        "answers/A/C04/report.md",
+        "answers/A/C04/evidence.md",
+        "answers/B/C04/report.md",
+        "answers/B/C04/evidence.md"
+      ]
+    },
+    {
+      "case": "C05",
+      "kind": "healthy-control",
+      "winner": "tie",
+      "assessment": "Обе серии обоснованно сообщают об отсутствии существенных замечаний в уточнённом целочисленном домене. Учитывают все 20 допустимых значений, тарифный переход 5/6, границы 0/21 и активность методов unittest под -O.",
+      "correct_no_findings": {
+        "A": true,
+        "B": true
+      },
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "differences_not_decisive": "B дополнительно выполняет пробу границы веса 5; A честно опирается на код и обычный/оптимизированный запуски. Такая проба не является обязательной для здорового теста и не меняет оценку.",
+      "scope_limits_are_not_findings": "Указание, что четыре отрицательных примера не доказывают все недопустимые целые, — корректная граница свидетельства. Обе серии рекомендуют сохранить тесты и не требуют проверки типов, property-библиотеки, счётчиков, UI или модели.",
+      "evidence": [
+        "cases/C05/task.md",
+        "cases/C05/test_shipping.py",
+        "answers/A/C05/report.md",
+        "answers/A/C05/evidence.md",
+        "answers/B/C05/report.md",
+        "answers/B/C05/evidence.md"
+      ]
+    },
+    {
+      "case": "C06",
+      "kind": "design-analysis",
+      "winner": "tie",
+      "supported_target_defect": "Сброс remaining=3 на каждом Pending оставляет remaining=2 после вычитания и не позволяет бюджету исчерпаться. После третьего Pending отправляется запрещённый четвёртый poll.",
+      "target_found": {
+        "A": true,
+        "B": true
+      },
+      "material_misses": {
+        "A": [],
+        "B": []
+      },
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "assessment": "Обе серии дают конечную трассу нарушения предела и объясняют допустимое бесконечное продолжение через повторяющееся состояние, а не выводят неограниченное свойство только из ограниченного перебора. Разделяют завершение попытки и жизнь сервиса; дедлайн не выдуман.",
+      "evidence_boundary": "Анализ описанного перехода, без реализации, симуляции или формального доказательства. Будущие проверки трёх Pending, Ready и Refresh явно обозначены как предложения.",
+      "evidence": [
+        "cases/C06/task.md",
+        "answers/A/C06/report.md",
+        "answers/A/C06/evidence.md",
+        "answers/B/C06/report.md",
+        "answers/B/C06/evidence.md"
+      ]
+    },
+    {
+      "case": "C07",
+      "kind": "intended-healthy-control-with-specification-limitation",
+      "winner": "tie",
+      "assessment": "Обе серии верно допускают постоянную жизнь сервиса и необязательное ожидание, разбирают единственный commit по durable ID и сериализованную отмену. Однако обе без достаточной оговорки выводят eventual локальный Answered: заданные предпосылки не исключают повторяющиеся прерывания после receipt перед устойчивой локальной записью.",
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "contract_checks": {
+        "same_durable_id_and_single_external_commit": {
+          "A": true,
+          "B": true
+        },
+        "restart_from_pending": {
+          "A": true,
+          "B": true
+        },
+        "serialized_cancellation_semantics": {
+          "A": true,
+          "B": true
+        },
+        "conditional_progress_after_submission": {
+          "A": "условность названа, но перечисленных предпосылок недостаточно для сделанного вывода",
+          "B": "условность названа, но перечисленных предпосылок недостаточно для сделанного вывода"
+        },
+        "no_invented_deadline_or_service_termination": {
+          "A": true,
+          "B": true
+        }
+      },
+      "scope_limits_are_not_findings": "Предложения проверить будущую реализацию сами по себе допустимы и не являются ложными замечаниями. Проблема в положительном аналитическом утверждении о гарантированном Answered при всех заданных предпосылках, а не в этих предложениях.",
+      "evidence_boundary": "Обе серии честно обозначают анализ без исполнения. Их конечные трассы восстановления демонстрируют возможность успешного завершения, но не исключают бесконечных прерываний до устойчивого локального статуса. Это ограничение обоснования, не выдуманный запуск.",
+      "evidence": [
+        "cases/C07/task.md",
+        "answers/A/C07/report.md",
+        "answers/A/C07/evidence.md",
+        "answers/B/C07/report.md",
+        "answers/B/C07/evidence.md"
+      ],
+      "no_spurious_defect_findings": {
+        "A": true,
+        "B": true
+      },
+      "unqualified_progress_conclusion_supported": {
+        "A": false,
+        "B": false
+      },
+      "material_misses": {
+        "A": [
+          "Не отмечен пробел гарантии прогресса участка receipt → durable Answered при неограниченных прерываниях."
+        ],
+        "B": [
+          "Не отмечен пробел гарантии прогресса участка receipt → durable Answered при неограниченных прерываниях."
+        ]
+      },
+      "rubric_validity_reference": "rubric_validity.C07",
+      "quoted_claims": {
+        "A": {
+          "source": "answers/A/C07/report.md",
+          "claim": "при заданных eventual acceptance и scheduling повтор получает receipt, после чего worker фиксирует Answered"
+        },
+        "B": {
+          "source": "answers/B/C07/report.md",
+          "claim": "При заданных eventual acceptance endpoint и eventual scheduling worker повторы приводят к receipt и Answered"
+        }
+      }
+    },
+    {
+      "case": "C08",
+      "kind": "healthy-control",
+      "winner": "tie",
+      "assessment": "Обе серии обоснованно принимают два взаимодополняющих теста: disabled не вызывает почтовый порт, enabled запрашивает ровно одно Welcome с нужным адресом. Положительный сценарий в соседнем тесте засчитан; spy внешнего порта признан допустимым.",
+      "correct_no_findings": {
+        "A": true,
+        "B": true
+      },
+      "false_findings": {
+        "A": [],
+        "B": []
+      },
+      "scope_limits_are_not_findings": "Доставка человеку не обещана; существующий SMTP contract suite принят из условия, но не выдан за самостоятельно запущенный. Объединения двух сценариев, новых проверок входов или e2e-доказательства никто не требует.",
+      "evidence_boundary": "В обоих журналах 2 теста проходят. Чувствительность к always-send/never-send обоснована чтением утверждений и честно не называется выполненной мутацией; этого достаточно для данного обзора.",
+      "evidence": [
+        "cases/C08/task.md",
+        "cases/C08/test_newsletter.py",
+        "answers/A/C08/report.md",
+        "answers/A/C08/evidence.md",
+        "answers/B/C08/report.md",
+        "answers/B/C08/evidence.md"
+      ]
+    }
+  ],
+  "rubric_validity": {
+    "overall": "Критерии C01–C06 и C08 согласуются с предоставленными контрактами в оценённой области. Метка healthy у C07 требует оговорки для локального прогресса при прерываниях.",
+    "C07": {
+      "classification": "healthy_safety_and_service_lifetime_control_but_underspecified_local_progress",
+      "issue": "Заданные eventual scheduling worker, eventual acceptance endpoint и восстановление pending не гарантируют завершения участка от получения receipt до устойчивой записи Answered при неограниченных прерываниях.",
+      "admissible_counterexample": [
+        "После submission durable pending содержит message ID m.",
+        "Worker получает выполнение, отправляет m; endpoint commits m один раз и возвращает receipt r.",
+        "Worker получает r, но прерывается до устойчивой записи Answered.",
+        "Supervisor восстанавливает worker из pending(m).",
+        "Worker снова получает выполнение; endpoint принимает повтор и возвращает тот же r.",
+        "Worker снова прерывается после receipt, но до записи Answered; эти шаги повторяются бесконечно."
+      ],
+      "assumptions_satisfied_by_counterexample": [
+        "Worker планируется многократно, даже бесконечно часто.",
+        "Endpoint принимает запрос и каждый повтор; receipt возвращается и достигает worker.",
+        "Supervisor каждый раз восстанавливает durable pending.",
+        "Используется один ID и ровно один внешний commit."
+      ],
+      "missing_progress_assumption": "Нужна гарантия, что обработка receipt и устойчивая запись конечного статуса когда-нибудь смогут завершиться. Например, достаточно конечного числа прерываний и завершающейся локальной записи после них либо другой явной гарантии выполнения локального конечного перехода.",
+      "interpretation_limit": "Если receipt → Answered задуман как непрерываемый атомарный переход и eventual scheduling распространяется на него, вывод может быть верен. Эта атомарность или гарантия прогресса локального перехода в тексте не установлена. Это пробел предпосылок описания, а не доказанная ошибка несуществующей реализации.",
+      "not_required": [
+        "Часовой deadline",
+        "Принудительное истечение ticket",
+        "Завершение всего сервиса",
+        "Ограничение числа сетевых retries само по себе"
+      ],
+      "effect_on_comparison": "Обе серии без этой оговорки утверждают receipt → Answered при данных предпосылках. Это общий аналитический overclaim/пропущенное уточнение, а не ложное обвинение в дефекте здорового теста. A/B остаются равны."
+    }
+  }
+}

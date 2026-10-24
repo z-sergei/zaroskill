@@ -1,0 +1,7 @@
+{
+  "SKILL.md": "76789d1d27f097a504e2e02d372931138a1521cfbb64764599c362d6a504a721",
+  "references/sources.md": "3b04f2fdcba45a548818dc735c94f1ea802c3192802ad662db82907e94627d91",
+  "references/temporal-checks.md": "934b6823efe72b7d13aeedf573f17f026ed0a5b0f5081d8b2cca584443461eaa",
+  "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+  "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c"
+}

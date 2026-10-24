@@ -13,3 +13,5 @@ This skill adapts Lamport's ideas to stateful workflows. The contract card, risk
 The compatibility check applies refinement reasoning to versioned consumer promises. It checks safety, supported inputs and progress separately and does not treat every implementation change as a contract change.
 
 This portable package keeps project maps in the consuming repository. It focuses on temporal behavior; general requirements-based implementation and the quality of test doubles belong to their existing workflows.
+
+The 2026-10-24 update also draws on [Anthropic / Theorem verification research](https://www.anthropic.com/research/formal-verification) and the [OSS Verify enrollment skill](https://github.com/theorem-labs/oss-verify/blob/abd10afe7dfc32050a08375c3eb9e2f332025152/.claude/skills/add-project/SKILL.md). The property-execution branch adapts those ideas to temporal models and their connection with real code; operation progress stays separate from service lifetime.

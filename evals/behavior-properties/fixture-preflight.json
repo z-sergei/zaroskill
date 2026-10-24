@@ -1,0 +1,149 @@
+{
+  "search_reference": {
+    "original": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 1,
+      "assertion_failure": false,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    "fault_accept_obsolete": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 1,
+      "assertion_failure": true,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... FAIL\n\n======================================================================\nFAIL: test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-8xefui95/test_reference.py\", line 20, in test_active_results_survive_old_completions_and_new_search_start\n    self.assertEqual(('new-result',), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('new-result',) != ('old-result',)\n\nFirst differing element 0:\n'new-result'\n'old-result'\n\n- ('new-result',)\n?   ^^^\n\n+ ('old-result',)\n?   ^^^\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n"
+    },
+    "fault_skip_request": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 1,
+      "assertion_failure": true,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... FAIL\n\n======================================================================\nFAIL: test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-dm4a_6zz/test_reference.py\", line 15, in test_active_results_survive_old_completions_and_new_search_start\n    self.assertEqual([(first, 'old'), (second, 'new')], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'old'), (2, 'new')] != []\n\nFirst list contains 2 additional elements.\nFirst extra element 0:\n(1, 'old')\n\n- [(1, 'old'), (2, 'new')]\n+ []\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n"
+    },
+    "fault_never_publish": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 1,
+      "assertion_failure": true,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... FAIL\n\n======================================================================\nFAIL: test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-2iv60l69/test_reference.py\", line 18, in test_active_results_survive_old_completions_and_new_search_start\n    self.assertEqual(('new-result',), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('new-result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'new-result'\n\n- ('new-result',)\n+ ()\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n"
+    },
+    "fault_clear_while_loading": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 1,
+      "assertion_failure": true,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... FAIL\n\n======================================================================\nFAIL: test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-6wbartxb/test_reference.py\", line 22, in test_active_results_survive_old_completions_and_new_search_start\n    self.assertEqual(('new-result',), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('new-result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'new-result'\n\n- ('new-result',)\n+ ()\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (failures=1)\n"
+    },
+    "refactor_token_values": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 1,
+      "assertion_failure": false,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    "refactor_private_name": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 1,
+      "assertion_failure": false,
+      "output": "test_active_results_survive_old_completions_and_new_search_start (test_reference.SearchContract.test_active_results_survive_old_completions_and_new_search_start) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    }
+  },
+  "review_baselines": {
+    "C03": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 1,
+      "assertion_failure": false,
+      "output": "test_previous_upload_cannot_replace_current_document (test_upload.UploadTests.test_previous_upload_cannot_replace_current_document) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+    },
+    "C05": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_larger_supported_parcels_cost_seven (test_shipping.ShippingTests.test_larger_supported_parcels_cost_seven) ... ok\ntest_small_parcels_cost_four (test_shipping.ShippingTests.test_small_parcels_cost_four) ... ok\ntest_unsupported_weights_are_refused (test_shipping.ShippingTests.test_unsupported_weights_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "C08": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 2,
+      "assertion_failure": false,
+      "output": "test_disabled_subscription_sends_nothing (test_newsletter.NewsletterTests.test_disabled_subscription_sends_nothing) ... ok\ntest_enabled_subscription_requests_welcome_mail (test_newsletter.NewsletterTests.test_enabled_subscription_requests_welcome_mail) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    "C04": {
+      "args": [
+        "-O",
+        "check_rules.py"
+      ],
+      "returncode": 0,
+      "tests": 0,
+      "assertion_failure": false,
+      "output": "invoice checks passed\n"
+    },
+    "C05_optimized": {
+      "args": [
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_larger_supported_parcels_cost_seven (test_shipping.ShippingTests.test_larger_supported_parcels_cost_seven) ... ok\ntest_small_parcels_cost_four (test_shipping.ShippingTests.test_small_parcels_cost_four) ... ok\ntest_unsupported_weights_are_refused (test_shipping.ShippingTests.test_unsupported_weights_are_refused) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    }
+  }
+}

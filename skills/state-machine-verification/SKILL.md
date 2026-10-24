@@ -29,6 +29,8 @@ Read the relevant section of [design checks](references/design-checks.md) when a
 
 **Ready:** the claim has a source, an observable consequence and a boundary. The reducer's current branches are evidence about behavior, not the specification of correctness.
 
+Keep a concrete user or caller scenario alongside a general property so its meaning remains reviewable. If useful work is promised, include that positive obligation: refusing every action may satisfy the prohibition while violating the product contract. Select progress obligations per operation; a service or user-driven interaction can legitimately remain active.
+
 ## 2. Connect the abstract steps to real events
 
 Trace a consequential path through **input → state transition → command → execution → callback/result → consumer**. Include effects that bypass the reducer. Locate the owner of pending work, the point where an identity is stamped, and the check that rejects an obsolete result. Distinguish an identifier for the user/session from one for a particular attempt.
@@ -57,6 +59,8 @@ For exploration, record initial states, event/data domain, depth or other bounds
 Deduplication must preserve everything needed for future transitions **and the property**. If a property depends on history, include a monitor such as delivered-count or consumed-resource identities in the explored state and its key. If pending requests and queued callbacks affect possible next events, include the relevant environment state too. Equal UI/reducer states alone do not justify merging those executions. A copied reducer used as the oracle gives weak independent evidence.
 
 **Ready:** each check can expose a specific wrong outcome; its abstraction and bounds are explicit. Depth-limited traces are not an unbounded proof or a liveness check. See [temporal checks](references/temporal-checks.md) for progress, monitor state and effect semantics.
+
+For generated or conditional checks, use the [property execution checks](references/temporal-checks.md#property-execution) when the condition, build mode or failure handling could make the result empty. A successful verifier establishes its stated property; validate the property's meaning and its correspondence to the user's observation separately.
 
 ## 4. Make the result useful for the change
 

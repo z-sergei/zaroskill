@@ -1,0 +1,12 @@
+{
+  "revealed_after_final_blind_judgment": true,
+  "A": {
+    "run": "cedar",
+    "version": "candidate-revision-1"
+  },
+  "B": {
+    "run": "spruce",
+    "version": "baseline",
+    "commit": "8c401fd17ca30d41b261d6340a859e0d627ceadd"
+  }
+}

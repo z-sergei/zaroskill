@@ -1,0 +1,11 @@
+--- a/skills/state-machine-verification/references/temporal-checks.md
++++ b/skills/state-machine-verification/references/temporal-checks.md
+@@ -30,6 +30,8 @@
+ 
+ State both a progress goal and assumptions about participants: eventual response, scheduling of an enabled retry, bounded consecutive failures, bounded total budget, or a finite number of phase resets. Use only assumptions the system can support. A finite budget per response does not bound the whole workflow if new responses can keep enlarging it or resetting the phase.
+ 
++Recovery enables another attempt; it does not guarantee progress. Repeated interruption between receiving a result and durably recording completion can permit endless retries despite eventual replies and scheduling. Identify the action or segment that must eventually complete, or a supported bound on disruptions. Keep that assumption explicit instead of silently assuming an uninterrupted attempt.
++
+ For a decreasing counter argument, show it cannot be replenished indefinitely by other steps and that a step consuming it cannot be postponed forever. A disabled button, time advanced in one test, or no detected deadlock does not establish liveness. A deadline additionally needs time and delay assumptions.
+ 
+ Finite trace exploration finds finite violations and checks bounded response requirements. It does not establish eventual progress over arbitrary executions. Full finite-state temporal checking can analyze cycles under stated fairness; explain those assumptions instead of adding fairness merely to obtain a passing result.

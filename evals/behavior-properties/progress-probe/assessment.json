@@ -1,0 +1,27 @@
+{
+  "design": "One fresh-context agent, four complete analysis tasks, latest temporal skill only; reviewed by the parent after completion.",
+  "scope": "Analytical trace and assumption review; no code execution or theorem prover.",
+  "cases": {
+    "P01": {
+      "result": "correct",
+      "evidence": "Infinite allowed receipt/restart cycle; durable Done not entailed."
+    },
+    "P02": {
+      "result": "correct",
+      "evidence": "Finite restarts and subsequent successful local steps imply eventual Done; deduplication per ID, no clock deadline."
+    },
+    "P03": {
+      "result": "correct",
+      "evidence": "Optional human wait and perpetual app allowed; Leave still closes preview."
+    },
+    "P04": {
+      "result": "correct",
+      "evidence": "Third Pending resets remaining to two and schedules forbidden fourth poll."
+    }
+  },
+  "limitations": [
+    "Targeted development probe following a revealed shared limitation.",
+    "No baseline repeat; no causal superiority claim.",
+    "Does not validate a production implementation."
+  ]
+}

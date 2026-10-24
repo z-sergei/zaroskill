@@ -1,0 +1,41 @@
+{
+  "khorikov-unit-testing": {
+    "baseline": {
+      "SKILL.md": "b686c6925f63fb101b3e48d86ae2266bac076eb2110d40ebbf3e09e6eb6c5e33",
+      "references/sources.md": "d2265418b491b58c86012a7020f801f1abed5bf36962231163037708b0e5339f",
+      "references/boundaries.md": "e95d14e91ae3ae079244ae32b8fe44cb48501987501032f15cf6ce3d422702b7",
+      "agents/openai.yaml": "4435ee7b8addf37cff4e4c75c55f6b25c8d8e4c15ff6574f204ce33913b1bbda"
+    },
+    "installed_matches_repository": true
+  },
+  "requirements-tdd": {
+    "baseline": {
+      "SKILL.md": "2691034281aa5125f24e649681f39c3a3ce14dc6e42e0e9fdd6848837d5d23a0",
+      "references/sources.md": "60b7ecf8a96cc5f95852816ff06b3e0f578a374d194ffafdc150371626c2769f",
+      "references/boundaries.md": "924bfaa358181c65a0a093bf62677fa167ddcbb1b9f8e390431fe781768b46fd",
+      "references/existing-code.md": "8fcdecad2fb92d1a37e9e4cf1db2c766689287abdb05785c6f323b076293167f",
+      "agents/openai.yaml": "c1422cacd47a03d5687602e48c34fcfff423c2413f3ba898de554d354787a580"
+    },
+    "installed_matches_repository": true
+  },
+  "test-quality-review": {
+    "baseline": {
+      "SKILL.md": "47329a606bf24f707d6e245882f4040b1aa990a0ac8dc01cbad10aa2d714f69a",
+      "references/boundaries-and-traps.md": "5c0908c39e84fe9ad0d3318f4085158c967afb1b92f03d03370ceeced95e8daa",
+      "references/sources.md": "fad58af3ea72c7898cc979b43b3b9e025d1b84af20ed3438eaf33dcc4ca59f17",
+      "references/probes.md": "28d7275e5c647740be08186c590fe5dce1e5d4b67fd737486eebf82fa24c4d79",
+      "agents/openai.yaml": "4b8ba8b18c1fea8bc47319ba3bd55fa0942a2a8a179f0c3e15a70da6b401f0a5"
+    },
+    "installed_matches_repository": true
+  },
+  "state-machine-verification": {
+    "baseline": {
+      "SKILL.md": "a13f4ddfa2ac4afca5ef5a00c9e2d6e6037d457002d299188ee2c000ba25a29a",
+      "references/sources.md": "a992b51e970da275db09caa9346609ed5deb8a69ede5628e91cf4a4eed3531ee",
+      "references/temporal-checks.md": "2b6620a8f963a358c7d538571961496b59af781ea33b2e4b3f7a6f8e7e9663a0",
+      "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+      "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c"
+    },
+    "installed_matches_repository": true
+  }
+}

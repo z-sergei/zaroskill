@@ -1,0 +1,11 @@
+Use the supplied state-machine-verification skill to assess these four small designs. Analysis only: identify what is supported, any missing assumption or counterexample, and the smallest useful next evidence. Do not build a model or change implementation unless the analysis actually requires it. These are complete task descriptions; no other files should be consulted.
+
+P01. A document delivery worker keeps a durable Pending record with an ID. Send is one transition. Receiving its receipt is a second transition and stores it only in volatile memory. Writing durable Done is a third transition. A restart may occur between any two transitions and clears volatile state; Pending then starts again with the same ID. The recipient commits an ID at most once and returns its original receipt on retries. Every send eventually receives a receipt, and every pending worker is eventually scheduled. Restarts can occur arbitrarily often. The proposed guarantee is that each accepted document will eventually be durably marked Done. Does it follow?
+
+P02. The same worker and recipient, with the additional contract that for each document there are at most two restarts; after the last restart, all pending local steps, including the durable write, eventually execute and succeed. There is no clock deadline. Assess the proposed guarantee and duplication risk.
+
+P03. A kiosk preview stays active while a person considers whether to take a photo. No requirement forces them to act or expires the preview. Pressing Leave closes the preview through a serialized local transition. The application keeps running for future users. Assess whether lack of whole-application or waiting-state termination is a defect.
+
+P04. A background status service promises that one Check ends with Ready or StillPending after at most three poll replies; a new explicit Check starts a new budget. Each scheduled poll eventually returns. Pending handling sets the remaining budget to the server's suggested value of three, subtracts one, then polls again if positive. The server can keep suggesting three. Assess the promise, separately from the lifetime of the service.
+
+Write report.md with concise Russian findings for P01..P04 and evidence labels. Read only this directory and this task; no parent/sibling files, network or delegation.

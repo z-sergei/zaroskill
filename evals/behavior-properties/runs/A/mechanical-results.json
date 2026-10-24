@@ -1,0 +1,131 @@
+{
+  "booking_submitted": {
+    "args": [
+      "-m",
+      "unittest",
+      "discover",
+      "-v"
+    ],
+    "returncode": 0,
+    "tests": 4,
+    "assertion_failure": false,
+    "output": "test_first_request_accepts_customer_and_sets_owner (test_booking.TicketDeskTests.test_first_request_accepts_customer_and_sets_owner) ... ok\ntest_occupied_seat_refuses_other_customers_and_keeps_owner (test_booking.TicketDeskTests.test_occupied_seat_refuses_other_customers_and_keeps_owner) ... ok\ntest_repeated_requests_return_original_receipts (test_booking.TicketDeskTests.test_repeated_requests_return_original_receipts) ... ok\ntest_reusing_request_id_for_another_customer_raises_without_changing_booking (test_booking.TicketDeskTests.test_reusing_request_id_for_another_customer_raises_without_changing_booking) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "search_variants": {
+    "original": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "fault_accept_obsolete": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current')) ... FAIL\n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older')) ... FAIL\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-_zwt2vjj/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: () != ('fox result',)\n\nSecond tuple contains 1 additional elements.\nFirst extra element 0:\n'fox result'\n\n- ()\n+ ('fox result',)\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-_zwt2vjj/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('whale result',) != ('fox result',)\n\nFirst differing element 0:\n'whale result'\n'fox result'\n\n- ('whale result',)\n?   ^^^^^\n\n+ ('fox result',)\n?   ^^^\n\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+    },
+    "fault_skip_request": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... FAIL\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current')) ... FAIL\n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older')) ... FAIL\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... FAIL\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-enf53x2_/test_search.py\", line 29, in test_new_search_keeps_visible_results_until_its_empty_answer\n    self.assertEqual([(previous, \"red fox\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'red fox')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'red fox')\n\n- [(1, 'red fox')]\n+ []\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-enf53x2_/test_search.py\", line 48, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual([(older, \"red fox\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'red fox')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'red fox')\n\n- [(1, 'red fox')]\n+ []\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-enf53x2_/test_search.py\", line 48, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual([(older, \"red fox\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'red fox')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'red fox')\n\n- [(1, 'red fox')]\n+ []\n\n======================================================================\nFAIL: test_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-enf53x2_/test_search.py\", line 21, in test_search_starts_one_request_and_active_answer_becomes_visible\n    self.assertEqual([(token, \"red fox\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'red fox')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'red fox')\n\n- [(1, 'red fox')]\n+ []\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=4)\n"
+    },
+    "fault_never_publish": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... FAIL\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current')) ... FAIL\n  test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older')) ... FAIL\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... FAIL\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-dywrrpg3/test_search.py\", line 31, in test_new_search_keeps_visible_results_until_its_empty_answer\n    self.assertEqual((\"fox result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('fox result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'fox result'\n\n- ('fox result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('older', 'current'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-dywrrpg3/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('whale result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'whale result'\n\n- ('whale result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) (completion_order=('current', 'older'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-dywrrpg3/test_search.py\", line 62, in test_older_answer_cannot_change_visible_results_in_either_completion_order\n    self.assertEqual(visible, app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('whale result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'whale result'\n\n- ('whale result',)\n+ ()\n\n======================================================================\nFAIL: test_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-dywrrpg3/test_search.py\", line 23, in test_search_starts_one_request_and_active_answer_becomes_visible\n    self.assertEqual((\"fox result\", \"another fox result\"), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('fox result', 'another fox result') != ()\n\nFirst tuple contains 2 additional elements.\nFirst extra element 0:\n'fox result'\n\n- ('fox result', 'another fox result')\n+ ()\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=4)\n"
+    },
+    "fault_clear_while_loading": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... FAIL\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-uwj1fbfx/test_search.py\", line 38, in test_new_search_keeps_visible_results_until_its_empty_answer\n    self.assertEqual((\"fox result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('fox result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'fox result'\n\n- ('fox result',)\n+ ()\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nFAILED (failures=1)\n"
+    },
+    "refactor_token_values": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "refactor_private_name": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_new_search_keeps_visible_results_until_its_empty_answer (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_empty_answer) ... ok\ntest_older_answer_cannot_change_visible_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_visible_results_in_either_completion_order) ... ok\ntest_search_starts_one_request_and_active_answer_becomes_visible (test_search.SearchAppTests.test_search_starts_one_request_and_active_answer_becomes_visible) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    }
+  },
+  "preserved_inputs": {
+    "C08/test_newsletter.py": true,
+    "C08/newsletter.py": true,
+    "C08/task.md": true,
+    "C06/task.md": true,
+    "C01/task.md": true,
+    "C07/task.md": true,
+    "C02/search.py": true,
+    "C02/task.md": true,
+    "C05/shipping.py": true,
+    "C05/task.md": true,
+    "C05/test_shipping.py": true,
+    "C04/check_rules.py": true,
+    "C04/task.md": true,
+    "C04/invoice.py": true,
+    "C03/upload.py": true,
+    "C03/test_upload.py": true,
+    "C03/task.md": true
+  },
+  "booking_contract": {
+    "args": [
+      "-m",
+      "unittest",
+      "test_public_contract",
+      "-v"
+    ],
+    "returncode": 0,
+    "tests": 3,
+    "assertion_failure": false,
+    "output": "test_conflicting_identity_does_not_reassign_original_request (test_public_contract.ContractTests.test_conflicting_identity_does_not_reassign_original_request) ... ok\ntest_first_customer_receives_the_seat_and_other_customer_does_not (test_public_contract.ContractTests.test_first_customer_receives_the_seat_and_other_customer_does_not) ... ok\ntest_success_and_rejection_receipts_survive_retries (test_public_contract.ContractTests.test_success_and_rejection_receipts_survive_retries) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  }
+}

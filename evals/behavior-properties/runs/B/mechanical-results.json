@@ -1,0 +1,131 @@
+{
+  "booking_submitted": {
+    "args": [
+      "-m",
+      "unittest",
+      "discover",
+      "-v"
+    ],
+    "returncode": 0,
+    "tests": 4,
+    "assertion_failure": false,
+    "output": "test_another_customer_cannot_take_the_occupied_seat (test_booking.TicketDeskTests.test_another_customer_cannot_take_the_occupied_seat) ... ok\ntest_first_reservation_assigns_the_seat (test_booking.TicketDeskTests.test_first_reservation_assigns_the_seat) ... ok\ntest_repeating_a_request_returns_its_original_receipt (test_booking.TicketDeskTests.test_repeating_a_request_returns_its_original_receipt) ... ok\ntest_reusing_an_id_for_another_customer_preserves_the_booking (test_booking.TicketDeskTests.test_reusing_an_id_for_another_customer_preserves_the_booking) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "search_variants": {
+    "original": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... ok\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "fault_accept_obsolete": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... ok\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first') ... FAIL\n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first') ... FAIL\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-gqum6fgp/test_search.py\", line 65, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ('obsolete result',)\n\nFirst differing element 0:\n'saved result'\n'obsolete result'\n\n- ('saved result',)\n?    ^^ ^\n\n+ ('obsolete result',)\n?   ++ ^^ ^^\n\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-gqum6fgp/test_search.py\", line 72, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"current result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('current result',) != ('obsolete result',)\n\nFirst differing element 0:\n'current result'\n'obsolete result'\n\n- ('current result',)\n+ ('obsolete result',)\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+    },
+    "fault_skip_request": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... FAIL\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... FAIL\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first') ... FAIL\n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first') ... FAIL\n\n======================================================================\nFAIL: test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ppe471ka/test_search.py\", line 20, in test_each_search_starts_one_request_with_its_returned_token\n    self.assertEqual([(first, \"mountains\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'mountains')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'mountains')\n\n- [(1, 'mountains')]\n+ []\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ppe471ka/test_search.py\", line 30, in test_new_search_keeps_visible_results_until_its_answer_arrives\n    self.assertEqual([(previous, \"previous query\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'previous query')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'previous query')\n\n- [(1, 'previous query')]\n+ []\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ppe471ka/test_search.py\", line 50, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual([(previous, \"saved query\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'saved query')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'saved query')\n\n- [(1, 'saved query')]\n+ []\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ppe471ka/test_search.py\", line 50, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual([(previous, \"saved query\")], gateway.requests)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: [(1, 'saved query')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n(1, 'saved query')\n\n- [(1, 'saved query')]\n+ []\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=4)\n"
+    },
+    "fault_never_publish": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... FAIL\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first') ... FAIL\n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first') ... FAIL\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-1al0yc5v/test_search.py\", line 32, in test_new_search_keeps_visible_results_until_its_answer_arrives\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-1al0yc5v/test_search.py\", line 52, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-1al0yc5v/test_search.py\", line 52, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=3)\n"
+    },
+    "fault_clear_while_loading": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 1,
+      "tests": 3,
+      "assertion_failure": true,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... FAIL\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... \n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first') ... FAIL\n  test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first') ... FAIL\n\n======================================================================\nFAIL: test_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ap1ckjkq/test_search.py\", line 39, in test_new_search_keeps_visible_results_until_its_answer_arrives\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='older first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ap1ckjkq/test_search.py\", line 61, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n======================================================================\nFAIL: test_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) (order='current first')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/nt/9lddggc17w55nwcbrk65dlww0000gn/T/property-grade-ap1ckjkq/test_search.py\", line 61, in test_older_answer_cannot_change_results_in_either_completion_order\n    self.assertEqual((\"saved result\",), app.visible)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Tuples differ: ('saved result',) != ()\n\nFirst tuple contains 1 additional elements.\nFirst extra element 0:\n'saved result'\n\n- ('saved result',)\n+ ()\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=3)\n"
+    },
+    "refactor_token_values": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... ok\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    },
+    "refactor_private_name": {
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests": 3,
+      "assertion_failure": false,
+      "output": "test_each_search_starts_one_request_with_its_returned_token (test_search.SearchAppTests.test_each_search_starts_one_request_with_its_returned_token) ... ok\ntest_new_search_keeps_visible_results_until_its_answer_arrives (test_search.SearchAppTests.test_new_search_keeps_visible_results_until_its_answer_arrives) ... ok\ntest_older_answer_cannot_change_results_in_either_completion_order (test_search.SearchAppTests.test_older_answer_cannot_change_results_in_either_completion_order) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+    }
+  },
+  "preserved_inputs": {
+    "C08/test_newsletter.py": true,
+    "C08/newsletter.py": true,
+    "C08/task.md": true,
+    "C06/task.md": true,
+    "C01/task.md": true,
+    "C07/task.md": true,
+    "C02/search.py": true,
+    "C02/task.md": true,
+    "C05/shipping.py": true,
+    "C05/task.md": true,
+    "C05/test_shipping.py": true,
+    "C04/check_rules.py": true,
+    "C04/task.md": true,
+    "C04/invoice.py": true,
+    "C03/upload.py": true,
+    "C03/test_upload.py": true,
+    "C03/task.md": true
+  },
+  "booking_contract": {
+    "args": [
+      "-m",
+      "unittest",
+      "test_public_contract",
+      "-v"
+    ],
+    "returncode": 0,
+    "tests": 3,
+    "assertion_failure": false,
+    "output": "test_conflicting_identity_does_not_reassign_original_request (test_public_contract.ContractTests.test_conflicting_identity_does_not_reassign_original_request) ... ok\ntest_first_customer_receives_the_seat_and_other_customer_does_not (test_public_contract.ContractTests.test_first_customer_receives_the_seat_and_other_customer_does_not) ... ok\ntest_success_and_rejection_receipts_survive_retries (test_public_contract.ContractTests.test_success_and_rejection_receipts_survive_retries) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  }
+}

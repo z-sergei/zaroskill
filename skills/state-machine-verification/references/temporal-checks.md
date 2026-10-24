@@ -26,7 +26,11 @@ The reducer can establish that it requests release or transfer. The executor/ada
 
 ## Progress and retries
 
+Name the operation that owes progress. An always-running server, listener or preview need not terminate; an accepted request may still owe a response. Waiting for an optional user action is permitted unless the contract says otherwise. Keep these lifetimes separate when interpreting a non-terminating execution.
+
 State both a progress goal and assumptions about participants: eventual response, scheduling of an enabled retry, bounded consecutive failures, bounded total budget, or a finite number of phase resets. Use only assumptions the system can support. A finite budget per response does not bound the whole workflow if new responses can keep enlarging it or resetting the phase.
+
+Recovery enables another attempt; it does not guarantee progress. Repeated interruption between receiving a result and durably recording completion can permit endless retries despite eventual replies and scheduling. Identify the action or segment that must eventually complete, or a supported bound on disruptions. Keep that assumption explicit instead of silently assuming an uninterrupted attempt.
 
 For a decreasing counter argument, show it cannot be replenished indefinitely by other steps and that a step consuming it cannot be postponed forever. A disabled button, time advanced in one test, or no detected deadlock does not establish liveness. A deadline additionally needs time and delay assumptions.
 
@@ -41,3 +45,11 @@ For each reduction in the state space, explain why merged cases cannot differ fo
 Use TLA+/PlusCal when the design question crosses multiple owners or durable boundaries and the model can omit substantial code detail. Specify permitted initial states, atomic actions, properties, environment assumptions and a finite configuration first. Model the uncertain interleavings instead of assuming an entire request/response round trip is atomic.
 
 After checking the model, map each action and property to code, contracts or a runtime experiment. Identify internal steps that preserve the abstract state and concrete effects that the abstraction observes. Safety correspondence alone does not preserve progress. Keep the model only while it answers a maintained engineering question; simple local reducers usually need no separate formal model.
+
+## Property execution
+
+For a conditional rule, identify a reachable witness that activates its premise and check. A large state count or all phases visited does not guarantee this. In executable tests, verify the relevant assertion is active in the exercised build/mode and that failure handling preserves its signal. Existing direct scenarios can supply this evidence without new instrumentation.
+
+When a material claim remains uncertain, alter one transition in a disposable copy to produce the promised forbidden observation, retaining the same property. Confirm a meaningful failure; exclude unreachable or behavior-preserving mutations. Changing the assertion alone establishes only that the failure mechanism works. Carry a useful counterexample into a scenario against the real implementation and observe the user's result, not only an internal variable.
+
+Keep the requirement and property stable while repairing the implementation. Correct the property when independent evidence shows it was wrong, documenting the changed claim. A proof that fails or times out may need a lemma, a better abstraction or another tool; diagnose the cause before reporting a product defect. For a formal result, retain the exact statement, code/model versions, verifier result and assumptions so the claim can be reproduced at its actual boundary.

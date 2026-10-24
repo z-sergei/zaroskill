@@ -1,0 +1,117 @@
+{
+  "C01": {
+    "kind": "implementation",
+    "skill": "requirements-tdd",
+    "expect": [
+      "actual red then green",
+      "positive first booking",
+      "second customer refused",
+      "same-key retry preserves receipt",
+      "key reuse with another customer rejected without changes",
+      "observable owner and receipts consistent",
+      "no whole-process termination demand"
+    ],
+    "penalize": [
+      "invented UI/database/formal proof obligations"
+    ]
+  },
+  "C02": {
+    "kind": "test-writing",
+    "skill": "khorikov-unit-testing",
+    "expect": [
+      "real search call requests gateway work",
+      "current completion shown",
+      "obsolete completion cannot replace current results",
+      "new search preserves existing results until its own completion",
+      "opaque tokens not literal numeric assumptions"
+    ],
+    "penalize": [
+      "production edits",
+      "fake completion without proving required start",
+      "whole-app guarantees from this boundary"
+    ]
+  },
+  "C03": {
+    "kind": "review",
+    "skill": "test-quality-review",
+    "finding": "conditional assertion is unreachable; no stale completion delivered",
+    "expect": [
+      "reachable begin A, begin B, result B, result A with independent expected observation",
+      "state count is not sensitivity evidence"
+    ],
+    "penalize": [
+      "claim production Upload is faulty",
+      "claim actual fault probe without execution"
+    ]
+  },
+  "C04": {
+    "kind": "review",
+    "skill": "test-quality-review",
+    "finding": "optimized execution removes bare assertions",
+    "expect": [
+      "both acceptance and rejection checks lose assertions",
+      "use always-active assertions or correct exercised mode",
+      "do not infer invoice implementation wrong"
+    ],
+    "penalize": [
+      "claim passing optimized run proves rule",
+      "irrelevant demand for UI/integration"
+    ]
+  },
+  "C05": {
+    "kind": "healthy",
+    "skill": "test-quality-review",
+    "expect": [
+      "no material findings",
+      "unittest assertions remain active under optimization",
+      "no mandatory property library/coverage counters/UI/model"
+    ],
+    "penalize": [
+      "style quota findings",
+      "missing instrumentation as defect"
+    ]
+  },
+  "C06": {
+    "kind": "analysis",
+    "skill": "state-machine-verification",
+    "finding": "poll budget reset prevents exhaustion; fourth poll violates at-most-three promise",
+    "expect": [
+      "concrete finite witness",
+      "operation-specific progress separate from service lifetime",
+      "no invented deadline"
+    ],
+    "penalize": [
+      "require whole-service termination",
+      "bounded traces prove unbounded liveness"
+    ]
+  },
+  "C07": {
+    "kind": "healthy",
+    "skill": "state-machine-verification",
+    "expect": [
+      "service lifetime and optional customer wait allowed",
+      "answer delivery progress conditional on stated delivery/scheduling assumptions",
+      "no confirmed issue in supplied design",
+      "scope analysis only"
+    ],
+    "penalize": [
+      "invented timeout/expiry/forced termination",
+      "unsupported stronger cancellation promise"
+    ]
+  },
+  "C08": {
+    "kind": "healthy",
+    "skill": "test-quality-review",
+    "expect": [
+      "no material findings",
+      "success coverage in neighboring test counts",
+      "external request interaction is valid contract",
+      "no mandatory human-inbox/e2e proof"
+    ],
+    "penalize": [
+      "force positive and negative into same test",
+      "flag permitted mock",
+      "invent whole-user-delivery guarantee"
+    ]
+  }
+}

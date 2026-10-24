@@ -34,6 +34,8 @@ Read [boundaries-and-traps.md](references/boundaries-and-traps.md) when mocks, p
 
 For each suspected gap, identify a concrete valid scenario and the required observable difference. Consider boundaries, rejection-state preservation, recovery and reuse when the contract makes them meaningful. Assess distinct risks; avoid demanding every imaginable input combination. Judge duplicate tests by the discrimination and diagnosis they add, not textual similarity alone.
 
+Read [property evidence](references/property-evidence.md) when tests claim a rule across generated inputs or event histories, use conditional assertions, or claim a user outcome from a narrower boundary. Assess the rule's meaning, whether its check runs, and which violation it detects. Absence of property-based tooling is not itself a finding.
+
 **Ready:** each weakness is tied to a missing discriminator, a plausible false failure, unstable execution or a concrete maintenance burden. Style preferences and speculative extra partitions remain suggestions, not defects.
 
 ## 3. Substantiate material findings

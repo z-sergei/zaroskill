@@ -1,0 +1,375 @@
+{
+  "root": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce",
+  "status": "completed",
+  "cases": [
+    {
+      "case_id": "C01",
+      "status": "implemented_and_tested",
+      "created_files": [
+        "work/C01/evidence.md",
+        "work/C01/report.md",
+        "work/C01/test_booking.py"
+      ],
+      "changed_files": [
+        "work/C01/booking.py"
+      ],
+      "commands": [
+        {
+          "label": "Исходный запуск",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 5,
+          "result": "Ran 0 tests in 0.000s\nNO TESTS RAN"
+        },
+        {
+          "label": "Срез 1: red до реализации первой брони",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_first_reservation_assigns_the_seat",
+          "exit_code": 1,
+          "result": "NotImplementedError: reservation is not implemented\nRan 1 test in 0.000s\nFAILED (errors=1)"
+        },
+        {
+          "label": "Срез 1: green",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_first_reservation_assigns_the_seat",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 1: регрессии",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 2: red до защиты занятого места",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_another_customer_cannot_take_the_occupied_seat",
+          "exit_code": 1,
+          "result": "AssertionError: Receipt(customer='Ben', accepted=False) != Receipt(customer='Ben', accepted=True)\nRan 1 test in 0.000s\nFAILED (failures=1)"
+        },
+        {
+          "label": "Срез 2: green",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_another_customer_cannot_take_the_occupied_seat",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 2: регрессии",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 2 tests in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 3: red до повторного использования квитанции",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_repeating_a_request_returns_its_original_receipt",
+          "exit_code": 1,
+          "result": "AssertionError: Receipt(customer='Ada', accepted=True) != Receipt(customer='Ada', accepted=False)\nRan 1 test in 0.000s\nFAILED (failures=1)"
+        },
+        {
+          "label": "Срез 3: green",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_repeating_a_request_returns_its_original_receipt",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 3: регрессии",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        },
+        {
+          "label": "Срез 4: red до проверки владельца ID",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_reusing_an_id_for_another_customer_preserves_the_booking",
+          "exit_code": 1,
+          "result": "AssertionError: ValueError not raised\nAssertionError: ValueError not raised\nRan 1 test in 0.000s\nFAILED (failures=2)"
+        },
+        {
+          "label": "Срез 4: green",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest -v test_booking.TicketDeskTests.test_reusing_an_id_for_another_customer_preserves_the_booking",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Итоговая выборка",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C01",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 4 tests in 0.000s\nOK"
+        }
+      ],
+      "result": "Реализована бронь одного места; 4 наблюдавшихся цикла red/green, итоговые 4 теста проходят.",
+      "report_path": "work/C01/report.md",
+      "evidence_path": "work/C01/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C02",
+      "status": "tests_added_and_verified",
+      "created_files": [
+        "work/C02/evidence.md",
+        "work/C02/report.md",
+        "work/C02/test_search.py"
+      ],
+      "changed_files": [],
+      "commands": [
+        {
+          "label": "Исходная выборка",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C02",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 5,
+          "result": "Ran 0 tests in 0.000s\nNO TESTS RAN"
+        },
+        {
+          "label": "Добавленные сценарии",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C02",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        },
+        {
+          "label": "Проба чувствительности: принятие устаревшего ответа",
+          "cwd": "/private/tmp/spruce-C02-d6oh5la_",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 1,
+          "result": "AssertionError: Tuples differ: ('saved result',) != ('obsolete result',)\nAssertionError: Tuples differ: ('current result',) != ('obsolete result',)\nRan 3 tests in 0.001s\nFAILED (failures=2)"
+        },
+        {
+          "label": "Проба устойчивости к непрозрачным token",
+          "cwd": "/private/tmp/spruce-C02-d6oh5la_",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        },
+        {
+          "label": "Финальная проверка исходного production",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C02",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        }
+      ],
+      "result": "Добавлены 3 теста SearchApp; устаревший ответ обнаруживается, непрозрачные token допускаются.",
+      "report_path": "work/C02/report.md",
+      "evidence_path": "work/C02/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C03",
+      "status": "reviewed_with_finding",
+      "created_files": [
+        "work/C03/evidence.md",
+        "work/C03/report.md"
+      ],
+      "changed_files": [],
+      "commands": [
+        {
+          "label": "Исходный тест",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C03",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Дефект в копии: finish принимает любой token",
+          "cwd": "/private/tmp/spruce-C03-8i9oqime",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 1 test in 0.000s\nOK"
+        },
+        {
+          "label": "Достижимый контрпример на дефектной копии",
+          "cwd": "/private/tmp/spruce-C03-8i9oqime",
+          "command": "python3 -B -c 'from upload import Upload; app = Upload(); old = app.begin(); current = app.begin(); app.finish(current, \"current-document\"); print(\"after current:\", app.document); app.finish(old, \"older-document\"); print(\"after old:\", app.document); assert app.document == \"current-document\", \"older result replaced the current document\"'",
+          "exit_code": 1,
+          "result": "after current: current-document\nafter old: older-document\nAssertionError: older result replaced the current document"
+        },
+        {
+          "label": "Тот же контрпример на исходной реализации",
+          "cwd": "/private/tmp/spruce-C03-8i9oqime",
+          "command": "python3 -B -c 'from upload import Upload; app = Upload(); old = app.begin(); current = app.begin(); app.finish(current, \"current-document\"); print(\"after current:\", app.document); app.finish(old, \"older-document\"); print(\"after old:\", app.document); assert app.document == \"current-document\", \"older result replaced the current document\"'",
+          "exit_code": 0,
+          "result": "after current: current-document\nafter old: current-document"
+        }
+      ],
+      "result": "Тест не достигает finish; дефектная обработка старого upload остаётся зелёной.",
+      "report_path": "work/C03/report.md",
+      "evidence_path": "work/C03/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": [
+        "Рекомендованное исправление теста не внедрено: по условию обзор без изменений исходных файлов."
+      ]
+    },
+    {
+      "case_id": "C04",
+      "status": "reviewed_with_finding",
+      "created_files": [
+        "work/C04/evidence.md",
+        "work/C04/report.md"
+      ],
+      "changed_files": [],
+      "commands": [
+        {
+          "label": "Исходная команда CI",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C04",
+          "command": "python3 -O check_rules.py",
+          "exit_code": 0,
+          "result": "invoice checks passed"
+        },
+        {
+          "label": "Проба неверного нормального итога при -O",
+          "cwd": "/private/tmp/spruce-C04-ixy09y5n",
+          "command": "python3 -O check_rules.py",
+          "exit_code": 0,
+          "result": "invoice checks passed"
+        },
+        {
+          "label": "Контроль той же ошибки без -O",
+          "cwd": "/private/tmp/spruce-C04-ixy09y5n",
+          "command": "python3 check_rules.py",
+          "exit_code": 1,
+          "result": "AssertionError"
+        },
+        {
+          "label": "Проба принятия отрицательной суммы при -O",
+          "cwd": "/private/tmp/spruce-C04-ixy09y5n",
+          "command": "python3 -O check_rules.py",
+          "exit_code": 0,
+          "result": "invoice checks passed"
+        },
+        {
+          "label": "Контроль отсутствующего отказа без -O",
+          "cwd": "/private/tmp/spruce-C04-ixy09y5n",
+          "command": "python3 check_rules.py",
+          "exit_code": 1,
+          "result": "AssertionError"
+        }
+      ],
+      "result": "Bare assert удаляются при точной CI-команде -O; оба заявленных свойства не защищены.",
+      "report_path": "work/C04/report.md",
+      "evidence_path": "work/C04/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": [
+        "Рекомендованное исправление проверок не внедрено: по условию обзор без изменений исходных файлов."
+      ]
+    },
+    {
+      "case_id": "C05",
+      "status": "reviewed_no_material_findings",
+      "created_files": [
+        "work/C05/evidence.md",
+        "work/C05/report.md"
+      ],
+      "changed_files": [],
+      "commands": [
+        {
+          "label": "Обычный unittest",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C05",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        },
+        {
+          "label": "unittest с оптимизацией",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C05",
+          "command": "python3 -O -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 3 tests in 0.000s\nOK"
+        },
+        {
+          "label": "Проба границы тарифа при -O",
+          "cwd": "/private/tmp/spruce-C05-diymjapc",
+          "command": "python3 -O -B -m unittest discover -v",
+          "exit_code": 1,
+          "result": "AssertionError: 4 != 7\nRan 3 tests in 0.000s\nFAILED (failures=1)"
+        }
+      ],
+      "result": "Тесты тарифа проходят обычно и под -O; целевой дефект границы 5 обнаруживается.",
+      "report_path": "work/C05/report.md",
+      "evidence_path": "work/C05/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C06",
+      "status": "analyzed_with_issue",
+      "created_files": [
+        "work/C06/evidence.md",
+        "work/C06/report.md"
+      ],
+      "changed_files": [],
+      "commands": [],
+      "result": "Пополнение remaining допускает четвёртый poll и бесконечные Pending в одной попытке.",
+      "report_path": "work/C06/report.md",
+      "evidence_path": "work/C06/evidence.md",
+      "execution_needed": false,
+      "unresolved_limitations": [
+        "Анализ без реализации: изменение дизайна и проверка будущего кода остаются предложением."
+      ]
+    },
+    {
+      "case_id": "C07",
+      "status": "analyzed_no_supported_issue",
+      "created_files": [
+        "work/C07/evidence.md",
+        "work/C07/report.md"
+      ],
+      "changed_files": [],
+      "commands": [],
+      "result": "Продолжение работы допустимо; безопасность и прогресс после submit согласованы с заданными предпосылками.",
+      "report_path": "work/C07/report.md",
+      "evidence_path": "work/C07/evidence.md",
+      "execution_needed": false,
+      "unresolved_limitations": []
+    },
+    {
+      "case_id": "C08",
+      "status": "reviewed_no_material_findings",
+      "created_files": [
+        "work/C08/evidence.md",
+        "work/C08/report.md"
+      ],
+      "changed_files": [],
+      "commands": [
+        {
+          "label": "Запуск локальной выборки",
+          "cwd": "/private/tmp/zaroskill-properties-yy0u92e2/runs/spruce/work/C08",
+          "command": "python3 -B -m unittest discover -v",
+          "exit_code": 0,
+          "result": "Ran 2 tests in 0.000s\nOK"
+        }
+      ],
+      "result": "Две дополняющие проверки покрывают отсутствие/наличие запроса Welcome на почтовом порту.",
+      "report_path": "work/C08/report.md",
+      "evidence_path": "work/C08/evidence.md",
+      "execution_needed": true,
+      "unresolved_limitations": []
+    }
+  ],
+  "created_support_files": [
+    "fixture-snapshot.json",
+    "result.json"
+  ],
+  "fixture_integrity": {
+    "modified_by_this_task": [
+      "work/C01/booking.py"
+    ],
+    "externally_clarified_and_reread": [
+      "work/C05/task.md"
+    ],
+    "all_other_original_work_files_byte_identical": true,
+    "disposable_probe_directories_removed": true,
+    "all_subprocesses_completed": true
+  },
+  "unresolved_blockers": []
+}

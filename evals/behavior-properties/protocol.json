@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-24",
+  "baseline_commit": "8c401fd17ca30d41b261d6340a859e0d627ceadd",
+  "design": "One paired run: two fresh-context agents, eight same-order cases each; separate fresh-context blinded judge.",
+  "model": "Inherited session default; no model or reasoning override.",
+  "generation_labels": {
+    "A": "cedar",
+    "B": "spruce"
+  },
+  "initial_prompt": "Perform C01..C08 using the named skill from your isolated bundle and its relevant references. C01 implementation/test-first; C02 tests-only; C03-C05/C08 read-only review with disposable probes; C06-C07 analysis-only. Record commands/results and scoped Russian reports. No sibling, grading, installed-skill or network access; no delegation.",
+  "followups": [
+    "Identical C05 integer-input domain clarification applied before either C05 report existed.",
+    "Identical reminder to keep probes proportional and avoid grading material.",
+    "Before unblinding, the parent asked the judge to validate C07 progress under interruptions; the final judgment records a shared missed assumption and an under-specified healthy-control rubric."
+  ],
+  "mechanical_checks": [
+    "C01 submitted suite and independent public-contract suite",
+    "C02 original, four behavior faults, two equivalent refactors with unchanged submitted tests",
+    "Original fixture files preserved outside explicitly authorized C01 implementation"
+  ],
+  "limitations": [
+    "One run per version; not a statistical or causal superiority estimate.",
+    "Development cases designed for these concerns; no held-out evaluation.",
+    "Case generation and grading instructions are behavioral isolation, not an OS confidentiality boundary.",
+    "Recorded TDD/probe history comes from evaluator evidence; final artifacts were independently executed.",
+    "No production application tests or formal theorem prover were run.",
+    "C07 was initially labeled healthy but is under-specified for eventual durable completion. Preserve this rubric issue and shared miss rather than counting it as an unqualified healthy pass."
+  ],
+  "unblinding": "Version key opened only after final blind judgment with the C07 caveat.",
+  "post_comparison": {
+    "change": "One temporal reference paragraph on interruptions before durable completion.",
+    "validation": "Fresh-context four-case analysis, archived in progress-probe; distinct from the blinded comparison.",
+    "baseline_retested": false
+  }
+}

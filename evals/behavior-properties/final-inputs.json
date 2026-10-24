@@ -1,0 +1,23 @@
+{
+  "rubric.json": "4b3cada6889604241f9b4f9a8b1a3d2b768f2bb46f2fc2483f83c645e878f59d",
+  "fixture-preflight.json": "7ad598f38d4b57dd4b333710630b84417d297f804a9bf37f246962fe58df2de9",
+  "grade.py": "976e59a28097ceaa648a59b4805c5d6e8167c83bd0fde523bcaa959698df4d4c",
+  "cases/C08/test_newsletter.py": "7ae787aa936190adef50f63861d2c9439dc328167aeba9cb21a93479f0b4fe5c",
+  "cases/C08/newsletter.py": "d819ec186f3c4cdd1c747f08d7eb7753e66edf02fb8a7d4023b5b6870768aeb8",
+  "cases/C08/task.md": "f609c34a6ecb811205db75cf94df9069216b435b1f1b794fec6362e7b41d04ad",
+  "cases/C06/task.md": "c52617533882e72619fe8a83f03a8245a876e26187d33385e0d4274714a6d24d",
+  "cases/C01/booking.py": "782e45fa9b0ee93e0fa006f4c89c5f568c66d6df8831d9805c25c78969897a28",
+  "cases/C01/task.md": "88b047ce5c7a89ee36befafa1be50b4ac6759443238f11f275a438b1cb60019e",
+  "cases/C07/task.md": "e70c223fba88eec19204a38f374f72ff1d6f9121a35d97d829caa9f0661ad03e",
+  "cases/C02/search.py": "0acff3481f87b6ee7e7eedbad6fbc15fa25f5244b4f6da81e05d61c117cde753",
+  "cases/C02/task.md": "3f599baab68dec554ad692b6d7548e98d8f4beb2814c58b1a8a8b66f29a49a53",
+  "cases/C05/shipping.py": "a069d57a441bddda5398448f62880d07d8f9903e871309179507f629c9d888ab",
+  "cases/C05/task.md": "58d1c5e7d1eff7cae4f79f01bf337de4f7f663e20b66fe5971ac7bf940d00da8",
+  "cases/C05/test_shipping.py": "0df4ab76a8c72255817664ee4b2298ab656b2e01fe989f4cb6622a81b71aca5d",
+  "cases/C04/check_rules.py": "5727a60ff272bf9fb319aa628a3ae9c9ddc9c4c6892d9eb808fd5353dc54faff",
+  "cases/C04/task.md": "559ad8be171a33ad95a7caa290fabf6f7abfa689be742d4d60475de6989498fb",
+  "cases/C04/invoice.py": "943f149cb1c47169d37d09c4319d49a4c354871df9a49773c1c17a147cdb5ccf",
+  "cases/C03/upload.py": "4306d5db227d450c8d465ecdea6fc8ea40be8657b1b6a91ad78dfff136efb4bf",
+  "cases/C03/test_upload.py": "1465fe5c22b0faee61dfa89666cbd830bc133b1c2d58205996f64bbaf428af51",
+  "cases/C03/task.md": "7a72b7321eea180dfad083d23b6c038eeda8c7a68f35fcba9952ccc2c718292e"
+}
