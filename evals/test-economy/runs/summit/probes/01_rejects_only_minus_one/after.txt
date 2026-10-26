@@ -1,0 +1,21 @@
+python3 -m unittest discover -v
+Exit: 1
+test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) ... ok
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... 
+  test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) (subtotal_cents=-200) ... FAIL
+test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) ... ok
+test_standard_fee_below_5000_cents (test_shipping.ShippingTests.test_standard_fee_below_5000_cents) ... ok
+
+======================================================================
+FAIL: test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) (subtotal_cents=-200)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/runs/summit/probes/01_rejects_only_minus_one/test_shipping.py", line 24, in test_negative_subtotals_are_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)

@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "root": "<run>",
+  "order": ["04_discount_cap", "06_upload_workflow"],
+  "execution_log": "execution.md",
+  "tasks": [
+    {
+      "id": "04_discount_cap",
+      "skill": "requirements-tdd",
+      "status": "completed",
+      "response": "work/cases/04_discount_cap/response.md",
+      "modified_files": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py",
+        "work/cases/04_discount_cap/response.md"
+      ],
+      "baseline": {"tests": 6, "exit_code": 0},
+      "red_green": [
+        {
+          "test": "test_discount_is_limited_by_cap",
+          "api_scaffold_error": "unexpected keyword argument max_discount_cents",
+          "behavioral_red": "AssertionError: 850 != 900",
+          "red_exit_code": 1,
+          "green_exit_code": 0,
+          "regression_tests_after_green": 7
+        },
+        {
+          "test": "test_negative_cap_is_rejected_even_when_discount_is_zero",
+          "behavioral_red": "ValueError not raised in four subtests",
+          "red_exit_code": 1,
+          "green_exit_code": 0,
+          "regression_tests_after_green": 8
+        }
+      ],
+      "final": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+        "tests": 13,
+        "exit_code": 0
+      },
+      "unresolved": []
+    },
+    {
+      "id": "06_upload_workflow",
+      "skill": "state-machine-verification",
+      "status": "completed",
+      "response": "work/cases/06_upload_workflow/response.md",
+      "modified_files": [
+        "work/cases/06_upload_workflow/test_upload.py",
+        "work/cases/06_upload_workflow/response.md"
+      ],
+      "baseline": {"tests": 3, "exit_code": 0},
+      "final": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+        "tests": 8,
+        "exit_code": 0
+      },
+      "verification_scope": "Focused public API traces; two restart histories with three attempts, not exhaustive exploration or formal proof",
+      "targeted_faults_detected": 5,
+      "behavior_preserving_probe": {"id_step": 7, "tests": 8, "exit_code": 0},
+      "probe_results": "probes/results.json",
+      "production_unchanged": true,
+      "production_sha256": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+      "unresolved": []
+    }
+  ],
+  "environment_note": "python was unavailable (exit 127); all executed test suites used python3 with bytecode writing disabled",
+  "network_used": false,
+  "delegation_used": false,
+  "dependencies_installed": false
+}

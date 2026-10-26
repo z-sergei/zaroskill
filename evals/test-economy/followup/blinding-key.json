@@ -1,0 +1,10 @@
+{
+  "birch": {
+    "version": "baseline",
+    "candidate_revision": null
+  },
+  "cedar": {
+    "version": "candidate",
+    "candidate_revision": "v2"
+  }
+}

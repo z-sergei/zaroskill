@@ -32,7 +32,7 @@ Compare each reviewed test's name with what its assertions establish. A useful n
 
 Read [boundaries-and-traps.md](references/boundaries-and-traps.md) when mocks, persistence, external effects, state transitions, asynchronous work or structured output affect the assessment. Several assertions, a real database observation or an interaction check may be exactly right for the selected contract.
 
-For each suspected gap, identify a concrete valid scenario and the required observable difference. Consider boundaries, rejection-state preservation, recovery and reuse when the contract makes them meaningful. Assess distinct risks; avoid demanding every imaginable input combination. Judge duplicate tests by the discrimination and diagnosis they add, not textual similarity alone.
+For each suspected gap, identify a concrete valid scenario and the required observable difference. Choose contractual input/history partitions, boundaries and relevant interactions instead of every imaginable combination. Assess the contribution beyond existing evidence: a missing distinction, another integration obligation, faster feedback or useful diagnosis. A sufficient suite can need no additions. Recommend removal or consolidation only when the lost test's useful evidence remains represented, including historical regressions. Similar code, line coverage or the same finite mutation kill set alone does not establish redundancy.
 
 Read [property evidence](references/property-evidence.md) when tests claim a rule across generated inputs or event histories, use conditional assertions, or claim a user outcome from a narrower boundary. Assess the rule's meaning, whether its check runs, and which violation it detects. Absence of property-based tooling is not itself a finding.
 
@@ -42,7 +42,7 @@ Read [property evidence](references/property-evidence.md) when tests claim a rul
 
 A finding needs a test location, a contract source, a concrete counterexample or refactor, its consequence and the smallest useful correction. Check plausible alternative explanations before assigning severity: the behavior may be covered elsewhere, the alleged refactor may change the contract, or a double may intentionally observe an external promise.
 
-Use [probes.md](references/probes.md) for a disputed or high-impact claim that a test misses a fault or rejects an equivalent implementation. Execute a focused probe when it would materially change the conclusion. A clear code-based finding can stand without an expensive campaign; identify its evidence accurately.
+Use [probes.md](references/probes.md) for a disputed or high-impact claim that a test misses a fault or rejects an equivalent implementation, or when interpreting or proposing an automated mutation campaign. Reuse relevant executed evidence; run a focused probe when it would materially change the conclusion. A clear code-based finding can stand without an expensive campaign; identify its evidence accurately.
 
 Classify evidence as **executed**, **demonstrated by code**, or **hypothesis requiring confirmation**. Tie severity to the supported consequence: high for a consequential regression or seriously misleading protection, medium for a material gap or recurring false failure, low for a concrete local maintenance improvement. Explain the impact; the label alone is insufficient. An uncertain claim does not become a confirmed defect through a severity label.
 
@@ -57,7 +57,7 @@ Scale the report to the task. Include:
 - **Verdict and scope:** sound within the reviewed scope, useful with material gaps, misleading evidence, or inconclusive. Explain the main reason and notable strengths worth retaining.
 - **Four dimensions:** the assessments above, each grounded in evidence; mark unavailable evidence unknown.
 - **Prioritized findings:** location, contract, concrete problem, consequence, minimal correction and evidence level. Group instances of the same cause rather than inflating the count.
-- **Best next step:** the most valuable test or repair, with its distinguishing input and expected observation. Preserve useful existing coverage. Recommend retaining tests when that is the right result.
+- **Best next step:** add, strengthen, consolidate, remove within requested scope, or retain tests according to their additional protection and cost. Name the distinguishing observation or show where useful evidence survives a reduction. Stop proposing examples when no material uncovered risk or diagnostic benefit justifies them.
 - **Checks and limits:** actual commands/results, probe outcomes, unreviewed areas and integration gaps. Distinguish completed checks from proposed work.
 
 If no material defect is found, say so and describe the bounded evidence; inventing a quota of issues reduces review quality. Stop when the scoped assessment is supported. Review completion does not mean gaps are fixed or authorize commits, merges or deployment.

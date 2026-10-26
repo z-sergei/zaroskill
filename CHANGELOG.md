@@ -1,5 +1,15 @@
 # Changes
 
+## 2026-10-26
+
+- Added explicit criteria for the contribution of a new test and for stopping once the scoped outcomes and risks have evidence.
+- Preserved integration boundaries, useful diagnosis and historical regressions when considering redundant examples; neither test count nor an equal finite mutation kill set is a deletion criterion.
+- Reused meaningful red–green evidence before requiring additional probes, and added conditional guidance for bounded automated mutation campaigns and report interpretation.
+- Added a focused TDD check for previous preconditions and promised effects on new shortcut paths.
+- Retained updates to the three testing skills; kept `state-machine-verification` at its prior version after its experimental changes failed to preserve a fixed boolean-result distinction in the directed comparison.
+- Recorded six independent fixtures, two initial matched blind comparisons, a separate directed pair, raw evidence, and per-skill retention decisions in `evals/test-economy`. The initial comparison found three avoidable baseline scenarios versus none for the candidate, with mixed additional protection; it did not establish overall superiority. The directed comparison favored the candidate in TDD and the baseline in temporal verification.
+- Kept all released packages self-contained and stack-independent. Automated tool integration remains conditional; no external mutation framework is installed by these changes.
+
 ## 2026-10-24
 
 ### Behavior properties and user scenarios

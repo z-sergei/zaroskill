@@ -1,0 +1,13 @@
+Compare the anonymized answers in this folder, using the original case contracts, the frozen rubric and the independently executed mechanical results. There are two matched pairs (R1 and R2), each with A and B. The identities behind A/B may differ between pairs. You have no skill snapshots or version map; do not seek them or infer version identity.
+
+Read only this folder. No network, parent/sibling folders, installed skills, delegation or application edits. Write judgment.md and judgment.json here. You may use disposable local copies for a focused verification if a material ambiguity remains, recording exactly what you executed. Provided mechanical outcomes and participant logs must remain distinguishable from checks you execute yourself.
+
+Judge in this order:
+1. Does the answer satisfy the explicit task and preserve supported contract distinctions and scope?
+2. Do unchanged tests detect the relevant non-equivalent faults and survive the supplied equivalent refactors? Inspect actual failure causes, discovery and baseline, not exit code alone.
+3. Has it reduced or avoided unjustified test obligations, while retaining other boundary evidence, useful diagnosis and historical regressions? Fewer methods, lines or mutation kills is not a sufficient argument. A parameterized table can still contain many unjustified cases. Similar tests can protect different promises. Preserving a supplied report's finite kill set does not automatically justify deletion.
+4. Is extra verification work proportionate, and are claims about mutation reports, executed probes, refactoring and uncertainty accurate?
+
+For each pair and case, name specific retained/added/removed distinctions, protection loss if any, unnecessary work if any, and choose A, B, tie, or inconclusive. Count avoidable cases only if you can justify why their relevant contribution is already represented, rather than inventing a required minimum. A correct no-change result can be the best answer.
+
+Critically validate the rubric against the explicit case contract. Record any ambiguous or unsupported assumption instead of forcing a winner. Give case-level evidence and an aggregate assessment, with limitations: this is two paired development runs; six tasks within an agent session are not independent samples, and no statistical superiority is established. Wording preference is not measured behavioral improvement.

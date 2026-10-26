@@ -1,0 +1,8 @@
+{
+  "judgment_json_valid": true,
+  "markdown_present": true,
+  "fixed_totals_preserved": true,
+  "all_supplied_material_hashes_unchanged": true,
+  "narrow_runs_and_logs_present": true,
+  "judge_reran_tests_during_validation": false
+}

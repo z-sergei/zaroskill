@@ -1,0 +1,40 @@
+test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) ... 
+  test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='done') ... FAIL
+  test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='cancelled') ... FAIL
+
+======================================================================
+FAIL: test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/restart_retains_previous_result/test_upload.py", line 85, in test_restarts_keep_old_results_out_of_new_attempts
+    self.assertEqual((session.state, session.result), ("waiting", None))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('waiting', 'first.csv') != ('waiting', None)
+
+First differing element 1:
+'first.csv'
+None
+
+- ('waiting', 'first.csv')
++ ('waiting', None)
+
+======================================================================
+FAIL: test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/restart_retains_previous_result/test_upload.py", line 96, in test_restarts_keep_old_results_out_of_new_attempts
+    self.assertEqual((session.state, session.result), ("waiting", None))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('waiting', 'second.csv') != ('waiting', None)
+
+First differing element 1:
+'second.csv'
+None
+
+- ('waiting', 'second.csv')
++ ('waiting', None)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=2)

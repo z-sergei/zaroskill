@@ -1,0 +1,122 @@
+{
+  "status": "complete",
+  "root": "<run>",
+  "task_order": [
+    "01_shipping_bands",
+    "02_display_name",
+    "03_capacity_boundaries",
+    "04_discount_cap",
+    "05_mutation_report",
+    "06_upload_workflow"
+  ],
+  "runner": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+  "runner_note": "python was absent (exit 127); python3 used successfully",
+  "execution_log": "execution.md",
+  "tasks": [
+    {
+      "id": "01_shipping_bands",
+      "skill": "khorikov-unit-testing",
+      "outputs": [
+        "work/cases/01_shipping_bands/test_shipping.py",
+        "work/cases/01_shipping_bands/response.md"
+      ],
+      "final_tests": 4,
+      "examples": 11,
+      "checks": [
+        "baseline 13 OK",
+        "threshold >= to > probe: 1 assertion failure",
+        "restored and final 4 OK"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "02_display_name",
+      "skill": "khorikov-unit-testing",
+      "outputs": [
+        "work/cases/02_display_name/test_names.py",
+        "work/cases/02_display_name/response.md"
+      ],
+      "final_tests": 9,
+      "checks": [
+        "baseline 7 OK",
+        "ASCII-only strip probe: old 7 OK, expanded suite 1 assertion failure",
+        "restored and final 9 OK"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "03_capacity_boundaries",
+      "skill": "test-quality-review",
+      "outputs": [
+        "work/cases/03_capacity_boundaries/test_capacity.py",
+        "work/cases/03_capacity_boundaries/response.md"
+      ],
+      "final_tests": 8,
+      "checks": [
+        "baseline 6 OK",
+        "return limit probe: old 6 OK, expanded suite 2 assertion failures",
+        "restored and final 8 OK"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "04_discount_cap",
+      "skill": "requirements-tdd",
+      "outputs": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py",
+        "work/cases/04_discount_cap/response.md"
+      ],
+      "final_tests": 12,
+      "checks": [
+        "baseline 6 OK",
+        "missing keyword TypeError classified as API/setup failure",
+        "RED 1 after inert signature: 850 != 900; GREEN 1 and 7 OK",
+        "RED 2: ValueError not raised in 4 subtests; GREEN 2 and 8 OK",
+        "boundary and compatibility examples immediately green; final 12 OK"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "05_mutation_report",
+      "skill": "test-quality-review",
+      "outputs": [
+        "work/cases/05_mutation_report/review.md"
+      ],
+      "final_tests": 6,
+      "checks": [
+        "synthetic supplied report explicitly distinguished from execution",
+        "baseline 6 OK",
+        "M1 manual probe: 6 OK, equivalent by algebra",
+        "M2 manual probe: 6 OK, direct witness original 25 vs altered 0",
+        "M3 manual probe: existing rounding test fails 51 != 50",
+        "M4 manual probe: existing 24-hour test fails 50 != 25",
+        "restored and final 6 OK"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "06_upload_workflow",
+      "skill": "state-machine-verification",
+      "outputs": [
+        "work/cases/06_upload_workflow/test_upload.py",
+        "work/cases/06_upload_workflow/response.md"
+      ],
+      "final_tests": 8,
+      "checks": [
+        "baseline 3 OK",
+        "stale-id probe: old 3 OK, expanded suite 2 assertion failures",
+        "rejected begin corrupts active id probe: 1 assertion failure",
+        "contract-preserving id increment by 2: 8 OK",
+        "restored and final 8 OK"
+      ],
+      "status": "complete"
+    }
+  ],
+  "final_test_methods_total": 47,
+  "limits": [
+    "No network, dependencies, external mutation tool, delegation, or formal model checking.",
+    "Only discount feature changed production; all other production files were unchanged.",
+    "Final passing examples and focused probes are bounded evidence, not an exhaustive proof."
+  ]
+}

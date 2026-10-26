@@ -1,0 +1,107 @@
+test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent) ... FAIL
+test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation) ... FAIL
+test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt) ... FAIL
+test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) ... 
+  test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done') ... FAIL
+  test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled') ... FAIL
+test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel) ... FAIL
+test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete) ... FAIL
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... 
+  test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=0) ... FAIL
+  test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=2) ... FAIL
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... FAIL
+
+======================================================================
+FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 45, in test_cancel_prevents_late_completion_and_is_idempotent
+    self.assertIs(session.cancel(), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 22, in test_idle_ignores_completion_and_cancellation
+    self.assertIs(session.complete(1, "too-early.csv"), False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 is not False
+
+======================================================================
+FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 68, in test_rejected_begin_preserves_current_attempt
+    self.assertIs(session.complete(attempt, "original.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 78, in test_restart_rejects_stale_results_before_and_after_current_result
+    self.assertIs(session.complete(old, "old.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 81, in test_restart_rejects_stale_results_before_and_after_current_result
+    self.assertIs(session.cancel(), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 33, in test_success_is_not_overwritten_by_duplicate_or_cancel
+    self.assertIs(session.complete(attempt, "report.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 95, in test_three_attempts_keep_completed_and_cancelled_ids_obsolete
+    self.assertIs(session.complete(first, "first.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+======================================================================
+FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 57, in test_unknown_completion_preserves_current_attempt
+    self.assertIs(session.complete(unknown, "wrong.csv"), False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 is not False
+
+======================================================================
+FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 57, in test_unknown_completion_preserves_current_attempt
+    self.assertIs(session.complete(unknown, "wrong.csv"), False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 is not False
+
+======================================================================
+FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/numeric_boolean_returns/test_upload.py", line 59, in test_unknown_completion_preserves_current_attempt
+    self.assertIs(session.complete(attempt, "right.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 is not True
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (failures=10)

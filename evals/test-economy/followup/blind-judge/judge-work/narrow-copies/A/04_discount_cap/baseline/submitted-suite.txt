@@ -1,0 +1,18 @@
+test_cap_at_or_above_discount_keeps_percentage_discount (test_discounts.DiscountTests.test_cap_at_or_above_discount_keeps_percentage_discount) ... ok
+test_cap_must_be_passed_by_keyword (test_discounts.DiscountTests.test_cap_must_be_passed_by_keyword) ... ok
+test_discount_cannot_exceed_cap (test_discounts.DiscountTests.test_discount_cannot_exceed_cap) ... ok
+test_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok
+test_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok
+test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok
+test_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok
+test_negative_cap_is_rejected_even_without_discount (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_without_discount) ... ok
+test_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok
+test_none_cap_preserves_rounded_percentage_discount (test_discounts.DiscountTests.test_none_cap_preserves_rounded_percentage_discount) ... ok
+test_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok
+test_zero_cap_does_not_bypass_subtotal_or_percent_validation (test_discounts.DiscountTests.test_zero_cap_does_not_bypass_subtotal_or_percent_validation) ... ok
+test_zero_cap_prevents_discount (test_discounts.DiscountTests.test_zero_cap_prevents_discount) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+OK

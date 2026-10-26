@@ -1,0 +1,21 @@
+python3 -m unittest discover -v
+Exit: 1
+test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) ... ok
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... ok
+test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) ... 
+  test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) (subtotal_cents=5000) ... FAIL
+test_standard_fee_below_5000_cents (test_shipping.ShippingTests.test_standard_fee_below_5000_cents) ... ok
+
+======================================================================
+FAIL: test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) (subtotal_cents=5000)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/01_excludes_5000/test_shipping.py", line 14, in test_reduced_fee_from_5000_through_9999_cents
+    self.assertEqual(delivery_fee(subtotal), 250)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 500 != 250
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)

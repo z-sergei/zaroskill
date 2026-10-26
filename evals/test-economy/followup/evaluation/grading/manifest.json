@@ -1,0 +1,130 @@
+{
+  "format_version": 1,
+  "cases": {
+    "04_discount_cap": {
+      "skill": "requirements-tdd",
+      "module": "discounts.py",
+      "test_file": "test_discounts.py",
+      "allowed_changes": [
+        "test_discounts.py",
+        "response.md",
+        "discounts.py"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0"
+      },
+      "faults": [
+        {
+          "id": "cap_ignored",
+          "contract_violation": "An effective positive cap must restrict the discount."
+        },
+        {
+          "id": "cap_is_minimum",
+          "contract_violation": "Cap is an upper bound, not a minimum."
+        },
+        {
+          "id": "zero_cap_ignored",
+          "contract_violation": "A zero cap suppresses the discount."
+        },
+        {
+          "id": "negative_cap_accepted",
+          "contract_violation": "Negative cap is rejected even with zero computed discount."
+        },
+        {
+          "id": "rounds_discount_to_nearest",
+          "contract_violation": "Discount is always floored to integer cents."
+        },
+        {
+          "id": "cap_allowed_positionally",
+          "contract_violation": "The new cap argument is keyword-only."
+        },
+        {
+          "id": "zero_cap_skips_old_validation",
+          "contract_violation": "Zero cap cannot bypass preserved subtotal and percent validation; invalid inputs still raise ValueError.",
+          "origin": "previously_identified_directed_probe"
+        },
+        {
+          "id": "zero_subtotal_skips_cap_validation",
+          "contract_violation": "Negative cap must raise ValueError even when subtotal and computed discount are zero.",
+          "origin": "previously_identified_directed_probe"
+        }
+      ],
+      "refactors": [
+        {
+          "id": "single_bounded_expression",
+          "equivalence": "Rearranged validation and bounded expression preserve the specified integer behavior."
+        }
+      ]
+    },
+    "06_upload_workflow": {
+      "skill": "state-machine-verification",
+      "module": "upload.py",
+      "test_file": "test_upload.py",
+      "allowed_changes": [
+        "test_upload.py",
+        "response.md"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+        "task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd"
+      },
+      "faults": [
+        {
+          "id": "late_or_duplicate_completion_accepted",
+          "contract_violation": "Only the active waiting attempt may complete."
+        },
+        {
+          "id": "foreign_id_accepted",
+          "contract_violation": "Wrong or stale attempt id must be ignored."
+        },
+        {
+          "id": "attempt_ids_reused",
+          "contract_violation": "Successful begins have strictly increasing ids."
+        },
+        {
+          "id": "begin_replaces_active_attempt",
+          "contract_violation": "Begin during waiting raises and preserves the active attempt."
+        },
+        {
+          "id": "cancel_completed_upload",
+          "contract_violation": "Cancel after completion must preserve done and result."
+        },
+        {
+          "id": "restart_retains_old_result",
+          "contract_violation": "Begin clears the previous result."
+        },
+        {
+          "id": "numeric_boolean_returns",
+          "contract_violation": "complete and cancel promise True or False, not merely truthy or falsey integers.",
+          "origin": "previously_identified_directed_probe"
+        },
+        {
+          "id": "two_id_cycle_after_success",
+          "contract_violation": "Every successful begin must produce an id greater than the previous one, including after repeated successful completion.",
+          "origin": "previously_identified_directed_probe"
+        }
+      ],
+      "refactors": [
+        {
+          "id": "different_private_storage",
+          "equivalence": "Private counter and pending storage are renamed/reorganized; public event behavior is unchanged."
+        }
+      ],
+      "diagnostics": [
+        {
+          "id": "integer_subclass_ids",
+          "purpose": "Equivalence diagnostic under the ordinary reading of positive integer.",
+          "interpretation": "An int subclass remains an integer; exact built-in type int is not promised. A failure may expose stricter assumptions in tests, but this diagnostic is explicitly excluded from fixed gates and automatic pass/fail.",
+          "included_in_gates": false
+        }
+      ]
+    }
+  },
+  "evaluation_kind": "directed_followup_on_previously_exposed_tasks",
+  "not_fresh_holdout": true,
+  "not_part_of_original_preregistered_comparison": true
+}

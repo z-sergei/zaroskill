@@ -1,0 +1,9 @@
+test_baskets_below_5000_cost_500 (test_shipping.ShippingTests.test_baskets_below_5000_cost_500) ... ok
+test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) ... ok
+test_baskets_from_5000_through_9999_cost_250 (test_shipping.ShippingTests.test_baskets_from_5000_through_9999_cost_250) ... ok
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

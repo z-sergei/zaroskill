@@ -1,0 +1,83 @@
+{
+  "pair": "R1",
+  "candidate": "B",
+  "assessment_stage": "Independent per-contract assessment recorded before pairwise decision or judge behavioral probes.",
+  "evidence_origin": {
+    "mechanical": "Supplied independent mechanical.json, not a judge run.",
+    "participant_execution": "Supplied execution.md includes command outputs, including C04 reds and greens; these remain participant records.",
+    "judge_execution": "No behavioral runs at this stage."
+  },
+  "scores": {
+    "C01": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 3,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C02": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C03": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C04": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 3,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C05": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C06": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    }
+  },
+  "notes": {
+    "C01": "All threshold/fee/rejection distinctions retained; 2400 and 5500 removed, 20000 replaced by 10**30. One modest repeated example: 12000 tests the same stated above-boundary continuation role already represented by 10**30. No separate contract/history/diagnostic role for ordinary-size free shipping is identified beyond boundary-only fault detection, which the huge example also supplies. Four subtest groups remain clear. One boundary fault probe is optional low-yield but small and proportionate.",
+    "C02": "Original tests retained; Unicode-strip, interior control/NBSP/punctuation/combining sequence preservation, valid length-20 combining sequence and invalid length-21 sequence all have explicit contractual roles. Valid decomposed text protects preservation as well as length, so it is not redundant with the rejection case. ASCII-only probe documents a real baseline gap.",
+    "C03": "Retains domain/adapter checks separately. Adds below-limit occupancy on both public boundaries, ValueError compatibility and payload preservation at zero request. Each addition is small and justified; return-limit probe documents the gap. No unjustified scenarios counted.",
+    "C04": "Correct implementation and final protection. Negative caps checked at nonzero discount, zero percentage, zero subtotal and floor-to-zero discount: these distinguish named plausible early returns. Equal cap is a valid relational boundary. Larger cap at subtotal999 already establishes ineffective-cap calculation with rounding; the additional (1000,15,cap200) repeats that role alongside the original exact arithmetic case and effective cap. Count one minor avoidable scenario, not all extra table rows. TDD records include substantive arithmetic and validation reds then green; first public API TypeError is not a setup/import failure, despite that imprecise label.",
+    "C05": "All entries correctly interpreted. M1 identity proved; M2 47h witness; M3/M4 worker failures not behavioral results, existing assertions identified. A separate quarter-floor recommendation is valid. Four bounded manual probes including equivalent M1 are attributed correctly; M1 adds observed suite resilience rather than proving arithmetic. Existing executable files retained.",
+    "C06": "Original success healthy control retained; separate completed-duplicate/cancel trace has small repeated prefix but clear diagnostic purpose. Idle ignored events followed by valid completion, wrong future id then completion, cancel/late/repeatedcancel, rejected begin then completion, restart from both terminals, and stale completion both before and after newer success are supported sequences. No private fields. Step-two-id refactor is concrete proportional verification. No avoidable full sequence counted."
+  },
+  "unjustified_scenarios": {
+    "C01": [
+      {
+        "scenario": "delivery_fee(12000) == 0",
+        "count": 1,
+        "reason": "Stated continuation beyond the free threshold is already represented by 10**30; no separate contract/diagnostic role supplied."
+      }
+    ],
+    "C04": [
+      {
+        "scenario": "discounted_total(1000,15,max_discount_cents=200) == 850",
+        "count": 1,
+        "reason": "Inactive nonzero cap calculation is already represented by (999,15,200), while exact ordinary arithmetic is retained nearby."
+      }
+    ]
+  },
+  "limitations": [
+    "Fixed fault results do not establish coverage completeness or redundancy.",
+    "C04 chronology remains supplied evidence; raw historical execution is not independently authenticated.",
+    "No complete operational trace for activities outside final submissions can be established from final snapshots."
+  ]
+}

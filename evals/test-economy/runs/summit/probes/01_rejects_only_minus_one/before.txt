@@ -1,0 +1,29 @@
+python3 -m unittest discover -v
+Exit: 1
+test_another_discounted_basket (test_shipping.ShippingTests.test_another_discounted_basket) ... ok
+test_at_first_threshold (test_shipping.ShippingTests.test_at_first_threshold) ... ok
+test_at_free_threshold (test_shipping.ShippingTests.test_at_free_threshold) ... ok
+test_below_first_threshold (test_shipping.ShippingTests.test_below_first_threshold) ... ok
+test_below_free_threshold (test_shipping.ShippingTests.test_below_free_threshold) ... ok
+test_discounted_basket (test_shipping.ShippingTests.test_discounted_basket) ... ok
+test_large_basket (test_shipping.ShippingTests.test_large_basket) ... ok
+test_medium_basket (test_shipping.ShippingTests.test_medium_basket) ... ok
+test_negative_basket (test_shipping.ShippingTests.test_negative_basket) ... FAIL
+test_negative_cent (test_shipping.ShippingTests.test_negative_cent) ... ok
+test_small_basket (test_shipping.ShippingTests.test_small_basket) ... ok
+test_very_large_basket (test_shipping.ShippingTests.test_very_large_basket) ... ok
+test_zero (test_shipping.ShippingTests.test_zero) ... ok
+
+======================================================================
+FAIL: test_negative_basket (test_shipping.ShippingTests.test_negative_basket)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/runs/summit/probes/01_rejects_only_minus_one/test_shipping.py", line 44, in test_negative_basket
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+FAILED (failures=1)

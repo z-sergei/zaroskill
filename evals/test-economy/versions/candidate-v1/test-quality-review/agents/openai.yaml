@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Quality Review"
+  short_description: "Assess regression protection and test maintenance"
+  default_prompt: "Use $test-quality-review to assess these tests, substantiate important findings, and recommend the highest-value improvements without editing production code or tests."

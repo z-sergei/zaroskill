@@ -1,0 +1,69 @@
+{
+  "pair": "R1",
+  "candidate": "A",
+  "assessment_stage": "Independent assessment recorded before reading candidate B submissions or mechanical results.",
+  "evidence_origin": {
+    "mechanical": "Supplied independent mechanical.json; not executed by the judge.",
+    "participant_execution": "Supplied execution.md and probe records; not judge executions.",
+    "judge_execution": "No behavioral runs at this stage.",
+    "grade_py": "Not present in the supplied folder, so the rubric instruction to run it cannot be followed without leaving the authorized evidence boundary."
+  },
+  "scores": {
+    "C01": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C02": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C03": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C04": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C05": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C06": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    }
+  },
+  "notes": {
+    "C01": "Retains zero, both sides of 5000/10000, representative paid-band interiors and negative interior; replaces two above-threshold examples by one unbounded-integer representative. Removes 2400 and 5500 with no documented extra role. Subtests preserve value diagnosis. No justified avoidable scenario counted.",
+    "C02": "All seven original distinctions retained. Unicode-edge stripping/interior tab/newline/NBSP preservation and combining-mark length are explicit contract distinctions not supplied by the prior precomposed Unicode example. Two small additions are defensible.",
+    "C03": "Both public boundaries retained. Below-capacity sum vs limit is a concrete blind spot of original tests. Domain and adapter additions have distinct supported boundary/diagnostic roles. Zero-payload preservation and ValueError compatibility extend existing scenarios.",
+    "C04": "Correct small implementation; omission, None, effective/ineffective/zero caps, negative cap at zero and nonzero discount, keyword-only, old validation/floor preserved. Extra old-invalid-input x zero-cap cases have a concrete early-return risk. No equal-cap example is a defensible selection, but its claimed lack of possible added distinction must not be generalized to all implementations. TDD sequence is specifically documented by participant, not independently witnessed.",
+    "C05": "Review classifies all report entries correctly, keeps report provenance distinct, proves M1 identity, recommends 47h, recognizes existing M3/M4 assertions and startup failures. 23h and quarter-rounding recommendations are independently contract-grounded. Focused probes are bounded and provide evidence distinct from report statuses.",
+    "C06": "Seven short public-event traces cover legal success, cancellation/duplicate, idle events followed by success, rejected begin followed by completion, restart from each terminal state, fresh ids and clearing. Negative/zero/future unknown ids are defensible input categories at tiny incremental cost. Separate completion after ignored events checks progress. No private state assertions or extra liveness claims."
+  },
+  "limitations": [
+    "Mechanical fixed faults are finite; all applicable pass, and C05 outcomes are descriptive.",
+    "Scores do not imply exhaustive correctness.",
+    "No authenticated raw tool transcript for C04 is supplied; chronology is an attributed, internally consistent execution record.",
+    "Scope is judged from final artifacts and supplied mechanical allowed-file checks; complete participant filesystem/network activity is not independently established."
+  ]
+}

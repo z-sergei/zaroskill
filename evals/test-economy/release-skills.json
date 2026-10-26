@@ -1,0 +1,34 @@
+{
+  "khorikov-unit-testing": {
+    "SKILL.md": "004ec69c5d8745b0e09b840ba0862f8063bd6130a998eed5e1201f68da99e060",
+    "agents/openai.yaml": "4435ee7b8addf37cff4e4c75c55f6b25c8d8e4c15ff6574f204ce33913b1bbda",
+    "references/behavior-properties.md": "0eca7303935140de8b55e103c047ae494bd7024ec37229f8afec3ff4b92382d4",
+    "references/boundaries.md": "e95d14e91ae3ae079244ae32b8fe44cb48501987501032f15cf6ce3d422702b7",
+    "references/mutation-campaigns.md": "d6f7de740b48568f34d08b30458566890c904796393e1ecbe50a064e635c76b3",
+    "references/sources.md": "70ca8db9ebb80b5d9cf24e6eb540804fbc3ab679c89a5a78c691462522958792"
+  },
+  "requirements-tdd": {
+    "SKILL.md": "82a198eb53d59c16027fa1ada2496b0acd5ea96ca342770d7872f608c8d1db5b",
+    "agents/openai.yaml": "c1422cacd47a03d5687602e48c34fcfff423c2413f3ba898de554d354787a580",
+    "references/behavior-properties.md": "dbf9f03ed81cce95ad6cabde6db5831e5bb390f341a81d778175c3d5c55cbd60",
+    "references/boundaries.md": "924bfaa358181c65a0a093bf62677fa167ddcbb1b9f8e390431fe781768b46fd",
+    "references/existing-code.md": "8fcdecad2fb92d1a37e9e4cf1db2c766689287abdb05785c6f323b076293167f",
+    "references/mutation-campaigns.md": "126238ceef60dacef27e115b72a230ceacafae6f8a759c767c19a31449f0f4f4",
+    "references/sources.md": "05a5e4c7b1103383366457b5577dc88bdf82afb77abfb68599638e438594869b"
+  },
+  "state-machine-verification": {
+    "SKILL.md": "76789d1d27f097a504e2e02d372931138a1521cfbb64764599c362d6a504a721",
+    "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c",
+    "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+    "references/sources.md": "3b04f2fdcba45a548818dc735c94f1ea802c3192802ad662db82907e94627d91",
+    "references/temporal-checks.md": "934b6823efe72b7d13aeedf573f17f026ed0a5b0f5081d8b2cca584443461eaa"
+  },
+  "test-quality-review": {
+    "SKILL.md": "707526e5abe62867d34a78f84a7d88c7aba4969c9b356fe47a2beeac3a1d54ba",
+    "agents/openai.yaml": "4b8ba8b18c1fea8bc47319ba3bd55fa0942a2a8a179f0c3e15a70da6b401f0a5",
+    "references/boundaries-and-traps.md": "5c0908c39e84fe9ad0d3318f4085158c967afb1b92f03d03370ceeced95e8daa",
+    "references/probes.md": "28ae22f7afcd3c46bd63168085dc8e3d21e76942ad57865f6d9d2ea3210d4290",
+    "references/property-evidence.md": "057728f7b71e4453f2ca2ea4029b2a0152b73c8bdc9f1d3b30c54323762b50f1",
+    "references/sources.md": "03d071d9e497972ab0f169657d94b47f3e8fea3d9e8176d0fa69ee637e2a1412"
+  }
+}

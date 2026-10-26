@@ -1,0 +1,34 @@
+test_combining_marks_count_toward_the_length_limit (test_names.DisplayNameTests.test_combining_marks_count_toward_the_length_limit) ... ok
+test_empty_name_is_invalid (test_names.DisplayNameTests.test_empty_name_is_invalid) ... ok
+test_inner_spacing_and_mixed_case_are_preserved (test_names.DisplayNameTests.test_inner_spacing_and_mixed_case_are_preserved) ... ok
+test_length_counts_characters (test_names.DisplayNameTests.test_length_counts_characters) ... ok
+test_longest_name_is_valid_after_trimming (test_names.DisplayNameTests.test_longest_name_is_valid_after_trimming) ... ok
+test_one_character_too_long (test_names.DisplayNameTests.test_one_character_too_long) ... ok
+test_shortest_name_preserves_case (test_names.DisplayNameTests.test_shortest_name_preserves_case) ... ok
+test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved (test_names.DisplayNameTests.test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved) ... FAIL
+test_whitespace_only_is_invalid (test_names.DisplayNameTests.test_whitespace_only_is_invalid) ... ok
+
+======================================================================
+FAIL: test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved (test_names.DisplayNameTests.test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C02/normalize_internal_nbsp/test_names.py", line 32, in test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved
+    self.assertEqual(
+    ~~~~~~~~~~~~~~~~^
+        clean_display_name("\u2003\u00a0Ada\u00a0Lee\u00a0\u2003"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "Ada\u00a0Lee",
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+AssertionError: 'Ada Lee' != 'Ada\xa0Lee'
+- Ada Lee
+?    ^
++ Ada Lee
+?    ^
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+FAILED (failures=1)

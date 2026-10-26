@@ -1,0 +1,39 @@
+python3 -m unittest discover -v
+Exit: 1
+test_request_maps_over_capacity_without_mutating_input (test_capacity.RequestTests.test_request_maps_over_capacity_without_mutating_input) ... ok
+test_request_reports_exact_capacity_without_mutating_input (test_capacity.RequestTests.test_request_reports_exact_capacity_without_mutating_input) ... ok
+test_request_reports_usage_below_capacity_without_mutating_input (test_capacity.RequestTests.test_request_reports_usage_below_capacity_without_mutating_input) ... FAIL
+test_request_reports_zero_at_capacity_without_mutating_input (test_capacity.RequestTests.test_request_reports_zero_at_capacity_without_mutating_input) ... ok
+test_domain_allows_exact_capacity (test_capacity.ReservationTests.test_domain_allows_exact_capacity) ... ok
+test_domain_allows_zero_at_capacity (test_capacity.ReservationTests.test_domain_allows_zero_at_capacity) ... ok
+test_domain_rejects_over_capacity (test_capacity.ReservationTests.test_domain_rejects_over_capacity) ... ok
+test_domain_returns_actual_usage_below_capacity (test_capacity.ReservationTests.test_domain_returns_actual_usage_below_capacity) ... FAIL
+
+======================================================================
+FAIL: test_request_reports_usage_below_capacity_without_mutating_input (test_capacity.RequestTests.test_request_reports_usage_below_capacity_without_mutating_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/03_returns_limit/test_capacity.py", line 24, in test_request_reports_usage_below_capacity_without_mutating_input
+    self.assertEqual(handle_request(payload), {"status": "ok", "used": 9})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'status': 'ok', 'used': 10} != {'status': 'ok', 'used': 9}
+- {'status': 'ok', 'used': 10}
+?                          ^^
+
++ {'status': 'ok', 'used': 9}
+?                          ^
+
+
+======================================================================
+FAIL: test_domain_returns_actual_usage_below_capacity (test_capacity.ReservationTests.test_domain_returns_actual_usage_below_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/03_returns_limit/test_capacity.py", line 7, in test_domain_returns_actual_usage_below_capacity
+    self.assertEqual(reserve(7, 2, 10), 9)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 10 != 9
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=2)

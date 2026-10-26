@@ -1,0 +1,1176 @@
+{
+  "created_utc": "2026-10-26T19:37:47.587659+00:00",
+  "passed": true,
+  "authored_before_skill_comparison": true,
+  "external_mutation_tool_executed": false,
+  "initial_suites": {
+    "01_shipping_bands": {
+      "status": "passed",
+      "tests_run": 13,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "02_display_name": {
+      "status": "passed",
+      "tests_run": 7,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "03_capacity_boundaries": {
+      "status": "passed",
+      "tests_run": 6,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "04_discount_cap": {
+      "status": "passed",
+      "tests_run": 6,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "05_mutation_report": {
+      "status": "passed",
+      "tests_run": 6,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "06_upload_workflow": {
+      "status": "passed",
+      "tests_run": 3,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    }
+  },
+  "reference_suites_and_independent_contracts": {
+    "01_shipping_bands": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 4,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 2,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "zero_rejected",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "negative_accepted",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "discount_starts_early",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "discount_starts_late",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "free_starts_early",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "free_starts_late",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 4,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "ascending_intervals",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 4,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 2,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    },
+    "02_display_name": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 7,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 2,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "zero_length_allowed",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "max_boundary_excluded",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "overlong_allowed",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "raw_length_checked",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "assertion_failure",
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure",
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "inner_spaces_collapsed",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "case_normalized",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "byte_length_checked",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 7,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "separate_length_check",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 7,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 2,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    },
+    "03_capacity_boundaries": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 6,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 1,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "exact_capacity_rejected",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure",
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure",
+              "domain_error"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "domain_wrong_total",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "adapter_drops_request",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "adapter_wrong_status",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "adapter_reports_old_total",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "adapter_mutates_input",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 6,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "remaining_capacity_and_unpacking",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 6,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 1,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    },
+    "04_discount_cap": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 9,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 3,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "cap_ignored",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cap_is_minimum",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "zero_cap_ignored",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "negative_cap_accepted",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "rounds_discount_to_nearest",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cap_allowed_positionally",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 9,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 3,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "single_bounded_expression",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 9,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 3,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    },
+    "05_mutation_report": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 8,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 2,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "free_starts_one_hour_early",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 8,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "day_threshold_late",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 8,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "half_fee_rounded_up",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 8,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 2,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "equivalent_report_M1",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 8,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 2,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "ascending_time_bands",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 8,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 2,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    },
+    "06_upload_workflow": {
+      "baseline": {
+        "status": "passed",
+        "tests_run": 5,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 1,
+        "event_kinds": [],
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "late_or_duplicate_completion_accepted",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "foreign_id_accepted",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "attempt_ids_reused",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "begin_replaces_active_attempt",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cancel_completed_upload",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "restart_retains_old_result",
+          "reference_verdict": "KILLED",
+          "contract_verdict": "KILLED",
+          "reference_run": {
+            "status": "failed",
+            "tests_run": 5,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "failed",
+            "tests_run": 1,
+            "event_kinds": [
+              "assertion_failure"
+            ],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "different_private_storage",
+          "reference_run": {
+            "status": "passed",
+            "tests_run": 5,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 1,
+            "event_kinds": [],
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "passed": true
+    }
+  },
+  "reference_tdd": {
+    "red_original_production_with_reference_tests": {
+      "status": "failed",
+      "tests_run": 9,
+      "event_kinds": [
+        "api_call_error"
+      ],
+      "test_files_unchanged": true
+    },
+    "green_updated_production_with_same_tests": {
+      "status": "passed",
+      "tests_run": 9,
+      "event_kinds": [],
+      "test_files_unchanged": true
+    },
+    "passed": true,
+    "note": "Observed preflight red/green for the reference. Does not prove any evaluated agent followed TDD."
+  },
+  "runner_self_checks": {
+    "pass": {
+      "status": "passed",
+      "tests_run": 1,
+      "event_kinds": [],
+      "test_files_unchanged": true,
+      "verdict": "SURVIVED",
+      "expected_status": "passed",
+      "passed": true
+    },
+    "assertion": {
+      "status": "failed",
+      "tests_run": 1,
+      "event_kinds": [
+        "assertion_failure"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "KILLED",
+      "expected_status": "failed",
+      "passed": true
+    },
+    "domain_exception": {
+      "status": "failed",
+      "tests_run": 1,
+      "event_kinds": [
+        "domain_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "KILLED",
+      "expected_status": "failed",
+      "passed": true
+    },
+    "api_signature": {
+      "status": "failed",
+      "tests_run": 1,
+      "event_kinds": [
+        "api_call_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "KILLED",
+      "expected_status": "failed",
+      "passed": true
+    },
+    "setup_assertion": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "fixture_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "setup_domain_exception": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "fixture_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "teardown_failure": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "fixture_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "body_import": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "import_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "body_name_error": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "test_body_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "empty_suite": {
+      "status": "no_tests",
+      "tests_run": 0,
+      "event_kinds": [],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "no_tests",
+      "passed": true
+    },
+    "all_skipped": {
+      "status": "no_tests",
+      "tests_run": 1,
+      "event_kinds": [],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "no_tests",
+      "passed": true
+    },
+    "expected_failure_only": {
+      "status": "no_tests",
+      "tests_run": 1,
+      "event_kinds": [],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "no_tests",
+      "passed": true
+    },
+    "class_setup_error": {
+      "status": "no_tests",
+      "tests_run": 0,
+      "event_kinds": [
+        "fixture_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "no_tests",
+      "passed": true
+    },
+    "discovery_import": {
+      "status": "invalid",
+      "tests_run": 1,
+      "event_kinds": [
+        "discovery_error"
+      ],
+      "test_files_unchanged": true,
+      "verdict": "INVALID",
+      "expected_status": "invalid",
+      "passed": true
+    },
+    "timeout": {
+      "status": "timeout",
+      "tests_run": null,
+      "event_kinds": [
+        "process_timeout"
+      ],
+      "test_files_unchanged": null,
+      "verdict": "INVALID",
+      "expected_status": "timeout",
+      "passed": true
+    }
+  },
+  "reference_submission_automatic_gates": {
+    "01_shipping_bands": true,
+    "02_display_name": true,
+    "03_capacity_boundaries": true,
+    "04_discount_cap": true,
+    "05_mutation_report": true,
+    "06_upload_workflow": true
+  },
+  "limitations": [
+    "Fixed samples are not exhaustive.",
+    "Economy and diagnostic value require rubric.md.",
+    "No score derives from method count or equal kill sets.",
+    "Final snapshots do not establish candidate TDD chronology.",
+    "Trusted-code runner; not an adversarial sandbox.",
+    "C05 supplied report was never an observed mutation-engine run."
+  ]
+}

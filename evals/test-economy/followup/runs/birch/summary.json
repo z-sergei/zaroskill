@@ -1,0 +1,62 @@
+{
+  "status": "complete",
+  "root": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/birch",
+  "completed_order": ["04_discount_cap", "06_upload_workflow"],
+  "cases": [
+    {
+      "id": "04_discount_cap",
+      "skill": "requirements-tdd",
+      "status": "complete",
+      "changed_files": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py",
+        "work/cases/04_discount_cap/response.md"
+      ],
+      "response": "work/cases/04_discount_cap/response.md",
+      "baseline_tests": 6,
+      "final_tests": 13,
+      "final_result": "pass",
+      "observed_red_green_cycles": [
+        {
+          "test": "test_discount_cannot_exceed_cap",
+          "red": "AssertionError: 850 != 900",
+          "red_exit_code": 1,
+          "green_exit_code": 0
+        },
+        {
+          "test": "test_negative_cap_is_rejected_even_without_discount",
+          "red": "ValueError not raised in all four subtests",
+          "red_exit_code": 1,
+          "green_exit_code": 0
+        }
+      ],
+      "remaining_gaps": []
+    },
+    {
+      "id": "06_upload_workflow",
+      "skill": "state-machine-verification",
+      "status": "complete",
+      "changed_files": [
+        "work/cases/06_upload_workflow/test_upload.py",
+        "work/cases/06_upload_workflow/response.md"
+      ],
+      "response": "work/cases/06_upload_workflow/response.md",
+      "baseline_tests": 3,
+      "final_tests": 8,
+      "final_result": "pass",
+      "production_unchanged": true,
+      "production_sha256": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+      "fault_probes_detected": 3,
+      "fault_probes_total": 3,
+      "probe_results": "probes/upload_probe_results.json",
+      "evidence_scope": "Explicit finite public-API traces and disposable fault probes; no exhaustive or formal proof",
+      "remaining_gaps": []
+    }
+  ],
+  "execution_log": "execution.md",
+  "runner": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+  "environment_note": "python command was unavailable (exit 127); python3 ran the standard-library suite successfully",
+  "dependencies_installed": false,
+  "network_used": false,
+  "delegated": false
+}

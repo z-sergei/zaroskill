@@ -1,0 +1,13 @@
+test_cancel_active_upload (test_upload.UploadTests.test_cancel_active_upload) ... ok
+test_completion_wins_before_cancel_and_duplicate_completion (test_upload.UploadTests.test_completion_wins_before_cancel_and_duplicate_completion) ... ok
+test_idle_rejects_completion_and_cancellation (test_upload.UploadTests.test_idle_rejects_completion_and_cancellation) ... ok
+test_rejected_begin_preserves_the_waiting_attempt (test_upload.UploadTests.test_rejected_begin_preserves_the_waiting_attempt) ... ok
+test_restart_after_cancel_rejects_old_completion_before_accepting_new (test_upload.UploadTests.test_restart_after_cancel_rejects_old_completion_before_accepting_new) ... ok
+test_restart_after_success_clears_result_and_rejects_old_completions (test_upload.UploadTests.test_restart_after_success_clears_result_and_rejects_old_completions) ... ok
+test_successful_upload (test_upload.UploadTests.test_successful_upload) ... ok
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK

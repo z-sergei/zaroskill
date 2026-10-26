@@ -1,0 +1,57 @@
+test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) ... 
+  test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) (attempt_id=1) ... FAIL
+  test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) (attempt_id=2) ... FAIL
+test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) ... FAIL
+
+======================================================================
+FAIL: test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) (attempt_id=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/rejected_duplicate_overwrites_result/test_upload.py", line 54, in test_completed_result_survives_repeated_completion_and_cancel
+    self.assertEqual((session.state, session.result), ("done", "original.csv"))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('done', 'replacement.csv') != ('done', 'original.csv')
+
+First differing element 1:
+'replacement.csv'
+'original.csv'
+
+- ('done', 'replacement.csv')
++ ('done', 'original.csv')
+
+======================================================================
+FAIL: test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel) (attempt_id=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/rejected_duplicate_overwrites_result/test_upload.py", line 54, in test_completed_result_survives_repeated_completion_and_cancel
+    self.assertEqual((session.state, session.result), ("done", "original.csv"))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('done', 'replacement.csv') != ('done', 'original.csv')
+
+First differing element 1:
+'replacement.csv'
+'original.csv'
+
+- ('done', 'replacement.csv')
++ ('done', 'original.csv')
+
+======================================================================
+FAIL: test_completed_result_survives_repeated_completion_and_cancel (test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/rejected_duplicate_overwrites_result/test_upload.py", line 56, in test_completed_result_survives_repeated_completion_and_cancel
+    self.assertEqual((session.state, session.result), ("done", "original.csv"))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('done', 'replacement.csv') != ('done', 'original.csv')
+
+First differing element 1:
+'replacement.csv'
+'original.csv'
+
+- ('done', 'replacement.csv')
++ ('done', 'original.csv')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=3)

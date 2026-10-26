@@ -1,0 +1,52 @@
+{
+  "source_material_read": "Original evaluation and only the five explicitly authorized probe files. No skills, participant answers, version keys, or judge reports were consulted.",
+  "probes": [
+    {
+      "case": "04_discount_cap",
+      "id": "zero_cap_skips_old_validation",
+      "category": "fixed_fault",
+      "source_path": "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R1/A/C04/zero_cap_skips_old_validation/discounts.py",
+      "sha256": "cf9d6a04f9a6e9959c35b41e7386daae476705eb39f4cf7b681bd4106a249cba"
+    },
+    {
+      "case": "04_discount_cap",
+      "id": "zero_subtotal_skips_cap_validation",
+      "category": "fixed_fault",
+      "source_path": "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R1/A/C04/zero_subtotal_skips_cap_validation/discounts.py",
+      "sha256": "8c93c7748c0eac7ccb21b665e838d2c168298ab33d9cd7648f932b0dc663af72"
+    },
+    {
+      "case": "06_upload_workflow",
+      "id": "numeric_boolean_returns",
+      "category": "fixed_fault",
+      "source_path": "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/A/C06/numeric_boolean_returns/upload.py",
+      "sha256": "10363e068fc3349a176b77bf04bc5b579dcfd7c308edc447a47fd4cdd098e0fe"
+    },
+    {
+      "case": "06_upload_workflow",
+      "id": "two_id_cycle_after_success",
+      "category": "fixed_fault",
+      "source_path": "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/A/C06/two_id_cycle_after_success/upload.py",
+      "sha256": "4b6d8583a7aaf7ed19934b792c8bcea6ed1c95930ee09822c4d547374e7fa04d"
+    },
+    {
+      "case": "06_upload_workflow",
+      "id": "integer_subclass_ids",
+      "category": "non_gating_equivalence_diagnostic",
+      "source_path": "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/A/C06/integer_subclass_ids/upload.py",
+      "sha256": "012fe6bacf12d5d43b2f7344acb3c5a0de707c9f07ae994d7830eeecf15c1d80"
+    }
+  ],
+  "unchanged_case_files": {
+    "cases/04_discount_cap/discounts.py": "ee90aa27e3444f3dfdc06bee526c98007fdf4b92f1600b553b83e8dbb05797f8",
+    "cases/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "cases/04_discount_cap/test_discounts.py": "5bd17d17a98bedeb443fc6cd39e47e208c4db91e6e022bc8bc0cba8856e00780",
+    "cases/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "cases/06_upload_workflow/test_upload.py": "8714c0ba3059d37045944dbc894db09472a86c6c77c299f9388e768c68dedce3",
+    "cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725"
+  },
+  "unchanged_correct_implementations": {
+    "grading/reference_solutions/04_discount_cap/discounts.py": "f8a2dbc8bb5ff47a80551f042be8cac98da0f40535d814387172ec6bf4737faa",
+    "grading/reference_solutions/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725"
+  }
+}

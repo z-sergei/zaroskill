@@ -31,7 +31,9 @@ When important logic is buried in I/O, consider a small extraction into a functi
 
 ## Make the test earn its cost
 
-Select distinct behavior partitions: ordinary success, relevant rejection, and meaningful boundaries or failure recovery. Use the domain risk to decide which apply; avoid an automatic Cartesian product.
+Select distinct input or history partitions from the contract: ordinary success, relevant rejection, and meaningful boundaries or recovery. Choose representatives and boundary cases for the risks they distinguish; sharing a branch does not prove equivalence. Combine dimensions when their interaction matters, rather than taking an automatic Cartesian product.
+
+Before adding a case, identify its contribution beyond existing tests: a missing distinction, a different integration obligation, faster feedback or useful fault diagnosis. Reuse adequate existing evidence. Similar examples and overlapping mutation kills can still serve different obligations; parameterization reduces repeated code but does not justify unnecessary cases. When pruning is requested, preserve those contributions and historical regressions, and remove a case only when its useful evidence remains represented.
 
 Arrange explicit, deterministic inputs. Start from a reachable state, using supported operations or a direct fixture that respects the workflow's invariants. An intentionally invalid state needs a specified defensive contract and an explicit purpose. A convenient constructor alone does not justify a scenario.
 
@@ -49,11 +51,11 @@ For every changed test ask:
 - **Feedback:** is a cheaper level equally convincing?
 - **Maintenance:** does each fixture, double, and assertion contribute to this behavior?
 
-**Done:** the selected risks have discriminating assertions; each added or revised test's name and scenario describe the behavior its checks actually establish.
+**Done:** the in-scope outcomes and selected risks have discriminating evidence or explicit gaps; each added or revised test earns its place and describes its actual observation. Stop adding examples when no uncovered distinction or useful diagnostic benefit justifies their cost. Fewest test methods or lines is not the objective.
 
 ## Verify the evidence
 
-Run the narrowest relevant tests. For an added regression test, observe failure on the known bug before its fix when feasible. For a test-quality task or an uncertain assertion, use one targeted fault probe in a disposable copy: alter a relevant decision, run the unchanged test, and inspect the assertion failure. A build error, missing dependency, or zero discovered tests is not a detected regression.
+Run the narrowest relevant tests. For an added regression test, observe failure on the known bug before its fix when feasible. Reuse that relevant sensitivity evidence. For a material quality claim still in doubt, use a targeted fault probe in a disposable copy: alter a relevant decision, run the unchanged test, and inspect the failure. A build error, missing dependency, or zero discovered tests is not a detected regression. For automated mutation tooling or a broader campaign, read [mutation campaigns](references/mutation-campaigns.md).
 
 When refactor resistance is in doubt, perform one small behavior-preserving transformation in a disposable copy and run the same tests unchanged. A thought experiment is useful review evidence; label it as such rather than as an executed check.
 

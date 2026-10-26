@@ -1,0 +1,22 @@
+{
+  "R1/A": {
+    "cases": "cases/",
+    "mechanical": "mechanical.json",
+    "notes": "Participant execution records are supplied evidence, not judge executions."
+  },
+  "R1/B": {
+    "cases": "cases/",
+    "mechanical": "mechanical.json",
+    "notes": "Participant execution records are supplied evidence, not judge executions."
+  },
+  "R2/A": {
+    "cases": "cases/",
+    "mechanical": "mechanical.json",
+    "notes": "Participant execution records are supplied evidence, not judge executions."
+  },
+  "R2/B": {
+    "cases": "cases/",
+    "mechanical": "mechanical.json",
+    "notes": "Participant execution records are supplied evidence, not judge executions."
+  }
+}

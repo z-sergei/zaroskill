@@ -1,0 +1,15 @@
+test_rejected_begin_preserves_the_active_attempt (test_upload.UploadTests.test_rejected_begin_preserves_the_active_attempt) ... FAIL
+
+======================================================================
+FAIL: test_rejected_begin_preserves_the_active_attempt (test_upload.UploadTests.test_rejected_begin_preserves_the_active_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/rejected_begin_loses_active/test_upload.py", line 43, in test_rejected_begin_preserves_the_active_attempt
+    self.assertTrue(session.complete(attempt, "right.csv"))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

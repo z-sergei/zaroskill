@@ -1,0 +1,90 @@
+{
+  "production_sha256_before": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+  "production_sha256_after": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+  "results": [
+    {
+      "variant": "rejected_begin_loses_active",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "-v",
+        "test_upload.UploadTests.test_rejected_begin_preserves_the_active_attempt"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/rejected_begin_loses_active/output.txt"
+    },
+    {
+      "variant": "cancelled_accepts_late_completion",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "-v",
+        "test_upload.UploadTests.test_cancelled_attempt_ignores_late_completion_and_repeated_cancel"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/cancelled_accepts_late_completion/output.txt"
+    },
+    {
+      "variant": "restart_reuses_completed_id",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "-v",
+        "test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/restart_reuses_completed_id/output.txt"
+    },
+    {
+      "variant": "rejected_duplicate_overwrites_result",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "-v",
+        "test_upload.UploadTests.test_completed_result_survives_repeated_completion_and_cancel"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/rejected_duplicate_overwrites_result/output.txt"
+    },
+    {
+      "variant": "restart_retains_previous_result",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "-v",
+        "test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts"
+      ],
+      "exit_code": 1,
+      "expected_exit": 1,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/restart_retains_previous_result/output.txt"
+    },
+    {
+      "variant": "valid_ids_increase_by_seven",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "verified_result": true,
+      "output": "/private/tmp/zaroskill-economy-n9eezds3/followup/runs/cedar/probes/valid_ids_increase_by_seven/output.txt"
+    }
+  ]
+}

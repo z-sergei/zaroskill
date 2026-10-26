@@ -1,0 +1,25 @@
+{
+  "retain_candidate": true,
+  "release_kind": "Per-skill selection of already evaluated package snapshots; not wholesale adoption of candidate-v2.",
+  "retained": {
+    "khorikov-unit-testing": {
+      "revision": "candidate-v1 (identical in v2)",
+      "basis": "Two blind attempts found no unjustified scenarios for candidate versus one shipping scenario in each baseline answer. Required fixed protection and healthy original tests retained. Extra protection was mixed; no general dominance claimed."
+    },
+    "requirements-tdd": {
+      "revision": "candidate-v2",
+      "basis": "Initial candidate removed one redundant cap example. Directed blind judge preferred candidate in C04: eight fixed faults detected, and an additional positive discount rounding to zero exposed a meaningful negative-cap gap missed by baseline. No forced Cartesian expansion."
+    },
+    "test-quality-review": {
+      "revision": "candidate-v1 (identical in v2)",
+      "basis": "Requested guidance for economy and bounded automated mutation/report interpretation; both blind attempts preserved healthy domain/API boundaries and correctly treated the equivalent mutant and infrastructure statuses. Behavioral comparison tied; no superiority claim for this skill."
+    }
+  },
+  "rejected": {
+    "state-machine-verification": {
+      "released_revision": "baseline 4e3c28a",
+      "basis": "No demonstrated economy gain in initial comparisons; candidate introduced an exact-type caveat. In directed comparison baseline detected eight workflow faults; candidate seven, missing numeric boolean returns. Both accepted original refactor and subclass diagnostic. Keep previously installed package unchanged."
+    }
+  },
+  "overall_limit": "Initial R1 tie and R2 inconclusive. Directed overall preference was baseline, with separate TDD advantage for candidate. Results are exploratory, not pooled or statistical. No new all-skills model run of the selected composition; each released package is byte-identical to its evaluated snapshot and tasks used one leading skill."
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from discounts import discounted_total; discounted_total(1, 1, max_discount_cents=-1); raise AssertionError("negative cap must raise ValueError even when a positive discount rounds to zero")
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: negative cap must raise ValueError even when a positive discount rounds to zero

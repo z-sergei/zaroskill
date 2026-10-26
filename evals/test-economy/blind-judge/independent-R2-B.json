@@ -1,0 +1,64 @@
+{
+  "pair": "R2",
+  "candidate": "B",
+  "assessment_stage": "Saved before pairwise decision and judge R2 behavioral probes. R1 labels are not linked to versions.",
+  "scores": {
+    "C01": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C02": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C03": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C04": {
+      "protection": 3,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C05": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C06": {
+      "protection": 4,
+      "refactor_resilience": 3,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    }
+  },
+  "notes": {
+    "C01": "Zero, thresholds, fee values, negative domain and one interior per band retained. Three old examples removed with role-based reasoning. No unjustified scenario counted. Three old/new probes (six faulty runs) repeat quite visible boundary/rejection assertions; low-yield optional work but bounded and honestly attributed, not a campaign or time claim. Large arbitrary Python integers not represented, but no universal finite-example requirement assumed at this stage.",
+    "C02": "Original tests retained; Unicode edges plus internal NBSP preservation added in one small example; valid/invalid combining codepoint boundary preserved exactly. Both normalization and ASCII-strip probes are grounded. Distinguishes first assertion failure from unreachable second assertion in normalization run. No unjustified scenarios.",
+    "C03": "Both supported boundaries retained, separate below-limit sum9 vslimit10 added, ValueError compatibility and zero-payload preservation added. All substantive distinctions retained and small return-limit probe useful. Inputchoice7+2 not inherently superior/inferior to any other below-limit sum.",
+    "C04": "Correct final production and preservation of all old tests. Nonbinding cap and equal cap included with zero in compact labelled table; no loss of identity, no unjustified rows. Three negative-cap situations distinguish ordinary, zero subtotal and zero percentage. Shared gap of old argument validation when cap0 permits a concrete early-return fault. TDD record has real supplied arithmetic/validation reds then greens; not inferred from final state.",
+    "C05": "M1 algebra and no needless equivalent kill; M2 witness; M3/M4 separate worker errors from locally executed existing assertions. Quarter-floor and23h recommendations useful. Large-integer limitation acknowledged. Three probes only, unchanged executable files. No unjustified recommendations.",
+    "C06": "Seven methods include eight semantic histories (terminal done/cancelled subtests), plus three-attempt mixed history. Exact True/False and empty string result add direct contract protection. Shared helpers have straightforward assertion-only roles and preserve labelled diagnosis. Final begin after rejected begin can check fresh increasing identity after that exceptional history, a distinct possible counter corruption. But type(attempt) is int is stricter than a positive integer unless exact builtin int is intended: possible unpromised type coupling; provisional resilience3, interpretation must be made explicit before any refactor penalty. No semantic scenario yet classified unnecessary."
+  },
+  "unjustified_scenarios": {},
+  "evidence_origin": {
+    "mechanical": "Supplied independent R2/B/mechanical.json, not judge execution.",
+    "participant_execution": "Supplied execution.md and probe txt files, inspected actual assertion causes; C04 chronology attributed to these records.",
+    "judge_runs": "None yet for R2."
+  },
+  "rubric_ambiguity": "Does positive integer id permit an int subclass? Task does not require type(id) is int. Avoid silently equating this with bool return requirements, which explicitly say True/False."
+}

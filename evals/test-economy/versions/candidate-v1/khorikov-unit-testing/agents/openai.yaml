@@ -1,0 +1,4 @@
+interface:
+  display_name: "Khorikov: Valuable Tests"
+  short_description: "Behavior tests, useful mocks, resilient refactoring"
+  default_prompt: "Use $khorikov-unit-testing to improve tests for this change and verify which regressions they catch."

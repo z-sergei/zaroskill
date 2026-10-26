@@ -1,0 +1,21 @@
+M3_focused_probe: exit 1
+test_at_day_boundary (test_cancellation.CancellationTests.test_at_day_boundary) ... ok
+test_at_free_boundary (test_cancellation.CancellationTests.test_at_free_boundary) ... ok
+test_early_cancellation (test_cancellation.CancellationTests.test_early_cancellation) ... ok
+test_half_fee_rounds_down (test_cancellation.CancellationTests.test_half_fee_rounds_down) ... FAIL
+test_late_cancellation (test_cancellation.CancellationTests.test_late_cancellation) ... ok
+test_negative_arguments (test_cancellation.CancellationTests.test_negative_arguments) ... ok
+
+======================================================================
+FAIL: test_half_fee_rounds_down (test_cancellation.CancellationTests.test_half_fee_rounds_down)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/05_cancellation/test_cancellation.py", line 19, in test_half_fee_rounds_down
+    self.assertEqual(cancellation_fee(12, 101), 50)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 51 != 50
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+FAILED (failures=1)

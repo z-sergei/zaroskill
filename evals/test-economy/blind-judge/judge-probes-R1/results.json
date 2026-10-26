@@ -1,0 +1,269 @@
+{
+  "origin": "Executed by the blind judge in disposable copies. These are neither supplied mechanical results nor participant execution records.",
+  "purpose": "Resolve concrete cross-suite distinctions not contained in the fixed fault set, without claiming completeness or treating kill-set equality as redundancy.",
+  "candidate_source_hashes_unchanged": true,
+  "candidate_source_hashes": {
+    "R1/A/cases/02_display_name/test_names.py": "86d438dd9ade4ed611a3d5c9447b9d0eca5e8c11adc5284640b252063d7a23c6",
+    "R1/A/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+    "R1/A/cases/04_discount_cap/discounts.py": "982c050e7f980e4dc595683745fd5825baddf49ce02c22878deabd632d3ef054",
+    "R1/A/cases/04_discount_cap/test_discounts.py": "f830c015f2690c9fd14226dd7a826280466eb1aff0ca3b3196c0a8af7d088216",
+    "R1/B/cases/02_display_name/test_names.py": "a5c929437e1ada00697206e0dd4a0a5054d5d2e1c38763c17db5b1268d1b5f75",
+    "R1/B/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+    "R1/B/cases/04_discount_cap/discounts.py": "8d5bedfd7f1a8da26df941b8b277cfe6053d44c3a5eb6977d91e4039b1f976e7",
+    "R1/B/cases/04_discount_cap/test_discounts.py": "c6269c40dbe1c28abc37e65f2f503ba965cb2796e2546c7baaed9da084722308"
+  },
+  "records": [
+    {
+      "candidate": "A",
+      "case": "C02",
+      "variant": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R1/A/C02/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/A/C02/baseline/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C02",
+      "variant": "normalize_after_validation",
+      "change": "Return NFC normalization only after the original strip and len validation; violates exact preservation of valid decomposed text.",
+      "cwd": "judge-probes-R1/A/C02/normalize_after_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/A/C02/normalize_after_validation/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C04",
+      "variant": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R1/A/C04/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/A/C04/baseline/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C04",
+      "variant": "zero_cap_skips_old_validation",
+      "change": "Early zero-cap return before old amount/percent validation; violates original invalid-input rules.",
+      "cwd": "judge-probes-R1/A/C04/zero_cap_skips_old_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/A/C04/zero_cap_skips_old_validation/unittest.log",
+      "run_summary": [
+        "FAIL: test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) (percent=-1, cap=0)",
+        "AssertionError: ValueError not raised",
+        "FAIL: test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) (percent=101, cap=0)",
+        "AssertionError: ValueError not raised",
+        "FAIL: test_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) (cap=0)",
+        "AssertionError: ValueError not raised",
+        "Ran 12 tests in 0.001s",
+        "FAILED (failures=3)"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C04",
+      "variant": "zero_subtotal_skips_cap_validation",
+      "change": "Early zero-subtotal return after original amount/percent validation but before cap validation; violates negative-cap rejection at zero calculated discount.",
+      "cwd": "judge-probes-R1/A/C04/zero_subtotal_skips_cap_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/A/C04/zero_subtotal_skips_cap_validation/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C02",
+      "variant": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R1/B/C02/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/B/C02/baseline/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C02",
+      "variant": "normalize_after_validation",
+      "change": "Return NFC normalization only after the original strip and len validation; violates exact preservation of valid decomposed text.",
+      "cwd": "judge-probes-R1/B/C02/normalize_after_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/B/C02/normalize_after_validation/unittest.log",
+      "run_summary": [
+        "FAIL: test_combining_codepoints_count_towards_the_length_limit (test_names.DisplayNameTests.test_combining_codepoints_count_towards_the_length_limit)",
+        "AssertionError: 'éééééééééé' != 'éééééééééé'",
+        "FAIL: test_unicode_edges_are_trimmed_without_changing_inner_characters (test_names.DisplayNameTests.test_unicode_edges_are_trimmed_without_changing_inner_characters)",
+        "AssertionError: 'A\\tB\\nC\\xa0é!' != 'A\\tB\\nC\\xa0é!'",
+        "Ran 9 tests in 0.001s",
+        "FAILED (failures=2)"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C04",
+      "variant": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R1/B/C04/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/B/C04/baseline/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C04",
+      "variant": "zero_cap_skips_old_validation",
+      "change": "Early zero-cap return before old amount/percent validation; violates original invalid-input rules.",
+      "cwd": "judge-probes-R1/B/C04/zero_cap_skips_old_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/B/C04/zero_cap_skips_old_validation/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C04",
+      "variant": "zero_subtotal_skips_cap_validation",
+      "change": "Early zero-subtotal return after original amount/percent validation but before cap validation; violates negative-cap rejection at zero calculated discount.",
+      "cwd": "judge-probes-R1/B/C04/zero_subtotal_skips_cap_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R1/B/C04/zero_subtotal_skips_cap_validation/unittest.log",
+      "run_summary": [
+        "FAIL: test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal=0, percent=100)",
+        "AssertionError: ValueError not raised",
+        "Ran 12 tests in 0.000s",
+        "FAILED (failures=1)"
+      ]
+    }
+  ]
+}

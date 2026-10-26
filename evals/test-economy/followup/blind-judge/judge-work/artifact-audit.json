@@ -1,0 +1,35 @@
+{
+  "kind": "judge read-only artifact consistency check",
+  "cases": [
+    {
+      "label": "A",
+      "case": "04_discount_cap",
+      "task_byte_identical": true,
+      "submitted_test_hash_matches_mechanical": true,
+      "original_method_bodies_preserved_as_ordered_statements": true
+    },
+    {
+      "label": "A",
+      "case": "06_upload_workflow",
+      "task_byte_identical": true,
+      "submitted_test_hash_matches_mechanical": true,
+      "original_method_bodies_preserved_as_ordered_statements": true,
+      "upload_byte_identical": true
+    },
+    {
+      "label": "B",
+      "case": "04_discount_cap",
+      "task_byte_identical": true,
+      "submitted_test_hash_matches_mechanical": true,
+      "original_method_bodies_preserved_as_ordered_statements": true
+    },
+    {
+      "label": "B",
+      "case": "06_upload_workflow",
+      "task_byte_identical": true,
+      "submitted_test_hash_matches_mechanical": true,
+      "original_method_bodies_preserved_as_ordered_statements": true,
+      "upload_byte_identical": true
+    }
+  ]
+}

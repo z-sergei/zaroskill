@@ -1,0 +1,15 @@
+Exact supplied change M2: if hours_before >= 48: -> if hours_before >= 47:
+Command: python3 -m unittest discover -v
+Exit: 0
+test_at_day_boundary (test_cancellation.CancellationTests.test_at_day_boundary) ... ok
+test_at_free_boundary (test_cancellation.CancellationTests.test_at_free_boundary) ... ok
+test_early_cancellation (test_cancellation.CancellationTests.test_early_cancellation) ... ok
+test_half_fee_rounds_down (test_cancellation.CancellationTests.test_half_fee_rounds_down) ... ok
+test_late_cancellation (test_cancellation.CancellationTests.test_late_cancellation) ... ok
+test_negative_arguments (test_cancellation.CancellationTests.test_negative_arguments) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+Independent contract witness (47, 100): required 25, observed 0

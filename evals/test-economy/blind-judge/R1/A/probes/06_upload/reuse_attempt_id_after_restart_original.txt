@@ -1,0 +1,9 @@
+reuse_attempt_id_after_restart, original: exit 0
+test_cancel_active_upload (test_upload.UploadTests.test_cancel_active_upload) ... ok
+test_successful_upload (test_upload.UploadTests.test_successful_upload) ... ok
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

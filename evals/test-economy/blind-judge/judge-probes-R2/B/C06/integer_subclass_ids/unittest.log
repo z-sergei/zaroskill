@@ -1,0 +1,102 @@
+test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent) ... FAIL
+test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation) ... FAIL
+test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt) ... FAIL
+test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) ... 
+  test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done') ... FAIL
+  test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled') ... FAIL
+test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel) ... FAIL
+test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete) ... FAIL
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... FAIL
+
+======================================================================
+FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 44, in test_cancel_prevents_late_completion_and_is_idempotent
+    attempt = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 26, in test_idle_ignores_completion_and_cancellation
+    attempt = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 64, in test_rejected_begin_preserves_current_attempt
+    attempt = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 76, in test_restart_rejects_stale_results_before_and_after_current_result
+    old = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 76, in test_restart_rejects_stale_results_before_and_after_current_result
+    old = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 32, in test_success_is_not_overwritten_by_duplicate_or_cancel
+    attempt = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 94, in test_three_attempts_keep_completed_and_cancelled_ids_obsolete
+    first = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+======================================================================
+FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 54, in test_unknown_completion_preserves_current_attempt
+    attempt = self.begin_attempt(session)
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/B/C06/integer_subclass_ids/test_upload.py", line 14, in begin_attempt
+    self.assertIs(type(attempt), int)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'upload._AttemptId'> is not <class 'int'>
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (failures=8)

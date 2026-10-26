@@ -1,0 +1,984 @@
+{
+  "format_version": 1,
+  "evaluation_kind": "directed_followup_on_previously_exposed_tasks",
+  "fresh_holdout": false,
+  "part_of_original_preregistered_comparison": false,
+  "summary": {
+    "fixed_faults": {
+      "total": 16,
+      "KILLED": 16,
+      "SURVIVED": 0,
+      "INVALID": 0,
+      "UNSCORABLE_BASELINE": 0
+    },
+    "original_refactors": {
+      "total": 2,
+      "passed": 2
+    },
+    "diagnostics_non_gating": [
+      {
+        "case": "06_upload_workflow",
+        "id": "integer_subclass_ids",
+        "included_in_gates": false,
+        "submitted_status": "passed",
+        "independent_contract_status": "passed",
+        "interpretation": "An int subclass remains an integer; exact built-in type int is not promised. A failure may expose stricter assumptions in tests, but this diagnostic is explicitly excluded from fixed gates and automatic pass/fail."
+      }
+    ]
+  },
+  "run": "/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.preflight/reference_run",
+  "automatic_gates_passed": true,
+  "manual_grading_required": true,
+  "warning": "Directed follow-up, not a new holdout or the original preregistered comparison. Automatic gates do not score redundancy, diagnostic value, or TDD chronology. The int-subclass diagnostic never changes gates.",
+  "cases": [
+    {
+      "case": "04_discount_cap",
+      "skill": "requirements-tdd",
+      "automatic_gates_passed": true,
+      "gates": {
+        "allowed_files_and_response": true,
+        "submitted_suite_runs_nonempty_and_passes": true,
+        "independent_contract_passes": true,
+        "fixed_faults_detected": true,
+        "equivalent_refactors_pass": true
+      },
+      "scope": {
+        "passed": true,
+        "issues": [],
+        "response_present": true
+      },
+      "baseline": {
+        "status": "passed",
+        "tests_run": 11,
+        "effective_tests": 11,
+        "successful_tests": 11,
+        "skipped": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "test_ids": [
+          "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+          "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+          "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+          "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+          "test_discounts.DiscountTests.test_full_discount",
+          "test_discounts.DiscountTests.test_invalid_percent",
+          "test_discounts.DiscountTests.test_invalid_subtotal",
+          "test_discounts.DiscountTests.test_no_discount",
+          "test_discounts.DiscountTests.test_percentage_discount",
+          "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+          "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+        ],
+        "events": [],
+        "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK\n",
+        "elapsed_seconds": 0.0364,
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 3,
+        "effective_tests": 3,
+        "successful_tests": 3,
+        "skipped": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "test_ids": [
+          "__contract__.Contract.test_limit_cannot_be_positional",
+          "__contract__.Contract.test_old_and_new_calls",
+          "__contract__.Contract.test_validation"
+        ],
+        "events": [],
+        "log": "test_limit_cannot_be_positional (__contract__.Contract.test_limit_cannot_be_positional) ... ok\ntest_old_and_new_calls (__contract__.Contract.test_old_and_new_calls) ... ok\ntest_validation (__contract__.Contract.test_validation) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+        "elapsed_seconds": 0.0379,
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "cap_ignored",
+          "contract_violation": "An effective positive cap must restrict the discount.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=100)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "850 != 900"
+              },
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=0)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "850 != 1000"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... \n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=100) ... FAIL\n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0) ... FAIL\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=100)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-7xdim0pe/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 850 != 900\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-7xdim0pe/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 850 != 1000\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=2)\n",
+            "elapsed_seconds": 0.0376,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cap_is_minimum",
+          "contract_violation": "Cap is an upper bound, not a minimum.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=200)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "800 != 850"
+              },
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=100)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "850 != 900"
+              },
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=0)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "850 != 1000"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... \n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=200) ... FAIL\n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=100) ... FAIL\n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0) ... FAIL\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=200)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-4iyle108/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 800 != 850\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=100)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-4iyle108/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 850 != 900\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-4iyle108/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 850 != 1000\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=3)\n",
+            "elapsed_seconds": 0.0374,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "zero_cap_ignored",
+          "contract_violation": "A zero cap suppresses the discount.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount (limit=0)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "850 != 1000"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... \n  test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0) ... FAIL\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) (limit=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-8jo3zy2l/case/test_discounts.py\", line 32, in test_cap_relations_to_computed_discount\n    self.assertEqual(\n    ~~~~~~~~~~~~~~~~^\n        discounted_total(1000, 15, max_discount_cents=limit), expected\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nAssertionError: 850 != 1000\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0373,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "negative_cap_accepted",
+          "contract_violation": "Negative cap is rejected even with zero computed discount.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 9,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              },
+              {
+                "test": "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... FAIL\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... FAIL\n\n======================================================================\nFAIL: test_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=2)\n",
+            "elapsed_seconds": 0.0375,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "rounds_discount_to_nearest",
+          "contract_violation": "Discount is always floored to integer cents.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "849 != 850"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... FAIL\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 849 != 850\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0373,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cap_allowed_positionally",
+          "contract_violation": "The new cap argument is keyword-only.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "TypeError not raised"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... FAIL\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: TypeError not raised\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0375,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "zero_cap_skips_old_validation",
+          "contract_violation": "Zero cap cannot bypass preserved subtotal and percent validation; invalid inputs still raise ValueError.",
+          "origin": "previously_identified_directed_probe",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation (subtotal=-1, percent=15)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              },
+              {
+                "test": "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation (subtotal=1000, percent=-1)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              },
+              {
+                "test": "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation (subtotal=1000, percent=101)",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... \n  test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=-1, percent=15) ... FAIL\n  test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=1000, percent=-1) ... FAIL\n  test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=1000, percent=101) ... FAIL\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n======================================================================\nFAIL: test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=-1, percent=15)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-hmjq7aft/case/test_discounts.py\", line 48, in test_zero_cap_preserves_subtotal_and_percent_validation\n    with self.subTest(subtotal=subtotal, percent=percent), self.assertRaises(ValueError):\n                                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=1000, percent=-1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-hmjq7aft/case/test_discounts.py\", line 48, in test_zero_cap_preserves_subtotal_and_percent_validation\n    with self.subTest(subtotal=subtotal, percent=percent), self.assertRaises(ValueError):\n                                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) (subtotal=1000, percent=101)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/.scratch/check-hmjq7aft/case/test_discounts.py\", line 48, in test_zero_cap_preserves_subtotal_and_percent_validation\n    with self.subTest(subtotal=subtotal, percent=percent), self.assertRaises(ValueError):\n                                                           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=3)\n",
+            "elapsed_seconds": 0.0378,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "zero_subtotal_skips_cap_validation",
+          "contract_violation": "Negative cap must raise ValueError even when subtotal and computed discount are zero.",
+          "origin": "previously_identified_directed_probe",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 10,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [
+              {
+                "test": "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "ValueError not raised"
+              }
+            ],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... FAIL\n\n======================================================================\nFAIL: test_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0376,
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "single_bounded_expression",
+          "equivalence": "Rearranged validation and bounded expression preserve the specified integer behavior.",
+          "passed": true,
+          "run": {
+            "status": "passed",
+            "tests_run": 11,
+            "effective_tests": 11,
+            "successful_tests": 11,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_discounts.DiscountCapTests.test_cap_is_keyword_only",
+              "test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount",
+              "test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount",
+              "test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents",
+              "test_discounts.DiscountTests.test_full_discount",
+              "test_discounts.DiscountTests.test_invalid_percent",
+              "test_discounts.DiscountTests.test_invalid_subtotal",
+              "test_discounts.DiscountTests.test_no_discount",
+              "test_discounts.DiscountTests.test_percentage_discount",
+              "test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation",
+              "test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation"
+            ],
+            "events": [],
+            "log": "test_cap_is_keyword_only (test_discounts.DiscountCapTests.test_cap_is_keyword_only) ... ok\ntest_cap_relations_to_computed_discount (test_discounts.DiscountCapTests.test_cap_relations_to_computed_discount) ... ok\ntest_negative_cap_is_invalid_even_without_a_discount (test_discounts.DiscountCapTests.test_negative_cap_is_invalid_even_without_a_discount) ... ok\ntest_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok\ntest_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok\ntest_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok\ntest_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok\ntest_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok\ntest_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok\ntest_zero_cap_preserves_subtotal_and_percent_validation (test_discounts.DiscountValidationInteractions.test_zero_cap_preserves_subtotal_and_percent_validation) ... ok\ntest_zero_subtotal_does_not_bypass_negative_cap_validation (test_discounts.DiscountValidationInteractions.test_zero_subtotal_does_not_bypass_negative_cap_validation) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK\n",
+            "elapsed_seconds": 0.0367,
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "diagnostics_non_gating": [],
+      "fault_scoring_note": "Required protection checks; not a redundancy metric.",
+      "inventory": {
+        "test_method_names": [
+          "test_no_discount",
+          "test_percentage_discount",
+          "test_discount_rounds_down_to_whole_cents",
+          "test_full_discount",
+          "test_invalid_subtotal",
+          "test_invalid_percent",
+          "test_cap_relations_to_computed_discount",
+          "test_negative_cap_is_invalid_even_without_a_discount",
+          "test_cap_is_keyword_only",
+          "test_zero_cap_preserves_subtotal_and_percent_validation",
+          "test_zero_subtotal_does_not_bypass_negative_cap_validation"
+        ],
+        "test_file_sha256": "4e207c51c6830e20065d6b5b1283b3e1882763018ec439e9554a09bba56e11f3",
+        "scoring_use": "None; scenario meaning and cost require the rubric."
+      },
+      "manual_review": {
+        "additional_distinctions": null,
+        "unjustified_scenarios": null,
+        "maintenance_and_diagnostic_cost": null,
+        "constraint_and_explanation_quality": null,
+        "note": "Human rubric required. Neither method count nor equal mutant kill sets determine these fields."
+      }
+    },
+    {
+      "case": "06_upload_workflow",
+      "skill": "state-machine-verification",
+      "automatic_gates_passed": true,
+      "gates": {
+        "allowed_files_and_response": true,
+        "submitted_suite_runs_nonempty_and_passes": true,
+        "independent_contract_passes": true,
+        "fixed_faults_detected": true,
+        "equivalent_refactors_pass": true
+      },
+      "scope": {
+        "passed": true,
+        "issues": [],
+        "response_present": true
+      },
+      "baseline": {
+        "status": "passed",
+        "tests_run": 5,
+        "effective_tests": 5,
+        "successful_tests": 5,
+        "skipped": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "test_ids": [
+          "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+          "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+          "test_upload.UploadTests.test_initial_ignored_events_then_success",
+          "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+          "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+        ],
+        "events": [],
+        "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+        "elapsed_seconds": 0.0366,
+        "test_files_unchanged": true
+      },
+      "contract": {
+        "status": "passed",
+        "tests_run": 2,
+        "effective_tests": 2,
+        "successful_tests": 2,
+        "skipped": 0,
+        "expected_failures": 0,
+        "unexpected_successes": 0,
+        "test_ids": [
+          "__contract__.Contract.test_ids_grow_across_consecutive_successful_uploads",
+          "__contract__.Contract.test_state_lifecycle"
+        ],
+        "events": [],
+        "log": "test_ids_grow_across_consecutive_successful_uploads (__contract__.Contract.test_ids_grow_across_consecutive_successful_uploads) ... ok\ntest_state_lifecycle (__contract__.Contract.test_state_lifecycle) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+        "elapsed_seconds": 0.0361,
+        "test_files_unchanged": true
+      },
+      "faults": [
+        {
+          "id": "late_or_duplicate_completion_accepted",
+          "contract_violation": "Only the active waiting attempt may complete.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 3,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              },
+              {
+                "test": "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... FAIL\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... FAIL\n\n======================================================================\nFAIL: test_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n======================================================================\nFAIL: test_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=2)\n",
+            "elapsed_seconds": 0.0372,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "foreign_id_accepted",
+          "contract_violation": "Wrong or stale attempt id must be ignored.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 2,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              },
+              {
+                "test": "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              },
+              {
+                "test": "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... FAIL\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... FAIL\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... FAIL\n\n======================================================================\nFAIL: test_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n======================================================================\nFAIL: test_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n======================================================================\nFAIL: test_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=3)\n",
+            "elapsed_seconds": 0.0374,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "attempt_ids_reused",
+          "contract_violation": "Successful begins have strictly increasing ids.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 3,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 not greater than 1"
+              },
+              {
+                "test": "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 not greater than 1"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... FAIL\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... FAIL\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n======================================================================\nFAIL: test_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 not greater than 1\n\n======================================================================\nFAIL: test_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 not greater than 1\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=2)\n",
+            "elapsed_seconds": 0.0375,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "begin_replaces_active_attempt",
+          "contract_violation": "Begin during waiting raises and preserves the active attempt.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 4,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "RuntimeError not raised"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... FAIL\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n======================================================================\nFAIL: test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: RuntimeError not raised\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0369,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "cancel_completed_upload",
+          "contract_violation": "Cancel after completion must preserve done and result.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 4,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "True is not False"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... FAIL\n\n======================================================================\nFAIL: test_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: True is not False\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0373,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "restart_retains_old_result",
+          "contract_violation": "Begin clears the previous result.",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 4,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "Tuples differ: ('waiting', 'old result') != ('waiting', None)\n\nFirst differing element 1:\n'old result'\nNone\n\n- ('waiting', 'old result')\n+ ('waiting', None)"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... FAIL\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n======================================================================\nFAIL: test_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: Tuples differ: ('waiting', 'old result') != ('waiting', None)\n\nFirst differing element 1:\n'old result'\nNone\n\n- ('waiting', 'old result')\n+ ('waiting', None)\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.0373,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "numeric_boolean_returns",
+          "contract_violation": "complete and cancel promise True or False, not merely truthy or falsey integers.",
+          "origin": "previously_identified_directed_probe",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 0,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 is not True"
+              },
+              {
+                "test": "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 is not True"
+              },
+              {
+                "test": "test_upload.UploadTests.test_initial_ignored_events_then_success",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "0 is not False"
+              },
+              {
+                "test": "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 is not True"
+              },
+              {
+                "test": "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "0 is not False"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... FAIL\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... FAIL\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... FAIL\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... FAIL\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... FAIL\n\n======================================================================\nFAIL: test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 is not True\n\n======================================================================\nFAIL: test_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 is not True\n\n======================================================================\nFAIL: test_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 0 is not False\n\n======================================================================\nFAIL: test_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 is not True\n\n======================================================================\nFAIL: test_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 0 is not False\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=5)\n",
+            "elapsed_seconds": 0.0375,
+            "test_files_unchanged": true
+          }
+        },
+        {
+          "id": "two_id_cycle_after_success",
+          "contract_violation": "Every successful begin must produce an id greater than the previous one, including after repeated successful completion.",
+          "origin": "previously_identified_directed_probe",
+          "verdict": "KILLED",
+          "run": {
+            "status": "failed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 4,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [
+              {
+                "test": "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+                "phase": "body",
+                "kind": "assertion_failure",
+                "exception": "AssertionError",
+                "message": "1 not greater than 2"
+              }
+            ],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... FAIL\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n======================================================================\nFAIL: test_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/tmp/zaroskill-economy-n9eezds3/followup/evaluation/grading/runner.py\", line 17, in call\n    return original(self, *args, **kwargs)\nAssertionError: 1 not greater than 2\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nFAILED (failures=1)\n",
+            "elapsed_seconds": 0.037,
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "refactors": [
+        {
+          "id": "different_private_storage",
+          "equivalence": "Private counter and pending storage are renamed/reorganized; public event behavior is unchanged.",
+          "passed": true,
+          "run": {
+            "status": "passed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 5,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+            "elapsed_seconds": 0.0367,
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "diagnostics_non_gating": [
+        {
+          "id": "integer_subclass_ids",
+          "purpose": "Equivalence diagnostic under the ordinary reading of positive integer.",
+          "interpretation": "An int subclass remains an integer; exact built-in type int is not promised. A failure may expose stricter assumptions in tests, but this diagnostic is explicitly excluded from fixed gates and automatic pass/fail.",
+          "included_in_gates": false,
+          "submitted_suite_accepts": true,
+          "independent_contract_accepts": true,
+          "submitted_run": {
+            "status": "passed",
+            "tests_run": 5,
+            "effective_tests": 5,
+            "successful_tests": 5,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt",
+              "test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion",
+              "test_upload.UploadTests.test_initial_ignored_events_then_success",
+              "test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids",
+              "test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress"
+            ],
+            "events": [],
+            "log": "test_begin_while_waiting_preserves_active_attempt (test_upload.UploadTests.test_begin_while_waiting_preserves_active_attempt) ... ok\ntest_cancel_late_completion_restart_and_stale_completion (test_upload.UploadTests.test_cancel_late_completion_restart_and_stale_completion) ... ok\ntest_initial_ignored_events_then_success (test_upload.UploadTests.test_initial_ignored_events_then_success) ... ok\ntest_repeated_success_restarts_clear_result_and_reject_old_ids (test_upload.UploadTests.test_repeated_success_restarts_clear_result_and_reject_old_ids) ... ok\ntest_wrong_and_duplicate_completion_preserve_result_and_progress (test_upload.UploadTests.test_wrong_and_duplicate_completion_preserve_result_and_progress) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+            "elapsed_seconds": 0.0365,
+            "test_files_unchanged": true
+          },
+          "contract_run": {
+            "status": "passed",
+            "tests_run": 2,
+            "effective_tests": 2,
+            "successful_tests": 2,
+            "skipped": 0,
+            "expected_failures": 0,
+            "unexpected_successes": 0,
+            "test_ids": [
+              "__contract__.Contract.test_ids_grow_across_consecutive_successful_uploads",
+              "__contract__.Contract.test_state_lifecycle"
+            ],
+            "events": [],
+            "log": "test_ids_grow_across_consecutive_successful_uploads (__contract__.Contract.test_ids_grow_across_consecutive_successful_uploads) ... ok\ntest_state_lifecycle (__contract__.Contract.test_state_lifecycle) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+            "elapsed_seconds": 0.0364,
+            "test_files_unchanged": true
+          }
+        }
+      ],
+      "fault_scoring_note": "Required protection checks; not a redundancy metric.",
+      "inventory": {
+        "test_method_names": [
+          "test_initial_ignored_events_then_success",
+          "test_wrong_and_duplicate_completion_preserve_result_and_progress",
+          "test_cancel_late_completion_restart_and_stale_completion",
+          "test_repeated_success_restarts_clear_result_and_reject_old_ids",
+          "test_begin_while_waiting_preserves_active_attempt"
+        ],
+        "test_file_sha256": "d8c9aebdaa7e5b040bc656ff1922ac00c4821acefb4af6f34cccdf6ff80c3454",
+        "scoring_use": "None; scenario meaning and cost require the rubric."
+      },
+      "manual_review": {
+        "additional_distinctions": null,
+        "unjustified_scenarios": null,
+        "maintenance_and_diagnostic_cost": null,
+        "constraint_and_explanation_quality": null,
+        "note": "Human rubric required. Neither method count nor equal mutant kill sets determine these fields."
+      }
+    }
+  ]
+}

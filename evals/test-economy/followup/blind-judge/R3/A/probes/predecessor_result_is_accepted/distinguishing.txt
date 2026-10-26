@@ -1,0 +1,26 @@
+test_restarts_clear_results_and_reject_previous_attempts (test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts) ... 
+  test_restarts_clear_results_and_reject_previous_attempts (test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts) (previous_state='done') ... FAIL
+  test_restarts_clear_results_and_reject_previous_attempts (test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts) (previous_state='cancelled') ... FAIL
+
+======================================================================
+FAIL: test_restarts_clear_results_and_reject_previous_attempts (test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts) (previous_state='done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/predecessor_result_is_accepted/test_upload.py", line 91, in test_restarts_clear_results_and_reject_previous_attempts
+    self.assertIs(session.complete(first, "late-first.csv"), False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not False
+
+======================================================================
+FAIL: test_restarts_clear_results_and_reject_previous_attempts (test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts) (previous_state='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/predecessor_result_is_accepted/test_upload.py", line 91, in test_restarts_clear_results_and_reject_previous_attempts
+    self.assertIs(session.complete(first, "late-first.csv"), False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not False
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=2)

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-26",
+  "baseline_commit": "4e3c28a1412335bcb593ba7c6132a10621a8ee0b",
+  "design": "Two matched paired runs, each version evaluated by two fresh-context agents. Each agent performs the same six tasks; task order is matched within each pair. A separate judge compares anonymized outputs without skill snapshots or version mapping.",
+  "case_author": "Independent fresh-context agent; no access to baseline or candidate skill text.",
+  "candidate_policy": "Freeze candidate and cases before both pairs. Preserve any later amendment as a separate revision and evaluation; do not silently pool it with these runs.",
+  "primary_question": "Does the candidate reduce unjustified retained or added test obligations without losing contract protection, meaningful fault detection or useful healthy controls?",
+  "priority": [
+    "Preserve supported contractual distinctions and authorized task scope.",
+    "Preserve detection of relevant non-equivalent seeded faults and survival of equivalent refactors.",
+    "Reduce redundant examples or obligations when they add no justified protection, boundary evidence or diagnosis.",
+    "Keep mutation work proportional and report its evidence honestly."
+  ],
+  "not_metrics_of_success": [
+    "Fewest test methods",
+    "Fewest lines of code",
+    "Highest aggregate mutation score",
+    "Reviewer preference for wording"
+  ],
+  "limitations": [
+    "Small development sample, not a statistical superiority claim.",
+    "Multiple tasks within one agent session are not independent observations.",
+    "Behavioral folder isolation, not an operating-system confidentiality boundary.",
+    "Portable Python fixtures and supplied tool reports do not establish compatibility with every language or mutation framework.",
+    "No consuming application is changed or deployed."
+  ],
+  "decision_rule": "Prefer retaining changes that show a concrete reduction in unjustified test obligations while preserving required distinctions, seeded-fault detection, equivalent-refactor survival and healthy controls. A tie is not a measured improvement. Any revision after results must be reported and evaluated separately rather than silently selecting favorable runs."
+}

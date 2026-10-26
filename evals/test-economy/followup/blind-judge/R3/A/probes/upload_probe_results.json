@@ -1,0 +1,84 @@
+{
+  "working_upload_sha256": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+  "working_upload_unchanged": true,
+  "results": [
+    {
+      "fault": "rejected_begin_changes_active_attempt",
+      "directory": "<run>/probes/rejected_begin_changes_active_attempt",
+      "existing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_successful_upload",
+          "test_upload.UploadTests.test_cancel_active_upload",
+          "test_upload.UploadTests.test_unknown_completion_preserves_current_attempt"
+        ],
+        "exit_code": 0
+      },
+      "distinguishing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_rejected_begin_preserves_the_attempt_that_can_complete"
+        ],
+        "exit_code": 1
+      }
+    },
+    {
+      "fault": "predecessor_result_is_accepted",
+      "directory": "<run>/probes/predecessor_result_is_accepted",
+      "existing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_successful_upload",
+          "test_upload.UploadTests.test_cancel_active_upload",
+          "test_upload.UploadTests.test_unknown_completion_preserves_current_attempt"
+        ],
+        "exit_code": 0
+      },
+      "distinguishing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_restarts_clear_results_and_reject_previous_attempts"
+        ],
+        "exit_code": 1
+      }
+    },
+    {
+      "fault": "late_cancel_erases_result",
+      "directory": "<run>/probes/late_cancel_erases_result",
+      "existing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_successful_upload",
+          "test_upload.UploadTests.test_cancel_active_upload",
+          "test_upload.UploadTests.test_unknown_completion_preserves_current_attempt"
+        ],
+        "exit_code": 0
+      },
+      "distinguishing": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "-v",
+          "test_upload.UploadTests.test_completion_before_cancel_keeps_first_result"
+        ],
+        "exit_code": 1
+      }
+    }
+  ]
+}

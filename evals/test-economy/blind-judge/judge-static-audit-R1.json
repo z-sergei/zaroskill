@@ -1,0 +1,117 @@
+{
+  "kind": "Judge static byte/hash inspection, not behavioral execution",
+  "candidates": {
+    "A": [
+      {
+        "case": "01_shipping_bands",
+        "changed_files": [
+          "response.md",
+          "test_shipping.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "02_display_name",
+        "changed_files": [
+          "response.md",
+          "test_names.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "03_capacity_boundaries",
+        "changed_files": [
+          "response.md",
+          "test_capacity.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "04_discount_cap",
+        "changed_files": [
+          "discounts.py",
+          "response.md",
+          "test_discounts.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "05_mutation_report",
+        "changed_files": [
+          "review.md"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "06_upload_workflow",
+        "changed_files": [
+          "response.md",
+          "test_upload.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      }
+    ],
+    "B": [
+      {
+        "case": "01_shipping_bands",
+        "changed_files": [
+          "response.md",
+          "test_shipping.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "02_display_name",
+        "changed_files": [
+          "response.md",
+          "test_names.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "03_capacity_boundaries",
+        "changed_files": [
+          "response.md",
+          "test_capacity.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "04_discount_cap",
+        "changed_files": [
+          "discounts.py",
+          "response.md",
+          "test_discounts.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "05_mutation_report",
+        "changed_files": [
+          "review.md"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      },
+      {
+        "case": "06_upload_workflow",
+        "changed_files": [
+          "response.md",
+          "test_upload.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true
+      }
+    ]
+  }
+}

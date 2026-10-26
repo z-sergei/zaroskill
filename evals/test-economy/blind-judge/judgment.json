@@ -1,0 +1,3104 @@
+{
+  "format_version": 1,
+  "status": "complete",
+  "blinding_preserved": true,
+  "pairs": [
+    {
+      "format_version": 1,
+      "pair": "R1",
+      "status": "complete_for_R1_only",
+      "R2_assessed": false,
+      "blinding": {
+        "version_identities_sought": false,
+        "network_used": false,
+        "outside_folder_read": false,
+        "delegation": false
+      },
+      "protocol": [
+        "Прочитаны instructions.txt, rubric.md, index.json и оригиналы.",
+        "A оценён отдельно и сохранён в independent-R1-A.json до чтения материалов B.",
+        "B оценён отдельно и сохранён в independent-R1-B.json до парного решения.",
+        "Три узкие дополнительные проверки в собственных одноразовых копиях; затем парное сопоставление."
+      ],
+      "evidence_origins": {
+        "supplied_mechanical": [
+          "R1/A/mechanical.json",
+          "R1/B/mechanical.json"
+        ],
+        "supplied_participant_records": [
+          "R1/A/execution.md",
+          "R1/B/execution.md",
+          "R1/A/probes/",
+          "R1/B/probes/"
+        ],
+        "judge_executed": [
+          "judge-probes-R1/run_focused.py",
+          "judge-probes-R1/results.json"
+        ],
+        "judge_static": "judge-static-audit-R1.json"
+      },
+      "rubric_validation": [
+        "Все поведенческие anchors сопоставлены с видимыми task.md; скрытое эталонное число методов/строк не применялось.",
+        "grade.py в доступной папке отсутствует. Судья не выходил за разрешённую границу для его поиска; механические результаты предоставлены отдельно и прочитаны с событиями ошибок.",
+        "C02 no-change — допустимый контроль, а не запрет Unicode-усилений.",
+        "C04 равный cap может быть полезен, но не объявлен обязательным дополнительным тестом. Общее утверждение A, что он ничего не различает, слишком широкое; конкретное решение не добавлять его допустимо.",
+        "TypeError отсутствующего публичного keyword — достижимая ошибка API, не сбой discovery/setup. Называть его setup в B неточно. Контракт требовал наблюдаемое падение, а не обязательный промежуточный inert-signature этап; оба добровольно дали и содержательный assertion-red.",
+        "Финальный green не доказывает TDD. A предоставляет подробную последовательную запись, B — ещё и выводы; это атрибутированные журналы, не независимо удостоверенная история. Оценка процесса основана на этих конкретных согласованных записях, а не на финальном состоянии.",
+        "C05 запрещает изменения исполняемого набора; его survived M2 описателен и не является провалом выполнения.",
+        "C06 не обещает eventually complete, fairness, threading, clocks или I/O. Отрицательные integer id не запрещены входным контрактом complete.",
+        "Две признанные возможности сокращения B — локальные оценки роли сценариев, с умеренной уверенностью, а не универсальный минимальный набор."
+      ],
+      "mechanical_assessment": {
+        "all_applicable_gates_passed": true,
+        "required_fixed_faults_killed_each": 31,
+        "equivalent_refactors_passed_each": 7,
+        "C05_descriptive": {
+          "free_starts_one_hour_early": "SURVIVED",
+          "day_threshold_late": "KILLED",
+          "half_fee_rounded_up": "KILLED"
+        },
+        "failure_cause_review": "Все соответствующие failure events — body assertions или неожиданные production-domain exceptions при здоровом baseline; нет смешанных infrastructure failures, пустого discovery, skips или expected failures. Тесты перенесены неизменёнными. Проверка hash связывает текущие тесты с предоставленным mechanical.json."
+      },
+      "judge_checks": {
+        "origin": "Executed by the blind judge in disposable copies. These are neither supplied mechanical results nor participant execution records.",
+        "purpose": "Resolve concrete cross-suite distinctions not contained in the fixed fault set, without claiming completeness or treating kill-set equality as redundancy.",
+        "candidate_source_hashes_unchanged": true,
+        "candidate_source_hashes": {
+          "R1/A/cases/02_display_name/test_names.py": "86d438dd9ade4ed611a3d5c9447b9d0eca5e8c11adc5284640b252063d7a23c6",
+          "R1/A/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+          "R1/A/cases/04_discount_cap/discounts.py": "982c050e7f980e4dc595683745fd5825baddf49ce02c22878deabd632d3ef054",
+          "R1/A/cases/04_discount_cap/test_discounts.py": "f830c015f2690c9fd14226dd7a826280466eb1aff0ca3b3196c0a8af7d088216",
+          "R1/B/cases/02_display_name/test_names.py": "a5c929437e1ada00697206e0dd4a0a5054d5d2e1c38763c17db5b1268d1b5f75",
+          "R1/B/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+          "R1/B/cases/04_discount_cap/discounts.py": "8d5bedfd7f1a8da26df941b8b277cfe6053d44c3a5eb6977d91e4039b1f976e7",
+          "R1/B/cases/04_discount_cap/test_discounts.py": "c6269c40dbe1c28abc37e65f2f503ba965cb2796e2546c7baaed9da084722308"
+        },
+        "records": [
+          {
+            "candidate": "A",
+            "case": "C02",
+            "variant": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R1/A/C02/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/A/C02/baseline/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C02",
+            "variant": "normalize_after_validation",
+            "change": "Return NFC normalization only after the original strip and len validation; violates exact preservation of valid decomposed text.",
+            "cwd": "judge-probes-R1/A/C02/normalize_after_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/A/C02/normalize_after_validation/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C04",
+            "variant": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R1/A/C04/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/A/C04/baseline/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C04",
+            "variant": "zero_cap_skips_old_validation",
+            "change": "Early zero-cap return before old amount/percent validation; violates original invalid-input rules.",
+            "cwd": "judge-probes-R1/A/C04/zero_cap_skips_old_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/A/C04/zero_cap_skips_old_validation/unittest.log",
+            "run_summary": [
+              "FAIL: test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) (percent=-1, cap=0)",
+              "AssertionError: ValueError not raised",
+              "FAIL: test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) (percent=101, cap=0)",
+              "AssertionError: ValueError not raised",
+              "FAIL: test_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) (cap=0)",
+              "AssertionError: ValueError not raised",
+              "Ran 12 tests in 0.001s",
+              "FAILED (failures=3)"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C04",
+            "variant": "zero_subtotal_skips_cap_validation",
+            "change": "Early zero-subtotal return after original amount/percent validation but before cap validation; violates negative-cap rejection at zero calculated discount.",
+            "cwd": "judge-probes-R1/A/C04/zero_subtotal_skips_cap_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/A/C04/zero_subtotal_skips_cap_validation/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C02",
+            "variant": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R1/B/C02/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/B/C02/baseline/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C02",
+            "variant": "normalize_after_validation",
+            "change": "Return NFC normalization only after the original strip and len validation; violates exact preservation of valid decomposed text.",
+            "cwd": "judge-probes-R1/B/C02/normalize_after_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/B/C02/normalize_after_validation/unittest.log",
+            "run_summary": [
+              "FAIL: test_combining_codepoints_count_towards_the_length_limit (test_names.DisplayNameTests.test_combining_codepoints_count_towards_the_length_limit)",
+              "AssertionError: 'éééééééééé' != 'éééééééééé'",
+              "FAIL: test_unicode_edges_are_trimmed_without_changing_inner_characters (test_names.DisplayNameTests.test_unicode_edges_are_trimmed_without_changing_inner_characters)",
+              "AssertionError: 'A\\tB\\nC\\xa0é!' != 'A\\tB\\nC\\xa0é!'",
+              "Ran 9 tests in 0.001s",
+              "FAILED (failures=2)"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C04",
+            "variant": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R1/B/C04/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/B/C04/baseline/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C04",
+            "variant": "zero_cap_skips_old_validation",
+            "change": "Early zero-cap return before old amount/percent validation; violates original invalid-input rules.",
+            "cwd": "judge-probes-R1/B/C04/zero_cap_skips_old_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/B/C04/zero_cap_skips_old_validation/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C04",
+            "variant": "zero_subtotal_skips_cap_validation",
+            "change": "Early zero-subtotal return after original amount/percent validation but before cap validation; violates negative-cap rejection at zero calculated discount.",
+            "cwd": "judge-probes-R1/B/C04/zero_subtotal_skips_cap_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R1/B/C04/zero_subtotal_skips_cap_validation/unittest.log",
+            "run_summary": [
+              "FAIL: test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal=0, percent=100)",
+              "AssertionError: ValueError not raised",
+              "Ran 12 tests in 0.000s",
+              "FAILED (failures=1)"
+            ]
+          }
+        ]
+      },
+      "score_adjustments_after_independent_assessment": [
+        {
+          "candidate": "A",
+          "case": "C02",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Judge probe показывает конкретную небольшую слепую зону post-validation NFC."
+        },
+        {
+          "candidate": "A",
+          "case": "C04",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Judge probe показывает пропуск отрицательного cap при раннем возврате для subtotal=0."
+        },
+        {
+          "candidate": "B",
+          "case": "C04",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Judge probe показывает пропуск старой валидации при раннем возврате для cap=0."
+        }
+      ],
+      "cases": [
+        {
+          "id": "C01",
+          "name": "shipping",
+          "winner": "A",
+          "confidence": "moderate",
+          "conclusion": "Небольшое преимущество A по экономности: B сохраняет один пример, заявленная роль которого уже представлена другим входом. Потери полезной исходной границы не обнаружено.",
+          "retained": [
+            "ValueError для отрицательных",
+            "валидный 0",
+            "4999/5000 и 9999/10000",
+            "точные тарифы",
+            "по одному представителю внутри платных диапазонов",
+            "отрицательный внутренний пример -200"
+          ],
+          "added": {
+            "A": [
+              "10**30: пример отсутствия верхнего предела"
+            ],
+            "B": [
+              "10**30: пример отсутствия верхнего предела"
+            ]
+          },
+          "removed": {
+            "A": [
+              "2400 и 5500",
+              "12000 и 20000 заменены одним 10**30"
+            ],
+            "B": [
+              "2400 и 5500",
+              "20000 заменён 10**30"
+            ]
+          },
+          "protection_loss": "Ни у одного ответа не установлена потеря поддерживаемого смыслового различия; конечные значения не доказывают весь неограниченный диапазон.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": [
+              {
+                "scenario": "delivery_fee(12000) == 0",
+                "count": 1,
+                "reason": "Заявленная защита от реализации, верной только на границе 10000, уже есть у 10**30. Отдельная история регрессии или правило для обычного размера бесплатной корзины не приведены."
+              }
+            ]
+          },
+          "extra_work": "A ограничивается исходным и итоговым запуском. B делает один probe >=5000 → >5000 с восстановлением: это корректное, но малодоходное подтверждение уже очевидной границы. Малый объём не считается существенным нарушением соразмерности.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "-1, 0, 4999/5000, 9999/10000",
+              "explicit_rule_or_boundary": "Отрицательная/валидная область, обе стороны тарифных порогов",
+              "additional_distinction": "Отдельные включительности и точные тарифы",
+              "useful_diagnostic_separation": "Имя тарифного правила + subTest(subtotal)",
+              "maintenance_execution_cost": "Прямые малые примеры",
+              "keep_combine_remove_rationale": "Сохранить: разные обещания."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "1200, 7500, -200",
+              "explicit_rule_or_boundary": "Правила распространяются внутрь диапазонов",
+              "additional_distinction": "Обычный внутренний вход против реализации только в перечисленных границах",
+              "useful_diagnostic_separation": "Значение видно в subTest",
+              "maintenance_execution_cost": "По одному дополнительному примеру на соответствующий диапазон",
+              "keep_combine_remove_rationale": "Сохранить: допустимые представители; не требовать минимального числа строк."
+            },
+            {
+              "candidate": "A",
+              "scenario_group": "10000, 10**30",
+              "explicit_rule_or_boundary": "Бесплатно от порога без верхней границы",
+              "additional_distinction": "Порог / продолжение и большой Python int",
+              "useful_diagnostic_separation": "Один ясный тарифный тест",
+              "maintenance_execution_cost": "Два входа",
+              "keep_combine_remove_rationale": "Достаточно для выбранных различий; не доказательство всех целых."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "10000, 12000, 10**30",
+              "explicit_rule_or_boundary": "То же правило бесплатного диапазона",
+              "additional_distinction": "У 12000 не показана отдельная роль сверх 10**30",
+              "useful_diagnostic_separation": "То же правило и та же диагностика",
+              "maintenance_execution_cost": "Одно дополнительное ожидаемое значение",
+              "keep_combine_remove_rationale": "12000 можно убрать; это ограниченный вывод по заявленному назначению, не вывод из kill set."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 4,
+              "fixed_faults": {
+                "zero_rejected": "KILLED",
+                "negative_accepted": "KILLED",
+                "discount_starts_early": "KILLED",
+                "discount_starts_late": "KILLED",
+                "free_starts_early": "KILLED",
+                "free_starts_late": "KILLED"
+              },
+              "equivalent_refactors": {
+                "ascending_intervals": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 4,
+              "fixed_faults": {
+                "zero_rejected": "KILLED",
+                "negative_accepted": "KILLED",
+                "discount_starts_early": "KILLED",
+                "discount_starts_late": "KILLED",
+                "free_starts_early": "KILLED",
+                "free_starts_late": "KILLED"
+              },
+              "equivalent_refactors": {
+                "ascending_intervals": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/01_shipping_bands/task.md",
+            "R1/A/cases/01_shipping_bands/",
+            "R1/B/cases/01_shipping_bands/"
+          ]
+        },
+        {
+          "id": "C02",
+          "name": "display_name",
+          "winner": "B",
+          "confidence": "high",
+          "conclusion": "B даёт небольшую, но проверенную дополнительную защиту сохранения допустимого декомпозированного Unicode. Его положительный пример имеет самостоятельный смысл и не является лишним граничным повтором.",
+          "retained": [
+            "Все 7 исходных сценариев: длины 0/1/20/21, очистка до длины, пустой и whitespace-only ввод, регистр/внутренние пробелы, символы против байтов"
+          ],
+          "added": {
+            "A": [
+              "Unicode-пробелы по краям и внутренние tab/newline/NBSP",
+              "отклонение 21 кодовой точки с комбинируемыми знаками"
+            ],
+            "B": [
+              "Те же различия",
+              "точное сохранение допустимого e+combining mark внутри имени и в 20-кодовой-точечной строке"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Исходная защита сохранена обоими. У A остаётся конкретная небольшая слепая зона нормализации допустимых составных символов после валидации.",
+          "residual_gaps": [
+            {
+              "candidate": "A",
+              "risk": "NFC после проверки длины меняет допустимую строку, но все 9 тестов A проходят.",
+              "evidence": "Судейский normalize_after_validation: B даёт 2 assertion failures, A проходит."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "У B узкий ASCII-only strip probe показывает исходный пробел и чувствительность новых тестов. Это соразмерное подтверждение, а не обязательная процедура для A. У A честно указано отсутствие probes.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "7 старых сценариев",
+              "explicit_rule_or_boundary": "Отдельные правила длины, очистки и сохранения",
+              "additional_distinction": "Пустая строка отличается от ставшей пустой; len отличается от UTF-8 bytes",
+              "useful_diagnostic_separation": "Короткие отдельные имена",
+              "maintenance_execution_cost": "Без удаления здоровых тестов",
+              "keep_combine_remove_rationale": "Сохранить; совпадение веток не основание удаления."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "EM SPACE/NBSP снаружи, tab/newline/NBSP внутри",
+              "explicit_rule_or_boundary": "str.strip() и сохранение всего внутреннего содержимого",
+              "additional_distinction": "ASCII-only trim и внутренняя санитаризация",
+              "useful_diagnostic_separation": "Одно буквальное expected string",
+              "maintenance_execution_cost": "Один тест на группу",
+              "keep_combine_remove_rationale": "Добавление оправдано, no-change anchor не запрещает новые различия."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "21 кодовая точка при меньшем числе графем",
+              "explicit_rule_or_boundary": "len строки, не графемы",
+              "additional_distinction": "Неверный подсчёт видимых символов",
+              "useful_diagnostic_separation": "Явный ValueError",
+              "maintenance_execution_cost": "Один отрицательный пример",
+              "keep_combine_remove_rationale": "Сохранить."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Валидное декомпозированное e+mark, включая длину 20",
+              "explicit_rule_or_boundary": "Допустимые символы сохраняются точно",
+              "additional_distinction": "Нормализация после успешной проверки длины; подтверждена отдельным judge probe",
+              "useful_diagnostic_separation": "Положительное равенство и последующее отклонение 21 различимы по строке падения",
+              "maintenance_execution_cost": "Одна дополнительная успешная проверка плюс составной символ в соседнем примере",
+              "keep_combine_remove_rationale": "Сохранить: отрицательный пример это обещание не заменяет."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 9,
+              "fixed_faults": {
+                "zero_length_allowed": "KILLED",
+                "max_boundary_excluded": "KILLED",
+                "overlong_allowed": "KILLED",
+                "raw_length_checked": "KILLED",
+                "inner_spaces_collapsed": "KILLED",
+                "case_normalized": "KILLED",
+                "byte_length_checked": "KILLED"
+              },
+              "equivalent_refactors": {
+                "separate_length_check": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 9,
+              "fixed_faults": {
+                "zero_length_allowed": "KILLED",
+                "max_boundary_excluded": "KILLED",
+                "overlong_allowed": "KILLED",
+                "raw_length_checked": "KILLED",
+                "inner_spaces_collapsed": "KILLED",
+                "case_normalized": "KILLED",
+                "byte_length_checked": "KILLED"
+              },
+              "equivalent_refactors": {
+                "separate_length_check": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/02_display_name/task.md",
+            "R1/A/cases/02_display_name/",
+            "R1/B/cases/02_display_name/"
+          ]
+        },
+        {
+          "id": "C03",
+          "name": "capacity",
+          "winner": "tie",
+          "confidence": "high",
+          "conclusion": "Содержательно равные улучшения. Значения 3+2 и 2+3 не создают доказанного преимущества; обе версии сохраняют две публичные границы и добавляют успех ниже лимита.",
+          "retained": [
+            "Доменный результат/CapacityError",
+            "точное заполнение",
+            "нулевой запрос при полном лимите",
+            "точный ответ adapter и неизменность входа при успехе/ошибке"
+          ],
+          "added": {
+            "A": [
+              "3+2 при limit10 → 5 через reserve и handle_request",
+              "ValueError-совместимость исключения",
+              "неизменность zero-at-capacity payload"
+            ],
+            "B": [
+              "2+3 при limit10 → 5 через обе точки входа",
+              "те же совместимость исключения и неизменность payload"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Не обнаружена.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "Оба вручную подменяют return updated на return limit в копии: исходные 6 тестов проходят, новые 8 дают два содержательных падения. Это целевой эксперимент с прямой пользой; отдельный probe для каждого дешёвого assertion не нужен.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "reserve: exact/overflow/zero-at-capacity",
+              "explicit_rule_or_boundary": "Самостоятельная поддерживаемая функция",
+              "additional_distinction": "Возврат, включительность, CapacityError и допустимость нуля",
+              "useful_diagnostic_separation": "Отдельный доменный класс",
+              "maintenance_execution_cost": "Короткие прямые вызовы",
+              "keep_combine_remove_rationale": "Сохранить все три; похожие числа защищают разные обещания."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "handle_request: exact/overflow/zero",
+              "explicit_rule_or_boundary": "Самостоятельный формат и сохранение входа",
+              "additional_distinction": "Mapping в full, точные поля, исходная занятость, неизменный payload",
+              "useful_diagnostic_separation": "Отдельный adapter-класс помогает отличить mapping от арифметики",
+              "maintenance_execution_cost": "Немного повторённого словаря",
+              "keep_combine_remove_rationale": "Сохранить; вызов reserve внутри не делает публичную границу лишней."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Успех строго ниже limit в обеих точках",
+              "explicit_rule_or_boundary": "Новая занятость равна used+requested",
+              "additional_distinction": "Сумма отличается от limit; исходная слепая зона воспроизведена",
+              "useful_diagnostic_separation": "Доменное число против поля публичного ответа",
+              "maintenance_execution_cost": "Два маленьких сценария",
+              "keep_combine_remove_rationale": "Оба оправданы; не удалять один из-за общей формулы."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "ValueError compatibility + payload на нуле",
+              "explicit_rule_or_boundary": "Иерархия исключения и неизменность всех payload",
+              "additional_distinction": "Два дополнительных наблюдения внутри уже нужных сценариев",
+              "useful_diagnostic_separation": "Прямые assertions",
+              "maintenance_execution_cost": "Без новых самостоятельных последовательностей",
+              "keep_combine_remove_rationale": "Соразмерное усиление."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 8,
+              "fixed_faults": {
+                "exact_capacity_rejected": "KILLED",
+                "domain_wrong_total": "KILLED",
+                "adapter_drops_request": "KILLED",
+                "adapter_wrong_status": "KILLED",
+                "adapter_reports_old_total": "KILLED",
+                "adapter_mutates_input": "KILLED"
+              },
+              "equivalent_refactors": {
+                "remaining_capacity_and_unpacking": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 8,
+              "fixed_faults": {
+                "exact_capacity_rejected": "KILLED",
+                "domain_wrong_total": "KILLED",
+                "adapter_drops_request": "KILLED",
+                "adapter_wrong_status": "KILLED",
+                "adapter_reports_old_total": "KILLED",
+                "adapter_mutates_input": "KILLED"
+              },
+              "equivalent_refactors": {
+                "remaining_capacity_and_unpacking": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/03_capacity_boundaries/task.md",
+            "R1/A/cases/03_capacity_boundaries/",
+            "R1/B/cases/03_capacity_boundaries/"
+          ]
+        },
+        {
+          "id": "C04",
+          "name": "discount_cap",
+          "winner": "tie",
+          "confidence": "high_for_tradeoff",
+          "conclusion": "Встречные полезные различия без доминирования. A экономнее в одной строке таблицы и защищает старую валидацию при cap=0; B проверяет ещё два способа нулевой скидки и равенство лимита. Оба конечных решения корректны.",
+          "retained": [
+            "Старые успешные расчёты, 0/100 процентов, floor",
+            "отрицательная сумма и процент вне 0..100",
+            "omission/None",
+            "эффективный, неэффективный и нулевой cap",
+            "отрицательный cap при нулевой и ненулевой скидке",
+            "keyword-only"
+          ],
+          "added": {
+            "A": [
+              "Старые invalid-input сценарии дополнены cap=0 для защиты от раннего возврата"
+            ],
+            "B": [
+              "Отрицательный cap при subtotal=0",
+              "отрицательный cap при floor(1*1/100)=0",
+              "cap точно равен вычисленной скидке"
+            ]
+          },
+          "removed": {
+            "A": [
+              "Старые проверки недопустимых входов используют явный None вместо omission; успешные omitted-вызовы сохранены"
+            ],
+            "B": []
+          },
+          "protection_loss": "Ослабления старых ожидаемых результатов нет. Найдены небольшие остаточные пробелы разных взаимодействий, не дефекты конечного production.",
+          "residual_gaps": [
+            {
+              "candidate": "A",
+              "risk": "Ранний возврат subtotal=0 перед проверкой отрицательного cap.",
+              "evidence": "Judge zero_subtotal_skips_cap_validation: A проходит, B даёт 1 assertion failure."
+            },
+            {
+              "candidate": "B",
+              "risk": "Ранний возврат cap=0 перед старой валидацией subtotal/percent.",
+              "evidence": "Judge zero_cap_skips_old_validation: B проходит, A даёт 3 assertion failures."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": [
+              {
+                "scenario": "discounted_total(1000,15,max_discount_cents=200) == 850",
+                "count": 1,
+                "reason": "Роль неэффективного cap уже выполняет (999,15,200), включая более различительное округление; обычная точная арифметика сохранена рядом. Равный cap=150 сюда не относится."
+              }
+            ]
+          },
+          "extra_work": "Оба предоставляют два red/green цикла: ограничение и валидация. A даёт подробный последовательный журнал, B также полные выводы. Дополнительные граничные тесты честно названы сразу зелёными. Отдельные mutation/refactor кампании не нужны и не заявлены.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "Старый набор + omission/None",
+              "explicit_rule_or_boundary": "Совместимость старого API, арифметики и валидации",
+              "additional_distinction": "Не переписаны ожидания ради cap",
+              "useful_diagnostic_separation": "Понятные соседние имена",
+              "maintenance_execution_cost": "Переиспользование исходных тестов",
+              "keep_combine_remove_rationale": "Сохранить."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Эффективный/неэффективный/нулевой cap и keyword-only",
+              "explicit_rule_or_boundary": "Ограничивается скидка, 0 допустим, API по имени",
+              "additional_distinction": "Игнорирование cap, max вместо min, truthiness и форма вызова",
+              "useful_diagnostic_separation": "Отдельные сценарии/подслучаи",
+              "maintenance_execution_cost": "Небольшой набор",
+              "keep_combine_remove_rationale": "Сохранить; не перемножать с каждым старым input."
+            },
+            {
+              "candidate": "A",
+              "scenario_group": "Invalid subtotal, percent=-1/101 при cap=None/0",
+              "explicit_rule_or_boundary": "Cap не отменяет старую валидацию",
+              "additional_distinction": "Ранний возврат cap=0; подтверждён judge probe",
+              "useful_diagnostic_separation": "subTest(cap,percent) локализует нарушенное правило",
+              "maintenance_execution_cost": "Три добавленные комбинации",
+              "keep_combine_remove_rationale": "Оправданы старым контрактом и конкретным новым путём."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Negative cap при проценте 0, сумме 0, floor-to-zero и обычной скидке",
+              "explicit_rule_or_boundary": "Отрицательный cap запрещён даже при нулевой скидке",
+              "additional_distinction": "Разные правдоподобные ранние возвраты",
+              "useful_diagnostic_separation": "subTest(subtotal,percent)",
+              "maintenance_execution_cost": "Четыре короткие строки, без общего декартова произведения",
+              "keep_combine_remove_rationale": "Сохранить; совпадение zero discount не делает все причины нуля лишними."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Cap равен скидке",
+              "explicit_rule_or_boundary": "Реляционная граница min",
+              "additional_distinction": "Включительность равенства при будущей ветвистой реализации",
+              "useful_diagnostic_separation": "Идентификатор cap=150",
+              "maintenance_execution_cost": "Одна строка",
+              "keep_combine_remove_rationale": "Допустимое дополнительное свидетельство; отсутствие у A не самостоятельный автоматический провал."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Высокий cap при subtotal1000 и 999",
+              "explicit_rule_or_boundary": "Неэффективный cap сохраняет процентную скидку",
+              "additional_distinction": "999 уже совмещает это с floor; 1000 не имеет отдельного заявленного риска",
+              "useful_diagnostic_separation": "Одинаковая таблица",
+              "maintenance_execution_cost": "Одна повторная строка",
+              "keep_combine_remove_rationale": "Убрать (1000,200), сохранив равенство и (999,200)."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 12,
+              "fixed_faults": {
+                "cap_ignored": "KILLED",
+                "cap_is_minimum": "KILLED",
+                "zero_cap_ignored": "KILLED",
+                "negative_cap_accepted": "KILLED",
+                "rounds_discount_to_nearest": "KILLED",
+                "cap_allowed_positionally": "KILLED"
+              },
+              "equivalent_refactors": {
+                "single_bounded_expression": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 12,
+              "fixed_faults": {
+                "cap_ignored": "KILLED",
+                "cap_is_minimum": "KILLED",
+                "zero_cap_ignored": "KILLED",
+                "negative_cap_accepted": "KILLED",
+                "rounds_discount_to_nearest": "KILLED",
+                "cap_allowed_positionally": "KILLED"
+              },
+              "equivalent_refactors": {
+                "single_bounded_expression": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/04_discount_cap/task.md",
+            "R1/A/cases/04_discount_cap/",
+            "R1/B/cases/04_discount_cap/"
+          ]
+        },
+        {
+          "id": "C05",
+          "name": "mutation_report_review",
+          "winner": "tie",
+          "confidence": "high",
+          "conclusion": "Оба ревью точно интерпретируют все четыре записи и сохраняют исполняемые файлы. Дополнительная рекомендация A о 23 часах полезна, но количество находок не является критерием победы.",
+          "retained": [
+            "Все production/tests/report неизменны",
+            "полезные существующие тесты не удаляются",
+            "происхождение синтетического отчёта явно указано"
+          ],
+          "added": {
+            "A": [
+              "Рекомендации: (47,100)→25; (24,103)→25; (23,100)→50"
+            ],
+            "B": [
+              "Рекомендации: (47,100)→25; (24,101)→25; исполненный эквивалентный M1 probe"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Нет. Выживший M2 в неизменённом suite ожидаем для review-only задачи и не штрафует ответ.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "A вручную проверяет M2/M3/M4; B ещё и M1. Для M1 достаточно алгебры, но один зелёный suite-run имеет отдельную скромную роль проверки refactor resilience. Он не обязателен и не равен математическому доказательству; оба ответа это различают.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "M1",
+              "explicit_rule_or_boundary": "Эквивалентность целочисленных формул",
+              "additional_distinction": "n=4q+r даёт q в обеих формулах",
+              "useful_diagnostic_separation": "Не создаётся искусственная находка",
+              "maintenance_execution_cost": "Алгебра, у B также один контрольный запуск",
+              "keep_combine_remove_rationale": "Не добавлять тест ради kill; дополнительный запуск B допустим."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "M2: 47h против 48h",
+              "explicit_rule_or_boundary": "Последний платный час",
+              "additional_distinction": "25 против 0 при paid100",
+              "useful_diagnostic_separation": "Точный воспроизводимый свидетель",
+              "maintenance_execution_cost": "Один будущий тест, production не трогать",
+              "keep_combine_remove_rationale": "Рекомендация обязательна и корректна."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "M3/M4",
+              "explicit_rule_or_boundary": "Округление половины / включительность 24h",
+              "additional_distinction": "Worker import/startup не являются behavioral verdict",
+              "useful_diagnostic_separation": "Названы существующие assertions и причины падений ручных probes",
+              "maintenance_execution_cost": "Без дублирующих новых тестов",
+              "keep_combine_remove_rationale": "Сохранить старые тесты; чинить runner только если он реально нужен."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Четвертное округление; у A также нижняя сторона 24h",
+              "explicit_rule_or_boundary": "Floor в другой формуле, переход 23/24",
+              "additional_distinction": "A103 отличает и nearest/ceil; B101 отличает ceil; A23 ловит ранний переход",
+              "useful_diagnostic_separation": "Рекомендации отделены от исполненных probes",
+              "maintenance_execution_cost": "Не создают обязательств менять тесты в этой задаче",
+              "keep_combine_remove_rationale": "Обе quarter-рекомендации полезны; дополнительная A23 не навязана рубрикой."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 6,
+              "fixed_faults": {
+                "free_starts_one_hour_early": "SURVIVED",
+                "day_threshold_late": "KILLED",
+                "half_fee_rounded_up": "KILLED"
+              },
+              "equivalent_refactors": {
+                "equivalent_report_M1": true,
+                "ascending_time_bands": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 6,
+              "fixed_faults": {
+                "free_starts_one_hour_early": "SURVIVED",
+                "day_threshold_late": "KILLED",
+                "half_fee_rounded_up": "KILLED"
+              },
+              "equivalent_refactors": {
+                "equivalent_report_M1": true,
+                "ascending_time_bands": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/05_mutation_report/task.md",
+            "R1/A/cases/05_mutation_report/",
+            "R1/B/cases/05_mutation_report/"
+          ]
+        },
+        {
+          "id": "C06",
+          "name": "upload",
+          "winner": "tie",
+          "confidence": "moderate",
+          "conclusion": "Оба набора сохраняют требуемые временные различия и проверяют продолжение работы после отказов. A объединяет happy-path с duplicate/cancel; B сохраняет отдельный короткий здоровый контроль и добавляет старый callback после нового успеха. Ни одна структура сама по себе не лучше.",
+          "retained": [
+            "Легальный успех",
+            "cancel и позднее complete",
+            "чужой id затем правильное завершение"
+          ],
+          "added": {
+            "A": [
+              "Idle события затем рабочая загрузка",
+              "отклонённый begin затем завершение активного id",
+              "restart из done и cancelled",
+              "старые id в waiting",
+              "duplicate/cancel в done",
+              "неизвестные отрицательный и нулевой id наряду с будущим"
+            ],
+            "B": [
+              "Те же основные порядки",
+              "старый отменённый id ещё раз после завершения новой попытки",
+              "выполненная допустимая смена шага id на 2"
+            ]
+          },
+          "removed": {
+            "A": [
+              "Отдельный happy-path метод объединён с suffix duplicate/cancel, его assertions сохранены"
+            ],
+            "B": []
+          },
+          "protection_loss": "Поддерживаемые исходные сценарии не потеряны. Дополнительные конечные примеры у A/B различны; все истории/значения не доказаны.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "У A два узких дефекта: reuse ids и порча активного id перед RuntimeError. У B два: принятие старого id и порча активного id, плюс допустимый шаг 2. Все эксперименты ограничены конкретными рисками, без общей модели/таймеров/сети.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "Успех, duplicate/cancel в done, cancel/late/repeatedcancel",
+              "explicit_rule_or_boundary": "Терминальность и точные boolean результаты",
+              "additional_distinction": "Сохранение первого результата; отмена в другой истории",
+              "useful_diagnostic_separation": "Checkpoint сразу после каждого события",
+              "maintenance_execution_cost": "A объединяет; B сохраняет короткий happy-path контроль",
+              "keep_combine_remove_rationale": "Обе формы приемлемы. Малый повторённый prefix B имеет диагностическую роль."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Unknown id, idle events, rejected begin, затем допустимое завершение",
+              "explicit_rule_or_boundary": "Отказ сохраняет активную попытку/работоспособность",
+              "additional_distinction": "Один state assertion не доказывает сохранение прогресса",
+              "useful_diagnostic_separation": "Отдельный сценарий на причину отказа",
+              "maintenance_execution_cost": "Короткие трассы",
+              "keep_combine_remove_rationale": "Сохранить; не сокращать положительное завершение после отказа."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Restart из done и cancelled",
+              "explicit_rule_or_boundary": "Свежий возрастающий id, waiting/None",
+              "additional_distinction": "Done требует очистить непустой результат; cancelled — другой разрешённый start",
+              "useful_diagnostic_separation": "Два именованных теста",
+              "maintenance_execution_cost": "Повторение оправдано разными терминальными состояниями",
+              "keep_combine_remove_rationale": "Сохранить обе истории."
+            },
+            {
+              "candidate": "A",
+              "scenario_group": "Unknown -1, 0, future",
+              "explicit_rule_or_boundary": "complete принимает любой integer, остальные id игнорируются",
+              "additional_distinction": "Отрицательный, sentinel0, положительный будущий id",
+              "useful_diagnostic_separation": "subTest(unknown_id)",
+              "maintenance_execution_cost": "Два дешёвых дополнительных события",
+              "keep_combine_remove_rationale": "Допустимые представители, без утверждения о всех id."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Старое A до и после успеха B",
+              "explicit_rule_or_boundary": "Stale complete не меняет новый результат и терминальное состояние",
+              "additional_distinction": "Старый отменённый id в done отличается от duplicate текущего завершённого id",
+              "useful_diagnostic_separation": "Немедленное сравнение done/current.csv",
+              "maintenance_execution_cost": "Два дополнительных наблюдения в существующей трассе",
+              "keep_combine_remove_rationale": "Обоснованная история; не объявлять дублем только по общему False."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 7,
+              "fixed_faults": {
+                "late_or_duplicate_completion_accepted": "KILLED",
+                "foreign_id_accepted": "KILLED",
+                "attempt_ids_reused": "KILLED",
+                "begin_replaces_active_attempt": "KILLED",
+                "cancel_completed_upload": "KILLED",
+                "restart_retains_old_result": "KILLED"
+              },
+              "equivalent_refactors": {
+                "different_private_storage": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            },
+            "B": {
+              "test_methods": 8,
+              "fixed_faults": {
+                "late_or_duplicate_completion_accepted": "KILLED",
+                "foreign_id_accepted": "KILLED",
+                "attempt_ids_reused": "KILLED",
+                "begin_replaces_active_attempt": "KILLED",
+                "cancel_completed_upload": "KILLED",
+                "restart_retains_old_result": "KILLED"
+              },
+              "equivalent_refactors": {
+                "different_private_storage": true
+              },
+              "scope_passed": true,
+              "baseline_passed": true,
+              "independent_contract_passed": true
+            }
+          },
+          "maintenance_and_diagnostic_cost": "См. отдельные строки ledger; количество методов и выбранных killed faults не используется как оценка экономности.",
+          "evidence": [
+            "original-cases/06_upload_workflow/task.md",
+            "R1/A/cases/06_upload_workflow/",
+            "R1/B/cases/06_upload_workflow/"
+          ]
+        }
+      ],
+      "aggregate": {
+        "winner": "tie",
+        "case_verdicts": {
+          "C01": "A",
+          "C02": "B",
+          "C03": "tie",
+          "C04": "tie",
+          "C05": "tie",
+          "C06": "tie"
+        },
+        "rationale": "R1 даёт смешанный результат: у A локальное преимущество экономности C01 и одна возможная экономия C04, у B проверенное дополнительное различие C02. В C04 защита встречная, C03/C05/C06 сопоставимы. Малые экономические различия не устанавливают общее превосходство A и не перевешивают автоматически дополнительную защиту B.",
+        "avoidable_scenarios_count": {
+          "A": 0,
+          "B": 2
+        },
+        "count_interpretation": "Только две конкретно обоснованные возможности сокращения. Это не подсчёт всех повторов, не нижняя граница suite и не inferiority по количеству методов.",
+        "weighted_total_used": false
+      },
+      "limitations": [
+        "Оценена только R1; R2 и общий вывод по двум парам отсутствуют.",
+        "Шесть заданий внутри одной сессии агента не являются шестью независимыми выборками.",
+        "Не устанавливаются статистическое превосходство, скорость работы или преимущество версии навыков; идентичности A/B неизвестны.",
+        "Разница малых wall-time — шум. Предпочтение формулировки не считается улучшением поведения.",
+        "Конечные fault/refactor наборы и три дополнительных probes не доказывают полноту или все будущие рефакторинги.",
+        "Собственная проверка сохранила исходные ответы; проверены только доступные конечные файлы и предоставленные записи, не полная история машины участника."
+      ]
+    },
+    {
+      "format_version": 1,
+      "pair": "R2",
+      "status": "complete_for_R2",
+      "version_mapping_known": false,
+      "protocol": [
+        "Исходные контракты уже прочитаны для R1 и побайтово сверены с R2.",
+        "R2/A оценён независимо и сохранён до чтения ответов R2/B.",
+        "R2/B оценён независимо до парного решения.",
+        "Шесть адресных вариантов в своих одноразовых копиях по выявленным вопросам; затем сопоставление."
+      ],
+      "blinding": {
+        "outside_folder_read": false,
+        "network_used": false,
+        "delegation": false,
+        "version_identity_inferred": false
+      },
+      "evidence_origins": {
+        "supplied_mechanical": [
+          "R2/A/mechanical.json",
+          "R2/B/mechanical.json"
+        ],
+        "supplied_participant_records": [
+          "R2/A/execution.md",
+          "R2/B/execution.md",
+          "R2/A/probes/",
+          "R2/B/probes/"
+        ],
+        "judge_executed": [
+          "judge-probes-R2/run_focused.py",
+          "judge-probes-R2/results.json"
+        ],
+        "judge_static": "judge-static-audit-R2.json"
+      },
+      "rubric_validation": [
+        "grade.py не предоставлен в доступной папке; вне её поиск запрещён. Использованы supplied mechanical events и собственные узкие probes, без выдачи последних за фиксированный grader.",
+        "Рубрика не задаёт минимальное число методов, обязательность huge integer примера или quota новых Unicode тестов. При этом конкретный проверенный новый дефект за фиксированным набором учитывается как дополнительное свидетельство.",
+        "Равенство cap является допустимой реляционной границей, но не скрытым обязательным тестом. Общий cap0/old-validation пробел установлен отдельным вариантом, а не числом тестов.",
+        "Точные True/False написаны в контракте. Возвращаемый begin id описан как положительный целочисленный; требование type(id) is int отсутствует. Обычное чтение допускает int-подкласс с теми же свойствами. Чтобы не скрыть интерпретацию, refactor score B:C06=2 указан условно; если автор контракта требует exact builtin int, эта проба не эквивалентна и соответствующий score был бы4. Проба не засчитана в fixed-fault kill score и не используется одна для навязанного winner.",
+        "C06 не требует все комбинации терминальных состояний и все длины трасс. Однако три done подряд и смешанная success/cancel история действительно различают разные нарушения возрастающих ids.",
+        "C05 review-only: M2 survival описывает старый suite, не провал ответа. Ни количество будущих рекомендаций, ни исполнение эквивалентного M1 не обязательны.",
+        "TDD подтверждается конкретными предоставленными последовательностями и выводами, а не финальным green. Историческое время судья не аутентифицировал и не заявляет личного присутствия при этих запусках."
+      ],
+      "mechanical_assessment": {
+        "all_applicable_gates_passed": true,
+        "required_fixed_faults_killed_each": 31,
+        "equivalent_refactors_passed_each": 7,
+        "C05_descriptive": {
+          "free_starts_one_hour_early": "SURVIVED",
+          "day_threshold_late": "KILLED",
+          "half_fee_rounded_up": "KILLED"
+        },
+        "failure_cause_review": "Проверены body assertion/domain failures, положительный baseline/discovery, отсутствие skips и expected failures и неизменность тестов. У A:C06 некоторые поздние RuntimeError следуют за более ранним поведенческим провалом той же трассы; это не discovery/setup и не самостоятельное преимущество по числу kills."
+      },
+      "judge_checks": {
+        "origin": "Executed by the blind judge in disposable copies only; distinct from supplied mechanical and participant evidence.",
+        "purpose": "Resolve six concrete ambiguities already identified in code review, including reciprocal protection differences and an explicitly qualified type-interpretation question.",
+        "candidate_source_hashes_unchanged": true,
+        "candidate_source_hashes": {
+          "R2/A/cases/01_shipping_bands/shipping.py": "bc6cd30e8fc648b5509794e2f71eadfa41d8cf43ba5da70e7385c6174d078c4f",
+          "R2/A/cases/01_shipping_bands/test_shipping.py": "3999bb1c3f2334c2f97751c31f59be6b7b498c2c600078362f7169b278da7f92",
+          "R2/A/cases/02_display_name/test_names.py": "ccae6fa1300fb09d0b037724732f38509df590b66a8feb429212d3e31756cff5",
+          "R2/A/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+          "R2/A/cases/04_discount_cap/discounts.py": "8d5bedfd7f1a8da26df941b8b277cfe6053d44c3a5eb6977d91e4039b1f976e7",
+          "R2/A/cases/04_discount_cap/test_discounts.py": "814b3d8e31e7e2c5852ed5dd465b038526d5042d09536ffa09fba71f77b9794f",
+          "R2/A/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+          "R2/A/cases/06_upload_workflow/test_upload.py": "aeaee9e78964e7ac741a0a128c7753731e20715bff7b2653d46d5c8c4eaa020d",
+          "R2/B/cases/01_shipping_bands/shipping.py": "bc6cd30e8fc648b5509794e2f71eadfa41d8cf43ba5da70e7385c6174d078c4f",
+          "R2/B/cases/01_shipping_bands/test_shipping.py": "0e22f30c689e3e8acb4f8f4746e44115ce2c382c0481276d9788a6baee7023c4",
+          "R2/B/cases/02_display_name/test_names.py": "9a10fae00aa2b7d44f790154b4a4bd535aba791a16575dcee651bc4dad6a7a38",
+          "R2/B/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+          "R2/B/cases/04_discount_cap/discounts.py": "a867d7949c9483978068767a0ecd33847d5664675837c6b624f5bddd8d39fadd",
+          "R2/B/cases/04_discount_cap/test_discounts.py": "6f11b4b5f7b9608a13bc9a1b6004aa54ae067fd0124e55eb128466d5da2255e9",
+          "R2/B/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+          "R2/B/cases/06_upload_workflow/test_upload.py": "7693069c3758e0fdf3634eae8d51f5e54246d24b2f9d7c56ddf1883daeaf7226"
+        },
+        "records": [
+          {
+            "candidate": "A",
+            "case": "C01",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/A/C01/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C01/baseline/unittest.log",
+            "run_summary": [
+              "Ran 4 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C01",
+            "variant": "machine_integer_upper_limit",
+            "classification": "contract_violation",
+            "change": "Reject amounts above signed 64-bit maximum; violates explicit absence of upper bound.",
+            "cwd": "judge-probes-R2/A/C01/machine_integer_upper_limit",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C01/machine_integer_upper_limit/unittest.log",
+            "run_summary": [
+              "ERROR: test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) (subtotal=1000000000000000000000000000000)",
+              "ValueError: machine integer upper bound",
+              "Ran 4 tests in 0.000s",
+              "FAILED (errors=1)"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C02",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/A/C02/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C02/baseline/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C02",
+            "variant": "normalize_internal_nbsp",
+            "classification": "contract_violation",
+            "change": "Convert remaining interior NBSP to ASCII space after correct edge stripping; violates exact preservation of interior characters.",
+            "cwd": "judge-probes-R2/A/C02/normalize_internal_nbsp",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C02/normalize_internal_nbsp/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C04",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/A/C04/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C04/baseline/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C04",
+            "variant": "zero_cap_skips_old_validation",
+            "classification": "contract_violation",
+            "change": "Zero-cap early return bypasses original amount and percent validation.",
+            "cwd": "judge-probes-R2/A/C04/zero_cap_skips_old_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C04/zero_cap_skips_old_validation/unittest.log",
+            "run_summary": [
+              "Ran 12 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C06",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/A/C06/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C06/baseline/unittest.log",
+            "run_summary": [
+              "Ran 8 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C06",
+            "variant": "numeric_boolean_returns",
+            "classification": "contract_violation",
+            "change": "Return integer 1/0 in place of literal True/False while preserving state/result behavior; tests of truthiness may miss explicit return-value type contract.",
+            "cwd": "judge-probes-R2/A/C06/numeric_boolean_returns",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C06/numeric_boolean_returns/unittest.log",
+            "run_summary": [
+              "Ran 8 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C06",
+            "variant": "two_id_cycle_after_success",
+            "classification": "contract_violation",
+            "change": "Cycle the counter modulo two only on restart from done, so a third consecutive success reuses id while a done/cancelled mixed third begin does not. Violates strictly increasing ids.",
+            "cwd": "judge-probes-R2/A/C06/two_id_cycle_after_success",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C06/two_id_cycle_after_success/unittest.log",
+            "run_summary": [
+              "FAIL: test_restart_after_success_clears_result_and_rejects_old_completions (test_upload.UploadTests.test_restart_after_success_clears_result_and_rejects_old_completions) (result='third.csv')",
+              "AssertionError: 1 not greater than 2",
+              "Ran 8 tests in 0.000s",
+              "FAILED (failures=1)"
+            ]
+          },
+          {
+            "candidate": "A",
+            "case": "C06",
+            "variant": "integer_subclass_ids",
+            "classification": "contract_preserving_under_integer_subclass_reading",
+            "change": "Return an int subclass with unchanged positive value, comparison, identity matching, and monotonicity. Contract-compatible under the ordinary isinstance(int) reading; exact built-in type is not specified. Interpretation caveat must be recorded.",
+            "cwd": "judge-probes-R2/A/C06/integer_subclass_ids",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/A/C06/integer_subclass_ids/unittest.log",
+            "run_summary": [
+              "Ran 8 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C01",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/B/C01/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C01/baseline/unittest.log",
+            "run_summary": [
+              "Ran 4 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C01",
+            "variant": "machine_integer_upper_limit",
+            "classification": "contract_violation",
+            "change": "Reject amounts above signed 64-bit maximum; violates explicit absence of upper bound.",
+            "cwd": "judge-probes-R2/B/C01/machine_integer_upper_limit",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C01/machine_integer_upper_limit/unittest.log",
+            "run_summary": [
+              "Ran 4 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C02",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/B/C02/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C02/baseline/unittest.log",
+            "run_summary": [
+              "Ran 9 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C02",
+            "variant": "normalize_internal_nbsp",
+            "classification": "contract_violation",
+            "change": "Convert remaining interior NBSP to ASCII space after correct edge stripping; violates exact preservation of interior characters.",
+            "cwd": "judge-probes-R2/B/C02/normalize_internal_nbsp",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C02/normalize_internal_nbsp/unittest.log",
+            "run_summary": [
+              "FAIL: test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved (test_names.DisplayNameTests.test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved)",
+              "AssertionError: 'Ada Lee' != 'Ada\\xa0Lee'",
+              "Ran 9 tests in 0.000s",
+              "FAILED (failures=1)"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C04",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/B/C04/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C04/baseline/unittest.log",
+            "run_summary": [
+              "Ran 11 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C04",
+            "variant": "zero_cap_skips_old_validation",
+            "classification": "contract_violation",
+            "change": "Zero-cap early return bypasses original amount and percent validation.",
+            "cwd": "judge-probes-R2/B/C04/zero_cap_skips_old_validation",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C04/zero_cap_skips_old_validation/unittest.log",
+            "run_summary": [
+              "Ran 11 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C06",
+            "variant": "baseline",
+            "classification": "baseline",
+            "change": null,
+            "cwd": "judge-probes-R2/B/C06/baseline",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C06/baseline/unittest.log",
+            "run_summary": [
+              "Ran 7 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C06",
+            "variant": "numeric_boolean_returns",
+            "classification": "contract_violation",
+            "change": "Return integer 1/0 in place of literal True/False while preserving state/result behavior; tests of truthiness may miss explicit return-value type contract.",
+            "cwd": "judge-probes-R2/B/C06/numeric_boolean_returns",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C06/numeric_boolean_returns/unittest.log",
+            "run_summary": [
+              "FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)",
+              "AssertionError: 1 is not True",
+              "FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)",
+              "AssertionError: 0 is not False",
+              "FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)",
+              "AssertionError: 1 is not True",
+              "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')",
+              "AssertionError: 1 is not True",
+              "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')",
+              "AssertionError: 1 is not True",
+              "FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)",
+              "AssertionError: 1 is not True",
+              "FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)",
+              "AssertionError: 1 is not True",
+              "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=0)",
+              "AssertionError: 0 is not False",
+              "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=2)",
+              "AssertionError: 0 is not False",
+              "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)",
+              "AssertionError: 1 is not True",
+              "Ran 7 tests in 0.001s",
+              "FAILED (failures=10)"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C06",
+            "variant": "two_id_cycle_after_success",
+            "classification": "contract_violation",
+            "change": "Cycle the counter modulo two only on restart from done, so a third consecutive success reuses id while a done/cancelled mixed third begin does not. Violates strictly increasing ids.",
+            "cwd": "judge-probes-R2/B/C06/two_id_cycle_after_success",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 0,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C06/two_id_cycle_after_success/unittest.log",
+            "run_summary": [
+              "Ran 7 tests in 0.000s",
+              "OK"
+            ]
+          },
+          {
+            "candidate": "B",
+            "case": "C06",
+            "variant": "integer_subclass_ids",
+            "classification": "contract_preserving_under_integer_subclass_reading",
+            "change": "Return an int subclass with unchanged positive value, comparison, identity matching, and monotonicity. Contract-compatible under the ordinary isinstance(int) reading; exact built-in type is not specified. Interpretation caveat must be recorded.",
+            "cwd": "judge-probes-R2/B/C06/integer_subclass_ids",
+            "command": [
+              "/opt/homebrew/opt/python@3.14/bin/python3.14",
+              "-m",
+              "unittest",
+              "discover",
+              "-v"
+            ],
+            "env_override": {
+              "PYTHONDONTWRITEBYTECODE": "1"
+            },
+            "exit_code": 1,
+            "tests_unchanged": true,
+            "log_path": "judge-probes-R2/B/C06/integer_subclass_ids/unittest.log",
+            "run_summary": [
+              "FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)",
+              "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+              "Ran 7 tests in 0.001s",
+              "FAILED (failures=8)"
+            ]
+          }
+        ]
+      },
+      "score_adjustments_after_independent_assessment": [
+        {
+          "candidate": "B",
+          "case": "C01",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Concrete upper-limit fault survives."
+        },
+        {
+          "candidate": "A",
+          "case": "C02",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Concrete internal-NBSP normalization survives."
+        },
+        {
+          "candidate": "B",
+          "case": "C06",
+          "dimension": "protection",
+          "before": 4,
+          "after": 3,
+          "reason": "Concrete done-specific two-id cycle survives."
+        },
+        {
+          "candidate": "B",
+          "case": "C06",
+          "dimension": "refactor_resilience",
+          "before": 3,
+          "after": 2,
+          "conditional": true,
+          "reason": "Int-subclass return fails although positive integer semantics are preserved under the ordinary integer reading."
+        }
+      ],
+      "conditional_scores": [
+        {
+          "candidate": "B",
+          "case": "C06",
+          "dimension": "refactor_resilience",
+          "score": 2,
+          "assumption": "Integer id permits int subclass preserving all named public behavior.",
+          "alternative_score": 4,
+          "alternative_assumption": "Contract owner explicitly requires exact built-in int; that is not stated in supplied task."
+        }
+      ],
+      "cases": [
+        {
+          "id": "C01",
+          "name": "shipping",
+          "winner": "tie",
+          "confidence": "high_for_tradeoff",
+          "conclusion": "У B меньше одного повторного внутреннего примера, у A есть проверенная дополнительная защита неограниченного целого. Сокращение B не равно доказанному общему улучшению.",
+          "retained": [
+            "Отрицательная область (-1/-200), валидный 0",
+            "Обе стороны 5000 и 10000 и точные тарифы",
+            "Представители 1200 и 7500 внутри платных диапазонов",
+            "Порог бесплатности и значение выше него"
+          ],
+          "added": {
+            "A": [
+              "10**30 — значение за 64-битной границей"
+            ],
+            "B": []
+          },
+          "removed": {
+            "A": [
+              "2400,5500,20000; добавлено 10**30 при сохранённом 12000"
+            ],
+            "B": [
+              "2400,5500,12000; выше порога сохранено 20000"
+            ]
+          },
+          "protection_loss": "Ни один не удалил исходное контрактное различие без представителя. Но B не имеет добавленного A свидетельства для больших Python int; это относительная слепая зона, а не доказанная регрессия относительно исходных тестов.",
+          "residual_gaps": [
+            {
+              "candidate": "B",
+              "risk": "Ошибочный верхний предел 2**63-1 остаётся незаметным.",
+              "evidence": "Judge machine_integer_upper_limit: A даёт ValueError в теле теста на 10**30, B проходит 4 метода."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [
+              {
+                "scenario": "delivery_fee(12000) == 0",
+                "count": 1,
+                "reason": "Заявленная роль продолжения бесплатного диапазона уже представлена 10**30. Можно сохранить 10**30 и убрать 12000 без потери именно этой роли."
+              }
+            ],
+            "B": []
+          },
+          "extra_work": "A выполняет old/new probe бесплатной границы. B — old/new probes обеих границ и запрета только -1 (6 запусков ошибочных копий). Дополнительные B проверки ограничены и честно описаны, но не были необходимы для чтения столь явных утверждений; сами по себе не дают очков экономности или защиты всей области.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "-1,0,4999/5000,9999/10000",
+              "explicit_rule_or_boundary": "Области допустимости и включённые тарифные границы",
+              "additional_distinction": "Отдельные изменения стоимости и запрета",
+              "useful_diagnostic_separation": "Тарифное имя + подписанная сумма",
+              "maintenance_execution_cost": "Короткие прямые входы",
+              "keep_combine_remove_rationale": "Сохранить."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "1200,7500,-200",
+              "explicit_rule_or_boundary": "Правило действует внутри диапазона",
+              "additional_distinction": "Граница против обычного представителя",
+              "useful_diagnostic_separation": "subTest показывает конкретный input",
+              "maintenance_execution_cost": "По одному представителю",
+              "keep_combine_remove_rationale": "Оправдано; не сокращать до одного значения на ветку."
+            },
+            {
+              "candidate": "A",
+              "scenario_group": "10000,12000,10**30",
+              "explicit_rule_or_boundary": "Бесплатно без верхней границы",
+              "additional_distinction": "10**30 обнаруживает машинный верхний предел; 12000 повторяет продолжение",
+              "useful_diagnostic_separation": "Один тарифный метод",
+              "maintenance_execution_cost": "Одна необязательная строка 12000",
+              "keep_combine_remove_rationale": "Сохранить 10000/10**30, 12000 можно убрать."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "10000,20000",
+              "explicit_rule_or_boundary": "Бесплатность на пороге и выше",
+              "additional_distinction": "Защита продолжения, но нет свидетельства за машинной границей",
+              "useful_diagnostic_separation": "Простая таблица",
+              "maintenance_execution_cost": "Два входа",
+              "keep_combine_remove_rationale": "Разумный конечный набор, однако дополнительная защита A реальна."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 3,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 4,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "zero_rejected": "KILLED",
+                "negative_accepted": "KILLED",
+                "discount_starts_early": "KILLED",
+                "discount_starts_late": "KILLED",
+                "free_starts_early": "KILLED",
+                "free_starts_late": "KILLED"
+              },
+              "equivalent_refactors": {
+                "ascending_intervals": true
+              }
+            },
+            "B": {
+              "test_methods": 4,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "zero_rejected": "KILLED",
+                "negative_accepted": "KILLED",
+                "discount_starts_early": "KILLED",
+                "discount_starts_late": "KILLED",
+                "free_starts_early": "KILLED",
+                "free_starts_late": "KILLED"
+              },
+              "equivalent_refactors": {
+                "ascending_intervals": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/01_shipping_bands/task.md",
+            "R2/A/cases/01_shipping_bands/",
+            "R2/B/cases/01_shipping_bands/"
+          ]
+        },
+        {
+          "id": "C02",
+          "name": "display_name",
+          "winner": "B",
+          "confidence": "high",
+          "conclusion": "B защищает сохранение внутреннего NBSP без отдельного дополнительного метода. A проверяет Unicode whitespace лишь по краям; точная внутренняя нормализация проходит A и падает B.",
+          "retained": [
+            "Все 7 исходных сценариев",
+            "Длина 0/1/20/21 после trim, регистр/внутренние ASCII-пробелы, символы против байтов"
+          ],
+          "added": {
+            "A": [
+              "Unicode edges U+00A0/U+2003",
+              "Валидные 20 и недопустимые 21 кодовая точка с combining marks, точное сохранение"
+            ],
+            "B": [
+              "Те же два класса различий",
+              "Внутренний NBSP остаётся NBSP в том же примере краевой очистки"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Исходные проверки сохранены. У A остаётся небольшая дополнительная слепая зона внутренней Unicode-нормализации whitespace.",
+          "residual_gaps": [
+            {
+              "candidate": "A",
+              "risk": "Замена оставшегося после strip внутреннего NBSP на ASCII space.",
+              "evidence": "Judge normalize_internal_nbsp: A — 9 OK, B — одно assertion failure Ada Lee != Ada\\xa0Lee."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "A показывает ASCII-only strip исходным и новым набором. B также воспроизводит NFC-нормализацию и честно уточняет, что падение первого assertion не доказывает исполнение следующего. Два B probes адресны и соразмерны; добавлять ещё Unicode-таблицы не требуется.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "7 исходных сценариев",
+              "explicit_rule_or_boundary": "Очистка, длина, отказ и сохранение",
+              "additional_distinction": "Отдельные обещания не сливаются из-за веток",
+              "useful_diagnostic_separation": "Имена прежних тестов",
+              "maintenance_execution_cost": "Без здоровых удалений",
+              "keep_combine_remove_rationale": "Сохранить."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Unicode edges",
+              "explicit_rule_or_boundary": "str.strip() включает Unicode whitespace",
+              "additional_distinction": "ASCII-only trim",
+              "useful_diagnostic_separation": "Один буквальный expected",
+              "maintenance_execution_cost": "Один небольшой тест",
+              "keep_combine_remove_rationale": "Добавление полезно; no-change anchor его не запрещает."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Combining marks длины20/21",
+              "explicit_rule_or_boundary": "len не графемы; точное сохранение",
+              "additional_distinction": "Допустимое decomposed имя и отказ следующей длины",
+              "useful_diagnostic_separation": "Два понятных assertion на границе",
+              "maintenance_execution_cost": "Один связный сценарий",
+              "keep_combine_remove_rationale": "Оба обещания полезны, не считать положительный пример дублем."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Внутренний NBSP",
+              "explicit_rule_or_boundary": "Все внутренние символы сохраняются",
+              "additional_distinction": "Selective Unicode-space cleanup; воспроизведён judge probe",
+              "useful_diagnostic_separation": "Точное сравнение строки",
+              "maintenance_execution_cost": "Один символ в уже нужном входе",
+              "keep_combine_remove_rationale": "Сохранить: низкая цена, отдельная защита."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 9,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "zero_length_allowed": "KILLED",
+                "max_boundary_excluded": "KILLED",
+                "overlong_allowed": "KILLED",
+                "raw_length_checked": "KILLED",
+                "inner_spaces_collapsed": "KILLED",
+                "case_normalized": "KILLED",
+                "byte_length_checked": "KILLED"
+              },
+              "equivalent_refactors": {
+                "separate_length_check": true
+              }
+            },
+            "B": {
+              "test_methods": 9,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "zero_length_allowed": "KILLED",
+                "max_boundary_excluded": "KILLED",
+                "overlong_allowed": "KILLED",
+                "raw_length_checked": "KILLED",
+                "inner_spaces_collapsed": "KILLED",
+                "case_normalized": "KILLED",
+                "byte_length_checked": "KILLED"
+              },
+              "equivalent_refactors": {
+                "separate_length_check": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/02_display_name/task.md",
+            "R2/A/cases/02_display_name/",
+            "R2/B/cases/02_display_name/"
+          ]
+        },
+        {
+          "id": "C03",
+          "name": "capacity",
+          "winner": "tie",
+          "confidence": "high",
+          "conclusion": "Одинаковые содержательные улучшения и одинаковая здоровая диагностическая структура. Разница 2+3→5 против 7+2→9 не устанавливает преимущества.",
+          "retained": [
+            "reserve и handle_request отдельно",
+            "exact/overflow/zero-at-capacity",
+            "Точный результат и схема ответа, неизменность входного словаря"
+          ],
+          "added": {
+            "A": [
+              "Ниже limit: (2,3,10)→5 в обеих публичных точках",
+              "ValueError compatibility и неизменный zero-request payload"
+            ],
+            "B": [
+              "Ниже limit: (7,2,10)→9 в обеих точках",
+              "Те же две дополнительные проверки"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Не обнаружена.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "Оба показывают: return limit проходит исходные 6 тестов, но даёт два конкретных падения после дополнения. Это прямое свидетельство полезного пробела, без широкого поиска мутаций.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "Domain exact/overflow/zero",
+              "explicit_rule_or_boundary": "Числовой API и исключение",
+              "additional_distinction": "Включительность, отказ, отдельная допустимость нуля",
+              "useful_diagnostic_separation": "ReservationTests",
+              "maintenance_execution_cost": "Три коротких сценария",
+              "keep_combine_remove_rationale": "Сохранить."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Adapter exact/overflow/zero",
+              "explicit_rule_or_boundary": "Самостоятельная публичная граница",
+              "additional_distinction": "Mapping full, поля, исходная занятость и payload",
+              "useful_diagnostic_separation": "RequestTests",
+              "maintenance_execution_cost": "Прямые словари вместо сложного helper",
+              "keep_combine_remove_rationale": "Сохранить; повторение чисел не отменяет обязанностей."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Успех ниже limit, два API",
+              "explicit_rule_or_boundary": "Возвращается сумма, не limit",
+              "additional_distinction": "Конкретный дефект return limit и возможная adapter-only ошибка",
+              "useful_diagnostic_separation": "Число отдельно от поля ответа",
+              "maintenance_execution_cost": "По одному добавлению в каждый класс",
+              "keep_combine_remove_rationale": "Оба нужны как поддерживаемые границы."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Exception hierarchy и zero-payload",
+              "explicit_rule_or_boundary": "Явные обещания типа/неизменности",
+              "additional_distinction": "Базовый ValueError и особый быстрый путь нуля",
+              "useful_diagnostic_separation": "Assertions внутри нужного сценария",
+              "maintenance_execution_cost": "Две дешёвые проверки",
+              "keep_combine_remove_rationale": "Оправдано."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 8,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "exact_capacity_rejected": "KILLED",
+                "domain_wrong_total": "KILLED",
+                "adapter_drops_request": "KILLED",
+                "adapter_wrong_status": "KILLED",
+                "adapter_reports_old_total": "KILLED",
+                "adapter_mutates_input": "KILLED"
+              },
+              "equivalent_refactors": {
+                "remaining_capacity_and_unpacking": true
+              }
+            },
+            "B": {
+              "test_methods": 8,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "exact_capacity_rejected": "KILLED",
+                "domain_wrong_total": "KILLED",
+                "adapter_drops_request": "KILLED",
+                "adapter_wrong_status": "KILLED",
+                "adapter_reports_old_total": "KILLED",
+                "adapter_mutates_input": "KILLED"
+              },
+              "equivalent_refactors": {
+                "remaining_capacity_and_unpacking": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/03_capacity_boundaries/task.md",
+            "R2/A/cases/03_capacity_boundaries/",
+            "R2/B/cases/03_capacity_boundaries/"
+          ]
+        },
+        {
+          "id": "C04",
+          "name": "discount_cap",
+          "winner": "tie",
+          "confidence": "high",
+          "conclusion": "Оба решения корректны и компактны. B включает полезную точку равенства cap и скидки, сохраняя ясные subTest; A также имеет достаточные выбранные стороны. У обоих один и тот же конкретный остаточный пробел старой валидации при cap=0.",
+          "retained": [
+            "6 исходных тестов без ослабления",
+            "Эффективный, неэффективный и нулевой cap",
+            "None и omission",
+            "Отрицательный cap при обычной скидке, нулевом проценте и нулевой сумме",
+            "keyword-only и floor"
+          ],
+          "added": {
+            "A": [
+              "6 новых методов, неэффективный cap150 при discount149"
+            ],
+            "B": [
+              "5 новых методов, в таблице cap0/149/200 при discount149; cap149 — точка равенства"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Исходная защита сохранена. Совместный пробел касается взаимодействия новой ветки cap=0 со старыми отклонениями.",
+          "residual_gaps": [
+            {
+              "candidate": "A/B",
+              "risk": "Ранний возврат при cap=0 до проверки subtotal/percent.",
+              "evidence": "Judge zero_cap_skips_old_validation проходит A (12 методов) и B (11); текущий production обоих валидацию выполняет правильно."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "Оба предоставляют baseline, отсутствующий keyword, содержательный red700!=800, green, затем 3 validation failures до guard и green. Остальные случаи сразу зелёные и не выданы за новые TDD циклы. Необходимости в отдельной повторной campaign нет.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "Соседние старые тесты",
+              "explicit_rule_or_boundary": "Старый API, валидация и арифметика",
+              "additional_distinction": "Совместимость с исходным контрактом",
+              "useful_diagnostic_separation": "Старые ясные имена",
+              "maintenance_execution_cost": "Переиспользование без декартова произведения",
+              "keep_combine_remove_rationale": "Сохранить; но capped invalid input может иметь отдельную роль."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Active/nonbinding/zero/None/keyword-only",
+              "explicit_rule_or_boundary": "Новый cap-contract",
+              "additional_distinction": "Граница 0, ограничивается скидка, форма вызова",
+              "useful_diagnostic_separation": "A отдельно, B именованные строки cap",
+              "maintenance_execution_cost": "Обе структуры малы и понятны",
+              "keep_combine_remove_rationale": "Ни 11, ни 12 методов сами по себе не лучше."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Negative cap при positive/zero-percent/zero-subtotal",
+              "explicit_rule_or_boundary": "Запрет не зависит от нулевой скидки",
+              "additional_distinction": "Два разных ранних выхода",
+              "useful_diagnostic_separation": "subTest(subtotal,percent)",
+              "maintenance_execution_cost": "Три обоснованных строки",
+              "keep_combine_remove_rationale": "Не считать одинаковым случаем лишь по вычисленному нулю."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "cap149 при discount149",
+              "explicit_rule_or_boundary": "Реляционная точка min",
+              "additional_distinction": "Равенство можно неверно обработать в будущем ветвлении",
+              "useful_diagnostic_separation": "subTest(cap=149)",
+              "maintenance_execution_cost": "Одна дополнительная строка",
+              "keep_combine_remove_rationale": "Допустимое свидетельство, не обязательная квота для A."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 12,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "cap_ignored": "KILLED",
+                "cap_is_minimum": "KILLED",
+                "zero_cap_ignored": "KILLED",
+                "negative_cap_accepted": "KILLED",
+                "rounds_discount_to_nearest": "KILLED",
+                "cap_allowed_positionally": "KILLED"
+              },
+              "equivalent_refactors": {
+                "single_bounded_expression": true
+              }
+            },
+            "B": {
+              "test_methods": 11,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "cap_ignored": "KILLED",
+                "cap_is_minimum": "KILLED",
+                "zero_cap_ignored": "KILLED",
+                "negative_cap_accepted": "KILLED",
+                "rounds_discount_to_nearest": "KILLED",
+                "cap_allowed_positionally": "KILLED"
+              },
+              "equivalent_refactors": {
+                "single_bounded_expression": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/04_discount_cap/task.md",
+            "R2/A/cases/04_discount_cap/",
+            "R2/B/cases/04_discount_cap/"
+          ]
+        },
+        {
+          "id": "C05",
+          "name": "mutation_report_review",
+          "winner": "tie",
+          "confidence": "high",
+          "conclusion": "Оба корректно классифицируют все записи и соблюдают запрет изменений executable files. A даёт больше обоснованных будущих рекомендаций; B аккуратно оставляет большие числа как известное ограничение. Это не измеренное преимущество по поведению готового набора.",
+          "retained": [
+            "Исполняемые файлы и синтетический отчёт неизменны",
+            "Существующие здоровые тесты сохраняются",
+            "M1 не объявлен дефектом; M3/M4 startup failures не behavioral kills"
+          ],
+          "added": {
+            "A": [
+              "Рекомендации47/103 и23/100",
+              "Negative paid в бесплатном диапазоне",
+              "Большой нечётный paid для точной целочисленной арифметики",
+              "Исполненный M1 compatibility probe"
+            ],
+            "B": [
+              "Рекомендации47/101 и23/100",
+              "Честное ограничение по большим числам; M1 algebra без запуска"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": []
+          },
+          "protection_loss": "Не обнаружена. Тесты намеренно не меняются; M2 survived — предмет ревью.",
+          "residual_gaps": [],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "A делает M1–M4, B — M2–M4. M1 уже доказан алгебраически; дополнительный запуск A не доказывает общую эквивалентность, но дешёво проверяет совместимость текущего suite. Ни его наличие, ни отсутствие не определяет победу.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "M1",
+              "explicit_rule_or_boundary": "Тождество для целых",
+              "additional_distinction": "q при p=4q+r",
+              "useful_diagnostic_separation": "Эквивалентность отделена от fixed status",
+              "maintenance_execution_cost": "Алгебра, у A ещё один запуск",
+              "keep_combine_remove_rationale": "Не создавать искусственный kill."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "M2 и четвертное округление",
+              "explicit_rule_or_boundary": "47h ещё платно, деление вниз",
+              "additional_distinction": "A47/103 ловит nearest и ceil; B47/101 ловит ceil",
+              "useful_diagnostic_separation": "Один будущий пример сразу имеет две роли",
+              "maintenance_execution_cost": "Только рекомендации",
+              "keep_combine_remove_rationale": "Оба обоснованны; не сравнивать числом findings."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "M3/M4",
+              "explicit_rule_or_boundary": "Half-floor и24h threshold",
+              "additional_distinction": "Ноль исполненных tests в synthetic worker ничего не говорит об assertions",
+              "useful_diagnostic_separation": "Названы существующие failing tests ручных копий",
+              "maintenance_execution_cost": "Новые дубликаты не предлагаются",
+              "keep_combine_remove_rationale": "Правильно сохранять защиту и отдельно диагностировать runner."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "23h; у A ещё free-band validation и huge integer",
+              "explicit_rule_or_boundary": "Другие стороны явно поддержанных правил",
+              "additional_distinction": "Независимые ранние возвраты/точность",
+              "useful_diagnostic_separation": "Отдельно помечены code-reasoning, не наблюдённые mutation results",
+              "maintenance_execution_cost": "Небольшие будущие примеры, не обязательная campaign",
+              "keep_combine_remove_rationale": "Оправданы; отсутствие этих дополнительных рекомендаций у B не провал четырёх записей."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 6,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "free_starts_one_hour_early": "SURVIVED",
+                "day_threshold_late": "KILLED",
+                "half_fee_rounded_up": "KILLED"
+              },
+              "equivalent_refactors": {
+                "equivalent_report_M1": true,
+                "ascending_time_bands": true
+              }
+            },
+            "B": {
+              "test_methods": 6,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "free_starts_one_hour_early": "SURVIVED",
+                "day_threshold_late": "KILLED",
+                "half_fee_rounded_up": "KILLED"
+              },
+              "equivalent_refactors": {
+                "equivalent_report_M1": true,
+                "ascending_time_bands": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/05_mutation_report/task.md",
+            "R2/A/cases/05_mutation_report/",
+            "R2/B/cases/05_mutation_report/"
+          ]
+        },
+        {
+          "id": "C06",
+          "name": "upload",
+          "winner": "inconclusive",
+          "confidence": "high_for_observed_tradeoffs",
+          "conclusion": "Защита встречная, а требование точного встроенного типа id у B требует оговорки. B ловит 0/1 вместо False/True и проверяет пустой результат; A ловит двухэлементный цикл id после третьего подряд успеха. Общий winner не навязывается.",
+          "retained": [
+            "Успех, cancel/late/duplicate, idle события",
+            "Wrong id и rejected begin с последующим правильным completion",
+            "Restart из done и cancelled со свежим id и очисткой result"
+          ],
+          "added": {
+            "A": [
+              "Три последовательных успешных попытки",
+              "Дубликат и foreign id в done, отдельный healthy success"
+            ],
+            "B": [
+              "Точные boolean returns",
+              "Пустая строка как допустимый result",
+              "Stale old до и после нового успеха",
+              "Три попытки success/cancel/success с двумя старыми id",
+              "Restart после rejected begin и завершения исходной попытки",
+              "Проверка обоих соседних unknown id; assertion helpers"
+            ]
+          },
+          "removed": {
+            "A": [],
+            "B": [
+              "Отдельный happy-path объединён с suffix duplicate/cancel; его наблюдения сохранены"
+            ]
+          },
+          "protection_loss": "Исходные наблюдения не потеряны. A не различает integer0/1 и boolean; B не проверяет третью подряд завершённую попытку. Это относительные пробелы конкретных новых историй, а не доказанная полнота другой стороны.",
+          "residual_gaps": [
+            {
+              "candidate": "A",
+              "risk": "complete/cancel возвращают 0/1 при правильных state/result.",
+              "evidence": "Judge numeric_boolean_returns: A 8 OK; B 10 assertion failures в 7 методах."
+            },
+            {
+              "candidate": "B",
+              "risk": "Двухэлементный цикл счётчика только при restart из done.",
+              "evidence": "Judge two_id_cycle_after_success: A падает на third.csv, 1 not greater than2; B7 OK."
+            },
+            {
+              "candidate": "B",
+              "risk": "type(attempt) is int не допускает int-подкласс с теми же обещанными свойствами.",
+              "evidence": "Judge integer_subclass_ids: A8 OK, B8 assertion failures в7 методах. Эквивалентность зависит от явно указанного чтения слова integer; не fixed grader result."
+            }
+          ],
+          "unjustified_scenarios": {
+            "A": [],
+            "B": []
+          },
+          "extra_work": "A проверяет удаление id guard полным suite; B точечно проверяет потерю владельца перед RuntimeError одним релевантным тестом. Оба эксперимента содержательные. Третий запуск у обоих оправдан, но разные истории не заменяют друг друга автоматически.",
+          "ledger": [
+            {
+              "candidate": "A/B",
+              "scenario_group": "Успех, cancel/late, done/duplicate, idle",
+              "explicit_rule_or_boundary": "Легальный progress и отклонение вне waiting",
+              "additional_distinction": "Разные порядки complete/cancel",
+              "useful_diagnostic_separation": "A явные assertions, B простой snapshot helper",
+              "maintenance_execution_cost": "Оба решения читаемы",
+              "keep_combine_remove_rationale": "Сохранить; меньше methods не значит меньше сценариев."
+            },
+            {
+              "candidate": "A/B",
+              "scenario_group": "Wrong id и rejected begin затем completion",
+              "explicit_rule_or_boundary": "Сохранение текущей попытки",
+              "additional_distinction": "Проверяется фактическое продолжение, не только state",
+              "useful_diagnostic_separation": "Именованные причины отказа",
+              "maintenance_execution_cost": "Короткие трассы",
+              "keep_combine_remove_rationale": "Не удалять положительное завершение."
+            },
+            {
+              "candidate": "A",
+              "scenario_group": "Три последовательных успеха",
+              "explicit_rule_or_boundary": "Строго возрастающие id при каждом успешном begin",
+              "additional_distinction": "Done-specific двухэлементный цикл, подтверждённый judge probe",
+              "useful_diagnostic_separation": "subTest(result=third.csv); при первых сбоях возможны последующие domain errors",
+              "maintenance_execution_cost": "Один небольшой цикл со списком previous ids",
+              "keep_combine_remove_rationale": "Третья попытка оправданна; nested subtests чуть усложняют follow-on диагностику, но не скрывают первичный отказ."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Success/cancel/third + оба старых id + пустая строка",
+              "explicit_rule_or_boundary": "Старые ids остаются неактивны; любой string допустим",
+              "additional_distinction": "Смешанная история и empty-result, другой риск чем три done подряд",
+              "useful_diagnostic_separation": "Подписанные stale ids",
+              "maintenance_execution_cost": "Одна дополнительная связная трасса",
+              "keep_combine_remove_rationale": "Оправдано; не заявлять эквивалентным A history."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "Restart после rejected begin и success",
+              "explicit_rule_or_boundary": "Следующий id тоже должен возрастать",
+              "additional_distinction": "Ошибочный rejected begin мог испортить счётчик, сохранив активную попытку",
+              "useful_diagnostic_separation": "Финальный begin helper",
+              "maintenance_execution_cost": "Одно событие",
+              "keep_combine_remove_rationale": "Defensible distinction, не считаю лишним повтором normal restart."
+            },
+            {
+              "candidate": "B",
+              "scenario_group": "assertIs return True/False; type(id) is int",
+              "explicit_rule_or_boundary": "Первые явно заданы; exact builtin int не написан",
+              "additional_distinction": "Boolean-проверки полезны; exact-type может отвергать допустимую реализацию",
+              "useful_diagnostic_separation": "Общий helper быстро локализует тип",
+              "maintenance_execution_cost": "Небольшая централизация с риском сверхконтракта",
+              "keep_combine_remove_rationale": "Сохранить exact booleans; для id предпочесть проверку целочисленного свойства без скрытого exact-type требования."
+            }
+          ],
+          "scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 3,
+              "refactor_resilience": 2,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "independent_initial_scores": {
+            "A": {
+              "protection": 3,
+              "refactor_resilience": 4,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            },
+            "B": {
+              "protection": 4,
+              "refactor_resilience": 3,
+              "economy": 4,
+              "scope": 4,
+              "reasoning_process": 4
+            }
+          },
+          "operational_counts_not_economy_scores": {
+            "A": {
+              "test_methods": 8,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "late_or_duplicate_completion_accepted": "KILLED",
+                "foreign_id_accepted": "KILLED",
+                "attempt_ids_reused": "KILLED",
+                "begin_replaces_active_attempt": "KILLED",
+                "cancel_completed_upload": "KILLED",
+                "restart_retains_old_result": "KILLED"
+              },
+              "equivalent_refactors": {
+                "different_private_storage": true
+              }
+            },
+            "B": {
+              "test_methods": 7,
+              "baseline_passed": true,
+              "independent_contract_passed": true,
+              "scope_passed": true,
+              "fixed_faults": {
+                "late_or_duplicate_completion_accepted": "KILLED",
+                "foreign_id_accepted": "KILLED",
+                "attempt_ids_reused": "KILLED",
+                "begin_replaces_active_attempt": "KILLED",
+                "cancel_completed_upload": "KILLED",
+                "restart_retains_old_result": "KILLED"
+              },
+              "equivalent_refactors": {
+                "different_private_storage": true
+              }
+            }
+          },
+          "maintenance_and_diagnostic_cost": "Отдельно раскрыта в ledger; operational counts не являются economy score.",
+          "evidence": [
+            "original-cases/06_upload_workflow/task.md",
+            "R2/A/cases/06_upload_workflow/",
+            "R2/B/cases/06_upload_workflow/"
+          ]
+        }
+      ],
+      "aggregate": {
+        "winner": "inconclusive",
+        "case_verdicts": {
+          "C01": "tie",
+          "C02": "B",
+          "C03": "tie",
+          "C04": "tie",
+          "C05": "tie",
+          "C06": "inconclusive"
+        },
+        "rationale": "R2 содержит неупорядочиваемые одним счётчиком различия: B немного экономнее C01, но A обнаруживает большой допустимый integer; B сильнее C02; C03–C05 сопоставимы; в C06 есть встречная защита и явно оговорённое exact-type предположение. Нет достаточного основания объявить один ответ общим победителем. Это не инфраструктурная неопределённость: исполнения исправны.",
+        "avoidable_scenarios_count": {
+          "A": 1,
+          "B": 0
+        },
+        "weighted_total_used": false
+      },
+      "limitations": [
+        "Метки A/B нельзя связывать с R1 или версиями без закрытого ключа.",
+        "Шесть задач в одной сессии не независимые выборки; по двум matched pairs не устанавливается статистическая superiority.",
+        "Конечные фиксированные faults и шесть judge variants не являются полной mutation campaign.",
+        "Время малых fixtures не оценивалось как выигрыш; prose preferences не считаются behavioral improvement.",
+        "Все участнические outputs остаются supplied evidence; собственные probes и static audit имеют отдельные пути.",
+        "C06 exact-type caveat должен сохраняться в любом последующем агрегировании."
+      ]
+    }
+  ],
+  "aggregate": {
+    "conclusion": "Однозначное общее улучшение экономности при сохранении всей наблюдаемой защиты не установлено. Есть небольшие локальные возможности сокращения и реальные встречные преимущества по контрактной защите. Версионного победителя без закрытого ключа и при таком объёме данных объявлять нельзя.",
+    "pair_outcomes": {
+      "R1": {
+        "winner": "tie",
+        "case_verdicts": {
+          "C01": "A",
+          "C02": "B",
+          "C03": "tie",
+          "C04": "tie",
+          "C05": "tie",
+          "C06": "tie"
+        },
+        "rationale": "R1 даёт смешанный результат: у A локальное преимущество экономности C01 и одна возможная экономия C04, у B проверенное дополнительное различие C02. В C04 защита встречная, C03/C05/C06 сопоставимы. Малые экономические различия не устанавливают общее превосходство A и не перевешивают автоматически дополнительную защиту B.",
+        "avoidable_scenarios_count": {
+          "A": 0,
+          "B": 2
+        },
+        "count_interpretation": "Только две конкретно обоснованные возможности сокращения. Это не подсчёт всех повторов, не нижняя граница suite и не inferiority по количеству методов.",
+        "weighted_total_used": false
+      },
+      "R2": {
+        "winner": "inconclusive",
+        "case_verdicts": {
+          "C01": "tie",
+          "C02": "B",
+          "C03": "tie",
+          "C04": "tie",
+          "C05": "tie",
+          "C06": "inconclusive"
+        },
+        "rationale": "R2 содержит неупорядочиваемые одним счётчиком различия: B немного экономнее C01, но A обнаруживает большой допустимый integer; B сильнее C02; C03–C05 сопоставимы; в C06 есть встречная защита и явно оговорённое exact-type предположение. Нет достаточного основания объявить один ответ общим победителем. Это не инфраструктурная неопределённость: исполнения исправны.",
+        "avoidable_scenarios_count": {
+          "A": 1,
+          "B": 0
+        },
+        "weighted_total_used": false
+      }
+    },
+    "version_level_winner": null,
+    "pair_label_alignment": "Unknown. A/B may denote different versions in R1 and R2; no cross-pair label identity inferred.",
+    "manual_economy_findings": [
+      {
+        "pair": "R1",
+        "candidate": "B",
+        "case": "C01",
+        "scenario": "delivery_fee(12000) == 0",
+        "reason": "Заявленная роль продолжения бесплатного диапазона уже представлена 10**30."
+      },
+      {
+        "pair": "R1",
+        "candidate": "B",
+        "case": "C04",
+        "scenario": "discounted_total(1000,15,max_discount_cents=200) == 850",
+        "reason": "Неэффективный cap уже представлен (999,15,200), включая floor; равный cap отдельно полезен и не удаляется."
+      },
+      {
+        "pair": "R2",
+        "candidate": "A",
+        "case": "C01",
+        "scenario": "delivery_fee(12000) == 0",
+        "reason": "Можно удалить только 12000, сохранив 10000 и 10**30 и дополнительную защиту больших чисел."
+      }
+    ],
+    "economy_count_policy": "Only these three local opportunities are counted. Not a universal minimum, no inference from matching finite kill sets, method count, lines, assertions, row count or tiny runtime differences. Counts must not be summed by A/B across pairs without the key.",
+    "protection_tradeoffs": [
+      {
+        "pair": "R1",
+        "case": "C02",
+        "advantage": "B",
+        "evidence": "Post-validation NFC: A passes; B fails valid decomposed preservation assertions."
+      },
+      {
+        "pair": "R1",
+        "case": "C04",
+        "advantage": "A",
+        "evidence": "Zero cap bypassing original validation: A fails; B passes."
+      },
+      {
+        "pair": "R1",
+        "case": "C04",
+        "advantage": "B",
+        "evidence": "Zero subtotal bypassing negative-cap validation: B fails; A passes."
+      },
+      {
+        "pair": "R2",
+        "case": "C01",
+        "advantage": "A",
+        "evidence": "Signed64 upper-limit rejection: A fails on 10**30; B passes."
+      },
+      {
+        "pair": "R2",
+        "case": "C02",
+        "advantage": "B",
+        "evidence": "Interior NBSP normalization: B fails; A passes."
+      },
+      {
+        "pair": "R2",
+        "case": "C04",
+        "advantage": "neither",
+        "evidence": "Both pass zero-cap bypass of original amount/percent validation."
+      },
+      {
+        "pair": "R2",
+        "case": "C06",
+        "advantage": "B",
+        "evidence": "Integer0/1 returns: B fails literal boolean assertions; A passes truthiness checks."
+      },
+      {
+        "pair": "R2",
+        "case": "C06",
+        "advantage": "A",
+        "evidence": "Two-id cycle only on restart from done: A third consecutive success fails; B mixed third-attempt history passes."
+      }
+    ],
+    "conditional_refactor_finding": {
+      "pair": "R2",
+      "candidate": "B",
+      "case": "C06",
+      "evidence": "A passes int-subclass return; B fails type(id) is int.",
+      "contract_interpretation": "Positive integer id does not explicitly require exact built-in int. Subclass is compatible under ordinary integer reading; exact-type intent remains an explicit caveat.",
+      "score": "B refactor resilience2 under the ordinary reading, alternative4 if exact built-in int is explicitly required.",
+      "impact": "Not a fixed grader result and not sole basis for a forced winner."
+    },
+    "process_assessment": "All submissions keep allowed final file scope and proper synthetic-report attribution. C04 records describe genuine observed API and assertion reds followed by greens; the judge relies on supplied execution records and does not infer chronology from final green. A few optional probes are low-yield but bounded; no broad unnecessary campaign or new infrastructure is observed.",
+    "fixed_mechanics": "Each submission kills all31 required fixed faults and passes7 supplied equivalent variants. C05 retains the expected descriptive M2 survivor and M3/M4 detections. Failure causes, baseline and test-file hashes inspected; no infrastructure failures promoted to behavioral kills.",
+    "limitations": [
+      "Two matched development runs only. The six tasks in one agent session are not independent samples; no statistical superiority is established.",
+      "Version identities remain unknown. Same A/B label across pairs must not be treated as the same version.",
+      "Judge probes were selected after reading concrete submissions. They establish specific distinctions, not an unbiased mutation score or completeness.",
+      "Missing additional protection is distinguished from deletion of original healthy tests. No unjustified removal of supported original boundary/adapter/history distinction was demonstrated.",
+      "Finite test/probe outcomes do not prove all integer inputs, Unicode strings or temporal histories.",
+      "Small fixture wall times and wording preferences are not measured behavioral improvement.",
+      "Historical TDD and participant operations are supplied records; no independent raw-tool authentication is claimed.",
+      "grade.py was absent from the allowed folder. The judge did not search elsewhere or regenerate the fixed grader."
+    ]
+  },
+  "evidence_index": {
+    "R1_report": "judgment-R1.md",
+    "R1_data": "judgment-R1.json",
+    "R2_report": "judgment-R2.md",
+    "R2_data": "judgment-R2.json",
+    "judge_R1": "judge-probes-R1/results.json",
+    "judge_R2": "judge-probes-R2/results.json",
+    "static_R1": "judge-static-audit-R1.json",
+    "static_R2": "judge-static-audit-R2.json"
+  }
+}

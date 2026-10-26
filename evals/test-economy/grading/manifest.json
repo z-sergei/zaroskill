@@ -1,0 +1,284 @@
+{
+  "format_version": 1,
+  "cases": {
+    "01_shipping_bands": {
+      "skill": "khorikov-unit-testing",
+      "module": "shipping.py",
+      "test_file": "test_shipping.py",
+      "allowed_changes": [
+        "test_shipping.py",
+        "response.md"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "shipping.py": "bc6cd30e8fc648b5509794e2f71eadfa41d8cf43ba5da70e7385c6174d078c4f",
+        "task.md": "1a3660492847b083f45ecc56fe7c37dfda71c3997a0d17c60877f2728d72f8c9"
+      },
+      "faults": [
+        {
+          "id": "zero_rejected",
+          "contract_violation": "Zero is a valid subtotal."
+        },
+        {
+          "id": "negative_accepted",
+          "contract_violation": "Negative subtotal must raise ValueError."
+        },
+        {
+          "id": "discount_starts_early",
+          "contract_violation": "4999 still costs 500."
+        },
+        {
+          "id": "discount_starts_late",
+          "contract_violation": "5000 costs 250."
+        },
+        {
+          "id": "free_starts_early",
+          "contract_violation": "9999 still costs 250."
+        },
+        {
+          "id": "free_starts_late",
+          "contract_violation": "10000 is free."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "ascending_intervals",
+          "equivalence": "Ascending interval table; exception message is not part of the contract."
+        }
+      ]
+    },
+    "02_display_name": {
+      "skill": "khorikov-unit-testing",
+      "module": "names.py",
+      "test_file": "test_names.py",
+      "allowed_changes": [
+        "test_names.py",
+        "response.md"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+        "task.md": "2e9419a84c6511177e1488954335dbe1ead095b4ccd2976076f725193a9716bd"
+      },
+      "faults": [
+        {
+          "id": "zero_length_allowed",
+          "contract_violation": "Cleaned name cannot be empty."
+        },
+        {
+          "id": "max_boundary_excluded",
+          "contract_violation": "20 characters is valid."
+        },
+        {
+          "id": "overlong_allowed",
+          "contract_violation": "21 characters is invalid."
+        },
+        {
+          "id": "raw_length_checked",
+          "contract_violation": "Length is measured after trimming."
+        },
+        {
+          "id": "inner_spaces_collapsed",
+          "contract_violation": "Interior spacing must remain unchanged."
+        },
+        {
+          "id": "case_normalized",
+          "contract_violation": "Case must remain unchanged."
+        },
+        {
+          "id": "byte_length_checked",
+          "contract_violation": "Length is in Python characters, not bytes."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "separate_length_check",
+          "equivalence": "A private validation helper preserves all public outcomes."
+        }
+      ]
+    },
+    "03_capacity_boundaries": {
+      "skill": "test-quality-review",
+      "module": "capacity.py",
+      "test_file": "test_capacity.py",
+      "allowed_changes": [
+        "test_capacity.py",
+        "response.md"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "capacity.py": "d1864fac8b217218471e1f41b7b1a851fc693b9d38822a94ec862636de35539c",
+        "task.md": "2e3906aa67ae85df803261e6f60acc0e5dbd476e05175d2a1df5836b01b111db"
+      },
+      "faults": [
+        {
+          "id": "exact_capacity_rejected",
+          "contract_violation": "Exact capacity is allowed."
+        },
+        {
+          "id": "domain_wrong_total",
+          "contract_violation": "reserve returns the updated occupancy."
+        },
+        {
+          "id": "adapter_drops_request",
+          "contract_violation": "The request adapter uses requested quantity."
+        },
+        {
+          "id": "adapter_wrong_status",
+          "contract_violation": "Over-capacity maps to full."
+        },
+        {
+          "id": "adapter_reports_old_total",
+          "contract_violation": "Success reports new occupancy."
+        },
+        {
+          "id": "adapter_mutates_input",
+          "contract_violation": "Input dictionary must remain unchanged."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "remaining_capacity_and_unpacking",
+          "equivalence": "Equivalent capacity arithmetic and local response construction."
+        }
+      ]
+    },
+    "04_discount_cap": {
+      "skill": "requirements-tdd",
+      "module": "discounts.py",
+      "test_file": "test_discounts.py",
+      "allowed_changes": [
+        "test_discounts.py",
+        "response.md",
+        "discounts.py"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0"
+      },
+      "faults": [
+        {
+          "id": "cap_ignored",
+          "contract_violation": "An effective positive cap must restrict the discount."
+        },
+        {
+          "id": "cap_is_minimum",
+          "contract_violation": "Cap is an upper bound, not a minimum."
+        },
+        {
+          "id": "zero_cap_ignored",
+          "contract_violation": "A zero cap suppresses the discount."
+        },
+        {
+          "id": "negative_cap_accepted",
+          "contract_violation": "Negative cap is rejected even with zero computed discount."
+        },
+        {
+          "id": "rounds_discount_to_nearest",
+          "contract_violation": "Discount is always floored to integer cents."
+        },
+        {
+          "id": "cap_allowed_positionally",
+          "contract_violation": "The new cap argument is keyword-only."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "single_bounded_expression",
+          "equivalence": "Rearranged validation and bounded expression preserve the specified integer behavior."
+        }
+      ]
+    },
+    "05_mutation_report": {
+      "skill": "test-quality-review",
+      "module": "cancellation.py",
+      "test_file": "test_cancellation.py",
+      "allowed_changes": [
+        "review.md"
+      ],
+      "required_response": "review.md",
+      "tests_editable": false,
+      "frozen_sha256": {
+        "cancellation.py": "77631e0fee7dff80278c365d7a3cf53b61bd7eb6bbb63b424f0cf216db68f507",
+        "test_cancellation.py": "ad84b4151395b65abf88b8bc6e30ba48050811de72f7ca36e6dd79d40804180f",
+        "task.md": "624d4bb6e215f76e728c1967d2a459e730465135be180629499ef954216439e6",
+        "mutation-report.json": "af68e0d0d2c52e67da2cce9a6bb1afa16a5a93ae3276e755cf024154ddbe6ff7"
+      },
+      "faults": [
+        {
+          "id": "free_starts_one_hour_early",
+          "contract_violation": "47 hours incurs one quarter of the payment."
+        },
+        {
+          "id": "day_threshold_late",
+          "contract_violation": "24 hours incurs one quarter of the payment."
+        },
+        {
+          "id": "half_fee_rounded_up",
+          "contract_violation": "Half fee must be floored."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "equivalent_report_M1",
+          "equivalence": "Exact integer quotient identity for nonnegative paid_cents; M1 in supplied report."
+        },
+        {
+          "id": "ascending_time_bands",
+          "equivalence": "Same time intervals in ascending order."
+        }
+      ]
+    },
+    "06_upload_workflow": {
+      "skill": "state-machine-verification",
+      "module": "upload.py",
+      "test_file": "test_upload.py",
+      "allowed_changes": [
+        "test_upload.py",
+        "response.md"
+      ],
+      "required_response": "response.md",
+      "tests_editable": true,
+      "frozen_sha256": {
+        "upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+        "task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd"
+      },
+      "faults": [
+        {
+          "id": "late_or_duplicate_completion_accepted",
+          "contract_violation": "Only the active waiting attempt may complete."
+        },
+        {
+          "id": "foreign_id_accepted",
+          "contract_violation": "Wrong or stale attempt id must be ignored."
+        },
+        {
+          "id": "attempt_ids_reused",
+          "contract_violation": "Successful begins have strictly increasing ids."
+        },
+        {
+          "id": "begin_replaces_active_attempt",
+          "contract_violation": "Begin during waiting raises and preserves the active attempt."
+        },
+        {
+          "id": "cancel_completed_upload",
+          "contract_violation": "Cancel after completion must preserve done and result."
+        },
+        {
+          "id": "restart_retains_old_result",
+          "contract_violation": "Begin clears the previous result."
+        }
+      ],
+      "refactors": [
+        {
+          "id": "different_private_storage",
+          "equivalence": "Private counter and pending storage are renamed/reorganized; public event behavior is unchanged."
+        }
+      ]
+    }
+  }
+}

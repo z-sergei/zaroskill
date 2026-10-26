@@ -1,0 +1,8 @@
+{
+  "design": "One additional matched blind pair on the same two exposed tasks, baseline commit 4e3c28a versus candidate-v2. Both tasks and grader frozen before runs. New judge without skill versions or earlier comparisons.",
+  "why": "Initial two pairs showed 0 versus 3 unjustified scenarios, but not overall protection dominance. Concrete shortcut-validation gaps and a representation assumption motivate two narrow instruction additions.",
+  "candidate_delta": "requirements-tdd: preconditions and effects on shortcut paths; state-machine-verification: only promised representation constraints. Other candidate-v1 instructions unchanged.",
+  "scope": "Two tasks; 12 original faults plus four prior judge-discovered faults; two original refactors and a separately caveated subclass diagnostic.",
+  "no_pooling": "Directed debugging after seeing prior outputs, not an independent holdout or confirmation of broad superiority. Report apart from R1/R2.",
+  "decision": "Retain only a supported bounded improvement; report any remaining misses and do not hide them behind aggregate scores. This is the final directed iteration for this campaign."
+}

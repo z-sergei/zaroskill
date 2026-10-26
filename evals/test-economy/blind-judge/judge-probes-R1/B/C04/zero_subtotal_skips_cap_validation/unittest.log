@@ -1,0 +1,27 @@
+test_cap_at_or_above_the_discount_preserves_the_calculation (test_discounts.DiscountTests.test_cap_at_or_above_the_discount_preserves_the_calculation) ... ok
+test_cap_limits_the_discount_not_the_total (test_discounts.DiscountTests.test_cap_limits_the_discount_not_the_total) ... ok
+test_cap_must_be_passed_by_keyword (test_discounts.DiscountTests.test_cap_must_be_passed_by_keyword) ... ok
+test_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok
+test_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok
+test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok
+test_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok
+test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) ... 
+  test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal=0, percent=100) ... FAIL
+test_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok
+test_none_cap_preserves_the_uncapped_calculation (test_discounts.DiscountTests.test_none_cap_preserves_the_uncapped_calculation) ... ok
+test_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok
+test_zero_cap_leaves_the_subtotal_unchanged (test_discounts.DiscountTests.test_zero_cap_leaves_the_subtotal_unchanged) ... ok
+
+======================================================================
+FAIL: test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal=0, percent=100)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R1/B/C04/zero_subtotal_skips_cap_validation/test_discounts.py", line 35, in test_negative_cap_is_rejected_even_when_discount_is_zero
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+FAILED (failures=1)

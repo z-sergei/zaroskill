@@ -1,0 +1,9 @@
+test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) ... ok
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... ok
+test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) ... ok
+test_standard_fee_below_5000_cents (test_shipping.ShippingTests.test_standard_fee_below_5000_cents) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

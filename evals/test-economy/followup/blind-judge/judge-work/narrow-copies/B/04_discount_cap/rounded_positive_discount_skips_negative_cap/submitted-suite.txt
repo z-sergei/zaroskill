@@ -1,0 +1,28 @@
+test_cap_at_or_above_discount_preserves_rounded_discount (test_discounts.DiscountTests.test_cap_at_or_above_discount_preserves_rounded_discount) ... ok
+test_cap_is_keyword_only (test_discounts.DiscountTests.test_cap_is_keyword_only) ... ok
+test_discount_is_limited_by_cap (test_discounts.DiscountTests.test_discount_is_limited_by_cap) ... ok
+test_discount_rounds_down_to_whole_cents (test_discounts.DiscountTests.test_discount_rounds_down_to_whole_cents) ... ok
+test_full_discount (test_discounts.DiscountTests.test_full_discount) ... ok
+test_invalid_percent (test_discounts.DiscountTests.test_invalid_percent) ... ok
+test_invalid_subtotal (test_discounts.DiscountTests.test_invalid_subtotal) ... ok
+test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) ... 
+  test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal_cents=1, percent=1) ... FAIL
+test_no_discount (test_discounts.DiscountTests.test_no_discount) ... ok
+test_none_cap_preserves_rounded_discount (test_discounts.DiscountTests.test_none_cap_preserves_rounded_discount) ... ok
+test_percentage_discount (test_discounts.DiscountTests.test_percentage_discount) ... ok
+test_zero_cap_disables_full_discount (test_discounts.DiscountTests.test_zero_cap_disables_full_discount) ... ok
+test_zero_cap_still_rejects_invalid_subtotal_and_percent (test_discounts.DiscountTests.test_zero_cap_still_rejects_invalid_subtotal_and_percent) ... ok
+
+======================================================================
+FAIL: test_negative_cap_is_rejected_even_when_discount_is_zero (test_discounts.DiscountTests.test_negative_cap_is_rejected_even_when_discount_is_zero) (subtotal_cents=1, percent=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/B/04_discount_cap/rounded_positive_discount_skips_negative_cap/test_discounts.py", line 24, in test_negative_cap_is_rejected_even_when_discount_is_zero
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+FAILED (failures=1)

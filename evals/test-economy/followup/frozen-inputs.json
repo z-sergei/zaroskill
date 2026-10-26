@@ -1,0 +1,132 @@
+{
+  "candidate_skills": {
+    "khorikov-unit-testing": {
+      "SKILL.md": "004ec69c5d8745b0e09b840ba0862f8063bd6130a998eed5e1201f68da99e060",
+      "agents/openai.yaml": "4435ee7b8addf37cff4e4c75c55f6b25c8d8e4c15ff6574f204ce33913b1bbda",
+      "references/behavior-properties.md": "0eca7303935140de8b55e103c047ae494bd7024ec37229f8afec3ff4b92382d4",
+      "references/boundaries.md": "e95d14e91ae3ae079244ae32b8fe44cb48501987501032f15cf6ce3d422702b7",
+      "references/mutation-campaigns.md": "d6f7de740b48568f34d08b30458566890c904796393e1ecbe50a064e635c76b3",
+      "references/sources.md": "70ca8db9ebb80b5d9cf24e6eb540804fbc3ab679c89a5a78c691462522958792"
+    },
+    "requirements-tdd": {
+      "SKILL.md": "82a198eb53d59c16027fa1ada2496b0acd5ea96ca342770d7872f608c8d1db5b",
+      "agents/openai.yaml": "c1422cacd47a03d5687602e48c34fcfff423c2413f3ba898de554d354787a580",
+      "references/behavior-properties.md": "dbf9f03ed81cce95ad6cabde6db5831e5bb390f341a81d778175c3d5c55cbd60",
+      "references/boundaries.md": "924bfaa358181c65a0a093bf62677fa167ddcbb1b9f8e390431fe781768b46fd",
+      "references/existing-code.md": "8fcdecad2fb92d1a37e9e4cf1db2c766689287abdb05785c6f323b076293167f",
+      "references/mutation-campaigns.md": "126238ceef60dacef27e115b72a230ceacafae6f8a759c767c19a31449f0f4f4",
+      "references/sources.md": "05a5e4c7b1103383366457b5577dc88bdf82afb77abfb68599638e438594869b"
+    },
+    "state-machine-verification": {
+      "SKILL.md": "b6a57ff5a6eedb4a991a659b710b17d9c1ebe4eb030d9dca9c662b239c58ce20",
+      "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c",
+      "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+      "references/sources.md": "47caffae3f106a6e5714aa528c6c57cc4dc28279a37808be4420b072801eb766",
+      "references/temporal-checks.md": "6526a29696dd6ce38f367d0c7a281f48dcb042760a75d49525e19a5829a001c4"
+    },
+    "test-quality-review": {
+      "SKILL.md": "707526e5abe62867d34a78f84a7d88c7aba4969c9b356fe47a2beeac3a1d54ba",
+      "agents/openai.yaml": "4b8ba8b18c1fea8bc47319ba3bd55fa0942a2a8a179f0c3e15a70da6b401f0a5",
+      "references/boundaries-and-traps.md": "5c0908c39e84fe9ad0d3318f4085158c967afb1b92f03d03370ceeced95e8daa",
+      "references/probes.md": "28ae22f7afcd3c46bd63168085dc8e3d21e76942ad57865f6d9d2ea3210d4290",
+      "references/property-evidence.md": "057728f7b71e4453f2ca2ea4029b2a0152b73c8bdc9f1d3b30c54323762b50f1",
+      "references/sources.md": "03d071d9e497972ab0f169657d94b47f3e8fea3d9e8176d0fa69ee637e2a1412"
+    }
+  },
+  "baseline_skills": {
+    "requirements-tdd": {
+      "SKILL.md": "ab6381a32731d2fc550daf10acd0116659caacf9bda96eeaaaa5620f334f7876",
+      "agents/openai.yaml": "c1422cacd47a03d5687602e48c34fcfff423c2413f3ba898de554d354787a580",
+      "references/behavior-properties.md": "dbf9f03ed81cce95ad6cabde6db5831e5bb390f341a81d778175c3d5c55cbd60",
+      "references/boundaries.md": "924bfaa358181c65a0a093bf62677fa167ddcbb1b9f8e390431fe781768b46fd",
+      "references/existing-code.md": "8fcdecad2fb92d1a37e9e4cf1db2c766689287abdb05785c6f323b076293167f",
+      "references/sources.md": "157dbcc5e5d910151c60b062b9e447735c959f5789c2f5c8a84f4f95343ebe5e"
+    },
+    "khorikov-unit-testing": {
+      "SKILL.md": "33eda08affa1e52b6262e28be3130ab86067a5aec3f76826794f43682ac9a757",
+      "agents/openai.yaml": "4435ee7b8addf37cff4e4c75c55f6b25c8d8e4c15ff6574f204ce33913b1bbda",
+      "references/behavior-properties.md": "0eca7303935140de8b55e103c047ae494bd7024ec37229f8afec3ff4b92382d4",
+      "references/boundaries.md": "e95d14e91ae3ae079244ae32b8fe44cb48501987501032f15cf6ce3d422702b7",
+      "references/sources.md": "c6ef8f68a7deba20d57e0051cc315b070ae2d02ed6d34e8d2f383f54c2e662b9"
+    },
+    "test-quality-review": {
+      "SKILL.md": "2b47121c1b70c6b2177eba4e2494ec25fb27103f6039fd548c5f67ba7071b9ed",
+      "agents/openai.yaml": "4b8ba8b18c1fea8bc47319ba3bd55fa0942a2a8a179f0c3e15a70da6b401f0a5",
+      "references/boundaries-and-traps.md": "5c0908c39e84fe9ad0d3318f4085158c967afb1b92f03d03370ceeced95e8daa",
+      "references/probes.md": "28d7275e5c647740be08186c590fe5dce1e5d4b67fd737486eebf82fa24c4d79",
+      "references/property-evidence.md": "057728f7b71e4453f2ca2ea4029b2a0152b73c8bdc9f1d3b30c54323762b50f1",
+      "references/sources.md": "e45c8a2d0b8f6e1317f1d37d4a6301e7fac3ab5bb47d16575b8e6f8744b895c8"
+    },
+    "state-machine-verification": {
+      "SKILL.md": "76789d1d27f097a504e2e02d372931138a1521cfbb64764599c362d6a504a721",
+      "agents/openai.yaml": "a7f51ab33460ae95d5834cbea9bb0e51a7aac95b84a1b8e02b42c411b9854d4c",
+      "references/design-checks.md": "f44404317feff379f5e208a4229f122b4c2e9accf089d7ad0d86ef2cf532dbe2",
+      "references/sources.md": "3b04f2fdcba45a548818dc735c94f1ea802c3192802ad662db82907e94627d91",
+      "references/temporal-checks.md": "934b6823efe72b7d13aeedf573f17f026ed0a5b0f5081d8b2cca584443461eaa"
+    }
+  },
+  "cases": {
+    "04_discount_cap/discounts.py": "ee90aa27e3444f3dfdc06bee526c98007fdf4b92f1600b553b83e8dbb05797f8",
+    "04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "04_discount_cap/test_discounts.py": "5bd17d17a98bedeb443fc6cd39e47e208c4db91e6e022bc8bc0cba8856e00780",
+    "06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "06_upload_workflow/test_upload.py": "8714c0ba3059d37045944dbc894db09472a86c6c77c299f9388e768c68dedce3",
+    "06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725"
+  },
+  "grading": {
+    ".preflight/cli-grade.json": "bba63b5ee773c586bd53ff9f96076ff4b33590f12ecdddeb26dd341d6c2f25a4",
+    ".preflight/details.json": "5bd48d6417e6e459a347a3828d40fa0b8e3655313323b9692f368b301df64e9e",
+    ".preflight/reference_run/cases/04_discount_cap/discounts.py": "f8a2dbc8bb5ff47a80551f042be8cac98da0f40535d814387172ec6bf4737faa",
+    ".preflight/reference_run/cases/04_discount_cap/response.md": "11017b826467af7fd9de6c49422a510516bce9d9657efeb4c2aab8e63553a7f6",
+    ".preflight/reference_run/cases/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    ".preflight/reference_run/cases/04_discount_cap/test_discounts.py": "4e207c51c6830e20065d6b5b1283b3e1882763018ec439e9554a09bba56e11f3",
+    ".preflight/reference_run/cases/06_upload_workflow/response.md": "6624e595e9f325b3ca7e16780e0ae0414e5906663410f3ed09f5730fc029045a",
+    ".preflight/reference_run/cases/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    ".preflight/reference_run/cases/06_upload_workflow/test_upload.py": "d8c9aebdaa7e5b040bc656ff1922ac00c4821acefb4af6f34cccdf6ff80c3454",
+    ".preflight/reference_run/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "README.md": "3057e3c29290a3fe5462ec830de9cca6a5f4875e202d3761b30713281ac6e0bc",
+    "contracts/04_discount_cap.py": "158d2a280021c9513f04bca4d6cd09220c6e3ccb40943eb171fe9aa27092b9b5",
+    "contracts/06_upload_workflow.py": "317cc9e90f81af2ab547ba75263003bb2567a4c20018bf1fc4e4a70faaafdca1",
+    "freeze.py": "d904c437612add30f8e7636f44ddd0a6ef4e878517d03e41d40cf51323460cf2",
+    "freeze_manifest.json": "35e02c8f1db7f2ba11c3802af8399f7bc906731857450e7e1bab9a6e28850331",
+    "frozen/04_discount_cap/discounts.py": "ee90aa27e3444f3dfdc06bee526c98007fdf4b92f1600b553b83e8dbb05797f8",
+    "frozen/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "frozen/04_discount_cap/test_discounts.py": "5bd17d17a98bedeb443fc6cd39e47e208c4db91e6e022bc8bc0cba8856e00780",
+    "frozen/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "frozen/06_upload_workflow/test_upload.py": "8714c0ba3059d37045944dbc894db09472a86c6c77c299f9388e768c68dedce3",
+    "frozen/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "grade.py": "32f73492e7016f7de808c0597ddb291a7541704eced8d1c599204792a6c1f128",
+    "manifest.json": "4e5a9bc7d2d2b91b8694f1018518c09eb9eedc7cb0d7b4410ef42af10e721811",
+    "preflight.json": "28737457a995744c54ace2c86d1bfce485d4bf5328af39c7d7b391eb339df183",
+    "preflight.py": "bf208536f65d3fbeda712cd91fb4136da42fa0a724cfdb79020d90f078287910",
+    "probe_assessment.md": "39c7dd7df37f0a5d2983fb87b79a930de0da1539ce5b624b4beb7d84f3492614",
+    "provenance.json": "39ef5eba046620f54a0240ff5fcd9d3a124cfa3e3d6a90f80582a338058777cd",
+    "reference_solutions/04_discount_cap/discounts.py": "f8a2dbc8bb5ff47a80551f042be8cac98da0f40535d814387172ec6bf4737faa",
+    "reference_solutions/04_discount_cap/response.md": "11017b826467af7fd9de6c49422a510516bce9d9657efeb4c2aab8e63553a7f6",
+    "reference_solutions/06_upload_workflow/response.md": "6624e595e9f325b3ca7e16780e0ae0414e5906663410f3ed09f5730fc029045a",
+    "reference_solutions/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "reference_tests/04_discount_cap/test_discounts.py": "4e207c51c6830e20065d6b5b1283b3e1882763018ec439e9554a09bba56e11f3",
+    "reference_tests/06_upload_workflow/test_upload.py": "d8c9aebdaa7e5b040bc656ff1922ac00c4821acefb4af6f34cccdf6ff80c3454",
+    "rubric.md": "43f016e2ad47a083a0527b241260bd92b5d12b2e5cc0f678b391793cb9e151b8",
+    "runner.py": "1d2cce4aa9e394e85278f92409dfc7d5319ea99f7e3528b93e5184a1265fb5ae",
+    "variants/04_discount_cap/faults/cap_allowed_positionally.py": "79f05338430eeeff1dca1354ae4e2b1a46134618f783d2ddde5beef796289813",
+    "variants/04_discount_cap/faults/cap_ignored.py": "f5c0a0e16adb74dd7c9ea91424597064ad7aece502dd35cf4b1f177fc80e4055",
+    "variants/04_discount_cap/faults/cap_is_minimum.py": "53aca4ce412d0792c75984174596a5b0a0d980d086dbdab56ae09e102bc8b54b",
+    "variants/04_discount_cap/faults/negative_cap_accepted.py": "077d05d97cc4884162c8c6f2c33eb0b8551ae1b449bfe18db55248c7ee35913b",
+    "variants/04_discount_cap/faults/rounds_discount_to_nearest.py": "6582c7d6d57398c7cd4c2c3ad83974f6b2c4815d2a2a8a7b662cf296e7994b54",
+    "variants/04_discount_cap/faults/zero_cap_ignored.py": "e23da2ec0b712bebfce17481cf1d7dcfdd99d8b6a40562b5ca27a21209e66af9",
+    "variants/04_discount_cap/faults/zero_cap_skips_old_validation.py": "cf9d6a04f9a6e9959c35b41e7386daae476705eb39f4cf7b681bd4106a249cba",
+    "variants/04_discount_cap/faults/zero_subtotal_skips_cap_validation.py": "8c93c7748c0eac7ccb21b665e838d2c168298ab33d9cd7648f932b0dc663af72",
+    "variants/04_discount_cap/refactors/single_bounded_expression.py": "b5b41c8efaa2572d94bc1aff0c81b496012a594d5f0b5f68b2ba4e5b2c483632",
+    "variants/06_upload_workflow/diagnostics/integer_subclass_ids.py": "012fe6bacf12d5d43b2f7344acb3c5a0de707c9f07ae994d7830eeecf15c1d80",
+    "variants/06_upload_workflow/faults/attempt_ids_reused.py": "cf1cada2100aed3071c0ba701501fcce30c806644f804b7b8c4cbd2d7a0698fb",
+    "variants/06_upload_workflow/faults/begin_replaces_active_attempt.py": "2eb3e90b980365a1bd7a88d6cbe6a4e2ba3f476b05f165015d6548967a35198e",
+    "variants/06_upload_workflow/faults/cancel_completed_upload.py": "b077dbdcdcf1e47d7334dba05494ddc16a63ab958c8d7ba8fa2d62f4747de92e",
+    "variants/06_upload_workflow/faults/foreign_id_accepted.py": "808cda3a4a51457318f83958bab791550e36f4b9fb67a8bc927266c1044e31eb",
+    "variants/06_upload_workflow/faults/late_or_duplicate_completion_accepted.py": "c47161a5dd28f90ed4e4095a9b93074cb740bb4946db8e62b71b48039f5b518f",
+    "variants/06_upload_workflow/faults/numeric_boolean_returns.py": "10363e068fc3349a176b77bf04bc5b579dcfd7c308edc447a47fd4cdd098e0fe",
+    "variants/06_upload_workflow/faults/restart_retains_old_result.py": "13c6f980e737e974dd1341555c3c569a421075ef9844d0a26acb0f3a80b4e269",
+    "variants/06_upload_workflow/faults/two_id_cycle_after_success.py": "4b6d8583a7aaf7ed19934b792c8bcea6ed1c95930ee09822c4d547374e7fa04d",
+    "variants/06_upload_workflow/refactors/different_private_storage.py": "60915809ac06f60edb97bbb500221a47c7f8a97abbc5ea6492806ac5f4cd61aa"
+  }
+}

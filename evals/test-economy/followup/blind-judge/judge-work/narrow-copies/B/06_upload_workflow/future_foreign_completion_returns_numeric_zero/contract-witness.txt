@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from upload import UploadSession; s = UploadSession(); current = s.begin(); result = s.complete(current + 1, "foreign"); assert result is False, f"expected False, got {result!r} ({type(result).__name__})"
+                                                                                                                                    ^^^^^^^^^^^^^^^
+AssertionError: expected False, got 0 (int)

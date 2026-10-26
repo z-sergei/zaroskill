@@ -1,0 +1,307 @@
+{
+  "author": "blind judge",
+  "kind": "post_reading_narrow_diagnostics_not_fixed_gates",
+  "invocation": "PYTHONDONTWRITEBYTECODE=1 python3 judge-work/narrow_checks.py",
+  "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge",
+  "interpreter": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+  "runs": [
+    {
+      "label": "A",
+      "case": "04_discount_cap",
+      "variant": "baseline",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/A/04_discount_cap/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "ee9ca514d54511232b2a47af5d7443ecbbf91b6b0963d8dc55e19a70cbefb542",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/A/04_discount_cap/baseline/submitted-suite.txt",
+      "result_lines": [
+        "Ran 13 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "label": "A",
+      "case": "04_discount_cap",
+      "variant": "rounded_positive_discount_skips_negative_cap",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/A/04_discount_cap/rounded_positive_discount_skips_negative_cap",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "ee9ca514d54511232b2a47af5d7443ecbbf91b6b0963d8dc55e19a70cbefb542",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/A/04_discount_cap/rounded_positive_discount_skips_negative_cap/submitted-suite.txt",
+      "result_lines": [
+        "Ran 13 tests in 0.000s",
+        "OK"
+      ],
+      "judge_contract_witness": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-c",
+          "from discounts import discounted_total; discounted_total(1, 1, max_discount_cents=-1); raise AssertionError(\"negative cap must raise ValueError even when a positive discount rounds to zero\")"
+        ],
+        "exit_code": 1,
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    from discounts import discounted_total; discounted_total(1, 1, max_discount_cents=-1); raise AssertionError(\"negative cap must raise ValueError even when a positive discount rounds to zero\")\n                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: negative cap must raise ValueError even when a positive discount rounds to zero\n",
+        "log": "judge-work/narrow-copies/A/04_discount_cap/rounded_positive_discount_skips_negative_cap/contract-witness.txt"
+      }
+    },
+    {
+      "label": "A",
+      "case": "06_upload_workflow",
+      "variant": "baseline",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/A/06_upload_workflow/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/A/06_upload_workflow/baseline/submitted-suite.txt",
+      "result_lines": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "label": "A",
+      "case": "06_upload_workflow",
+      "variant": "future_foreign_completion_returns_numeric_zero",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/A/06_upload_workflow/future_foreign_completion_returns_numeric_zero",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/A/06_upload_workflow/future_foreign_completion_returns_numeric_zero/submitted-suite.txt",
+      "result_lines": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ],
+      "judge_contract_witness": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-c",
+          "from upload import UploadSession; s = UploadSession(); current = s.begin(); result = s.complete(current + 1, \"foreign\"); assert result is False, f\"expected False, got {result!r} ({type(result).__name__})\""
+        ],
+        "exit_code": 1,
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    from upload import UploadSession; s = UploadSession(); current = s.begin(); result = s.complete(current + 1, \"foreign\"); assert result is False, f\"expected False, got {result!r} ({type(result).__name__})\"\n                                                                                                                                    ^^^^^^^^^^^^^^^\nAssertionError: expected False, got 0 (int)\n",
+        "log": "judge-work/narrow-copies/A/06_upload_workflow/future_foreign_completion_returns_numeric_zero/contract-witness.txt"
+      }
+    },
+    {
+      "label": "B",
+      "case": "04_discount_cap",
+      "variant": "baseline",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/B/04_discount_cap/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "6a94a7a411e337ff658d5a3ff31be86750c0a1fb2ddba9c9a9d9223948a326df",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/B/04_discount_cap/baseline/submitted-suite.txt",
+      "result_lines": [
+        "Ran 13 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "label": "B",
+      "case": "04_discount_cap",
+      "variant": "rounded_positive_discount_skips_negative_cap",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/B/04_discount_cap/rounded_positive_discount_skips_negative_cap",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "test_file_sha256": "6a94a7a411e337ff658d5a3ff31be86750c0a1fb2ddba9c9a9d9223948a326df",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/B/04_discount_cap/rounded_positive_discount_skips_negative_cap/submitted-suite.txt",
+      "result_lines": [
+        "AssertionError: ValueError not raised",
+        "Ran 13 tests in 0.000s",
+        "FAILED (failures=1)"
+      ],
+      "judge_contract_witness": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-c",
+          "from discounts import discounted_total; discounted_total(1, 1, max_discount_cents=-1); raise AssertionError(\"negative cap must raise ValueError even when a positive discount rounds to zero\")"
+        ],
+        "exit_code": 1,
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    from discounts import discounted_total; discounted_total(1, 1, max_discount_cents=-1); raise AssertionError(\"negative cap must raise ValueError even when a positive discount rounds to zero\")\n                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: negative cap must raise ValueError even when a positive discount rounds to zero\n",
+        "log": "judge-work/narrow-copies/B/04_discount_cap/rounded_positive_discount_skips_negative_cap/contract-witness.txt"
+      }
+    },
+    {
+      "label": "B",
+      "case": "06_upload_workflow",
+      "variant": "baseline",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/B/06_upload_workflow/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/B/06_upload_workflow/baseline/submitted-suite.txt",
+      "result_lines": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "label": "B",
+      "case": "06_upload_workflow",
+      "variant": "future_foreign_completion_returns_numeric_zero",
+      "cwd": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge/judge-work/narrow-copies/B/06_upload_workflow/future_foreign_completion_returns_numeric_zero",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "test_file_sha256": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+      "test_bytes_unchanged": true,
+      "log": "judge-work/narrow-copies/B/06_upload_workflow/future_foreign_completion_returns_numeric_zero/submitted-suite.txt",
+      "result_lines": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ],
+      "judge_contract_witness": {
+        "command": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-c",
+          "from upload import UploadSession; s = UploadSession(); current = s.begin(); result = s.complete(current + 1, \"foreign\"); assert result is False, f\"expected False, got {result!r} ({type(result).__name__})\""
+        ],
+        "exit_code": 1,
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    from upload import UploadSession; s = UploadSession(); current = s.begin(); result = s.complete(current + 1, \"foreign\"); assert result is False, f\"expected False, got {result!r} ({type(result).__name__})\"\n                                                                                                                                    ^^^^^^^^^^^^^^^\nAssertionError: expected False, got 0 (int)\n",
+        "log": "judge-work/narrow-copies/B/06_upload_workflow/future_foreign_completion_returns_numeric_zero/contract-witness.txt"
+      }
+    }
+  ],
+  "supplied_material_unchanged": true,
+  "protected_sha256": {
+    "original-cases/04_discount_cap/discounts.py": "ee90aa27e3444f3dfdc06bee526c98007fdf4b92f1600b553b83e8dbb05797f8",
+    "original-cases/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "original-cases/04_discount_cap/test_discounts.py": "5bd17d17a98bedeb443fc6cd39e47e208c4db91e6e022bc8bc0cba8856e00780",
+    "original-cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "original-cases/06_upload_workflow/test_upload.py": "8714c0ba3059d37045944dbc894db09472a86c6c77c299f9388e768c68dedce3",
+    "original-cases/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "R3/A/summary.json": "dc3d2b9480fcfa8ca54156799ef99304803da5247bd5581f8e0d339c84b0772b",
+    "R3/A/mechanical.json": "c4a17be64f74c32f5827204483c7e381b267b5f93f3646688a4d8604e27f2ddd",
+    "R3/A/execution.md": "b0ef56904ad124ec065591d76751afd1d17499e9330c4444c26c142dba062a6f",
+    "R3/B/summary.json": "4e0c0c853c6d231080ddca2839a2cf6dcab084fcfd9e14a13cedee5f62ce46e2",
+    "R3/B/mechanical.json": "06896ff06160991e4f190c720c4cb5c0f7f19c4d1dda735185572141d0e18f17",
+    "R3/B/execution.md": "a604a9e82ee2acd3beef8a94f27f066b18d35ccb4aa0e584d34f23edb46d83b7",
+    "R3/B/probes/upload_sensitivity.py": "4c2f98428977954c0ebf2ffe1bae8302cbf72a4483dd6083163551b1ac89247f",
+    "R3/B/probes/results.json": "a7a177b69d1d63af3c0dcb7668d05de04aae29176add19d92669ff56604e54f8",
+    "R3/B/cases/04_discount_cap/discounts.py": "8d5bedfd7f1a8da26df941b8b277cfe6053d44c3a5eb6977d91e4039b1f976e7",
+    "R3/B/cases/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "R3/B/cases/04_discount_cap/response.md": "aeed38fe566fc7fa18b4baa080ccfedfc50d87f2d31cd76a6814cf33b98fc030",
+    "R3/B/cases/04_discount_cap/test_discounts.py": "6a94a7a411e337ff658d5a3ff31be86750c0a1fb2ddba9c9a9d9223948a326df",
+    "R3/B/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "R3/B/cases/06_upload_workflow/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/cases/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "R3/B/cases/06_upload_workflow/response.md": "e2da03fccb4a2ff1e2d3a6caa0c82b03772e1d8169be4cdffe643d99dc3c76eb",
+    "R3/B/probes/restart_retains_previous_result/upload.py": "13c6f980e737e974dd1341555c3c569a421075ef9844d0a26acb0f3a80b4e269",
+    "R3/B/probes/restart_retains_previous_result/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/restart_retains_previous_result/output.txt": "750cfdf9ceae41792e4151e4122c27afaab01b4adf6377c9595be8b824b324b6",
+    "R3/B/probes/rejected_begin_loses_active/upload.py": "2d8c5afa1da96a52dbead00423caddcede7c70946248d14927884265291df035",
+    "R3/B/probes/rejected_begin_loses_active/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/rejected_begin_loses_active/output.txt": "2a6982972d72bd8b231dc078e99a12794f13ee72d156245ff70a5e0a1643600b",
+    "R3/B/probes/valid_ids_increase_by_seven/upload.py": "7a9cbc2507675e2a2d667bcdce3bed6e2c74b5073cc54372223818a47b29712e",
+    "R3/B/probes/valid_ids_increase_by_seven/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/valid_ids_increase_by_seven/output.txt": "054967a44856a75403a639236b2d7bd7874e569510c3876d565cdf24cb39fc4f",
+    "R3/B/probes/rejected_duplicate_overwrites_result/upload.py": "91369f2a8e242ec9d168e98a15e49034f7463ce5d49fd9ca2a071aebbf6c4e15",
+    "R3/B/probes/rejected_duplicate_overwrites_result/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/rejected_duplicate_overwrites_result/output.txt": "9bdb93275cb0e05bac5843f93cb7e6ae7ad6fe152e6e2b7a16002be8ab7217b4",
+    "R3/B/probes/cancelled_accepts_late_completion/upload.py": "c922451d6da03324d28647b9e2aea7c46e0b4da0ad3b10180dd294ad83189d1a",
+    "R3/B/probes/cancelled_accepts_late_completion/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/cancelled_accepts_late_completion/output.txt": "f14473b9a72800d85340694260a4002bdaec2f19e86ed3ce0233d2483139d612",
+    "R3/B/probes/restart_reuses_completed_id/upload.py": "a8f50a18ba84c816fad671876a6686e189c5a35abced374e86928fcef63200af",
+    "R3/B/probes/restart_reuses_completed_id/test_upload.py": "434787c7bc025b6f1fe9309601d6c0eaea029a5fc7c30d8e736aafe987102b79",
+    "R3/B/probes/restart_reuses_completed_id/output.txt": "f46413965506075a3e29211f87cca37b9a34af6d5347ffc5741804e4cf53f6d1",
+    "R3/A/probes/upload_fault_probes.py": "6f1af1b323fb3061d1baf354e2ddd45c3a0b25e9e5cc7bb0e74a042b3501c774",
+    "R3/A/probes/upload_probe_results.json": "a6f01bb4b93336eba1d9c6b0654e901c1aa2ef57c8e8054f778fa321df1b3d00",
+    "R3/A/cases/04_discount_cap/discounts.py": "1af6c4600fb50092671021d4d422710e56eb2c247ce26336ff15aa7671923ef8",
+    "R3/A/cases/04_discount_cap/task.md": "cde36ca7b04d7eaf5be567cb4f7bd55aadd438a60b3084fed153b1cb7217cce0",
+    "R3/A/cases/04_discount_cap/response.md": "966775e259901cff08e428a17314dd4ff890f20b43ebf3b55ccc24cc656365c5",
+    "R3/A/cases/04_discount_cap/test_discounts.py": "ee9ca514d54511232b2a47af5d7443ecbbf91b6b0963d8dc55e19a70cbefb542",
+    "R3/A/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "R3/A/cases/06_upload_workflow/test_upload.py": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+    "R3/A/cases/06_upload_workflow/task.md": "2a03717a7767d694ec11c338533f2012d0417410c57bad96d4bff28e328f3edd",
+    "R3/A/cases/06_upload_workflow/response.md": "718f61ef381a369a41a853592f83d8f25b7f05d8e2bb6f5d2b4b86b41118e14f",
+    "R3/A/probes/late_cancel_erases_result/upload.py": "e621db23519270f887c2e92f3f9eb1eca39fa24d2ed5664c35c08a777cafd967",
+    "R3/A/probes/late_cancel_erases_result/existing.txt": "71982d0f2c3aaef0e79af319ac19eb2eea44d326b585249ed398088b89db6d6a",
+    "R3/A/probes/late_cancel_erases_result/test_upload.py": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+    "R3/A/probes/late_cancel_erases_result/distinguishing.txt": "3c9e5e5a1cec3b9fe593f689561995a0a7079f99000e3507a3e67c63ceeddcc6",
+    "R3/A/probes/rejected_begin_changes_active_attempt/upload.py": "15bccf238436840294db51efd751a91d95761fc3d581262ff0e5f78d8de3057a",
+    "R3/A/probes/rejected_begin_changes_active_attempt/existing.txt": "71982d0f2c3aaef0e79af319ac19eb2eea44d326b585249ed398088b89db6d6a",
+    "R3/A/probes/rejected_begin_changes_active_attempt/test_upload.py": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+    "R3/A/probes/rejected_begin_changes_active_attempt/distinguishing.txt": "1e7845926da251ef9f518c8994bdb5369ecbfef4aacbbe126e00abfff3912969",
+    "R3/A/probes/predecessor_result_is_accepted/upload.py": "07284df43b0afc78c3be5e86ec57c51ea503d40737a37a3ba5653090b7836b04",
+    "R3/A/probes/predecessor_result_is_accepted/existing.txt": "71982d0f2c3aaef0e79af319ac19eb2eea44d326b585249ed398088b89db6d6a",
+    "R3/A/probes/predecessor_result_is_accepted/test_upload.py": "8fd3b090213190e1f76ba5f4666be49fe71c75fd740ca5f7d87b02b0c153c1a0",
+    "R3/A/probes/predecessor_result_is_accepted/distinguishing.txt": "6f96a65b8c69f8fee99eaa0ec8df3332fcb9fd4732761f948de8f81f7ab52411"
+  }
+}

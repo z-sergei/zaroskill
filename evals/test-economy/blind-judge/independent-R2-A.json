@@ -1,0 +1,71 @@
+{
+  "pair": "R2",
+  "candidate": "A",
+  "assessment_stage": "Saved after reading only R2/A; before reading R2/B submissions or mechanical outcomes. R1 labels not mapped to versions.",
+  "scores": {
+    "C01": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 3,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C02": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C03": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C04": {
+      "protection": 3,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C05": {
+      "protection": 4,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    },
+    "C06": {
+      "protection": 3,
+      "refactor_resilience": 4,
+      "economy": 4,
+      "scope": 4,
+      "reasoning_process": 4
+    }
+  },
+  "notes": {
+    "C01": "All required boundaries retained, paid interiors and negative interior justified. 12000 has same stated above-boundary continuation role as retained 10**30; count one modest avoidable example, not an arbitrary minimal-count rule. Boundary probe is valid but optional.",
+    "C02": "All original tests retained; Unicode edge stripping plus valid combining characters preserved and rejected length21. These two additions address explicit rules and have reasonable cost. No other input class assumed mandatory.",
+    "C03": "Separate supported functions retained with below-limit examples in both; ValueError compatibility and zero-request payload preservation added inside existing scenarios. Return-limit probe is directly useful. No unjustified scenario found.",
+    "C04": "Correct production, old tests unchanged, caps None/active/nonbinding/zero/negative and keyword-only protected. Negative cap includes zero percentage and zero subtotal. However no capped invalid subtotal/percent; an early return cap0 before old validation is a concrete useful missing interaction. Existing response too broadly says combinations repeat without risks. No unjustified scenario counted; supplied TDD outputs show two substantive red/green slices.",
+    "C05": "Correct M1 identity, M2 47h evidence, M3/M4 infrastructure non-verdict and existing behavioral assertions. Recommendation47/103 economically combines threshold and quarter-floor; 23h, validation in free band, very large integer are additional grounded recommendations, not fake supplied mutation results. Four bounded probes are proportionate.",
+    "C06": "All main temporal traces, active-attempt continuation, both restarts and three-success increasing-id history justified. Healthy standalone success can remain. Nested subtests on one trace may cause follow-on failures but first cause remains localized; no coupling to private storage. Assertions use truthiness, so integer1/0 returns would satisfy tests despite explicit True/False result contract: modest protection gap. Extra third begin has explicit two-id-cycle distinction; not counted as redundant."
+  },
+  "unjustified_scenarios": {
+    "C01": [
+      {
+        "scenario": "delivery_fee(12000) == 0",
+        "count": 1,
+        "reason": "Above-threshold continuation already represented by 10**30; no independent ordinary-size rule/history."
+      }
+    ]
+  },
+  "evidence_origin": {
+    "mechanical": "Supplied independent R2/A/mechanical.json, not judge run.",
+    "execution": "Supplied participant execution.md with embedded test outputs; C04 chronology attributed to it, not inferred from final green.",
+    "judge_runs": "No R2 behavioral runs yet."
+  }
+}

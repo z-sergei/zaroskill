@@ -1,0 +1,108 @@
+{
+  "status": "complete",
+  "execution_order": [
+    "06_upload_workflow",
+    "05_mutation_report",
+    "04_discount_cap",
+    "03_capacity_boundaries",
+    "02_display_name",
+    "01_shipping_bands"
+  ],
+  "execution_log": "execution.md",
+  "cases": [
+    {
+      "id": "06_upload_workflow",
+      "leading_skill": "state-machine-verification",
+      "status": "complete",
+      "answer": "work/cases/06_upload_workflow/response.md",
+      "modified_source_or_test_files": [
+        "work/cases/06_upload_workflow/test_upload.py"
+      ],
+      "baseline_test_methods": 3,
+      "final_test_methods": 8,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md."
+    },
+    {
+      "id": "05_mutation_report",
+      "leading_skill": "test-quality-review",
+      "status": "complete",
+      "answer": "work/cases/05_mutation_report/review.md",
+      "modified_source_or_test_files": [],
+      "baseline_test_methods": 6,
+      "final_test_methods": 6,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md."
+    },
+    {
+      "id": "04_discount_cap",
+      "leading_skill": "requirements-tdd",
+      "status": "complete",
+      "answer": "work/cases/04_discount_cap/response.md",
+      "modified_source_or_test_files": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py"
+      ],
+      "baseline_test_methods": 6,
+      "final_test_methods": 12,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md.",
+      "tdd_evidence": "Observed missing keyword API; inert signature -> assertion 700 != 800 -> green. Then negative-limit test -> ValueError not raised -> green. Remaining cases were already green and are not claimed as separate TDD cycles."
+    },
+    {
+      "id": "03_capacity_boundaries",
+      "leading_skill": "test-quality-review",
+      "status": "complete",
+      "answer": "work/cases/03_capacity_boundaries/response.md",
+      "modified_source_or_test_files": [
+        "work/cases/03_capacity_boundaries/test_capacity.py"
+      ],
+      "baseline_test_methods": 6,
+      "final_test_methods": 8,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md."
+    },
+    {
+      "id": "02_display_name",
+      "leading_skill": "khorikov-unit-testing",
+      "status": "complete",
+      "answer": "work/cases/02_display_name/response.md",
+      "modified_source_or_test_files": [
+        "work/cases/02_display_name/test_names.py"
+      ],
+      "baseline_test_methods": 7,
+      "final_test_methods": 9,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md."
+    },
+    {
+      "id": "01_shipping_bands",
+      "leading_skill": "khorikov-unit-testing",
+      "status": "complete",
+      "answer": "work/cases/01_shipping_bands/response.md",
+      "modified_source_or_test_files": [
+        "work/cases/01_shipping_bands/test_shipping.py"
+      ],
+      "baseline_test_methods": 13,
+      "final_test_methods": 4,
+      "final_test_exit_code": 0,
+      "final_test_result": "OK",
+      "details": "Actual commands, baseline, final runs and focused disposable probes are recorded in execution.md.",
+      "final_parameter_examples": 11
+    }
+  ],
+  "constraints": {
+    "production_modified_only_in": "04_discount_cap/discounts.py",
+    "dependencies_installed": false,
+    "network_used": false,
+    "delegation_used": false,
+    "external_mutation_tool_used": false,
+    "python_alias_available": false,
+    "runner": "python3 -m unittest discover -v"
+  }
+}

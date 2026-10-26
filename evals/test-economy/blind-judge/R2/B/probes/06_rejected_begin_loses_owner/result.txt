@@ -1,0 +1,17 @@
+Command: python3 -m unittest -v test_upload.UploadTests.test_rejected_begin_preserves_current_attempt
+Exit: 1
+test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt) ... FAIL
+
+======================================================================
+FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/06_rejected_begin_loses_owner/test_upload.py", line 68, in test_rejected_begin_preserves_current_attempt
+    self.assertIs(session.complete(attempt, "original.csv"), True)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not True
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

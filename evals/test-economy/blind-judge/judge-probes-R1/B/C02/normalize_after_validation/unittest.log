@@ -1,0 +1,39 @@
+test_combining_codepoints_count_towards_the_length_limit (test_names.DisplayNameTests.test_combining_codepoints_count_towards_the_length_limit) ... FAIL
+test_empty_name_is_invalid (test_names.DisplayNameTests.test_empty_name_is_invalid) ... ok
+test_inner_spacing_and_mixed_case_are_preserved (test_names.DisplayNameTests.test_inner_spacing_and_mixed_case_are_preserved) ... ok
+test_length_counts_characters (test_names.DisplayNameTests.test_length_counts_characters) ... ok
+test_longest_name_is_valid_after_trimming (test_names.DisplayNameTests.test_longest_name_is_valid_after_trimming) ... ok
+test_one_character_too_long (test_names.DisplayNameTests.test_one_character_too_long) ... ok
+test_shortest_name_preserves_case (test_names.DisplayNameTests.test_shortest_name_preserves_case) ... ok
+test_unicode_edges_are_trimmed_without_changing_inner_characters (test_names.DisplayNameTests.test_unicode_edges_are_trimmed_without_changing_inner_characters) ... FAIL
+test_whitespace_only_is_invalid (test_names.DisplayNameTests.test_whitespace_only_is_invalid) ... ok
+
+======================================================================
+FAIL: test_combining_codepoints_count_towards_the_length_limit (test_names.DisplayNameTests.test_combining_codepoints_count_towards_the_length_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R1/B/C02/normalize_after_validation/test_names.py", line 37, in test_combining_codepoints_count_towards_the_length_limit
+    self.assertEqual(clean_display_name(name), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'éééééééééé' != 'éééééééééé'
+- éééééééééé
++ éééééééééé
+
+
+======================================================================
+FAIL: test_unicode_edges_are_trimmed_without_changing_inner_characters (test_names.DisplayNameTests.test_unicode_edges_are_trimmed_without_changing_inner_characters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R1/B/C02/normalize_after_validation/test_names.py", line 33, in test_unicode_edges_are_trimmed_without_changing_inner_characters
+    self.assertEqual(clean_display_name("\u2003" + name + "\u00a0"), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'A\tB\nC\xa0é!' != 'A\tB\nC\xa0é!'
+  A	B
+- C é!
++ C é!
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+FAILED (failures=2)

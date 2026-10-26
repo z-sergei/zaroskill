@@ -1,0 +1,38 @@
+{
+  "provenance": "Supplied synthetic fixture. No mutation tool was executed to create this report.",
+  "source_file": "cancellation.py",
+  "entries": [
+    {
+      "id": "M1",
+      "original": "return paid_cents // 4",
+      "replacement": "return (paid_cents - paid_cents % 4) // 4",
+      "reported_status": "SURVIVED",
+      "tests_run": 6,
+      "detail": "Selected tests completed without failures."
+    },
+    {
+      "id": "M2",
+      "original": "if hours_before >= 48:",
+      "replacement": "if hours_before >= 47:",
+      "reported_status": "SURVIVED",
+      "tests_run": 6,
+      "detail": "Selected tests completed without failures."
+    },
+    {
+      "id": "M3",
+      "original": "return paid_cents // 2",
+      "replacement": "return (paid_cents + 1) // 2",
+      "reported_status": "ERROR",
+      "tests_run": 0,
+      "detail": "Worker bootstrap failed before test discovery: ModuleNotFoundError: No module named 'mutation_worker_runtime'."
+    },
+    {
+      "id": "M4",
+      "original": "if hours_before >= 24:",
+      "replacement": "if hours_before >= 25:",
+      "reported_status": "TIMEOUT",
+      "tests_run": 0,
+      "detail": "Worker startup handshake exceeded 10 seconds. No test-start event was received."
+    }
+  ]
+}

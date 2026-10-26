@@ -1,0 +1,567 @@
+{
+  "origin": "Executed by the blind judge in disposable copies only; distinct from supplied mechanical and participant evidence.",
+  "purpose": "Resolve six concrete ambiguities already identified in code review, including reciprocal protection differences and an explicitly qualified type-interpretation question.",
+  "candidate_source_hashes_unchanged": true,
+  "candidate_source_hashes": {
+    "R2/A/cases/01_shipping_bands/shipping.py": "bc6cd30e8fc648b5509794e2f71eadfa41d8cf43ba5da70e7385c6174d078c4f",
+    "R2/A/cases/01_shipping_bands/test_shipping.py": "3999bb1c3f2334c2f97751c31f59be6b7b498c2c600078362f7169b278da7f92",
+    "R2/A/cases/02_display_name/test_names.py": "ccae6fa1300fb09d0b037724732f38509df590b66a8feb429212d3e31756cff5",
+    "R2/A/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+    "R2/A/cases/04_discount_cap/discounts.py": "8d5bedfd7f1a8da26df941b8b277cfe6053d44c3a5eb6977d91e4039b1f976e7",
+    "R2/A/cases/04_discount_cap/test_discounts.py": "814b3d8e31e7e2c5852ed5dd465b038526d5042d09536ffa09fba71f77b9794f",
+    "R2/A/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "R2/A/cases/06_upload_workflow/test_upload.py": "aeaee9e78964e7ac741a0a128c7753731e20715bff7b2653d46d5c8c4eaa020d",
+    "R2/B/cases/01_shipping_bands/shipping.py": "bc6cd30e8fc648b5509794e2f71eadfa41d8cf43ba5da70e7385c6174d078c4f",
+    "R2/B/cases/01_shipping_bands/test_shipping.py": "0e22f30c689e3e8acb4f8f4746e44115ce2c382c0481276d9788a6baee7023c4",
+    "R2/B/cases/02_display_name/test_names.py": "9a10fae00aa2b7d44f790154b4a4bd535aba791a16575dcee651bc4dad6a7a38",
+    "R2/B/cases/02_display_name/names.py": "6d0c6298b3d946930a9ccf059a1794119d4c1fd7a7bae80f5963f7f56e5cc19a",
+    "R2/B/cases/04_discount_cap/discounts.py": "a867d7949c9483978068767a0ecd33847d5664675837c6b624f5bddd8d39fadd",
+    "R2/B/cases/04_discount_cap/test_discounts.py": "6f11b4b5f7b9608a13bc9a1b6004aa54ae067fd0124e55eb128466d5da2255e9",
+    "R2/B/cases/06_upload_workflow/upload.py": "2eb255004f3ff1076292c96bc960c8abcee553e989f3605de4e8bb101c77b725",
+    "R2/B/cases/06_upload_workflow/test_upload.py": "7693069c3758e0fdf3634eae8d51f5e54246d24b2f9d7c56ddf1883daeaf7226"
+  },
+  "records": [
+    {
+      "candidate": "A",
+      "case": "C01",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/A/C01/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C01/baseline/unittest.log",
+      "run_summary": [
+        "Ran 4 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C01",
+      "variant": "machine_integer_upper_limit",
+      "classification": "contract_violation",
+      "change": "Reject amounts above signed 64-bit maximum; violates explicit absence of upper bound.",
+      "cwd": "judge-probes-R2/A/C01/machine_integer_upper_limit",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C01/machine_integer_upper_limit/unittest.log",
+      "run_summary": [
+        "ERROR: test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) (subtotal=1000000000000000000000000000000)",
+        "ValueError: machine integer upper bound",
+        "Ran 4 tests in 0.000s",
+        "FAILED (errors=1)"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C02",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/A/C02/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C02/baseline/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C02",
+      "variant": "normalize_internal_nbsp",
+      "classification": "contract_violation",
+      "change": "Convert remaining interior NBSP to ASCII space after correct edge stripping; violates exact preservation of interior characters.",
+      "cwd": "judge-probes-R2/A/C02/normalize_internal_nbsp",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C02/normalize_internal_nbsp/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C04",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/A/C04/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C04/baseline/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C04",
+      "variant": "zero_cap_skips_old_validation",
+      "classification": "contract_violation",
+      "change": "Zero-cap early return bypasses original amount and percent validation.",
+      "cwd": "judge-probes-R2/A/C04/zero_cap_skips_old_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C04/zero_cap_skips_old_validation/unittest.log",
+      "run_summary": [
+        "Ran 12 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C06",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/A/C06/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C06/baseline/unittest.log",
+      "run_summary": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C06",
+      "variant": "numeric_boolean_returns",
+      "classification": "contract_violation",
+      "change": "Return integer 1/0 in place of literal True/False while preserving state/result behavior; tests of truthiness may miss explicit return-value type contract.",
+      "cwd": "judge-probes-R2/A/C06/numeric_boolean_returns",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C06/numeric_boolean_returns/unittest.log",
+      "run_summary": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C06",
+      "variant": "two_id_cycle_after_success",
+      "classification": "contract_violation",
+      "change": "Cycle the counter modulo two only on restart from done, so a third consecutive success reuses id while a done/cancelled mixed third begin does not. Violates strictly increasing ids.",
+      "cwd": "judge-probes-R2/A/C06/two_id_cycle_after_success",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C06/two_id_cycle_after_success/unittest.log",
+      "run_summary": [
+        "FAIL: test_restart_after_success_clears_result_and_rejects_old_completions (test_upload.UploadTests.test_restart_after_success_clears_result_and_rejects_old_completions) (result='third.csv')",
+        "AssertionError: 1 not greater than 2",
+        "Ran 8 tests in 0.000s",
+        "FAILED (failures=1)"
+      ]
+    },
+    {
+      "candidate": "A",
+      "case": "C06",
+      "variant": "integer_subclass_ids",
+      "classification": "contract_preserving_under_integer_subclass_reading",
+      "change": "Return an int subclass with unchanged positive value, comparison, identity matching, and monotonicity. Contract-compatible under the ordinary isinstance(int) reading; exact built-in type is not specified. Interpretation caveat must be recorded.",
+      "cwd": "judge-probes-R2/A/C06/integer_subclass_ids",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/A/C06/integer_subclass_ids/unittest.log",
+      "run_summary": [
+        "Ran 8 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C01",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/B/C01/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C01/baseline/unittest.log",
+      "run_summary": [
+        "Ran 4 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C01",
+      "variant": "machine_integer_upper_limit",
+      "classification": "contract_violation",
+      "change": "Reject amounts above signed 64-bit maximum; violates explicit absence of upper bound.",
+      "cwd": "judge-probes-R2/B/C01/machine_integer_upper_limit",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C01/machine_integer_upper_limit/unittest.log",
+      "run_summary": [
+        "Ran 4 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C02",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/B/C02/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C02/baseline/unittest.log",
+      "run_summary": [
+        "Ran 9 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C02",
+      "variant": "normalize_internal_nbsp",
+      "classification": "contract_violation",
+      "change": "Convert remaining interior NBSP to ASCII space after correct edge stripping; violates exact preservation of interior characters.",
+      "cwd": "judge-probes-R2/B/C02/normalize_internal_nbsp",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C02/normalize_internal_nbsp/unittest.log",
+      "run_summary": [
+        "FAIL: test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved (test_names.DisplayNameTests.test_unicode_edge_whitespace_is_trimmed_and_inner_whitespace_preserved)",
+        "AssertionError: 'Ada Lee' != 'Ada\\xa0Lee'",
+        "Ran 9 tests in 0.000s",
+        "FAILED (failures=1)"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C04",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/B/C04/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C04/baseline/unittest.log",
+      "run_summary": [
+        "Ran 11 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C04",
+      "variant": "zero_cap_skips_old_validation",
+      "classification": "contract_violation",
+      "change": "Zero-cap early return bypasses original amount and percent validation.",
+      "cwd": "judge-probes-R2/B/C04/zero_cap_skips_old_validation",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C04/zero_cap_skips_old_validation/unittest.log",
+      "run_summary": [
+        "Ran 11 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C06",
+      "variant": "baseline",
+      "classification": "baseline",
+      "change": null,
+      "cwd": "judge-probes-R2/B/C06/baseline",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C06/baseline/unittest.log",
+      "run_summary": [
+        "Ran 7 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C06",
+      "variant": "numeric_boolean_returns",
+      "classification": "contract_violation",
+      "change": "Return integer 1/0 in place of literal True/False while preserving state/result behavior; tests of truthiness may miss explicit return-value type contract.",
+      "cwd": "judge-probes-R2/B/C06/numeric_boolean_returns",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C06/numeric_boolean_returns/unittest.log",
+      "run_summary": [
+        "FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)",
+        "AssertionError: 1 is not True",
+        "FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)",
+        "AssertionError: 0 is not False",
+        "FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)",
+        "AssertionError: 1 is not True",
+        "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')",
+        "AssertionError: 1 is not True",
+        "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')",
+        "AssertionError: 1 is not True",
+        "FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)",
+        "AssertionError: 1 is not True",
+        "FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)",
+        "AssertionError: 1 is not True",
+        "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=0)",
+        "AssertionError: 0 is not False",
+        "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) (unknown=2)",
+        "AssertionError: 0 is not False",
+        "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)",
+        "AssertionError: 1 is not True",
+        "Ran 7 tests in 0.001s",
+        "FAILED (failures=10)"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C06",
+      "variant": "two_id_cycle_after_success",
+      "classification": "contract_violation",
+      "change": "Cycle the counter modulo two only on restart from done, so a third consecutive success reuses id while a done/cancelled mixed third begin does not. Violates strictly increasing ids.",
+      "cwd": "judge-probes-R2/B/C06/two_id_cycle_after_success",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C06/two_id_cycle_after_success/unittest.log",
+      "run_summary": [
+        "Ran 7 tests in 0.000s",
+        "OK"
+      ]
+    },
+    {
+      "candidate": "B",
+      "case": "C06",
+      "variant": "integer_subclass_ids",
+      "classification": "contract_preserving_under_integer_subclass_reading",
+      "change": "Return an int subclass with unchanged positive value, comparison, identity matching, and monotonicity. Contract-compatible under the ordinary isinstance(int) reading; exact built-in type is not specified. Interpretation caveat must be recorded.",
+      "cwd": "judge-probes-R2/B/C06/integer_subclass_ids",
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "env_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests_unchanged": true,
+      "log_path": "judge-probes-R2/B/C06/integer_subclass_ids/unittest.log",
+      "run_summary": [
+        "FAIL: test_cancel_prevents_late_completion_and_is_idempotent (test_upload.UploadTests.test_cancel_prevents_late_completion_and_is_idempotent)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_idle_ignores_completion_and_cancellation (test_upload.UploadTests.test_idle_ignores_completion_and_cancellation)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_rejected_begin_preserves_current_attempt (test_upload.UploadTests.test_rejected_begin_preserves_current_attempt)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='done')",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_restart_rejects_stale_results_before_and_after_current_result (test_upload.UploadTests.test_restart_rejects_stale_results_before_and_after_current_result) (previous_terminal='cancelled')",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_success_is_not_overwritten_by_duplicate_or_cancel (test_upload.UploadTests.test_success_is_not_overwritten_by_duplicate_or_cancel)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_three_attempts_keep_completed_and_cancelled_ids_obsolete (test_upload.UploadTests.test_three_attempts_keep_completed_and_cancelled_ids_obsolete)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "FAIL: test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt)",
+        "AssertionError: <class 'upload._AttemptId'> is not <class 'int'>",
+        "Ran 7 tests in 0.001s",
+        "FAILED (failures=8)"
+      ]
+    }
+  ]
+}

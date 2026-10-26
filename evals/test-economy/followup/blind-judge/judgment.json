@@ -1,0 +1,776 @@
+{
+  "schema_version": 1,
+  "comparison": "R3",
+  "evaluation_kind": "directed_followup_on_previously_exposed_tasks",
+  "fresh_holdout": false,
+  "part_of_original_preregistered_comparison": false,
+  "blind_protocol": {
+    "restricted_root": "/private/tmp/zaroskill-economy-n9eezds3/followup/blind-judge",
+    "individual_assessment_order": [
+      "A",
+      "B"
+    ],
+    "independent_notes": [
+      "judge-work/independent-A.md",
+      "judge-work/independent-B.md"
+    ],
+    "identity_inferred": false,
+    "parent_or_neighbor_material_read": false,
+    "history_or_skills_read": false,
+    "network_used": false,
+    "delegated": false
+  },
+  "cases": [
+    {
+      "case": "04_discount_cap",
+      "assessments": {
+        "A": {
+          "frozen": {
+            "automatic_gates_passed": true,
+            "gates": {
+              "allowed_files_and_response": true,
+              "submitted_suite_runs_nonempty_and_passes": true,
+              "independent_contract_passes": true,
+              "fixed_faults_detected": true,
+              "equivalent_refactors_pass": true
+            },
+            "baseline_status": "passed",
+            "baseline_tests_run": 13,
+            "independent_contract_status": "passed",
+            "fixed_faults": [
+              {
+                "id": "cap_ignored",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cap_is_minimum",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_cap_ignored",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "negative_cap_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "rounds_discount_to_nearest",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cap_allowed_positionally",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_cap_skips_old_validation",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_subtotal_skips_cap_validation",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              }
+            ],
+            "original_refactors": [
+              {
+                "id": "single_bounded_expression",
+                "passed": true
+              }
+            ],
+            "source": "R3/A/mechanical.json",
+            "judge_reran_fixed_campaign": false
+          },
+          "production_contract": "Корректен по чтению и предоставленному независимому контракту.",
+          "scenario_groups": [
+            {
+              "name": "Existing six neighboring tests",
+              "contract_distinction": "Прежние вызовы, округление, 0/100% и недопустимые входы.",
+              "diagnostic_value": "Короткая локальная диагностика старых обязательств.",
+              "maintenance_execution_cost": "Сохранены; пересечение с cap-проверками не делает их лишними."
+            },
+            {
+              "name": "Cap below, equal to, above discount",
+              "contract_distinction": "Ограничивается скидка; cap не является минимумом; границы 149/150 при скидке 149.",
+              "diagnostic_value": "Буквальные ожидаемые суммы и subTest(cap).",
+              "maintenance_execution_cost": "Малая таблица без произведения всех значений."
+            },
+            {
+              "name": "None, zero, keyword-only",
+              "contract_distinction": "Совместимость явного None; нулевой лимит; запрет третьего позиционного аргумента.",
+              "diagnostic_value": "Каждая проверка называет отдельную обязанность.",
+              "maintenance_execution_cost": "Небольшие независимые примеры, без типов вне контракта."
+            },
+            {
+              "name": "Negative cap",
+              "contract_distinction": "Обычная скидка и нулевая из-за суммы или процента; отдельно совместный ноль.",
+              "diagnostic_value": "subTest указывает subtotal/percent.",
+              "maintenance_execution_cost": "(0,0) имеет менее ясную отдельную мотивацию, чем две раздельные причины нуля; доказанно бесполезным не объявлен."
+            },
+            {
+              "name": "Zero cap and old validation",
+              "contract_distinction": "Нулевой cap не отменяет отрицательную сумму и границы процента.",
+              "diagnostic_value": "Три различные недопустимые границы.",
+              "maintenance_execution_cost": "Обоснованная компактная таблица, не полный продукт входов/cap."
+            }
+          ],
+          "unjustified_scenarios": [],
+          "unjustified_scenarios_note": "Бесполезность (0,0) не доказана; отдельная мотивация совместного нуля слабее раздельных zero-механизмов.",
+          "missed_errors": [
+            {
+              "id": "rounded_positive_discount_skips_negative_cap",
+              "source": "judge post-reading diagnostic",
+              "fixed_gate": false,
+              "evidence": "Намеренно ошибочная копия пропускает ValueError для (1,1,-1); все 13 тестов A проходят.",
+              "production_bug_found": false
+            }
+          ],
+          "simplification_opportunities": [
+            {
+              "action": "Заменить (0,0) на (1,1) в уже существующей таблице отрицательного cap.",
+              "benefit": "Добавляет третий механизм нулевой скидки без увеличения таблицы.",
+              "tradeoff": "Убирает отдельный jointly-zero пример; универсальная эквивалентность не заявляется."
+            }
+          ],
+          "resilience": "Исходный single_bounded_expression проходит; публичные значения и исключения, без проверки внутреннего алгоритма или текстов ошибок.",
+          "process_scope": {
+            "provided_evidence": "execution.md и response.md описывают исходный green, два поведенческих red/green и отдельные поздние green-only примеры.",
+            "scope": "Mechanical scope passed; собственный аудит подтверждает исходный task и сохранение соседних утверждений.",
+            "chronology_independently_confirmed": false,
+            "limitations": "Финальный green, согласованный текст и собственный повтор baseline не доказывают историческую TDD-последовательность."
+          }
+        },
+        "B": {
+          "frozen": {
+            "automatic_gates_passed": true,
+            "gates": {
+              "allowed_files_and_response": true,
+              "submitted_suite_runs_nonempty_and_passes": true,
+              "independent_contract_passes": true,
+              "fixed_faults_detected": true,
+              "equivalent_refactors_pass": true
+            },
+            "baseline_status": "passed",
+            "baseline_tests_run": 13,
+            "independent_contract_status": "passed",
+            "fixed_faults": [
+              {
+                "id": "cap_ignored",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cap_is_minimum",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_cap_ignored",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "negative_cap_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "rounds_discount_to_nearest",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cap_allowed_positionally",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_cap_skips_old_validation",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "zero_subtotal_skips_cap_validation",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              }
+            ],
+            "original_refactors": [
+              {
+                "id": "single_bounded_expression",
+                "passed": true
+              }
+            ],
+            "source": "R3/B/mechanical.json",
+            "judge_reran_fixed_campaign": false
+          },
+          "production_contract": "Корректен по чтению и предоставленному независимому контракту.",
+          "scenario_groups": [
+            {
+              "name": "Existing six neighboring tests",
+              "contract_distinction": "Прежняя формула, округление, границы и валидация сохраняются.",
+              "diagnostic_value": "Короткие самостоятельные regression checks.",
+              "maintenance_execution_cost": "Исходные утверждения сохранены."
+            },
+            {
+              "name": "Active, equal, larger, zero cap; None and keyword-only",
+              "contract_distinction": "Публичные значения и форма нового параметра.",
+              "diagnostic_value": "Независимые буквальные ожидания; cap subTest.",
+              "maintenance_execution_cost": "Небольшие таблицы и прямые вызовы без архитектуры."
+            },
+            {
+              "name": "Negative cap across three zero mechanisms",
+              "contract_distinction": "Subtotal=0, percent=0, positive product floored to zero, плюс обычная скидка.",
+              "diagnostic_value": "Каждый механизм представлен отдельно; (1,1) различает подтверждённый узкий ранний возврат.",
+              "maintenance_execution_cost": "Все четыре строки имеют понятный смысл; не обнаружено необоснованных сочетаний."
+            },
+            {
+              "name": "Zero cap and preserved validation",
+              "contract_distinction": "Старые предусловия сохраняются при новом раннем выходе.",
+              "diagnostic_value": "Отрицательная сумма, процент -1 и 101 локализованы в subTest.",
+              "maintenance_execution_cost": "Нет размножения этих входов на все значения cap."
+            }
+          ],
+          "unjustified_scenarios": [],
+          "missed_errors": [],
+          "coverage_limit": "Нет обнаруженных пропусков в рассмотренных фиксированных и узких C04-проверках; не доказана полнота на всех целых входах.",
+          "simplification_opportunities": [],
+          "resilience": "Исходный single_bounded_expression проходит; нет привязки к частным деталям.",
+          "process_scope": {
+            "provided_evidence": "execution.md и response.md описывают исходный green, два поведенческих red/green и отдельные поздние green-only примеры.",
+            "scope": "Mechanical scope passed; собственный аудит подтверждает исходный task и сохранение соседних утверждений.",
+            "chronology_independently_confirmed": false,
+            "limitations": "Финальный green, согласованный текст и собственный повтор baseline не доказывают историческую TDD-последовательность.",
+            "specific_note": "Ошибка отсутствующего keyword описана отдельно от последующего assertion red после объявления сигнатуры."
+          }
+        }
+      },
+      "comparison": {
+        "verdict": "B",
+        "strength": "slight",
+        "confidence": "moderate",
+        "fixed_protection_verdict": "tie",
+        "original_refactor_resilience_verdict": "tie",
+        "process_scope_verdict": "tie",
+        "economy_diagnosis_verdict": "B",
+        "economy_diagnosis_qualification": "Небольшое преимущество выбора данных, а не числа методов или равных kill sets; у A не доказана массовая избыточность.",
+        "reason": "B отдельно представляет положительную вычисленную скидку, округлённую до нуля. Это полезная граница исходного negative-cap контракта, подтверждённая узкой post-reading копией. Оба fixed-gate итога остаются одинаковыми.",
+        "post_reading_evidence_used_for_qualitative_verdict": true
+      }
+    },
+    {
+      "case": "06_upload_workflow",
+      "assessments": {
+        "A": {
+          "frozen": {
+            "automatic_gates_passed": true,
+            "gates": {
+              "allowed_files_and_response": true,
+              "submitted_suite_runs_nonempty_and_passes": true,
+              "independent_contract_passes": true,
+              "fixed_faults_detected": true,
+              "equivalent_refactors_pass": true
+            },
+            "baseline_status": "passed",
+            "baseline_tests_run": 8,
+            "independent_contract_status": "passed",
+            "fixed_faults": [
+              {
+                "id": "late_or_duplicate_completion_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "foreign_id_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "attempt_ids_reused",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "begin_replaces_active_attempt",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cancel_completed_upload",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "restart_retains_old_result",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "numeric_boolean_returns",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "two_id_cycle_after_success",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              }
+            ],
+            "original_refactors": [
+              {
+                "id": "different_private_storage",
+                "passed": true
+              }
+            ],
+            "source": "R3/A/mechanical.json",
+            "judge_reran_fixed_campaign": false
+          },
+          "production_unchanged": true,
+          "scenario_groups": [
+            {
+              "name": "Original success, cancellation, foreign waiting completion",
+              "contract_distinction": "Базовые переходы и сохранение активности после чужого id.",
+              "diagnostic_value": "Короткие имена и прямое наблюдение; id дополнительно int.",
+              "maintenance_execution_cost": "Полезные соседние проверки; assertFalse в чужом waiting-пути остаётся слабым."
+            },
+            {
+              "name": "Idle rejections then usable new upload",
+              "contract_distinction": "Complete(-1/0/1) и cancel не меняют idle; следующие begin/complete доступны.",
+              "diagnostic_value": "Знак, ноль, положительный чужой id и следующее успешное использование.",
+              "maintenance_execution_cost": "Небольшой цикл; при ошибке возможен каскад из-за общей сессии."
+            },
+            {
+              "name": "Rejected begin then original completion",
+              "contract_distinction": "RuntimeError сохраняет state/result и исходную активную попытку.",
+              "diagnostic_value": "Последующий complete проверяет скрытую активность.",
+              "maintenance_execution_cost": "Один короткий различающий сценарий; предоставленная probe показывает прирост над исходными тестами."
+            },
+            {
+              "name": "Completion versus cancellation ordering",
+              "contract_distinction": "Done сохраняет первый результат; cancellation не восстанавливается поздним ответом; duplicate/foreign отвергаются.",
+              "diagnostic_value": "Разные строки и проверки после каждого существенного события.",
+              "maintenance_execution_cost": "Явные конечные трассы, не полный продукт событий."
+            },
+            {
+              "name": "Restart from both terminal states and third attempt",
+              "contract_distinction": "Очистка результата, возрастающие id при повторном успехе, ближайший и старый id, сохранение активности.",
+              "diagnostic_value": "subTest(previous_state/old_attempt), успешное завершение новой попытки.",
+              "maintenance_execution_cost": "Третья попытка оправдана; удаление общего хвоста одной развилки теряет конкретную историю."
+            },
+            {
+              "name": "Exact booleans in new scenarios",
+              "contract_distinction": "Новые вызовы требуют именно True/False.",
+              "diagnostic_value": "Обнаруживается fixed numeric_boolean_returns.",
+              "maintenance_execution_cost": "Замена ожиданий без добавления сценариев, но старый foreign waiting-путь не усилен."
+            }
+          ],
+          "unjustified_scenarios": [],
+          "missed_errors": [
+            {
+              "id": "future_foreign_completion_returns_numeric_zero",
+              "source": "judge post-reading diagnostic",
+              "fixed_gate": false,
+              "evidence": "Для будущего чужого id в waiting число 0 принимается старым assertFalse; все 8 тестов A проходят.",
+              "production_bug_found": false
+            }
+          ],
+          "simplification_opportunities": [
+            {
+              "action": "Заменить assertFalse на assertIs(..., False) в существующем foreign-waiting сценарии.",
+              "benefit": "Закрывает конкретный пробел без нового сценария."
+            }
+          ],
+          "cost_notes": [
+            "Небольшие явные истории, нет полного произведения событий.",
+            "Третья попытка проверяет отдельное обязательство repeated successful restart.",
+            "Каскадные subTest failures возможны в idle; это цена общей сессии, не основание считать все примеры лишними.",
+            "Удаление третьей попытки только из cancelled-развилки теряет конкретную историю; бесплатность такого сокращения не доказана."
+          ],
+          "resilience": "Different_private_storage проходит; instanceof-style integer check допускает подкласс; точный шаг/стартовый id не закреплён.",
+          "process_scope": {
+            "provided_evidence": "Предоставлены конкретные fault probes и журналы с assertion failures; production не правился.",
+            "scope": "Mechanical scope passed; upload.py и task.md побайтно исходные; тесты используют публичный API.",
+            "limits_respected": [
+              "последовательные события",
+              "нет liveness или concurrency claims",
+              "нет полного перебора или формального доказательства"
+            ],
+            "historical_execution_independently_confirmed": false,
+            "participant_probes": "Три faults: прежние три теста проходят, новые целевые сценарии падают; дополнительная защита показана отдельно."
+          }
+        },
+        "B": {
+          "frozen": {
+            "automatic_gates_passed": false,
+            "gates": {
+              "allowed_files_and_response": true,
+              "submitted_suite_runs_nonempty_and_passes": true,
+              "independent_contract_passes": true,
+              "fixed_faults_detected": false,
+              "equivalent_refactors_pass": true
+            },
+            "baseline_status": "passed",
+            "baseline_tests_run": 8,
+            "independent_contract_status": "passed",
+            "fixed_faults": [
+              {
+                "id": "late_or_duplicate_completion_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "foreign_id_accepted",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "attempt_ids_reused",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "begin_replaces_active_attempt",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "cancel_completed_upload",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "restart_retains_old_result",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              },
+              {
+                "id": "numeric_boolean_returns",
+                "verdict": "SURVIVED",
+                "status": "passed",
+                "failure_kinds": []
+              },
+              {
+                "id": "two_id_cycle_after_success",
+                "verdict": "KILLED",
+                "status": "failed",
+                "failure_kinds": [
+                  "assertion_failure"
+                ]
+              }
+            ],
+            "original_refactors": [
+              {
+                "id": "different_private_storage",
+                "passed": true
+              }
+            ],
+            "source": "R3/B/mechanical.json",
+            "judge_reran_fixed_campaign": false
+          },
+          "production_unchanged": true,
+          "scenario_groups": [
+            {
+              "name": "Original scenarios and idle rejection",
+              "contract_distinction": "Локальные переходы, отказы до старта, сохранение активного id.",
+              "diagnostic_value": "Прямые state/result проверки.",
+              "maintenance_execution_cost": "Короткие явные примеры, без приватных полей."
+            },
+            {
+              "name": "Rejected begin then completion",
+              "contract_distinction": "Исходная активная попытка переживает RuntimeError.",
+              "diagnostic_value": "Последующий complete выявляет скрытую потерю владельца.",
+              "maintenance_execution_cost": "Полезная короткая история."
+            },
+            {
+              "name": "Both complete/cancel orders and duplicate/foreign after done",
+              "contract_distinction": "Сохранение первого результата и cancelled.",
+              "diagnostic_value": "Разные значения результатов; наблюдения после событий.",
+              "maintenance_execution_cost": "SubTest с общей сессией даёт наблюдаемые каскадные сообщения, но первое падение понятно."
+            },
+            {
+              "name": "Two terminal restart paths and three attempts",
+              "contract_distinction": "Результат очищается, id строго растут при повторном успехе, старые id не вмешиваются.",
+              "diagnostic_value": "subTest по начальному исходу и старым id; новая попытка завершается.",
+              "maintenance_execution_cost": "Конечные объяснимые истории; нет привязки +1."
+            },
+            {
+              "name": "Old result after new successful completion",
+              "contract_distinction": "Старое поколение не перезаписывает уже опубликованный новый результат.",
+              "diagnostic_value": "Пара state/result после old complete в новом done.",
+              "maintenance_execution_cost": "Полезное дополнительное временное различие, не объявлено повторением waiting-сценария."
+            }
+          ],
+          "unjustified_scenarios": [],
+          "missed_errors": [
+            {
+              "id": "numeric_boolean_returns",
+              "source": "provided frozen mechanical",
+              "fixed_gate": true,
+              "evidence": "Все 8 тестов проходят на 0/1 вместо False/True, поскольку используются assertFalse/assertTrue.",
+              "production_bug_found": false
+            },
+            {
+              "id": "future_foreign_completion_returns_numeric_zero",
+              "source": "judge post-reading diagnostic",
+              "fixed_gate": false,
+              "evidence": "Узкая копия также проходит 8/8.",
+              "subset_of": "numeric_boolean_returns",
+              "independent_penalty": false,
+              "production_bug_found": false
+            }
+          ],
+          "simplification_opportunities": [
+            {
+              "action": "Использовать assertIs(..., True/False) в имеющихся значимых вызовах.",
+              "benefit": "Защищает обещанные исходы без новых тестовых методов или историй."
+            }
+          ],
+          "cost_notes": [
+            "Старый ответ после нового done даёт полезное дополнительное различие.",
+            "Каскад после duplicate subTest подтверждён provided probe, первое падение локализовано.",
+            "Пять fault probes и +7 refactor probe имеют конкретные цели; их количество не мера избыточности."
+          ],
+          "resilience": "Different_private_storage и предоставленный шаг id +7 проходят; нет точного type/int или +1 ограничения.",
+          "process_scope": {
+            "provided_evidence": "Предоставлены конкретные fault probes и журналы с assertion failures; production не правился.",
+            "scope": "Mechanical scope passed; upload.py и task.md побайтно исходные; тесты используют публичный API.",
+            "limits_respected": [
+              "последовательные события",
+              "нет liveness или concurrency claims",
+              "нет полного перебора или формального доказательства"
+            ],
+            "historical_execution_independently_confirmed": false,
+            "participant_probes": "Пять целевых faults с assertion failures и один допустимый +7 вариант; это ограниченные предоставленные эксперименты."
+          }
+        }
+      },
+      "comparison": {
+        "verdict": "A",
+        "strength": "clear_on_protection",
+        "confidence": "high_for_fixed_result",
+        "fixed_protection_verdict": "A",
+        "original_refactor_resilience_verdict": "tie",
+        "economy_diagnosis_verdict": "tie",
+        "process_scope_verdict": "tie",
+        "reason": "A фиксирует обещанные True/False в новых сценариях и убивает все frozen faults; B не фиксирует точные булевы результаты нигде. Полезный old-result-after-new-done сценарий B не устраняет этот пробел. A при этом сохраняет один подтверждённый falsey-путь и не объявляется исчерпывающим.",
+        "no_method_count_inference": true
+      }
+    }
+  ],
+  "fixed_mechanical_summary": {
+    "A": {
+      "automatic_gates_passed": true,
+      "fixed_faults": {
+        "total": 16,
+        "KILLED": 16,
+        "SURVIVED": 0,
+        "INVALID": 0,
+        "UNSCORABLE_BASELINE": 0
+      },
+      "original_refactors": {
+        "total": 2,
+        "passed": 2
+      }
+    },
+    "B": {
+      "automatic_gates_passed": false,
+      "fixed_faults": {
+        "total": 16,
+        "KILLED": 15,
+        "SURVIVED": 1,
+        "INVALID": 0,
+        "UNSCORABLE_BASELINE": 0
+      },
+      "original_refactors": {
+        "total": 2,
+        "passed": 2
+      }
+    }
+  },
+  "non_gating_diagnostics": {
+    "integer_subclass_ids": {
+      "A": {
+        "case": "06_upload_workflow",
+        "id": "integer_subclass_ids",
+        "included_in_gates": false,
+        "submitted_status": "passed",
+        "independent_contract_status": "passed",
+        "interpretation": "An int subclass remains an integer; exact built-in type int is not promised. A failure may expose stricter assumptions in tests, but this diagnostic is explicitly excluded from fixed gates and automatic pass/fail."
+      },
+      "B": {
+        "case": "06_upload_workflow",
+        "id": "integer_subclass_ids",
+        "included_in_gates": false,
+        "submitted_status": "passed",
+        "independent_contract_status": "passed",
+        "interpretation": "An int subclass remains an integer; exact built-in type int is not promised. A failure may expose stricter assumptions in tests, but this diagnostic is explicitly excluded from fixed gates and automatic pass/fail."
+      },
+      "qualitative_result": "tie, both pass",
+      "changes_fixed_gates": false,
+      "added_to_aggregate_score": false
+    }
+  },
+  "judge_execution": {
+    "baseline_copies": {
+      "A_C04": "13/13 pass",
+      "B_C04": "13/13 pass",
+      "A_C06": "8/8 pass",
+      "B_C06": "8/8 pass"
+    },
+    "narrow_checks": [
+      {
+        "id": "rounded_positive_discount_skips_negative_cap",
+        "reason": "Уточняет значимость выбора C04 данных и качественный case verdict.",
+        "A": "SURVIVED",
+        "B": "KILLED by assertion failure (1,1): ValueError not raised",
+        "selection": "after reading answers",
+        "added_to_fixed_faults": false
+      },
+      {
+        "id": "future_foreign_completion_returns_numeric_zero",
+        "reason": "Уточняет ограничение защиты A, не создаёт второй штраф для общего bool-пробела B.",
+        "A": "SURVIVED",
+        "B": "SURVIVED",
+        "selection": "after reading answers",
+        "added_to_fixed_faults": false
+      }
+    ],
+    "script": "judge-work/narrow_checks.py",
+    "invocation": "PYTHONDONTWRITEBYTECODE=1 python3 judge-work/narrow_checks.py",
+    "commands_and_results": "judge-work/narrow-results.json",
+    "copies_and_logs": "judge-work/narrow-copies/",
+    "artifact_audit": "judge-work/artifact-audit.json",
+    "supplied_material_unchanged": true,
+    "not_performed": [
+      "rerun of frozen sixteen-fault campaign",
+      "independent reconstruction of historical TDD sequence",
+      "new broad mutation campaign"
+    ]
+  },
+  "overall": {
+    "verdict": "A",
+    "strength": "qualified preference within this directed pair",
+    "confidence": "moderate for overall manual preference; high for observed fixed-gate difference",
+    "reason": "A закрывает явное обязательство C06 и все frozen gates; B имеет отдельное небольшое преимущество C04. Сохранены оба результата, без агрегирования несопоставимых проб и без заявления об общем превосходстве экономности.",
+    "case_verdicts": {
+      "04_discount_cap": "B",
+      "06_upload_workflow": "A"
+    },
+    "economy_overall": "No demonstrated general advantage; compare semantic distinctions and concrete assertion improvements.",
+    "numeric_aggregate_used": false,
+    "excluded_as_economy_metrics": [
+      "test method count",
+      "source lines",
+      "assertion count",
+      "equal mutant kill sets",
+      "tiny runtime differences"
+    ]
+  },
+  "limitations": [
+    "Одна направленная пара на двух уже открытых задачах после предыдущего исследования; не свежий holdout и не первоначальный preregistered эксперимент.",
+    "Предыдущие результаты не прочитаны и не объединены с данной оценкой.",
+    "Узкие проверки выбраны после чтения; они не статистическая выборка и не новый обязательный критерий.",
+    "Финальное зелёное состояние не доказывает историческую последовательность TDD. Execution и response — предоставленные записи.",
+    "Собственное исполнение ограничено записанными копиями, свидетелями и read-only аудитом; оригинальные материалы не изменены.",
+    "Намеренно испорченные копии показывают пробелы защиты, не найденные дефекты правильного production.",
+    "Не доказана полнота на неограниченных входах/историях или общее статистическое превосходство A."
+  ],
+  "markdown_report": "judgment.md"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "State Machine Verification"
+  short_description: "Verify workflow invariants and async event ordering"
+  default_prompt: "Use $state-machine-verification to identify this workflow's temporal contracts and verify them at the smallest useful boundary."

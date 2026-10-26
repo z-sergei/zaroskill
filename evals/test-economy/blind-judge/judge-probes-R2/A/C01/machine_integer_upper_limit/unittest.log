@@ -1,0 +1,21 @@
+test_baskets_below_5000_cost_500 (test_shipping.ShippingTests.test_baskets_below_5000_cost_500) ... ok
+test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) ... 
+  test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) (subtotal=1000000000000000000000000000000) ... ERROR
+test_baskets_from_5000_through_9999_cost_250 (test_shipping.ShippingTests.test_baskets_from_5000_through_9999_cost_250) ... ok
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... ok
+
+======================================================================
+ERROR: test_baskets_from_10000_have_free_delivery (test_shipping.ShippingTests.test_baskets_from_10000_have_free_delivery) (subtotal=1000000000000000000000000000000)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/A/C01/machine_integer_upper_limit/test_shipping.py", line 19, in test_baskets_from_10000_have_free_delivery
+    self.assertEqual(delivery_fee(subtotal), 0)
+                     ~~~~~~~~~~~~^^^^^^^^^^
+  File "/private/tmp/zaroskill-economy-n9eezds3/blind-judge/judge-probes-R2/A/C01/machine_integer_upper_limit/shipping.py", line 3, in delivery_fee
+    raise ValueError("machine integer upper bound")
+ValueError: machine integer upper bound
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (errors=1)

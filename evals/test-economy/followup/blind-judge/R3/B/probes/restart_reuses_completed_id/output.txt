@@ -1,0 +1,26 @@
+test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) ... 
+  test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='done') ... FAIL
+  test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='cancelled') ... FAIL
+
+======================================================================
+FAIL: test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='done')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/restart_reuses_completed_id/test_upload.py", line 84, in test_restarts_keep_old_results_out_of_new_attempts
+    self.assertGreater(second, first)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+AssertionError: 1 not greater than 1
+
+======================================================================
+FAIL: test_restarts_keep_old_results_out_of_new_attempts (test_upload.UploadTests.test_restarts_keep_old_results_out_of_new_attempts) (first_outcome='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/restart_reuses_completed_id/test_upload.py", line 95, in test_restarts_keep_old_results_out_of_new_attempts
+    self.assertGreater(third, second)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+AssertionError: 2 not greater than 2
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=2)

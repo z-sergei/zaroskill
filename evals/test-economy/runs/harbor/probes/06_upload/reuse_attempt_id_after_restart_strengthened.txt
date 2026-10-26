@@ -1,0 +1,31 @@
+reuse_attempt_id_after_restart, strengthened: exit 1
+test_cancel_rejects_late_completion_and_repeated_cancel (test_upload.UploadTests.test_cancel_rejects_late_completion_and_repeated_cancel) ... ok
+test_events_while_idle_do_not_prevent_a_later_upload (test_upload.UploadTests.test_events_while_idle_do_not_prevent_a_later_upload) ... ok
+test_rejected_begin_preserves_the_active_attempt (test_upload.UploadTests.test_rejected_begin_preserves_the_active_attempt) ... ok
+test_restart_after_cancel_rejects_old_completion_and_accepts_new_attempt (test_upload.UploadTests.test_restart_after_cancel_rejects_old_completion_and_accepts_new_attempt) ... FAIL
+test_restart_after_success_clears_result_and_rejects_old_completion (test_upload.UploadTests.test_restart_after_success_clears_result_and_rejects_old_completion) ... FAIL
+test_success_survives_duplicate_completion_and_cancel (test_upload.UploadTests.test_success_survives_duplicate_completion_and_cancel) ... ok
+test_unknown_completion_preserves_current_attempt (test_upload.UploadTests.test_unknown_completion_preserves_current_attempt) ... ok
+
+======================================================================
+FAIL: test_restart_after_cancel_rejects_old_completion_and_accepts_new_attempt (test_upload.UploadTests.test_restart_after_cancel_rejects_old_completion_and_accepts_new_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/runs/harbor/probes/06_upload/test_upload.py", line 85, in test_restart_after_cancel_rejects_old_completion_and_accepts_new_attempt
+    self.assertGreater(second, first)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+AssertionError: 1 not greater than 1
+
+======================================================================
+FAIL: test_restart_after_success_clears_result_and_rejects_old_completion (test_upload.UploadTests.test_restart_after_success_clears_result_and_rejects_old_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/runs/harbor/probes/06_upload/test_upload.py", line 70, in test_restart_after_success_clears_result_and_rejects_old_completion
+    self.assertGreater(second, first)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+AssertionError: 1 not greater than 1
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+FAILED (failures=2)

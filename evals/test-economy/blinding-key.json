@@ -1,0 +1,18 @@
+{
+  "harbor": {
+    "pair": "R1",
+    "version": "candidate"
+  },
+  "meadow": {
+    "pair": "R1",
+    "version": "baseline"
+  },
+  "orchard": {
+    "pair": "R2",
+    "version": "baseline"
+  },
+  "summit": {
+    "pair": "R2",
+    "version": "candidate"
+  }
+}

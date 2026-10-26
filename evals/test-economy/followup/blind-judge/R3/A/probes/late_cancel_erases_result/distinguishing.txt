@@ -1,0 +1,22 @@
+test_completion_before_cancel_keeps_first_result (test_upload.UploadTests.test_completion_before_cancel_keeps_first_result) ... FAIL
+
+======================================================================
+FAIL: test_completion_before_cancel_keeps_first_result (test_upload.UploadTests.test_completion_before_cancel_keeps_first_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/late_cancel_erases_result/test_upload.py", line 59, in test_completion_before_cancel_keeps_first_result
+    self.assertEqual((session.state, session.result), ("done", "first.csv"))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('done', None) != ('done', 'first.csv')
+
+First differing element 1:
+None
+'first.csv'
+
+- ('done', None)
++ ('done', 'first.csv')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

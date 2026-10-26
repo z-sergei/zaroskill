@@ -1,0 +1,21 @@
+python3 -m unittest discover -v
+Exit: 1
+test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) ... 
+  test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) (subtotal_cents=10000) ... FAIL
+test_negative_subtotals_are_rejected (test_shipping.ShippingTests.test_negative_subtotals_are_rejected) ... ok
+test_reduced_fee_from_5000_through_9999_cents (test_shipping.ShippingTests.test_reduced_fee_from_5000_through_9999_cents) ... ok
+test_standard_fee_below_5000_cents (test_shipping.ShippingTests.test_standard_fee_below_5000_cents) ... ok
+
+======================================================================
+FAIL: test_free_delivery_from_10000_cents (test_shipping.ShippingTests.test_free_delivery_from_10000_cents) (subtotal_cents=10000)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/zaroskill-economy-n9eezds3/runs/summit/probes/01_excludes_10000/test_shipping.py", line 19, in test_free_delivery_from_10000_cents
+    self.assertEqual(delivery_fee(subtotal), 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 250 != 0
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)

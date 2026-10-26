@@ -1,0 +1,129 @@
+{
+  "kind": "Judge static byte/hash and supplied event inspection, not new behavior execution",
+  "candidates": {
+    "A": [
+      {
+        "case": "01_shipping_bands",
+        "changed_files": [
+          "response.md",
+          "test_shipping.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "02_display_name",
+        "changed_files": [
+          "response.md",
+          "test_names.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "03_capacity_boundaries",
+        "changed_files": [
+          "response.md",
+          "test_capacity.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "04_discount_cap",
+        "changed_files": [
+          "discounts.py",
+          "response.md",
+          "test_discounts.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "05_mutation_report",
+        "changed_files": [
+          "review.md"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "06_upload_workflow",
+        "changed_files": [
+          "response.md",
+          "test_upload.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      }
+    ],
+    "B": [
+      {
+        "case": "01_shipping_bands",
+        "changed_files": [
+          "response.md",
+          "test_shipping.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "02_display_name",
+        "changed_files": [
+          "response.md",
+          "test_names.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "03_capacity_boundaries",
+        "changed_files": [
+          "response.md",
+          "test_capacity.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "04_discount_cap",
+        "changed_files": [
+          "discounts.py",
+          "response.md",
+          "test_discounts.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "05_mutation_report",
+        "changed_files": [
+          "review.md"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      },
+      {
+        "case": "06_upload_workflow",
+        "changed_files": [
+          "response.md",
+          "test_upload.py"
+        ],
+        "allowed": true,
+        "test_hash_matches_supplied_mechanical": true,
+        "failure_causes": "body assertions/domain failures only; no infrastructure failure"
+      }
+    ]
+  }
+}

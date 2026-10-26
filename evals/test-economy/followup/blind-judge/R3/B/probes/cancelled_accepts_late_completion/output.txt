@@ -1,0 +1,15 @@
+test_cancelled_attempt_ignores_late_completion_and_repeated_cancel (test_upload.UploadTests.test_cancelled_attempt_ignores_late_completion_and_repeated_cancel) ... FAIL
+
+======================================================================
+FAIL: test_cancelled_attempt_ignores_late_completion_and_repeated_cancel (test_upload.UploadTests.test_cancelled_attempt_ignores_late_completion_and_repeated_cancel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<run>/probes/cancelled_accepts_late_completion/test_upload.py", line 63, in test_cancelled_attempt_ignores_late_completion_and_repeated_cancel
+    self.assertFalse(session.complete(attempt, "late.csv"))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

@@ -1,0 +1,122 @@
+{
+  "status": "completed",
+  "root": "/private/tmp/zaroskill-economy-n9eezds3/runs/summit",
+  "order": [
+    "06_upload_workflow",
+    "05_mutation_report",
+    "04_discount_cap",
+    "03_capacity_boundaries",
+    "02_display_name",
+    "01_shipping_bands"
+  ],
+  "cases": [
+    {
+      "id": "06_upload_workflow",
+      "skill": "state-machine-verification",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/06_upload_workflow/test_upload.py",
+        "work/cases/06_upload_workflow/response.md"
+      ],
+      "verification": {
+        "baseline_methods": 3,
+        "final_methods": 7,
+        "final_exit": 0,
+        "focused_fault_probes": 1,
+        "probe_outcome": "rejected begin losing ownership detected"
+      }
+    },
+    {
+      "id": "05_mutation_report",
+      "skill": "test-quality-review",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/05_mutation_report/review.md"
+      ],
+      "verification": {
+        "original_methods": 6,
+        "original_exit": 0,
+        "focused_fault_probes": 3,
+        "probe_outcomes": {
+          "M1": "equivalent by algebra; not executed",
+          "M2": "original tests pass; wrong (47,100) result confirmed",
+          "M3": "existing rounding test fails",
+          "M4": "existing 24-hour test fails"
+        },
+        "supplied_report_is_executed_campaign": false
+      }
+    },
+    {
+      "id": "04_discount_cap",
+      "skill": "requirements-tdd",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py",
+        "work/cases/04_discount_cap/response.md"
+      ],
+      "verification": {
+        "baseline_methods": 6,
+        "final_methods": 11,
+        "final_exit": 0,
+        "observed_red_green_slices": [
+          "binding discount cap: 700 != 800, then green",
+          "negative cap: ValueError not raised for 3 cases, then green"
+        ],
+        "initial_absent_api_error_recorded": true
+      }
+    },
+    {
+      "id": "03_capacity_boundaries",
+      "skill": "test-quality-review",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/03_capacity_boundaries/test_capacity.py",
+        "work/cases/03_capacity_boundaries/response.md"
+      ],
+      "verification": {
+        "baseline_methods": 6,
+        "final_methods": 8,
+        "final_exit": 0,
+        "focused_fault_probes": 1,
+        "probe_outcome": "returning limit passed old tests; fails both new under-capacity entry-point tests"
+      }
+    },
+    {
+      "id": "02_display_name",
+      "skill": "khorikov-unit-testing",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/02_display_name/test_names.py",
+        "work/cases/02_display_name/response.md"
+      ],
+      "verification": {
+        "baseline_methods": 7,
+        "final_methods": 9,
+        "final_exit": 0,
+        "focused_fault_probes": 2,
+        "probe_outcome": "ASCII-only trim and NFC normalization passed old tests; each fails new tests"
+      }
+    },
+    {
+      "id": "01_shipping_bands",
+      "skill": "khorikov-unit-testing",
+      "status": "completed",
+      "artifacts": [
+        "work/cases/01_shipping_bands/test_shipping.py",
+        "work/cases/01_shipping_bands/response.md"
+      ],
+      "verification": {
+        "baseline_methods": 13,
+        "final_methods": 4,
+        "final_examples": 10,
+        "final_exit": 0,
+        "focused_fault_probes": 3,
+        "probe_outcome": "both old and new suites detect 5000 exclusion, 10000 exclusion and rejection of only -1"
+      }
+    }
+  ],
+  "execution_log": "execution.md",
+  "checks": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v (each case independently)",
+  "scope": "Only case-authorized files, execution.md, summary.json and disposable probes were written. No dependencies or mutation framework installed; no network used."
+}

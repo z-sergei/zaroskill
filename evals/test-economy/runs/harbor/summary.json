@@ -1,0 +1,97 @@
+{
+  "status": "completed",
+  "cases": [
+    {
+      "id": "01_shipping_bands",
+      "leading_skill": "khorikov-unit-testing",
+      "status": "completed",
+      "answer": "work/cases/01_shipping_bands/response.md",
+      "changed_source_files": [
+        "work/cases/01_shipping_bands/test_shipping.py"
+      ],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 4,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": false
+    },
+    {
+      "id": "02_display_name",
+      "leading_skill": "khorikov-unit-testing",
+      "status": "completed",
+      "answer": "work/cases/02_display_name/response.md",
+      "changed_source_files": [
+        "work/cases/02_display_name/test_names.py"
+      ],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 9,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": false
+    },
+    {
+      "id": "03_capacity_boundaries",
+      "leading_skill": "test-quality-review",
+      "status": "completed",
+      "answer": "work/cases/03_capacity_boundaries/response.md",
+      "changed_source_files": [
+        "work/cases/03_capacity_boundaries/test_capacity.py"
+      ],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 8,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": false
+    },
+    {
+      "id": "04_discount_cap",
+      "leading_skill": "requirements-tdd",
+      "status": "completed",
+      "answer": "work/cases/04_discount_cap/response.md",
+      "changed_source_files": [
+        "work/cases/04_discount_cap/discounts.py",
+        "work/cases/04_discount_cap/test_discounts.py"
+      ],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 12,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": true
+    },
+    {
+      "id": "05_mutation_report",
+      "leading_skill": "test-quality-review",
+      "status": "completed",
+      "answer": "work/cases/05_mutation_report/review.md",
+      "changed_source_files": [],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 6,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": false
+    },
+    {
+      "id": "06_upload_workflow",
+      "leading_skill": "state-machine-verification",
+      "status": "completed",
+      "answer": "work/cases/06_upload_workflow/response.md",
+      "changed_source_files": [
+        "work/cases/06_upload_workflow/test_upload.py"
+      ],
+      "final_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -v",
+      "final_tests_run": 7,
+      "final_test_result": "OK",
+      "final_exit_code": 0,
+      "production_changed": false
+    }
+  ],
+  "execution_log": "execution.md",
+  "probe_results": [
+    "probes/03_capacity",
+    "probes/05_cancellation",
+    "probes/06_upload"
+  ],
+  "tdd_history": "execution.md, section 04_discount_cap",
+  "mutation_report_provenance": "Supplied synthetic fixture; no mutation tool run. Focused manual probes are separately logged.",
+  "external_network_or_dependencies_or_delegation_used": false
+}
