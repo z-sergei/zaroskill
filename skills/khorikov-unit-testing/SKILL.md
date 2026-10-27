@@ -39,7 +39,7 @@ Arrange explicit, deterministic inputs. Start from a reachable state, using supp
 
 Express one coherent user, business or caller scenario; several actions and assertions may be needed to establish its rule. Assert contractual checkpoints before later actions can hide a failure, including required effects and their absence when promised. Derive expected examples independently of the algorithm under test. Helpers may construct inputs; keep the important values visible at the test site. Parameterize cases that express the same rule.
 
-For rules covering many inputs or event sequences, read [behavior properties](references/behavior-properties.md). Connect the understandable example to the general rule, then choose variation and observation boundaries that add protection. Generated tests and formal models are optional techniques, selected for the risk.
+For rules covering many inputs or event sequences, or operations consumed in several workflow states, read [behavior properties](references/behavior-properties.md). Connect the understandable example to the general rule, then choose variation and observation boundaries that add protection. Generated tests and formal models are optional techniques, selected for the risk.
 
 For tests you add or revise, make the name a concise claim about the observed behavior, including a condition when it distinguishes the scenario. Use the domain's vocabulary; technical library concepts are a domain too. Match the claim to the assertions' actual boundary: requesting an effect or exposing a link does not prove delivery. Follow repository naming conventions without imposing a template, DSL, actor or word limit.
 
